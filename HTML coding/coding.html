@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>BRP Mailo - साहित्यिक वेब</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s ease;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: relative;
+        }
+        .flag {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            animation: wave 1.5s infinite;
+        }
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            20% { transform: rotate(20deg); }
+            40% { transform: rotate(-10deg); }
+            60% { transform: rotate(10deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .language-switch {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+        .language-switch button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .language-switch button:hover {
+            background-color: #555;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .content {
+            padding: 20px;
+        }
+        .section {
+            display: none;
+            margin: 10px 0;
+        }
+        .section.active {
+            display: block;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .profile-pic {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .contact-form {
+            display: none;
+        }
+        .contact-form.active {
+            display: block;
+        }
+        .content p {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="flag">
+            <img src="nepal_flag.gif" alt="Nepal Flag" width="50">
+        </div>
+        <h1> साहित्यिक वेबसाइट </h1>
+        <div class="language-switch">
+            <button onclick="switchLanguage('ne')">नेपाली</button>
+            <button onclick="switchLanguage('en')">English</button>
+        </div>
+    </header>
+    <nav>
+        <a href="#about" onclick="showSection('about', '#4CAF50')">लेखकका बारेमा</a>
+        <a href="#best-gazals" onclick="showSection('best-gazals', '#FF5722')">उत्कृष्ट गजलहरु</a>
+        <a href="#muktaks" onclick="showSection('muktaks', '#3F51B5')">मुक्तकहरु</a>       
+        <a href="#poems" onclick="showSection('poems', '#009688')">कविताहरु</a>
+        <a href="#gazals" onclick="showSection('gazals', '#795548')">गजलहरु</a>
+        <a href="#designer" onclick="showSection('designer', '#9C27B0')">वेब डिजाइनर</a>
+        <a href="#contact" onclick="showSection('contact', '#00BCD4')">लेखकको सम्पर्क</a>
+    </nav>
+    <div class="content">
+        <div id="about" class="section active">
+            <h2 class="ne">लेखकका बारेमा</h2>
+            <h2 class="en">About the Author</h2>
+            <img src="bb.jpg" alt="BRP Mailo" class="profile-pic">
+            <p class="ne">यो साइट बी.आर.पी. माइलोको साहित्यिक रचना प्रस्तुत गर्ने उद्देश्यले बनाइएको हो। यहाँ विभिन्न गजल, कविता, मुक्तक र अन्य साहित्यिक रचनाहरू हेर्न सकिन्छ।</p>
+            <p class="en">This site is created to showcase the literary creations of B.R.P. Mailo. Here you can find various gazals, poems, muktaks, and other literary works.</p>
+        </div>
+        <div id="gazals" class="section">
+            <h2 class="ne">गजलहरु</h2>
+            <h2 class="en">Gazals</h2>
+            <p class="ne">यहाँ विभिन्न गजलहरू पढ्न सकिन्छ।</p>
+            <p class="en">Here you can read various gazals.</p>
+            <ul>
+                <li class="ne">गजल १</li>
+                <li class="en">Gazal 1</li>
+                <li class="ne">गजल २</li>
+                <li class="en">Gazal 2</li>
+                <li class="ne">गजल ३</li>
+                <li class="en">Gazal 3</li>
+            </ul>
+        </div>
+        <div id="poems" class="section">
+            <h2 class="ne">कविताहरु</h2>
+            <h2 class="en">Poems</h2>
+            <p class="ne">यहाँ विभिन्न कविताहरू पढ्न सकिन्छ।</p>
+            <p class="en">Here you can read various poems.</p>
+            <ul>
+                <li class="ne">कविता १</li>
+                <li class="en">Poem 1</li>
+                <li class="ne">कविता २</li>
+                <li class="en">Poem 2</li>
+            </ul>
+        </div>
+        <div id="muktaks" class="section">
+            <h2 class="ne">मुक्तकहरु</h2>
+            <h2 class="en">Muktaks</h2>
+            <p class="ne">यहाँ विभिन्न मुक्तकहरू पढ्न सकिन्छ।</p>
+            <p class="en">Here you can read various muktaks.</p>
+            <ul>
+                <li class="ne">मुक्तक १<br>गुमेपछि सानो आसा खिन्न भयो रे <br>गोरेटोमा पनि खुट्टा हिड्न भयो रे <br>मनमा थोरै उमंग र हर्ष पनि छायो भने <br>दुनियामा उसकै सान भिन्न भयो रे</li>
+                <li class="en">Muktak 1</li>
+                <li class="ne">मुक्तक २</li>
+                <li class="en">Muktak 2</li>
+            </ul>
+        </div>
+        <div id="designer" class="section">
+            <h2 class="ne">वेब डिजाइनर</h2>
+            <h2 class="en">Web Designer</h2>
+            <img src="bb.jpg" alt="BRP Mailo" class="profile-pic">
+            <p class="ne">बी.आर.पी. माइलो वेब डिजाइनर हुन्। उनले यो वेब आफ्नो लागि पहिलो पटक बनाएका हुन्।</p>
+            <p class="en">B.R.P. Mailo is a web designer. He has created this website for the first time for himself.</p>
+        </div>
+        <div id="contact" class="section">
+            <h2 class="ne">लेखकको सम्पर्क</h2>
+            <h2 class="en">Contact the Author</h2>
+            <button onclick="toggleContactForm()">लेखकसँग सम्पर्क गर्न यहाँ क्लिक गर्नुहोस्</button>
+            <form id="contact-form" class="contact-form" action="mailto:brpmailobaburam@gmail.com" method="post" enctype="text/plain">
+                <label class="ne" for="name">नाम:</label>
+                <label class="en" for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label class="ne" for="email">ईमेल:</label>
+                <label class="en" for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label class="ne" for="message">सन्देश:</label>
+                <label class="en" for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <input type="submit" value="पठाउनुहोस्">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 बी.आर.पी. माइलो</p>
+    </footer>
+    <script>
+        function showSection(sectionId, color) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.body.style.backgroundColor = color;
+        }
+
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('.ne, .en');
+            elements.forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll(`.${lang}`).forEach(el => {
+                el.style.display = 'block';
+            });
+        }
+
+        function toggleContactForm() {
+            const contactForm = document.getElementById('contact-form');
+            contactForm.classList.toggle('active');
+        }
+
+        switchLanguage('ne');
+    </script>
+</body>
+</html>
