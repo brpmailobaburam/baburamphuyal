@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BRP Mailo - साहित्यिक वेबसाइट</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: skyblue;
+            color: white;
+            text-align: center;
+            padding: 2em 0;
+            position: relative;
+        }
+        .flag {
+            width: 8px;
+            height: 5px;
+            animation: wave 1.5s infinite ease-in-out;
+            transform-origin: 0% 50%;
+        }
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .language-switch {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+        .language-switch button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .language-switch button:hover {
+            background-color: green;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: yellow;
+        }
+        nav a {
+            color: black;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: green;
+            color: black;
+        }
+        .content {
+            padding: 20px;
+        }
+        .section {
+            display: none;
+            background-color: pink;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 50px;
+        }
+        .section.active {
+            display: block;
+        }
+        footer {
+            background-color: blue;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer a {
+            color: orange;
+            margin: 9px;
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 34px;
+            height: 34px;
+            margin: 5px;
+        }
+        .profile-pic {
+            border-radius: 100%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .contact-form {
+            display: none;
+        }
+        .contact-form.active {
+            display: block;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 10%;
+            height: auto;
+        }
+        .marquee-container {
+            background-color: skyblue;
+            color: yellow;
+            padding: 10px;
+            text-align: center;
+        }
+        marquee {
+            font-size: 13.5px;
+            font-weight: normal;
+        }
+        .gmail-icon {
+            width: 34px;
+            height: auto;
+        }
+        .login-container {
+            position: fixed;
+            top: 0px;
+            right: 0px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 0px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 30px;
+            display: none; /* Initially hide the login form */
+            font-size: medium;
+        }
+        .login-container.active {
+            display: block; /* Show the login form when active */
+        }
+        .login-container h2 {
+            margin-top: 0;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container label {
+            margin-bottom: 1px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            padding: 2px;
+            margin-bottom: 0px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 3px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .create-account-btn {
+            font-size: medium;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="flag">
+            <img src="nepal_flag.jpeg" alt="Nepal Flag">
+        </div>
+        <h1>साहित्यिक वेबसाइट</h1>
+        <div class="language-switch">
+            <button onclick="switchLanguage('ne')">नेपाली</button>
+            <button onclick="switchLanguage('en')">English</button>
+        </div>
+    </header>
+   
+    <div class="marquee-container">
+        <marquee>तपाईलाई यस साहित्यिक वेबमा स्वागत छ । तलको लिंकहरुमा क्लिक गरि तपाइले पढ्न चाहेको विषयवस्तु पढ्नुहोला । पढिसकेर लेखकको सम्पर्कमा क्लिक गरि तपाइलाई लागेको जिज्ञासा तथा जानकारीको सहजतापूर्वक समाधान लिनुहोस् । साथै सल्लाहा सुझाब समेत दिएर असल पाठकको रुपमा लेखकले चिन्न सक्ने वातावरण निर्माण गरिदिनुहुन्छ भन्ने आसा म स्वयं लेखक राख्दछु । धन्यवाद !</marquee>
+    </div>
+
+    <nav>
+        <a href="#home" onclick="showSection('home', '#f0f0f0')">गृह पृष्ठ</a>
+        <a href="#about" onclick="showSection('about', '#4CAF50')">लेखकको भनाई</a>
+        <a href="#contact" onclick="showSection('contact', '#00BCD4')">लेखकको सम्पर्क</a>
+        <a href="#best-gazals" onclick="showSection('best-gazals', '#FF5722')">उत्कृष्ट गजलहरु</a>
+        <a href="#gazals" onclick="showSection('gazals', '#795548')">अन्य गजलहरु</a>
+        <a href="#muktaks" onclick="showSection('muktaks', '#3F51B5')">मुक्तकहरु</a>       
+        <a href="#poems" onclick="showSection('poems', '#009688')">कविताहरु</a>    
+        <a href="#designer" onclick="showSection('designer', '#9C27B0')">वेब डिजाइनर</a>
+    </nav>
+
+    <div class="content">
+        <div id="home" class="section active">   
+            <div class="image-container">
+                <img src="namaste.jfif" alt="Image 1">
+                <img src="nepal_flag.jpeg" alt="Nepal Flag">
+            </div>
+        </div>
+        
+        <div id="about" class="section">
+            <h2>लेखकको भनाई</h2>
+            <p>यस्तो कुनै पनि भ्रम छ भने यथार्थ र विश्लेषण गर्न लेखमा उब्जाइएको छ ।</p>
+        </div>
+
+        <div id="contact" class="section">
+            <h2>लेखकको सम्पर्क</h2>
+            <p>तपाईं हामीलाई तलको लिंकमा सम्पर्क गर्न सक्नुहुन्छ:</p>
+            <ul>
+                <li><a href="mailto:brpmailo@gmail.com">Email</a></li>
+                <li><a href="https://www.facebook.com/yourprofile">Facebook</a></li>
+                <li><a href="https://www.youtube.com/yourchannel">YouTube</a></li>
+            </ul>
+        </div>
+
+        <div id="best-gazals" class="section">
+            <h2>उत्कृष्ट गजलहरु</h2>
+            <p>यहाँ उत्कृष्ट गजलहरु प्रस्तुत गरिएको छ।</p>
+        </div>
+
+        <div id="gazals" class="section">
+            <h2>अन्य गजलहरु</h2>
+            <p>अन्य गजलहरुको संग्रह।</p>
+        </div>
+
+        <div id="muktaks" class="section">
+            <h2>मुक्तकहरु</h2>
+            <p>यहाँ मुक्तकहरुको संग्रह प्रस्तुत गरिएको छ।</p>
+        </div>
+
+        <div id="poems" class="section">
+            <h2>कविताहरु</h2>
+            <p>कविताहरुको संग्रह यहाँ प्रस्तुत गरिएको छ।</p>
+        </div>
+
+        <div id="designer" class="section">
+            <h2>वेब डिजाइनर</h2>
+            <p>वेब डिजाइनरको बारेमा जानकारी।</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/yourprofile"><img src="facebook_icon.png" alt="Facebook"></a>
+            <a href="https://www.youtube.com/yourchannel"><img src="youtube_icon.png" alt="YouTube"></a>
+            <a href="mailto:brpmailo@gmail.com"><img src="gmail_icon.png" alt="Gmail" class="gmail-icon"></a>
+        </div>
+        <p>© 2024 BRP Mailo. All rights reserved.</p>
+        <a href="#contact">Contact Us</a>
+    </footer>
+
+    <div class="login-container" id="loginContainer">
+        <h2>लॉगिन</h2>
+        <form id="loginForm">
+            <label for="username">युजरनेम:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">पासवर्ड:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="login">
+        </form>
+        <button onclick="toggleLogin()">login</button>
+    </div>
+
+    <button class="create-account-btn" onclick="toggleLogin()">Create Account</button>
+
+    <script>
+        function showSection(sectionId, color) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.body.style.backgroundColor = color;
+        }
+
+        function switchLanguage(lang) {
+            // Code to switch languages
+            console.log('Switch to', lang);
+        }
+
+        function toggleLogin() {
+            const loginContainer = document.getElementById('loginContainer');
+            loginContainer.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

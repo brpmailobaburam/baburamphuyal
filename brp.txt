@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5">
+    <title>BRP Mailo - साहित्यिक वेबसाइट</title>
+    <style>
+        body {
+            font-family: monotype corsiva, sans-serif;
+            background-color: purple;
+            margin: 0;
+            padding: 3;
+            transition: background-color 0s ease;
+        }
+        header {
+            background-color: skyblue;
+            color: white;
+            text-align: center;
+            padding: 2em 0;
+            position: relative;
+        }
+        .flag-container {
+            margin-left: 0px;
+        }
+        .flag {
+            width: 30px;
+            height: 20px;
+            animation: wave 1.5s infinite ease-in-out;
+            transform-origin: 0% 50%;
+        }
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+         .language-switch {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+        .language-switch button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .language-switch button:hover {
+            background-color: green;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: yellow;
+        }
+        nav a {
+            color: black;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: green;
+            color: black;
+        }
+        .content {
+            padding: 20px;
+        }
+        .section {
+            display: none;
+            background-color: pink;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 50px;
+        }
+        .section.active {
+            display: block;
+        }
+        footer {
+            background-color:blue ;
+            color: white;
+            text-align: center;
+            padding: 0p x 0;
+            position: fixed;
+            width: 100%;
+            hight: auto;
+            bottom: 0;
+ }
+        footer a {
+            color: orange;
+            margin: 9px;
+            text-decoration: none;
+        }
+        .social-icons img {
+            width: 34px;
+            height: 34px;
+            margin: 0px;
+.contact-img {
+    display: block;
+    margin: 5px auto;
+    width: 0px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+        }
+        .profile-pic {
+            border-radius: 100%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+ }
+        .contact-form {
+            display: none;
+         }
+        .contact-form.active {
+            display: block;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            width: 10%;
+            height: auto;
+        }
+        .marquee-container {
+            background-color: skyblue;
+            color: yellow;
+            padding: 10px;
+            text-align: center;
+<style>
+    .gmail-icon {
+        width: 10px;
+        height: auto;
+    }
+</style>
+
+        }
+        marquee {
+            font-size: 13.5px;
+            font-weight: narmal;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="flag">
+            <img src="nepal_flag.jpeg" alt="Nepal Flag" width="50">
+        </div>
+        <h1>साहित्यिक वेबसाइट</h1>
+        <div class="language-switch">
+            <button onclick="switchLanguage('ne')">नेपाली</button>
+            <button onclick="switchLanguage('en')">English</button>
+        </div>
+    </header>
+
+ 
+   <div class="marquee-container">
+        <marquee>तपाईलाई यस साहित्यिक वेबमा स्वागत छ । तलको लिंकहरुमा क्लिक गरि तपाइले पढ्न चाहेको  विषयवस्तु पढ्नुहोला । पढिसकेर लेखकको सम्पर्कमा क्लिक गरि तपाइलाई लागेको जिज्ञासा तथा  जानकारीको सहजतापूर्वक समाधान लिनुहोस् । साथै सल्लाहा सुझाब समेत दिएर असल पाठकको रुपमा लेखकले चिन्न सक्ने वातावरण निर्माण गरिदिनुहुन्छ भन्ने आसा म स्वयं लेखक राख्दछु । धन्यवाद !</marquee>
+    </div>
+    </header>
+    
+
+<nav>
+    <a href="#home" onclick="showSection('home', '#f0f0f0')">गृह पृष्ठ</a>
+    <a href="#about" onclick="showSection('about', '#4CAF50')">लेखकको भनाई</a>
+    <a href="#best-gazals" onclick="showSection('best-gazals', '#FF5722')">उत्कृष्ट गजलहरु</a>
+    <a href="#muktaks" onclick="showSection('muktaks', '#3F51B5')">मुक्तकहरु</a>       
+    <a href="#poems" onclick="showSection('poems', '#009688')">कविताहरु</a>
+    <a href="#gazals" onclick="showSection('gazals', '#795548')">गजलहरु</a>
+    <a href="#designer" onclick="showSection('designer', '#9C27B0')">वेब डिजाइनर</a>
+    <a href="#contact" onclick="showSection('contact', '#00BCD4')">लेखकको सम्पर्क</a>
+</nav>
+
+    <div class="content">
+        <div id="home" class="section active">   
+            <div class="image-container">
+                <img src="namaste.jfif" alt="Image 1">
+                <img src="welcome.jpeg" alt="Image 2">
+                <img src="3.jpg" alt="Image 3">
+                <img src="2.jpg" alt="Image 1">
+                <img src="4.jfif" alt="Image 4">
+            </div>
+            <div id <p align="center"><h2 class="ne"<b>स्वागतम् !   स्वागतम् !!  स्वागतम् !!!</b></p></h2>
+            <h2 class="en"<p align="center"><b>Welcome! Welcome!! Welcome!!!</b></p></h2></div>          
+            <p class="ne">यो साइट बी.आर.पी. माइलोको साहित्यिक रचना प्रस्तुत गर्ने उद्देश्यले बनाइएको हो। यहाँ विभिन्न गजल, कविता, मुक्तक र अन्य साहित्यिक रचनाहरू हेर्न सकिन्छ। सबैजना साहित्यप्रेमी मनहरुले यो साइटमा भिजिट गरेर हेर्नुहोला ।</p>
+            <p class="en"><font size="5">This site is intended to present B.R.P. Mailo's literary works. Various ghazals, poems, muktakas and other literary works can be seen here. All literature lovers should visit this site.</font size>
+            <p><br><br><u><b>आफ्नो डायरी</b></u><br>---प्रेम आखिर प्रेम नै रहेछ , माया त बद्लिएर दया बन्नसक्छ  ।<br>हिजो गिरे पनि नजरबाट, भोलि त्यहि  प्रिया बन्न सक्छ  ।<b>✏️बिआरपी माइलो</b></p><br><u><b><i>यहाँ महान सहित्यकारहरुका चर्तित भनाईहरु समावेस गरिएका छन्  ।</u></b></i>
+            <br><br><u><b>मुनामदन</b></u><br>--हातका मैला सुनका थैला, के गर्नु धनले?<br>साग र सिस्नु खाएको बेस आनन्दी मनले (मुनामदन) <br><u><b>यात्री</b></u><br>--कुन मन्दिरमा जान्छौ यात्री,कुन मन्दिर जाने हो?<br>कुन सामग्री पूजा गर्ने,साथ कसोरी जाने हो?<b>✏️महाकवि लक्ष्मी प्रसाद देवकोटा </b><br>
+            <br><u><b>स्वर्ग र देवता</b></u><br>--सधैँको सुत्केरी पृथ्वीका, <br>गलेका कन्चट बसेका गाला खोक्रा कोखा सारामा <br>अश्रुसागर महासागर भरी भरी भै उर्लिरहेका<b>✏️बालकृष्ण सम (शारदा पत्रिका २००४)</b></p>           
+            <br><u><b>गौथलीको चिरबिरी</b></u><br>--म बस्ने कोठाकै दलिन-बिचमा गौथली बस्यो<br>पिटाएको तन्नाउपर मैला पनि खस्यो ।<br>मलाई त्यो देखि हृदय-बिच लग्योकिरकिरी<br>चरी बोल्यो मेरो मन सब बुझी त्यो चिरिबिरी<b>✏️कविशिरोमणि लेखनाथ पौडेल (शारदा पत्रिका १९९२) </b></p>
+            <br><u><b>आमाको सपना</b></u><br>--आमा, त्यो आउछ र ?<br>हो बा, त्यो आउछ <br>त्यो बिहानको सूर्य झैँ उज्यालो छर्दै आउछ <b>✏️गोपालप्रसाद रिमाल </b></p>
+            <br><b><u>नानीबाबुहरुको सपना लेख</b></u><br>गोपाल दाइ !<br>त्यो आयो <br>त्यो हुरी भएर आयो <br>हामि पात भएर पछ्याइरहेछौ <br>आमाको सपना पुरा भयो <br>तर गोपाल दाइ ! <br>त्यो हुरीले त....... <b>✏️छेत्रप्रताप अधिकारी </b></p> <br> <br> <br> <br>
+
+ </div>
+<div id="best-gazals" class="section">
+<h2 class="ne"उत्कृष्ट गजलहरु </h2>
+<h2 class="en">Best Gazals</h2>
+<p class="ne"><b><u>यहाँ सबैले मन पराएका गजलहरु छन् </b></u></p>
+<li class"ne">गजल १ <br>फूल सुगन्धले कि, रङ्गले सुन्दर  छ  ?<br>हेराइ न हो यो, आफ्नै ढङ्गले सुन्दर छ <br><br>तर बनाउनेहरुले फूल हेरेर रंग बनाए <br>हेर्नेहरु भन्छन फूलभन्दा रंग सुन्दर छ <br><br>
+प्रकृतिले बसन्तमा, फूलको वयान गरेपछि <br>भनौला फूल त आफ्नै, उमङ्गले सुन्दर छ <br><br>तिमीले कुरा फेरेपछि न, हो मैले मन फेरेको<br>नत्र त मेरो  पनि मन, अचम्मले सुन्दर छ <br><b>✏️बिआरपी माइलो</b><br><br><br><br>
+
+
+</div>
+        <div id="about" class="section">
+            <h2 class="ne">लेखकका बारेमा</h2>
+            <h2 class="en">About the Author</h2>
+            <img src="brp_1.jpg" alt="बिआरपी माइलो" class="profile-pic"><u><b><i><p class="ne">लेखक </u></b></i><p class="en">Author</u></b></i>
+            <p class="ne"><br><br><u><b>लेखकको भनाइ</b></u><br>अहिलेको बिज्ञान र प्रविधिको युगमा कुनै अरु पुराना विकल्प भन्दा यो विकल्प अलिक फरक र उपयुक्त लाग्यो र यो साइट निर्माण गरेको छु । 
+आफैमा विश्वास गर्छु कि यहि साइट मार्फत मेरा साहित्यिक रचनाहरु  सम्पूर्ण पाठक वर्गमा पुर्याउने छु । लेख्न थालेको धेरै त भएको छैन । तर पनि प्रयास गरेको भने कक्षा ५ मा अध्ययन गर्दादेखि नै हो ।  सफल हुने सूत्रहरु त धेरै हुन्छन्  । तर कस्तो सूत्र प्रयोग गरेर सफल हुने भनेर निर्णय गर्ने जिम्मा तपाईको हो  । 
+मेरो पनि त्यस्तै तपाईको जस्तै कथा छ  ।  <br><br>साहित्य मान्छेको जीवनको अभिन्न अङ्ग हो ।   मान्छेको जन्म संगै साहित्यको पनि जन्म हुन्छ । जन्म, मृत्यु, रोदन, हाँसखेल, दुख पिडा, हर्ष उल्लास, माया, ममता, संघर्ष, मिहिनेत, असफल, सफलता आदिको संयोजन नै वास्तबमा साहित्य हो । त्यसलाई बिभिन्न प्रकृयाद्वारा प्रस्तुत गरिन्छ ।   <br> <br>
+जीवनमा मान्छेहरु प्रयास गरेर थाक्ने गर्छन्  । तर मलाई लाग्छ प्रयास भनेको थकानको जन्म हैन  । प्रयासबाट त मानिसले जीवन खोजेका हुन्छन्  । आफ्ना लक्ष्य, भविष्य, दुनियाँ, संसार र अनगिन्ति  आशाको  दीप खोजेका हुन्छन्  ।
+आगोको ज्वाला झैँ दनदन दन्किरहेको आशाका किरणहरु अझै चम्काउन खोजिरहेका हुन्छन् । हो ति सबै कुण्ठाहरू फुत्त बाहिर निकाल्नु पर्छ । जस्तो  पर्याप्त श्रोत साधन भएर पनि उपयोग गर्न नजान्दा त्यो श्रोत भएको र नभएको कुनै फरक अर्थ हुदैन । त्यस्तै आफुमा भएको प्रतिभाआफैले प्रस्तुत गर्नु पर्दछ । नत्र कुनै अर्थ हुदैन ।
+मैले यस्तै यस्तै कुराहरु समावेश गरेर यो साहित्यिक वेबसाइट तयार गरेको छु । यहाँ यस्तै तपाइको कथा लेखिएको छ । तपाइको समाजको, तपाइको बा आमाको, तपाईका असल छिमेकीको, तपाईका दुश्मनको, तपाईलाई माया गर्ने मान्छेको र तपाइले माया गर्ने मान्छे सबै सबैको कथा प्रस्तुत गरिएको छ । 
+लेख्दा लेख्दै तपाइँ छुट्नु भएको, तपाइले चाहेको मान्छे छुटेको तथा तपाइको समाज छुटेको रहेछ भने आसा छ अवस्य मलाई जानकारी गराउनुहुनेछ ।   <br><br>
+तपाईहरुको सुझाब र सल्लाहको ठुलो अपेक्षा गरेको छु । सधै भरि म तपाईहरु पाठक प्रति सचेत रहेको छु, र रही रहने बाचा गर्दछु। तपाइहरुले साहित्यलाई मन पराइदिंदा मात्र हैन  पढेर गल्ति औल्दियाइदिदा पनि सारै खुसि लाग्छ ।यो तपाई पाठकवर्गले निभाउनुपर्ने एउटा कर्तव्य पनि हो जस्तो लाग्छ ।
+तपाईका सुझावले अरु लेखनमा थप हौसला मिलोस् र लेख्दा लेख्दै तपाईहरुको सुझावले घच्घच्याई रहोस् । सुधारगर्ने मौका मिलिरहोस् । तपाइहरुले  दिनुपर्ने पृष्ठपोषणको लागि यहि साईटको <b>लेखकको सम्पर्क</b>मा क्लिक गरि आफ्नो विवरण उल्लेख गरेर भन्न चाहेको कुरा लेखिदिनुहोला । 
+जसले गर्दा मलाई पछाडिका दिनहरुमा नया रचनाहरु ल्याउन मद्दत मिल्नेछ । थप सल्लाहा र सुझाबको लागि  हाम्रा अन्य  <u><b>सम्पर्कहरु:</u></b>
+            <p class="en"><font size="4"><br><u><b>Author's statement<br></b></u>In today's age of science and technology, this option is a bit different and suitable than any other old option and I have created this site. I believe in myself that through this site I will bring my literary works to the entire readership. 
+           It has not been long since I started writing. However, I tried since I was studying in class 5. I look forward to your suggestions and advice. I have always been aware of you readers, I will be and I will be.Not only when you like literature, but also when you make mistakes by reading it, you feel very happy. 
+           My hope is that I will be able to be close to more of you. May your suggestions encourage me to write more and be inspired by your suggestions while writing. Get a chance to improve. Please click on the contact of the author of this site and mention your details and write what you want to say. So that will help me to come up with new compositions in the days to come.
+Our other contacts for further advice and suggestions:<br>
+<div class="social-icons">
+           <a href="http://www.youtube.com/@brpmailo">
+           <img src="youtube.png" alt="Youtube" class="social-icon"><a/><br><br>
+           <a href="https://www.facebook.com/brp.mailo" target="_blank">
+           <img src="facebook icon.png" alt="Facebook"><br><br>
+           </a>
+           <a href="mailto:brpmailo2061@gmail.com?subject=your Information%20Request here&body=Please%20provide%20your%20details%20here">
+          <img src="g.png" alt="Send Email" style=gmail"><br><br>
+        </a>        
+           <img src="o.jfif" alt="Contact Us"<p class="ne">9844078996 / ९८४४०७८९९६ <br><br><br><br>
+         </a>
+       </p>
+     </div>    
+     </div>
+       
+
+
+       <div id="gazals" class="section">
+            <h2 class="ne">गजलहरु</h2>
+            <h2 class="en">Gazals</h2>
+            <p class="ne"><b><u>यहाँ विभिन्न गजलहरू पढ्न सकिन्छ।</u></p>
+            <p class="en">Here you can read various gazals.</p>
+            <ul>
+                <li class="ne">गजल १</b><br>बाढीले गाउँ बगायो, आमाको पुरानो घर बगायो ।<br>पहिरोले रोड, पुल,जग्गा जमिन नहर बगायो। <br><br>बाढी सबै सहेकै थिए, सहर डुबेको सुनेर खबर,<br>गाउँमा बाको आशा, भरोसा र  रहर बगायो ।<br><br>छोरो बस्ने सहर डुबेपछि, रोएका हुन् बा आमा,<br>नत्र त पहिले नै रुँदारुँदै, बाढीले डर भर बगायो ।<br><br>बगाएर जग्गा जमिन, धन सम्पत्ति पुगेन अझै,<br>सबै सकेर पनि फेरि, आशाको धरोहर बगायो ।<br><br>आँसु सकिउनजेल रोएका छन्, बा आमा बेस्सरी,<br>बाढीले आँसु, धड्कन, मन हर-प्रहर बगायो ।</br>
+   <b>✏️बिआरपी माइलो</b><br><br>
+<li class="ne"><b>गजल २</b><br>कापी र कलम अनि प्रकृति चाहिन्छ <br>एकान्तमा बसेर लेख्न पनि आकृति चाहिन्छ<br><br> दुखि हुन्छौ नसोध एक्लै पारे एक्लै बनाए<br>एक्लै बनाउन पनि के तिम्रो स्विकृति चाहिन्छ<br><br> यहाँ नसोधी बनाउनेहरुले नै के के बनाइसके <br>
+तर जे बनाउन पनि अलिकिती बिकृति चाहिन्छ<br><br>स्पष्ट कुरासंग जोड्न तिर्मिर के ल्याउछौ<br>यहाँ भातमा दाल जोड्न पनि प्रिती चाहिन्छ<br><br>तिमि आफ्ना कुरा बोल्न चाहन्छौ लेखन चाहन्छु<br> तर यो बुझ यहाँ खान पनि संस्कृति चाहिन्छ <br><b>✏️बिआरपी माइलो</b></br><br>
+                <li class="en">Gazal 1</li>
+                <li class="ne"><b>गजल ३</b> <br>खै कोनि के पाएनन् निक्कै खोकेकाछन्<br>
+यी बुढाले खोपडिमा के के बोकेकाछन् <br><br>घरी भन्छन् बूढो भएँ, घरी तन्नेरी छु ।।<br>गीता पढ्छु भन्दै सधैं, रक्सी धोकेकाछन् ।<br><br>बुझिसक्नु भए पो यिनका चालामाला<br>भक्त छक्क पर्छन् सबै, मन्त्र घोकेकाछन् <br><br>
+कहिँ पंडित बन्छन्, कहिँ  मंदिर छुन्न भन्छन<br>हाँसो लाग्छ सम्झिँदा नि, आफ्नै जिब्रो टोकेकाछन् <br><b>✏️बिआरपी माइलो</b></br><br>
+                <li class="en">Gazal 2</li>
+                <li class="ne"><b>गजल ४ </b></li>यी गरिब हुन् त्यसैले हराउन सकिन्छ ।<br>तिम्रै राज चल्छ  रत कमाउन सकिन्छ ।<br><br>यहाँ न मुर्ख भन्न मिल्छ न सद्धे भन्नु मिल्छ ।<br>सहि कुरा गर्छन मात्र डराउन सकिन्छ ।<br><br>यस्ता थुप्रै देखेकोछु सत्य बोल्छन ।<br>
+तर पनि मात खायसी काम गराउन सकिन्छ ।<br><br>थोरै भय पनि  आशा  राखेको छु गर्लान केहि,<br>यो केहि नै भय पनि मन परौना सकिन्छ । <br><b>✏️बिआरपी माइलो</b></br><br>
+                <li class="en">Gazal 3</li>
+<li class="ne"><b>गजल ५ </b></li>सबै थोक छ तिमि भइनौ , प्रहर फेरियो ।<br>हरायपछी त्याहबाट तिमि , सहर फेरियो ।<br><br>बरबादिका दिन चलेकाछन लाग्यो सुन्नुपर्छ ?<br>स्वप्निल पलमाझैँ सहजै घर फेरियो ।<br><br>किन एउटा मात्र आचल त्यो याद आउछ ।<br>
+बेखबर तिम्रो यादसंगै हरपल ,जहार फेरियो ।<br><br>कोकिल तिम्रो बचन नसुनेको कयौ दिन भएछ ।<br>कुण्ठा र संबेगले सदैब ,रहर फेरियो ।<br><br>हिस्स हासों बोकेको खुशी मुहारमा खैन के भयो।<br>भन्छा दुनियाले यसको दन्त लहर फेरियो ।<br><b>✏️बिआरपी माइलो</b></br><br>
+<li class="ne"><b>गजल ६  </b></li>तिमि साथ छु भन्छौ, सहारा लाग्छ<br> 
+आजभोलि किन सबैं, आहारा लाग्छ।<br><br> तिमिन नहुदा त सबै सकिनुपर्ने, <br>तर पनि अझै  आकाशमा तारा लाग्छ।<br><br>यति बुझेको छु बा,आमा तिमि संसार हौ ।<br>तर पनि खै किन अरु नै बिचरा लाग्छ।<br><br>याहा आशा दिलाउने र हराउनेको के कमि छ ।<br>सहयोग गर्नेलाई नै बल्लात्कारको नारा लाग्छ।<br><br>मन पनिं कस्तों हो  मान्ने पर्छ यसलाई, <br>
+बिनाकारण तिमि नै सारा लाग्छ।<br><b>✏️बिआरपी माइलो</b></br><br></ul>
+   
+
+     </div>
+        <div id="poems" class="section">
+            <h2 class="ne">कविताहरु</h2>
+            <h2 class="en">Poems</h2>
+            <p class="ne">यहाँ विभिन्न फुटकर कविताहरूको सङ्ग्रह छ ।</p>
+            <p class="en">Here you can read various poems.</p>
+            <ul>
+<li class="ne">
+<b>कविता<br><u>शीर्षक: पास्फोर्ट </b></u><br>मैले भविष्य देखेर देशमै <br>बनाए पास्फोर्ट र भरिदिए फर्म <br>नयाँ कक्षाको,<br>सबै जाँचको,<br>अनि थुप्रै थुप्रै आशाहरुको <br>तर पुर्याएनन् खै किन लक्षसम्म <br>बरु चढाईरह्यो कक्षा <br>र भुलाईरह्यो क्याम्पसतिरै <br>यो पास्फोर्टले <br>अनि <br>फेरि बनाए चिठीको पास्फोर्ट <br>र भरिदिए फर्म <br>तिम्रो यादको,<br> तिम्रो मायाको <br>अनि तिम्रै प्रेमको तर <br>अहँ यसले पनि पुर्याएन लक्षसम्म <br>बरु पुर्यायो तिम्रो मनसम्म <br>भर्खर पास्फोर्ट चिन्दैथिएँ र त <br>फेरि बनाएँ पास्फोर्ट र कन्फर्म गरिदिएँ <br>फेसबुकमा,<br>टिकटकमा,<br>अनि इन्स्ट्राग्राममा  तर <br>यसले पनि लक्ष चिनाएन 
+<br>बरु बिर्साइदियो आफ्नाहरुलाई पनि <br>र नाजिक्याईदियो को हो - को हो लाई <br>केहि क्षण भुलाइदियो कुराकानीमा <br>र फुत्त फालिदियो <br>दुश्मनको काखमा <br>मैले फेरी पास्फोर्ट बनाएँ <br>र पेस गरें जिमेलको, याहुको र टुइटरको हातमा <br>यो पनि काम लागेन <br>र रिसेट गरिदिएँ जिन्दगीमा <br>फेरी अर्को पास्फोर्ट बनाएँ <br>र पेसिदिएँ जागिरमा <br>यो पनि घुइचोले पेलिदियो 
+<br>भित्रभित्रै हरायो बेपत्ता भयो,<br>नष्ट भयो र सबैबाट एक्लिदै गएँ  <br>यसरी मैले अनगिन्ति पास्फोर्टहरु बनाएँ <br>अब एउटा पास्फोर्ट बनाउन मन छ,<br>जसले भविष्य पनि देखेको छ  <br>आशा पनि देखेको छ,<br>प्रेम, आफन्त दुनियाँ सारा देखेको छ  <br>यसले लक्षसम्म पुर्याउने,<br>बाटो पनि देखेको छ,<br>ति कठोर पत्थर फोड्ने, <br>हतियार पनि देखेको छ <br>हो अब यहि पास्फोर्ट बनाउदै छु <br>जसले एअरपोर्टसम्म पुर्याउने छ ।<br><b>✏️बिआरपी माइलो</b><br><br>  
+
+<b>कविता<br><u>शीर्षक: विद्यार्थीको प्रेम </b></u><br> म बसन्तमा रोइरहदा पनि, शिशिरमा हासेको छु  ।<br>तिमीहरुको माया र स्नेहमा खुबै प्रिती गासेको छु । <br>गर्व गर्छु पेशा मेरो, फरक नै छ अरु भन्दा, <br>खुलम्खुल्ला भन्न सकु, छैन मेरो गलत धन्दा, 
+<br><br>मेरो नाम भन्दा पछी, एउटा सर जोडिएको छ । <br>त्यो सरको भर फेरी, सब भन्दा धेर फैलिएको छ  ।<br>मेरा प्यारा नानीबाबु, गर्नुहुन्न कुभलो केहि <br>यो त मेरो अर्ति तिम्लाई सधैँ असल बन्नु  ।<br><br>तिम्ले दिएका प्रितहरु, संगालेर राखेकोछु  ।<br> खेल्दै सिक्दै गरेका याद, संगालेर राखेको छु 
+<br> मेरो प्रवेश तिम्रो लागि, उमङ्ग र शाहस बनोस् ।<br> कक्षा भरि सिकेका ति, सबै ज्ञान खास बनोस्  ।<br><br> म नआउदा एक दिन, धेरै मलाई खोजेऊ अरे, <br> त्यहि दिन घरमा गइ, मेरै नाम रोजेउ अरे  ।<br> तिमीहरुकै यो प्रेमले, सबै दुख भुलेकोछ, <br>शिशिरमा पनि साच्चै ढकमक्क फूलेकोछु  ।<br>
+ <b>✏️बिआरपी माइलो</b><br><br>              
+ <li class="en">Poem 1</li>
+ <li class="ne"> <b>कविता <br><u>शीर्षक: तिमि !  </b></u><br>कस्तो शब्द बनेछ ?<br>तिमि <br>अलि सस्तो शब्द बनेछ <br>रहर जस्तो शब्द बनेछ तिमि <br>तिमि त हरपल आउने शब्द बनेछ <br>न कुनै मोडमा भुलिन्छौ<br>न कुनै जोडमा भुलिन्छौ <br>तिमि मुखैमा झुन्डीएकी   झैँ <br>
+खाने बेलाको ओठमा  भुलिन्छौ <br>ठूलो रहरमा पर्ने तिमि <br>कस्तो शब्द बनेछ ?<br>रहर जस्तो शब्द बनेछ तिमि !!<br>तिमि त हरपल आउने शब्द बनेछ <br>तिमि त हरपल आउने शब्द बनेछ !!<br></li><b>✏️बिआरपी माइलो</b><br><br>
+<li class="en">Poem 2</li>
+<li class="ne"> <b>कविता <br><u>शीर्षक:  लेखक  </b></u><br>लेखकको त्यो सफा कोठा कागज भरिएको <br>कोठाभरि जताततै कलम छरिएको <br>हातभरि कलम छन् अनेक रंगहरुका <br>लेख्दा लेख्दै खीइसके टोप्रा नङहरुका <br><br>लेखक कोहिको आश गर्दैनन् लेख्छन असल कुरा <br>थालेको त्यो सुरुवाती गर्छन सधै पुरा <br>
+जिम्मेवारी पुरा गर्छ सधै काध थापी <br>बिना लोभ लालच आफ्नो कृतिहरु छापी <br><br><br><br><br><br>
+            </ul>
+   
+
+     </div>
+        <div id="muktaks" class="section">
+            <h2 class="ne">मुक्तकहरु</h2>
+            <h2 class="en">Muktaks</h2>
+            <p class="ne">यहाँ विभिन्न मुक्तकहरू पढ्न सकिन्छ।</p>
+            <p class="en">Here you can read various muktaks.</p>
+            <ul>
+                <li class="ne"><b>मुक्तक १</b><br>गुमेपछि सानो आसा खिन्न भयो रे <br>गोरेटोमा पनि खुट्टा हिड्न भयो रे <br>मनमा थोरै उमंग र हर्ष पनि छायो भने <br>दुनियामा उसकै सान भिन्न भयो रे</li><b>✏️बिआरपी माइलो</b><br><br>               
+                <li class="en">Muktak 1</li>
+                <li class="ne"><b>मुक्तक २</b><br>सिकेको र सिकाएको कुन गजव छ ?<br>राखेको अनि झिकाएको कुन गजव छ ?<br>यहाँ बिर्सनेहरुलाई सम्झने पनि छन् <br>तर बिर्सनु र सम्झनु कुन गजब छ <br></li><b>✏️बिआरपी माइलो</b><br><br>               
+                <li class="en">Muktak 2</li>
+                <li class="ne"><b>मुक्तक ३ </b><br>हार्नु भन्दा ठूलो जित के देखेको छौ <br>दुनियाँ कै लागि, रमित के देखेको छौ <br>खसेपछि तिमि तल गाउछान सबै गीत <br>यो भन्दा मिठो सङ्गीत के देखेको छौ  <br></li><b>✏️बिआरपी माइलो</b><br><br>               
+                <li class="en">Muktak 3</li>
+                <li class="ne"><b>मुक्तक ४  </b><br>धर्म गर्ने एक भिक्षुक, उनै बबाजिलाई भेट्नु<br>संघर्ष बुझ्न अपरिचित कुनै काजीलाई भेट्नु <br>नदी पार गर्दिन्छन त्यो चाँहि सत्य मान्नु पर्छ <br>हो त्यस्तै खोज्न जानुस् माझीलाई भेट्नु <br></li><b>✏️बिआरपी माइलो</b><br><br>    
+                <li class="en">Muktak 4</li>
+                <li class="ne"><b>मुक्तक ५  </b><br>आफ्नासंगै दुश्मन बनि, जिउने कति हो <br>आफै आफ्नो मन मारी, पिउने कति हो <br>बरु ढुक्क पिए हुन्छ, टन्न तिर्खा मरुन्जेल <br>पिउने मन हुँदाहुँदै मुख, सिउने कति हो <br></li><b>✏️बिआरपी माइलो</b><br><br>   
+                <li class="en">Muktak 5</li>
+           </ul>       
+
+
+ </div>
+        <div id="designer" class="section">
+            <h2 class="ne">वेब डिजाइनर</h2>
+            <h2 class="en">Web Designer</h2>
+            <img src="brp_3.jpg" alt="BRP Mailo" class="profile-pic">
+            <p class="ne">मैले यो वेब  पेज आफ्नो लागि पहिलो पटक बनाएको छु । तपाईहरु पनि कम्पुटर सिक्न चाहनुहुन्छ, यस्तै कम्प्युटरको ज्ञानको लिन चाहनुहुन्छ र म भविष्यमा वेब बनाएर आफ्नो डेटा सुरक्षित राख्न चाहन्छु भन्ने लाग्छ भने तलको लिंकमा क्लिक गरि <b><u>Hamro Computer Guru </b></u>युटुब च्यानललाई सब्स्क्राइब गरि जोडिनु होला म त्यहाँ 
+तपाइहरुलाई कम्प्युटर सम्बन्धित  सबै ज्ञान दिने प्रयत्न गर्नेछु ।<br><b>धन्यवाद ! </p></b>
+<p class="en"><font size="4">I have created this web page for myself for the first time. If you also want to learn computer, want to get knowledge of computer and I want to protect your data by creating a web in the future, then please click on the link below and subscribe to <b><u>Hamro Computer Guru </b></u> YouTube channel, I will try to give you all the knowledge related to computer there.
+Thank you!</font size>
+<div class="social-links">
+<a href="http://www.youtube.com/@BaburamPhuyalMsatersab">
+<img src="youtube.png" alt="Youtube" class="social-icon"><br>
+ <a href="https://www.facebook.com/profile.php?id=100090005325860" target="_blank">
+<img src="facebook icon.png" alt="Facebook"class="social-icon"><br><br><br><br><br>
+ </div>        
+ </p>
+</a>
+     
+
+
+  </div>
+        <div id="contact" class="section">
+            <h2 class="ne">लेखकको सम्पर्क</h2>
+            <h2 class="en">Contact the Author</h2>
+            <p class="ne"><button onclick="toggleContactForm()">लेखकसँग सम्पर्क गर्न यहाँ क्लिक गर्नुहोस्</button>
+            <p class="en"><button onclick="toggleContactForm()">Click here to contact the author</button>
+            <form id="contact-form" class="contact-form" action="mailto:your-email@example.com" method="post" enctype="text/plain">
+                <label class="ne" for="name">नाम:</label>
+                <label class="en" for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label class="ne" for="email">ईमेल:</label>
+                <label class="en" for="email">Email:</label>               
+                <input type="email" id="email" name="email" required>
+                <label class="ne" for="Phone No">फोन नम्बर:</label>
+                <label class="en" for="Phone No">Phone No.:</label>
+                <input type="Phone No" id="contact" name="Contact" required>
+                <label class="ne" for="message">सन्देश:</label>
+                <label class="en" for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>                    
+                <input type="submit" value="Send""पठाउनुहोस">                                        
+                      
+<div class="social-links">
+        <a href="https://www.facebook.com/brp.mailo"target="_blank">
+       <img src="facebook icon.png" alt="Facebook"class="icon-size"><a/><br><br>
+       <a href="mailto:baburamphuyal885@gmail.com?subject=your Information%20Request here&body=Please%20provide%20your%20details%20here">
+        <img src="g.png" alt="Gmail" class="icon-size"><br><br><br><br><br>
+        </a>
+            </form>
+        </div>  
+    </div>     
+ <footer>      
+    <div class="social-icons">
+        <a href="mailto:brpmailobaburam@gmail.com?subject=your Information%20Request here&body=Please%20provide%20your%20details%20here">
+        <img src="g.png" alt="Send Email" style="width: auto; height: 40;">
+        </a>
+        <a href="http://www.youtube.com/@baburamphuyal" target="_blank">
+        <img src="youtube.png" alt="YouTube">
+        </a>
+        <a href="#" onclick="showSection('contact', '#contact')">
+        <img src="phone.jpg" alt="Contact Us">
+        </a>       
+    <p>नेपाली साहित्य &copy; 2024 <a href="#" onclick="showSection('home', '#f0f0f0')">बिआरपी माइलो </a>तपाईको साहित्यिक यात्रा</p>
+</div>
+</footer>
+
+     <script>
+        function showSection(sectionId, color) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.body.style.backgroundColor = color;
+        }
+
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('.ne, .en');
+            elements.forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll(`.${lang}`).forEach(el => {
+                el.style.display = 'block';
+            });
+        }
+
+        function toggleContactForm() {
+            const contactForm = document.getElementById('contact-form');
+            contactForm.classList.toggle('active');
+        }
+
+        switchLanguage('ne');
+    </script>
+</body>
+</html>

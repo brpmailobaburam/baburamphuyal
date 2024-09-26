@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BRP Mailo - साहित्यिक वेबसाइट</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* अन्य CSS कोड */
+
+        .login-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 300px;
+            display: none; /* Initially hide the login form */
+            font-size: medium;
+        }
+        .login-container.active {
+            display: block; /* Show the login form when active */
+        }
+        .login-container h2 {
+            margin-top: 0;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container label {
+            margin-bottom: 5px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .create-account-btn {
+            font-size: medium;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- अन्य HTML कोड -->
+
+    <button class="create-account-btn" onclick="toggleLoginForm()">Create Account</button>
+
+    <div class="login-container" id="loginForm">
+        <h2>खाता सिर्जना गर्नुहोस्</h2>
+        <form id="createAccountForm">
+            <label for="newUsername">प्रयोगकर्ता नाम:</label>
+            <input type="text" id="newUsername" name="username" required>
+
+            <label for="newPassword">पासवर्ड:</label>
+            <input type="password" id="newPassword" name="password" required>
+
+            <label for="confirmPassword">पासवर्ड पुन: प्रविष्ट गर्नुहोस्:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <input type="submit" value="खाता सिर्जना गर्नुहोस्">
+        </form>
+    </div>
+
+    <script>
+        function toggleLoginForm() {
+            var loginForm = document.getElementById('loginForm');
+            loginForm.classList.toggle('active');
+        }
+
+        document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var username = document.getElementById('newUsername').value;
+            var password = document.getElementById('newPassword').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('पासवर्ड मिल्दैन। कृपया पुनः प्रयास गर्नुहोस्।');
+                return;
+            }
+
+            // यहाँ तपाईंले यस जानकारीलाई सर्भरमा पठाउन सक्छौं।
+            // तपाईको बैक-एन्ड कोडले यो डेटा भण्डारण गर्नु पर्नेछ।
+
+            alert('खाता सफलतापूर्वक सिर्जना गरियो।');
+            document.getElementById('loginForm').classList.remove('active');
+        });
+    </script>
+</body>
+</html>
