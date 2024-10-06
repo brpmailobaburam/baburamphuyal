@@ -170,6 +170,7 @@
     <a href="#poems" onclick="showSection('poems', '#009688')">कविताहरु</a>
     <a href="#poems" onclick="showSection('articals', '#009688')">लेखहरु </a>    
     <a href="#designer" onclick="showSection('designer', '#9C27B0')">वेब डिजाइनर</a>
+    <a href="#student" onclick="showSection('student', '#FFC107')">Student's Note</a> 
 </nav>
 
 
@@ -360,6 +361,15 @@ Thank you!</font size>
 
 
 
+    <div id="student" class="section">
+        <h1>Student's Note</h1>
+        <p>सामाजिक अध्ययनको बिभिन्न  नोट्सहरु यहाँ उपलब्ध छन्:</p>        
+        <iframe src="path_to_your_pdf/laxya.pdf"></iframe> 
+    </div>
+
+
+
+
 
 <div id="contact" class="section">
             <h2 class="ne">लेखकको सम्पर्क</h2>
@@ -416,7 +426,16 @@ Thank you!</font size>
 </footer>
 
 
-
+ <script>
+        function showSection(sectionId, color) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.body.style.backgroundColor = color;
+        }
+    </script>
 
      <script>
         function showSection(sectionId, color) {
