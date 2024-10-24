@@ -3,37 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>साहित्यिक तथा शैक्षिक वेबसाइट</title>
+    <title>गृह पृष्ठ - बिआरपी माइलोको साहित्यिक तथा शैक्षिक वेबसाइट</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #fff8dc;
             text-align: center;
+            margin: 0;
             padding: 50px;
         }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            position: relative;
+        }
+
+        .circle-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 60%;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        nav {
+            margin-bottom: 30px;
+        }
+
         a {
             display: inline-block;
-            margin: 20px;
-            padding: 20px 40px;
-            background-color: #4CAF50;
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: #333;
             color: white;
             text-decoration: none;
             border-radius: 10px;
+            transition: background-color 0.3s;
         }
+
         a:hover {
             background-color: #45a049;
         }
+
+        .profile-pic {
+            margin-top: 20px;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
     </style>
 </head>
+
 <body>
 
-    <h1>स्वागतम् बिआरपी माइलोको साहित्यिक तथा शैक्षिक वेबसाइटमा!</h1>
-    <p>तपाईं कुन पेजमा जान चाहनुहुन्छ?</p>
+    <header>
+        <img src="r.jpeg" alt="Reading" class="circle-img">
+
+        <h1>Home-साहित्यिक तथा शैक्षिक वेबसाइट</h1>
+
+       
+        <img src="w.jpeg" alt="writing" class="circle-img">
+    </header>
+
+    <h2>तपाईं कुन पेजमा जान चाहनुहुन्छ?</h2>
 
     <nav>
-        <a href="sahitik.html">साहित्यिक पृष्ठ</a>
-        <a href="saikshik.html">शैक्षिक पृष्ठ</a>
+        <a href="sahitik.html">साहित्यिक पेज (Literary Page)</a>
+        <a href="saikshik.html">शैक्षिक पेज (Educational Page)</a>
     </nav>
+
+    <img src="brp_2.jpg" alt="बिआरपी माइलो" class="profile-pic">
+    <p><u><b><i>लेखक (Author)</i></b></u></p>
+
 
 </body>
 </html>
