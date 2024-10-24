@@ -4,29 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRP Mailo - साहित्यिक पृष्ठ</title>
+    <title>BRP Mailo - साहित्यिक वेबसाइट</title>
     <style>
         body {
             font-family: "Monotype Corsiva", sans-serif;
             background-color: purple;
-            margin: 20;
-            padding: 20;
+            margin: 0;
+            padding: 0;
             transition: background-color 0s ease;
         }
         header {
             background-color: skyblue;
             color: white;
             text-align: center;
-            padding: 20px;
-            
+            padding: 0.5em;
+            position: relative;
         }
         .flag-container {
             margin-left: 0;
         }
         .flag {
-            width: 30px;
-            height: 20px;
-            animation: wave 1.5s infinite ease-in-out;
+            width: 50px;
+            height: 40px;
+            animation: wave 2s infinite ease-in-out;
             transform-origin: 0% 50%;
         }
         @keyframes wave {
@@ -53,14 +53,17 @@
         .language-switch button:hover {
             background-color: green;
         }
-        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: yellow;
+        }
         nav a {
-            margin: 0 15px;
-            color: black;            
+            color: black;
+            padding: 14px 20px;
             text-decoration: none;
             text-align: center;
-           font-weight: bold;    
-    }
+        }
         nav a:hover {
             background-color: green;
             color: black;
@@ -82,7 +85,7 @@
             background-color: blue;
             color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 10px ;
             position: fixed;
             width: 100%;
             bottom: 0;
@@ -113,7 +116,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         .image-container img {
             width: 10%;
@@ -121,8 +124,8 @@
         }
         .marquee-container {
             background-color: skyblue;
-            color: yellow;
-            padding: 10px;
+            color: white;
+            padding: 5px;
             text-align: center;
         }
         marquee {
@@ -130,31 +133,38 @@
             font-weight: normal;
         }
         .gmail-icon {
-            width: 34px;
+            width: 10px;
             height: auto;
         }
     </style>
 </head>
 
-<body>
-    <header>
-        <div class="flag">
-            <img src="nepal_flag.jpeg" alt="Nepal Flag" width="50">
-        </div>
+
+
+    <header>    
+    <body>
+    <div class="flag-container">
+        <img src="https://psc.gov.np/assets/public/images/nepal_flag.gif" 
+             alt="Nepal Flag" class="flag">
+    </div>
+      
+
+
         <div class="language-switch">
             <button onclick="switchLanguage('ne')">नेपाली</button>
             <button onclick="switchLanguage('en')">English</button>
         </div>
     </header>
-
 <header>
-    <h1>साहित्यिक पृष्ठ</h1>
+    <h1>साहित्यिक पेज</h1>
     <nav>
-        <a href="index.html">गृह पृष्ठ</a>
-        <a href="saikshik.html">शैक्षिक पृष्ठ</a>
-        <a href="sahitik.html">साहित्यिक पृष्ठ</a>
+        <a href="index.html">गृह पेज</a>
+        <a href="saikshik.html">शैक्षिक पेज</a>
+        <a href="sahitik.html">साहित्यिक पेज</a>
     </nav>
 </header>
+
+
 
 
   <div class="marquee-container">
@@ -163,7 +173,7 @@
     </header>
 </section>
 <nav>
-    <a href="#home" onclick="showSection('home', '#f0f0f0')">गृह पृष्ठ</a>
+    <a href="#home" onclick="showSection('home', '#f0f0f0')">महान साहित्यकार पृष्ठ</a>
     <a href="#about" onclick="showSection('about', '#4CAF50')">लेखकको भनाई</a>
     <a href="#contact" onclick="showSection('contact', '#00BCD4')">लेखकको सम्पर्क</a>
     <a href="#best-gazals" onclick="showSection('best-gazals', '#FF5722')">गजलहरु</a>
