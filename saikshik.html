@@ -26,14 +26,10 @@
             font-weight: bold;
         }
 
-style>
-       
         .highlight {
             color: red;
             font-weight: bold;
         }
-
-
 
         .marquee-container {
             margin-top: 10px;
@@ -44,7 +40,7 @@ style>
         .section {
             margin-top: 30px;
             padding: 20px;
-            background-color: white;
+            background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -53,7 +49,7 @@ style>
             display: inline-block;
             margin: 10px 0;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: DeepPink; 
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -61,19 +57,53 @@ style>
         }
 
         a.download-link:hover {
-            background-color: #45a049;
+            background-color: Green; 
         }
 
-        
-        #pdf-list {
+        .pdf-list {
+            display: flex;
+            flex-direction: column; 
+            align-items: flex-start; 
+        }
+
+        .pdf-list a {
+            background-color: orange; 
+            color: black; 
+            display: block; 
+            margin: 5px 0; 
+            padding: 10px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            width: auto; 
+            max-width: 300px; 
+        }
+
+        .pdf-list a:hover {
+            background-color: green; 
+        }
+
+        #pdf-list, #teacherguided, #courseList {
             display: none;
-            margin-top: 20px;
+            margin-top: 30px;
+        }
+
+        .pdf-title {
+            color: #000080; 
+            font-weight: bold;
         }
     </style>
     <script>
-        function togglePDFList() {
-            const pdfList = document.getElementById('pdf-list');
-            pdfList.style.display = pdfList.style.display === 'none' ? 'block' : 'none';
+        function toggleVisibility(idToShow, event) {
+            event.preventDefault(); 
+            const elements = ['pdf-list', 'teacherguided', 'courseList'];
+            elements.forEach(id => {
+                const element = document.getElementById(id);
+                if (id === idToShow) {
+                    element.style.display = element.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
         }
     </script>
 </head>
@@ -88,8 +118,12 @@ style>
     </nav>
 </header>
 
+
+
+
+
 <div class="marquee-container">
-    <marquee>तपाईलाई यस शैक्षिक वेबमा स्वागत छ। तलको लिंकहरूमा क्लिक गरि आफूले पढ्न चाहेको विषयवस्तु चयन गर्नुहोस्। धन्यवाद!</marquee>
+    <marquee>तपाईलाई यस शैक्षिक वेबमा स्वागत छ। तलको लिंकहरूमा क्लिक गरि आफूलाई चाहिएको pdf डाउनलोड गरि आफ्नो मोबाइल तथा कम्प्युटरमै पढ्न सक्नुहुन्छ। धन्यवाद!</marquee>
 </div>
 
 
@@ -97,52 +131,87 @@ style>
 
 
 <section class="section">
-    <h1><p class="highlight"><span style="color: red;">Lovely Angels English Boarding School</h1></span></p>
-    <h2><p class="highlight"><span style="color: blue;">For My Student</h2></h1></span></p>
+    <h1><span class="highlight" style="color: red;">Lovely Angels English Boarding School</span></h1>
+    <h2><span class="highlight" style="color: blue;">For My Student</span></h2>
 
-    <a href="#" onclick="togglePDFList()" class="download-link">Class 5 Social</a>
-
-    <div id="pdf-list">
+    <a href="#" onclick="toggleVisibility('pdf-list', event)" class="download-link">Class 5 Social</a>
+    <div id="pdf-list" class="pdf-list">
+        <div class="pdf-title">PDF फाइलहरू:</div>
+        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our%20traditional%20social%20practice.pdf" target="_blank" download>परम्परागत सामाजिक प्रचलनहरू</a>
         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Conservation%20%26%20Promotion%20of%20Local%20Heritage.pdf" class="download-link" download>स्थानीय सम्पदाको संरक्षण र सम्बर्धन</a>
-
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our%20traditional%20social%20practice.pdf" class="download-link" download>परम्परागत सामाजिक प्रचलनहरू</a>
-
         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Local%20Product.pdf" class="download-link" download>स्थानीय उत्पादन</a>
-
         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Local%20Language,%20Customs%20%26%20Lifestyle.pdf" class="download-link" download>स्थानीय भाषा, वेषभुषा र रहनसहन</a>
-
         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/janakpur%20dham.pdf" class="download-link" download>जनकपुर धाम</a>
-
       <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Solar system, Planetun6 & Satellite.pdf" class="download-link" download>सौर्यमण्डल, ग्रह तथा उपग्रहहरु </a>
-
       <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Report_Writing.pdf" class="download-link" download>प्रतिवेदन लेखन </a>
-
       <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Road Safety and Traffic rules.pdf" class="download-link" download>सडक सुरक्षा तथा ट्राफिक नियम</a>
-
       <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/physical structure of nepal.pdf" class="download-link" download>नेपालको प्राकृतिक तथा धरातलिय स्वरूप</a>
-
      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Participating in community work.pdf" class="download-link" download>सामुदायिक कार्यमा सहभागीता</a>
-
      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our occupation and business.pdf" class="download-link" download>हाम्रो पेसा तथा व्यवसायहरु </a>
    
- </div>
+ 
+   <!-- Additional PDFs -->
+    </div>
 </section>
+
+
 
 
 
 <section class="section">
     <h2>शिक्षक निर्देशिका (Teachers Guided)</h2>
-   <p class="highlight"><span style="color: blue;">यहाँ पाठ्यक्रमहरु विकास केन्द्रद्वारा तयार गरिएका विभिन्न कक्षाका विषयगत शिक्षक निर्देशिका (Teachers Guided) उपलब्ध छन: हरेक शिक्षकहरुले अध्ययन गर्ने र केहि नयाँ शैक्षणिक तरिकाहरु (Educational Method) सिक्ने गर्दा सिकाइ प्रभाबकारी हुन्छ भन्ने विश्वास गर्दछु </p>
+    <p class="highlight"><span style="color: blue;">यहाँ पाठ्यक्रमहरु विकास केन्द्रद्वारा तयार गरिएका विभिन्न कक्षाका विषयगत शिक्षक निर्देशिका (Subjective Teachers Guided) उपलब्ध छन: शिक्षक निर्देशिकाले शिक्षण सिकाई क्रियाकलापलाई थप मजबुद बनाउछ भन्ने कुरामा हामि बिस्वस्त छौं ।</span></p>
+    <a href="#" onclick="toggleVisibility('teacherguided', event)" class="download-link">शिक्षक निर्देशिका (Teachers Guided)</a>
+    <div id="teacherguided" class="pdf-list">
+        <div class="pdf-title">PDF फाइलहरू:</div>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/1 english.pdf" class="download-link" target="_blank" download>english 1 </a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/1 math.pdf" class="download-link" target="_blank" download>अनिवार्य गणित Math1</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/1 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली १</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/1 serophero.pdf" class="download-link" target="_blank" download>हाम्रो सेरोफेरो १</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/2 english.pdf" class="download-link" target="_blank" download>english 2</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/2 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली २</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/2 math.pdf" class="download-link" target="_blank" download>अनिवार्य गणित Math 2</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/5 english.pdf" class="download-link" target="_blank" download>english 5</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/5 social.pdf" class="download-link" target="_blank" download>सामाजिक अध्ययन तथा मानव मूल्य शिक्षा ५ </a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/6 english.pdf" class="download-link" target="_blank" download>english 6</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/6 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली ६</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/6 math.pdf" class="download-link" target="_blank" download>अनिवार्य गणित Math 6</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/6 social.pdf" class="download-link" target="_blank" download>सामाजिक अध्ययन ६ </a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/6 health.pdf" class="download-link" target="_blank" download>स्वास्थ्य शारीरिक (Health) 6</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/7 english.pdf" class="download-link" target="_blank" download>english 7</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/7 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली ७</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/7 math.pdf" class="download-link" target="_blank" download>अनिवार्य गणित Math 7</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/7 social.pdf" class="download-link" target="_blank" download>सामाजिक अध्ययन ७</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/7 health.pdf" class="download-link" target="_blank" download>स्वास्थ्य शारीरिक (Health) 7</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/8 english.pdf" class="download-link" target="_blank" download>english 8</a> 
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/8 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली ८</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/8 math.pdf" class="download-link" target="_blank" download>अनिवार्य गणित Math 8</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/8 social.pdf" class="download-link" target="_blank" download>सामाजिक अध्ययन ८</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9 english.pdf" class="download-link" target="_blank" download>english 9</a>  
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली ९</a>   
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9 science.pdf" class="download-link" target="_blank" download>science 9</a>   
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9 social.pdf" class="download-link" target="_blank" download>सामाजिक अध्ययन ९</a>   
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/10 english.pdf" class="download-link" target="_blank" download>english 10</a>   
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/10 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली १०</a>   
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/10 math.pdf" class="download-link" target="_blank" download>अनिवार्य गणित Math 10</a>   
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/10 science.pdf" class="download-link" target="_blank" download>science 10</a>   
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/10 social.pdf" class="download-link" target="_blank" download>सामाजिक अध्ययन १०</a>   
 
- 
+ </div>
+</section>
+
+
+
+
 
 <section class="section">
-    <h2>पाठ्यक्रमहरू</h2>
+    <h2>पाठ्यक्रम</h2>
     <p>यहाँ पाठ्यक्रमहरु विकास केन्द्रद्वारा तयार गरिएका विभिन्न पाठ्यक्रमहरु उपलब्ध छन:</p>
-    <ul>
-        <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/compulsory sub 9-10.pdf" class="download-link" download>अनिवार्य विषयहरु 9-10 </a></li>
-        <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/compulsory sub 4-5.pdf" class="download-link" download>अनिवार्य विषयहरु 4-5 </a></li>
-        <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 nepali.pdf" class="download-link" download>अनिवार्य नेपाली ९-१० </a></li>
+    <a href="#" onclick="toggleVisibility('courseList', event)" class="download-link">पाठ्यक्रमहरू</a>
+    <div id="courseList" class="pdf-list">
+        <div class="pdf-title">PDF फाइलहरू:</div>
+        <ul>
+         <li><a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली ९-१०</a></li>
         <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 Opt.Math.pdf" class="download-link" download>Opt.Math 9-10 </a></li>
         <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 computer science.pdf" class="download-link" download>computer science 9-10</a></li>
         <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 plant science.pdf" class="download-link" download> plant science 9-10</a></li>
@@ -151,7 +220,10 @@ style>
        <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 animal science.pdf" class="download-link" download> 9-10 animal science</a></li>
        <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 korian language.pdf" class="download-link" download> 9-10 korian language 9-10</a></li>
        <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 computer engineering.pdf" class="download-link" download> Computer Engineering 9-10</a></li>
-    </ul>
+    
+<!-- Additional courses -->
+        </ul>
+    </div>
 </section>
 
 </body>
