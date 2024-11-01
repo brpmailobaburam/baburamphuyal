@@ -95,7 +95,7 @@
     <script>
         function toggleVisibility(idToShow, event) {
             event.preventDefault(); 
-            const elements = ['pdf-list', 'teacherguided', 'courseList'];
+            const elements = ['pdf-list', 'teacherguided', 'courseList', 'booklist'];
             elements.forEach(id => {
                 const element = document.getElementById(id);
                 if (id === idToShow) {
@@ -133,8 +133,7 @@
 <section class="section">
     <h1><span class="highlight" style="color: red;">Lovely Angels English Boarding School</span></h1>
     <h2><span class="highlight" style="color: blue;">For My Student</span></h2>
-
-    <a href="#" onclick="toggleVisibility('pdf-list', event)" class="download-link">Class 5 Social</a>
+    <a href="#" onclick="toggleVisibility('pdf-list', event)" class="download-link">सामाजिक ५ (Class 5 Social)</a>
     <div id="pdf-list" class="pdf-list">
         <div class="pdf-title">PDF फाइलहरू:</div>
         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our%20traditional%20social%20practice.pdf" target="_blank" download>परम्परागत सामाजिक प्रचलनहरू</a>
@@ -160,7 +159,7 @@
 
 <section class="section">
     <h2><span class="highlight" style="color: red;">शिक्षक निर्देशिका (Teachers Guided)</h2>
-    <p class="highlight"><span style="color: blue;">यहाँ पाठ्यक्रम विकास केन्द्रद्वारा तयार गरिएका विभिन्न कक्षाका विषयगत शिक्षक निर्देशिका (Subjective Teachers Guided) उपलब्ध छन: शिक्षक निर्देशिकाले शिक्षण सिकाई क्रियाकलापलाई थप मजबुद बनाउछ भन्ने कुरामा हामि बिस्वस्त छौं ।</span></p>
+    <p class="highlight"><span style="color: green;">यहाँ पाठ्यक्रम विकास केन्द्रद्वारा तयार गरिएका विभिन्न कक्षाका विषयगत शिक्षक निर्देशिका (Subjective Teachers Guided) उपलब्ध छन: शिक्षक निर्देशिकाले शिक्षण सिकाई क्रियाकलापलाई थप मजबुद बनाउछ भन्ने कुरामा हामि बिस्वस्त छौं । pdf मा क्लिक गरी निशुल्क रुपमा अध्ययन गर्न सक्नुहुन्छ</span></p>
     <a href="#" onclick="toggleVisibility('teacherguided', event)" class="download-link">शिक्षक निर्देशिका (Teachers Guided)</a>
     <div id="teacherguided" class="pdf-list">
         <div class="pdf-title">PDF फाइलहरू:</div>
@@ -206,11 +205,11 @@
 
 <section class="section">
     <h2><span class="highlight" style="color: red;">पाठ्यक्रम (Curriculum)</h2>
-    <p>यहाँ पाठ्यक्रम विकास केन्द्रद्वारा तयार गरिएका विभिन्न पाठ्यक्रमहरु उपलब्ध छन:</p>
+    <p class="highlight"><span style="color: green;">यहाँ पाठ्यक्रम विकास केन्द्रद्वारा तयार गरिएका विभिन्न पाठ्यक्रमहरु उपलब्ध छन: pdf मा क्लिक गरी निशुल्क रुपमा अध्ययन गर्न सक्नुहुन्छ</p>
     <a href="#" onclick="toggleVisibility('courseList', event)" class="download-link">पाठ्यक्रमहरू (Curriculum)</a>
     <div id="courseList" class="pdf-list">
         <div class="pdf-title">PDF फाइलहरू:</div>
-        <ul>
+     
          <li><a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 nepali.pdf" class="download-link" target="_blank" download>अनिवार्य नेपाली ९-१०</a></li>
         <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 Opt.Math.pdf" class="download-link" download>Opt.Math 9-10 </a></li>
         <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 computer science.pdf" class="download-link" download>computer science 9-10</a></li>
@@ -221,7 +220,7 @@
        <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 korian language.pdf" class="download-link" download> 9-10 korian language 9-10</a></li>
        <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/9-10 computer engineering.pdf" class="download-link" download> Computer Engineering 9-10</a></li>
     
-<!-- Additional courses -->
+
     </div>
 </section>
 
@@ -229,14 +228,17 @@
    
   
         <section class="section">
-    <h2>पाठ्यपुस्तकहरु (Books)</h2>
-     <a href="#" onclick="toggleVisibility('booklist', event)" class="download-link">पाठ्यपुस्तकहरु (Books)</a>
+    <h2><span class="highlight" style="color: red;">पाठ्यपुस्तकहरु (Books)</h2>
+    <p class="highlight"><span style="color: green;">यहाँ नेपाल सरकार शिक्षा विज्ञान तथा प्रविधि मन्त्रालय पाठ्यक्रम विकास केन्द्र सानोठिमी भक्तपुरद्वारा निर्माण गरिएका सबै तहका पाठ्यपुस्तकहरु रहेका छन् निशुल्क रुपमा अध्ययन गर्न pdf मा क्लिक गर्न सक्नुहुन्छ </p>
+    <a href="#" onclick="toggleVisibility('booklist', event)" class="download-link">पाठ्यपुस्तकहरु (Books)</a>
     <div id="booklist" class="pdf-list">
-        <div class="pdf-title">PDF फाइलहरू:</div> 
-            <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/ 12 nepali.pdf" class="download-link" download> नेपाली १२ </a></li>
-             <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/ 12 samajik.pdf" class="download-link" download> social 12 </a></li>
-              <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/ 5 samajik.pdf" class="download-link" download> social 5 </a></li>
-             </ul>
+     <div class="pdf-title">PDF फाइलहरू:</div>
+
+            <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/12 nepali.pdf" class="download-link" download> नेपाली १२ </a></li>
+             <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/12 samajik.pdf" class="download-link" download> social 12 </a></li>
+              <li> <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/5 samajik.pdf" class="download-link" download> social 5 </a></li>
+
+<!-- Additional courses -->             
     </div>
 </section>
 
