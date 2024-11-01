@@ -93,18 +93,21 @@
         }
     </style>
     <script>
-        function toggleVisibility(idToShow, event) {
-            event.preventDefault(); 
-            const elements = ['pdf-list', 'teacherguided', 'courseList', 'booklist'];
-            elements.forEach(id => {
-                const element = document.getElementById(id);
-                if (id === idToShow) {
-                    element.style.display = element.style.display === 'block' ? 'none' : 'block';
-                } else {
-                    element.style.display = 'none';
-                }
-            });
+         function toggleVisibility(idToShow, event) {
+    event.preventDefault(); 
+    const elements = ['pdf-list', 'teacherguided', 'courseList', 'booklist'];
+    elements.forEach(id => {
+        const element = document.getElementById(id);
+        if (id === idToShow) {
+            element.style.display = element.style.display === 'block' ? 'none' : 'block';
+            if (element.style.display === 'block') {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        } else {
+            element.style.display = 'none';
         }
+    });
+}
     </script>
 </head>
 <body>
