@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>बिआरपी माइलो </title>
-     <link rel="icon" href="b.png" type="image/x-icon">
+    <title>गृह पृष्ठ - बिआरपी माइलोको साहित्यिक तथा शैक्षिक वेबसाइट</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,17 +69,42 @@
             font-size: 18px;
             line-height: 1.6;
         }
-    </style>
-</head>
-
-<body>
-
-    <header>
-        <img src="r.jpeg" alt="Reading" class="circle-img">
-
-        <h1>साहित्यिक तथा शैक्षिक वेबसाइट</h1>
 
        
+        #clock {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f3f3f3;
+            padding: 10px;
+            border-radius: 8px;
+            width: fit-content;
+            margin: 20px auto; 
+            text-align: center;
+        }
+
+        #time {
+            font-size: 40px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #date, #english-date {
+            font-size: 20px; 
+            color: #666;
+            margin: 5px 0; 
+        }
+
+        #day-name {
+            font-size: 36px; 
+            font-weight: bold;
+            color: #ff5733;
+            margin: 5px 0; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="r.jpeg" alt="Reading" class="circle-img">
+        <h1>साहित्यिक तथा शैक्षिक वेबसाइट</h1>
         <img src="w.jpeg" alt="writing" class="circle-img">
     </header>
 
@@ -94,6 +118,60 @@
     <img src="brp_2.jpg" alt="बिआरपी माइलो" class="profile-pic">
     <p><u><b><i>लेखक (Author)</i></b></u></p>
 
+    <!-- Time and Date -->
+    <div id="clock">
+        <div id="day-name"></div> 
+        <div id="english-date"></div>
+        <div id="date"></div>
+        <div id="time"></div>
+    </div>
 
+    <script>
+        function updateTime() {
+            const now = new Date();
+
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12;
+
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const dayIndex = now.getDay();
+            const dayName = days[dayIndex]; // Get the name of the day
+            const day = now.getDate();
+            const month = now.toLocaleString('default', { month: 'long' });
+            const year = now.getFullYear();
+            const englishDate = `${day}${getOrdinalSuffix(day)} ${month} ${year}`;
+
+            fetchNepaliDate().then(nepaliDate => {
+                document.getElementById('day-name').textContent = dayName; 
+                document.getElementById('english-date').textContent = englishDate; 
+                document.getElementById('date').textContent = nepaliDate; 
+            });
+        }
+
+        function getOrdinalSuffix(day) {
+            const suffixes = ["th", "st", "nd", "rd"];
+            const value = day % 10;
+            return (value <= 3 && Math.floor(day % 100 / 10) !== 1) ? suffixes[value] : suffixes[0];
+        }
+
+        async function fetchNepaliDate() {
+            try {
+                const response = await fetch('https://hamropatro.com/api/date');
+                const data = await response.json();
+                return `${data.nepali.day} ${data.nepali.month} ${data.nepali.year}`;
+            } catch (error) {
+                console.error("Nepali date fetch error: ", error);
+                return "Nepali date not available"; // 
+            }
+        }
+
+        setInterval(updateTime, 1000); // 
+        updateTime(); // 
+    </script>
 </body>
 </html>
