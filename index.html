@@ -165,8 +165,7 @@
                 const data = await response.json();
                 return `${data.nepali.day} ${data.nepali.month} ${data.nepali.year}`;
             } catch (error) {
-                console.error("Nepali date fetch error: ", error);
-                return "Nepali date not available"; // 
+                
             }
         }
 
