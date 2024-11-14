@@ -9,119 +9,123 @@
     <style>
         
         body {
-            font-family: Arial, sans-serif;
-            background-color: #fff8dc;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            justify-content: space-between;
-        }
+    font-family: Arial, sans-serif;
+    background-color: #fff8dc;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    font-size: 1.2vw; 
+}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-        }
+header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
 
-        .circle-img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-        }
+.circle-img {
+    width: 10vw; 
+    height: 10vw;
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
 
-        h1 {
-            margin: 0;
-            flex-grow: 1;
-            text-align: center;
-        }
+h1 {
+    margin: 0;
+    font-size: 2.5vw;
+    flex-grow: 1;
+    text-align: center;
+}
 
-        nav {
-            margin-bottom: 20px;
-        }
+nav a {
+    display: inline-block;
+    margin: 0.5vw;
+    padding: 1vw 2vw;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5vw;
+    transition: background-color 0.3s;
+    font-size: 1.5vw;
+}
 
-        nav a {
-            display: inline-block;
-            margin: 10px;
-            padding: 15px 30px;
-            background-color: #333;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: background-color 0.3s;
-        }
+nav a:hover {
+    background-color: #45a049;
+}
 
-        nav a:hover {
-            background-color: #45a049;
-        }
+.profile-pic {
+    width: 25vw;
+    max-width: 250px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 2vw auto;
+}
 
-      
-        .profile-pic {
-            margin: 20px auto;
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+#clock {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f3f3f3;
+    padding: 1vw;
+    border-radius: 0.8vw;
+    display: inline-block;
+    text-align: center;
+    margin: 2vw auto;
+}
 
-        #clock {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f3f3f3;
-            padding: 10px;
-            border-radius: 8px;
-            display: inline-block;
-            text-align: center;
-            margin: 20px auto;
-        }
+#time {
+    font-size: 3vw;
+    font-weight: bold;
+    color: #333;
+}
 
-        #time {
-            font-size: 40px;
-            font-weight: bold;
-            color: #333;
-        }
+#date, #english-date, #day-name {
+    font-size: 1.5vw;
+    color: #666;
+    margin: 0.5vw 0;
+}
 
-        #date, #english-date, #day-name {
-            font-size: 20px;
-            color: #666;
-            margin: 5px 0;
-        }
+#day-name {
+    font-size: 2.5vw;
+    font-weight: bold;
+    color: #ff5733;
+}
 
-        #day-name {
-            font-size: 36px;
-            font-weight: bold;
-            color: #ff5733;
-        }
+footer {
+    background-color: #333;
+    color: white;
+    padding: 2vw;
+    text-align: center;
+    width: 100%;
+}
 
-      
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-        }
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: start;
+    gap: 2vw;
+    max-width: 1200px;
+    margin: auto;
+}
 
-        .footer-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: start;
-            gap: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
 .footer-section a {
     color: #ccc;
-    margin: 0 10px;
-    font-size: 24px;
+    margin: 0 1vw;
+    font-size: 2vw;
     transition: color 0.3s;
 }
 
@@ -129,35 +133,57 @@
     color: #4CAF50;
 }
 
-        .footer-section {
-            flex: 1 1 200px;
-            min-width: 150px;
-            text-align: center;
-        }
+.footer-section {
+    flex: 1 1 200px;
+    min-width: 150px;
+    text-align: center;
+    font-size: 1.5vw;
+}
 
-        .footer-bottom {
-            border-top: 1px solid #444;
-            padding-top: 10px;
-            font-size: 0.9em;
-            color: #aaa;
-        }
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 1vw;
+    font-size: 1.2vw;
+    color: #aaa;
+}
 
-       
-        @media (max-width: 768px) {
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+@media (max-width: 768px) {
+    body {
+        font-size: 4vw; /* Increased font size for smaller screens */
+    }
+    header, .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .circle-img, .profile-pic {
+        width: 30vw;
+        height: auto;
+    }
+    nav a {
+        font-size: 4vw;
+        padding: 2vw 3vw;
+    }
+    #clock, #time, #date, #english-date, #day-name {
+        font-size: 4vw;
+    }
+}
+body, html {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 
     </style>
 </head>
 <body>
-    <header>
-        <img src="r.jpeg" alt="Reading" class="circle-img">
-        <h1>साहित्यिक तथा शैक्षिक वेबसाइट</h1>
-        <img src="w.jpeg" alt="writing" class="circle-img">
-    </header>
+<header>
+    <img src="r.jpeg" alt="Reading" class="circle-img">
+    <h1>साहित्यिक तथा शैक्षिक वेबसाइट</h1>
+    <img src="w.jpeg" alt="Writing" class="circle-img">
+    </div>
+</header>
 
     <h2>तपाईं कुन पेजमा जान चाहनुहुन्छ?</h2>
 
