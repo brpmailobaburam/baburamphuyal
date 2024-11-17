@@ -7,50 +7,82 @@
   <title>Select Number of Questions</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .container {
-      text-align: center;
-      background: #000;
-      padding: 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      width: 100%;
-      max-width: 400px;
-    }
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    .button-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 10px;
-    }
-    button {
-      padding: 10px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-      width: 100%;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-    .disabled {
-      background: #dc3545;
-      cursor: not-allowed;
-    }
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column; /* Vertically stack the content */
+}
+
+.container {
+  text-align: center;
+  background: #000;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 50px; /* Add space below container for "Show Available" link */
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.disabled {
+  background: #dc3545;
+  cursor: not-allowed;
+}
+
+#availableQuestions {
+  position: fixed; /* Fixed position to keep it always visible */
+  bottom: 20px;
+  right: 20px;
+  background: #222;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#availableQuestions a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: pink;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#availableQuestions a:hover {
+  background-color: #d74d77;
+}
+
   </style>
 </head>
 <body>
@@ -62,13 +94,17 @@
       <button id="btn3" onclick="startQuiz(3)">3 Questions</button>
       <button id="btn4" onclick="startQuiz(4)">4 Questions</button>
       <button id="btn5" onclick="startQuiz(5)">5 Questions</button>
- <button id="btn6" onclick="startQuiz(6)">6 Questions</button>
- <button id="btn7" onclick="startQuiz(7)">7 Questions</button>
+      <button id="btn6" onclick="startQuiz(6)">6 Questions</button>
+      <button id="btn7" onclick="startQuiz(7)">7 Questions</button>
     </div>
   </div>
 
+  <div id="availableQuestions">
+    <a href="javascript:void(0);" onclick="showAvailableQuestions()">Show Available Questions</a>
+  </div>
+
   <script>
-    // Function to start quiz with selected number of questions
+    // JavaScript code for handling question selection goes here
     function startQuiz(number) {
       let selectedQuestions = JSON.parse(localStorage.getItem("selectedQuestions")) || [];
       
@@ -99,13 +135,9 @@
       button.disabled = true;
     }
 
-    // Optional: Reset selections (useful for testing)
-    function resetSelections() {
-      // Clear selected questions from localStorage
-      localStorage.removeItem("selectedQuestions");
-
-      // Reload the page to reset all buttons
-      window.location.reload(); 
+    function showAvailableQuestions() {
+      const selectedQuestions = JSON.parse(localStorage.getItem("selectedQuestions")) || [];
+      alert("Available Questions: " + selectedQuestions.join(", "));
     }
   </script>
 </body>
