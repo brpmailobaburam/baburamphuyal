@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brpmailo-Quiz Section</title>
+  <title>Lovely Angels-Quiz Section</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,7 +22,7 @@
       display: block;
       text-align: center;
       margin-bottom: 20px;
-      font-size: 20px;
+      font-size: 30px;
     }
     #quiz-section, #additional-content {
       display: none;
@@ -31,7 +31,7 @@
       text-align: center;
     }
     #quiz-section h1 {
-      font-size: 28px;
+      font-size: 30px;
     }
     .question-numbers {
       margin-top: 20px;
@@ -41,7 +41,7 @@
     }
     .question-numbers button {
       margin: 5px;
-      font-size: 20px;
+      font-size: 30px;
       padding: 10px;
       background-color: blue;
       color: white;
@@ -85,6 +85,12 @@
       color: red;
       display: none;
     }
+
+    
+    .question-section h2 {
+      font-size: 50px; 
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -99,17 +105,12 @@
   <!-- Quiz Section -->
   <div id="quiz-section">
     <h1>Quiz  Segment-2081</h1>
-    <h2> Lovely Angels English Boarding School</h2>
-
+    <h2><span class="highlight" style="color: red;">Lovely Angels English Boarding School</span></h2>
     <!-- Question Numbers -->
-    <div class="question-numbers" id="question-numbers-container">
-      <!-- Question numbers will be inserted here -->
-    </div>
+    <div class="question-numbers" id="question-numbers-container"></div>
     
     <!-- Questions -->
-    <div id="questions-container">
-      <!-- Questions and choices will be inserted here -->
-    </div>
+    <div id="questions-container"></div>
   </div>
 
   <!-- Additional Content -->
@@ -126,12 +127,9 @@
       const errorMessage = document.getElementById('error-message');
 
       if (enteredPassword === correctPassword) {
-        // Hide password section and show quiz section + additional content
         document.getElementById('password-section').style.display = 'none';
         document.getElementById('quiz-section').style.display = 'block';
         document.getElementById('additional-content').style.display = 'block';
-
-        // Call your quiz display function here (e.g., render quiz questions)
         renderQuiz();
       } else {
         errorMessage.style.display = 'block';
@@ -140,45 +138,58 @@
 
 
 
-    
-    // Generate 100 quiz questions (Example Data)
-    const quizData = [];
-    for (let i = 1; i <= 100; i++) {
-      quizData.push({
-        question: `Question ${i}: What is the capital of Nepal?`,
+
+
+    const quizData = [
+      {
+        question: "Q 1: What is the capital of Nepal?",
         choices: ["Pokhara", "Kathmandu", "Biratnagar", "Janakpur"],
         answer: "Kathmandu"
-        question: `Question ${i}: Who is the first king of nepal?`,
-        choices: ["Bhuktaman", "Tribhuwan", "Janak", "Birendra"],
-        answer: "Bhuktaman"
-      });
-    }
+      },
+      {
+        question: "Q 2: Who is the first president of Nepal?",
+        choices: ["Bidhya Devi Bhandari", "Ram Baran Yadav", "Sushil Koirala", "Madhav Kumar Nepal"],
+        answer: "Ram Baran Yadav"
+      },
+      {
+        question: "Q 3: What is the largest river in Nepal?",
+        choices: ["Koshi", "Ganga", "Bagmati", "Mechi"],
+        answer: "Koshi"
+      },
+      {
+        question: "Q 4: Who is the first king of Nepal?",
+        choices: ["Bhuktaman", "Gangadev", "Prithvi Narayan Shah", "Tribhuwan"],
+        answer: "Prithvi Narayan Shah"
+ },
+      {
+        question: "Q 5: Who is the present prisident of Nepal?",
+        choices: ["Prachanda", "KP Sharma Oli", "Ramchandra Poudel", "Ganesh Timsina"],
+        answer: "Ramchandra Poudel"
+      }
+    ];
 
 
 
 
 
 
-    
-    // Function to render quiz
+
+
     function renderQuiz() {
       const questionNumbersContainer = document.querySelector("#question-numbers-container");
       const questionsContainer = document.querySelector("#questions-container");
 
-      // Render question numbers
       quizData.forEach((data, index) => {
         const button = document.createElement("button");
         button.textContent = `${index + 1}`;
         button.addEventListener("click", () => {
           showQuestion(index);
-          button.classList.add("selected"); // Mark selected button as red
-          // Hide all question numbers after selection
+          button.classList.add("selected");
           questionNumbersContainer.style.display = 'none'; 
         });
         questionNumbersContainer.appendChild(button);
       });
 
-      // Render questions
       quizData.forEach((data, index) => {
         const questionSection = document.createElement("div");
         questionSection.classList.add("question-section");
@@ -195,22 +206,19 @@
           choiceButton.textContent = choice;
           choiceButton.classList.add("choice");
           choiceButton.addEventListener("click", () => {
-            // Remove previous selection
             questionSection.querySelectorAll(".choice").forEach(btn => btn.classList.remove("selected"));
-            // Highlight selected choice
             choiceButton.classList.add("selected");
-            selectedChoice = choice; // Save selected choice
+            selectedChoice = choice;
           });
           questionSection.appendChild(choiceButton);
         });
 
-        // Add "Check Right Answer" button
         const checkAnswerButton = document.createElement("button");
         checkAnswerButton.textContent = "Check Right Answer";
         checkAnswerButton.classList.add("check-answer");
         checkAnswerButton.addEventListener("click", () => {
           questionSection.querySelectorAll(".choice").forEach(btn => {
-            btn.disabled = true; // Disable all buttons
+            btn.disabled = true;
             if (btn.textContent === data.answer) {
               btn.classList.add("correct");
             } else if (btn.classList.contains("selected")) {
@@ -218,7 +226,6 @@
             }
           });
 
-          // Show question numbers after answer check
           questionNumbersContainer.style.display = 'block';
         });
         questionSection.appendChild(checkAnswerButton);
@@ -227,7 +234,6 @@
       });
     }
 
-    // Show selected question
     function showQuestion(index) {
       document.querySelectorAll(".question-section").forEach(section => {
         section.classList.remove("active");
