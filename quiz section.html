@@ -1,0 +1,112 @@
+<!-- quiz section.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Number of Questions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      background: #000;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    button {
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .disabled {
+      background: #dc3545;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Choose Number of Questions</h1>
+    <div class="button-container">
+      <button id="btn1" onclick="startQuiz(1)">1 Question</button>
+      <button id="btn2" onclick="startQuiz(2)">2 Questions</button>
+      <button id="btn3" onclick="startQuiz(3)">3 Questions</button>
+      <button id="btn4" onclick="startQuiz(4)">4 Questions</button>
+      <button id="btn5" onclick="startQuiz(5)">5 Questions</button>
+ <button id="btn6" onclick="startQuiz(6)">6 Questions</button>
+ <button id="btn7" onclick="startQuiz(7)">7 Questions</button>
+    </div>
+  </div>
+
+  <script>
+    // Function to start quiz with selected number of questions
+    function startQuiz(number) {
+      let selectedQuestions = JSON.parse(localStorage.getItem("selectedQuestions")) || [];
+      
+      // Add the selected question number to the array
+      selectedQuestions.push(number); 
+
+      // Store the updated list in localStorage
+      localStorage.setItem("selectedQuestions", JSON.stringify(selectedQuestions));
+
+      // Redirect to the quiz page
+      window.location.href = "quiz.html"; 
+    }
+
+    // On page load, reset the selection and make all buttons available
+    window.onload = function() {
+      const selectedQuestions = JSON.parse(localStorage.getItem("selectedQuestions")) || [];
+      
+      // Disable buttons for selected questions (if any)
+      selectedQuestions.forEach(number => {
+        disableButton(number);
+      });
+    };
+
+    // Function to disable a button and mark it as unavailable
+    function disableButton(number) {
+      const button = document.getElementById(`btn${number}`);
+      button.classList.add("disabled");
+      button.disabled = true;
+    }
+
+    // Optional: Reset selections (useful for testing)
+    function resetSelections() {
+      // Clear selected questions from localStorage
+      localStorage.removeItem("selectedQuestions");
+
+      // Reload the page to reset all buttons
+      window.location.reload(); 
+    }
+  </script>
+</body>
+</html>
