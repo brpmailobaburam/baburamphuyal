@@ -4,39 +4,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Section</title>
+  <title>Brpmailo-Quiz Section</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-size: 18px;
+      background-color: #111;
+      color: white;
+    }
+    #password-section {
+      display: block;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+    #quiz-section, #additional-content {
+      display: none;
+      margin-top: 20px;
+      width: 80%;
+      text-align: center;
+    }
+    #quiz-section h1 {
+      font-size: 28px;
     }
     .question-numbers {
+      margin-top: 20px;
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
-      gap: 10px;
+      flex-wrap: wrap;
     }
     .question-numbers button {
-      padding: 10px 15px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      border: 2px solid #007bff;
-      background-color: #f0f8ff;
-      color: #007bff;
-      border-radius: 5px;
-      transition: all 0.3s;
-    }
-    .question-numbers button:hover {
-      background-color: #007bff;
+      margin: 5px;
+      font-size: 20px;
+      padding: 10px;
+      background-color: blue;
       color: white;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     .question-numbers button.selected {
-      background-color: #dc3545; /* Red color for selected question */
-      color: white;
+      background-color: red;
     }
     .question-section {
       display: none;
@@ -46,126 +60,160 @@
       display: block;
     }
     .choice {
-      display: block;
-      margin: 10px 0;
+      margin: 5px;
+      font-size: 18px;
       padding: 10px;
+      background-color: #333;
+      color: white;
+      border: 1px solid #555;
       cursor: pointer;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      transition: all 0.3s;
+      transition: background-color 0.3s ease;
     }
     .choice.selected {
       background-color: orange;
-      color: white;
     }
     .choice.correct {
-      background-color: #28a745; /* Deep Green */
-      color: white;
-      border-color: #1e7e34;
+      background-color: #28a745;
+      border-color: #218838;
     }
     .choice.incorrect {
-      background-color: #dc3545; /* Deep Red */
-      color: white;
-      border-color: #721c24;
+      background-color: #dc3545;
+      border-color: #c82333;
     }
-    .check-answer {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 5px;
-      transition: all 0.3s;
-    }
-    .check-answer:hover {
-      background-color: #0056b3;
+    #error-message {
+      font-size: 18px;
+      color: red;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Quiz Section</h1>
-  
-  <!-- Question Numbers -->
-  <div class="question-numbers" id="question-numbers-container">
-    <!-- Question numbers will be inserted here -->
+  <!-- Password Section -->
+  <div id="password-section">
+    <h2>Enter Password to Access the Quiz</h2>
+    <input type="password" id="password-input" placeholder="Enter Password" style="font-size: 18px; padding: 10px;" />
+    <button onclick="validatePassword()" style="font-size: 18px; padding: 10px;">Submit</button>
+    <p id="error-message">Incorrect password, please try again.</p>
   </div>
   
-  <!-- Questions -->
-  <div id="questions-container">
-    <!-- Questions and choices will be inserted here -->
+  <!-- Quiz Section -->
+  <div id="quiz-section">
+    <h1>Quiz  Segment-2081</h1>
+    <h2> Lovely Angels English Boarding School</h2>
+
+    <!-- Question Numbers -->
+    <div class="question-numbers" id="question-numbers-container">
+      <!-- Question numbers will be inserted here -->
+    </div>
+    
+    <!-- Questions -->
+    <div id="questions-container">
+      <!-- Questions and choices will be inserted here -->
+    </div>
+  </div>
+
+  <!-- Additional Content -->
+  <div id="additional-content">
+    <h2>Quiz Class 5</h2>
   </div>
 
   <script>
-    // Questions and answers
-    const quizData = [
-      { question: "नेपालको राजधानी कहाँ हो?", choices: ["काठमाडौं", "पोखरा", "बिराटनगर", "जनकपुर"], answer: "काठमाडौं" },
-      { question: "सगरमाथाको उचाई कति हो?", choices: ["8848m", "8849m", "8850m", "8847m"], answer: "8848m" },
-      { question: "गौतम बुद्ध कहाँ जन्मेका थिए?", choices: ["लुम्बिनी", "कपिलवस्तु", "जनकपुर", "पोखरा"], answer: "लुम्बिनी" }
-    ];
+    const correctPassword = "Brpmailo"; 
 
-    // Selectors
-    const questionNumbersContainer = document.querySelector("#question-numbers-container");
-    const questionsContainer = document.querySelector("#questions-container");
+    // Function to validate password
+    function validatePassword() {
+      const enteredPassword = document.getElementById('password-input').value;
+      const errorMessage = document.getElementById('error-message');
 
-    // Render question numbers
-    quizData.forEach((data, index) => {
-      const button = document.createElement("button");
-      button.textContent = `Q${index + 1}`;
-      button.addEventListener("click", () => {
-        showQuestion(index);
-        selectQuestionNumber(button, index);
+      if (enteredPassword === correctPassword) {
+        // Hide password section and show quiz section + additional content
+        document.getElementById('password-section').style.display = 'none';
+        document.getElementById('quiz-section').style.display = 'block';
+        document.getElementById('additional-content').style.display = 'block';
+
+        // Call your quiz display function here (e.g., render quiz questions)
+        renderQuiz();
+      } else {
+        errorMessage.style.display = 'block';
+      }
+    }
+
+    // Generate 100 quiz questions (Example Data)
+    const quizData = [];
+    for (let i = 1; i <= 100; i++) {
+      quizData.push({
+        question: `Question ${i}: What is the capital of Nepal?`,
+        choices: ["Pokhara", "Kathmandu", "Biratnagar", "Janakpur"],
+        answer: "Kathmandu"
       });
-      questionNumbersContainer.appendChild(button);
-    });
+    }
 
-    // Render questions
-    quizData.forEach((data, index) => {
-      const questionSection = document.createElement("div");
-      questionSection.classList.add("question-section");
-      questionSection.id = `question-${index}`;
+    // Function to render quiz
+    function renderQuiz() {
+      const questionNumbersContainer = document.querySelector("#question-numbers-container");
+      const questionsContainer = document.querySelector("#questions-container");
 
-      const questionText = document.createElement("h2");
-      questionText.textContent = data.question;
-      questionSection.appendChild(questionText);
-
-      let selectedChoice = null;
-
-      data.choices.forEach(choice => {
-        const choiceButton = document.createElement("button");
-        choiceButton.textContent = choice;
-        choiceButton.classList.add("choice");
-        choiceButton.addEventListener("click", () => {
-          // Remove previous selection
-          questionSection.querySelectorAll(".choice").forEach(btn => btn.classList.remove("selected"));
-          // Highlight selected choice
-          choiceButton.classList.add("selected");
-          selectedChoice = choice; // Save selected choice
+      // Render question numbers
+      quizData.forEach((data, index) => {
+        const button = document.createElement("button");
+        button.textContent = `${index + 1}`;
+        button.addEventListener("click", () => {
+          showQuestion(index);
+          button.classList.add("selected"); // Mark selected button as red
+          // Hide all question numbers after selection
+          questionNumbersContainer.style.display = 'none'; 
         });
-        questionSection.appendChild(choiceButton);
+        questionNumbersContainer.appendChild(button);
       });
 
-      // Add "Check Right Answer" button
-      const checkAnswerButton = document.createElement("button");
-      checkAnswerButton.textContent = "Check Right Answer";
-      checkAnswerButton.classList.add("check-answer");
-      checkAnswerButton.addEventListener("click", () => {
-        questionSection.querySelectorAll(".choice").forEach(btn => {
-          btn.disabled = true; // Disable all buttons
-          if (btn.textContent === data.answer) {
-            btn.classList.add("correct");
-          } else if (btn.classList.contains("selected")) {
-            btn.classList.add("incorrect");
-          }
+      // Render questions
+      quizData.forEach((data, index) => {
+        const questionSection = document.createElement("div");
+        questionSection.classList.add("question-section");
+        questionSection.id = `question-${index}`;
+
+        const questionText = document.createElement("h2");
+        questionText.textContent = data.question;
+        questionSection.appendChild(questionText);
+
+        let selectedChoice = null;
+
+        data.choices.forEach(choice => {
+          const choiceButton = document.createElement("button");
+          choiceButton.textContent = choice;
+          choiceButton.classList.add("choice");
+          choiceButton.addEventListener("click", () => {
+            // Remove previous selection
+            questionSection.querySelectorAll(".choice").forEach(btn => btn.classList.remove("selected"));
+            // Highlight selected choice
+            choiceButton.classList.add("selected");
+            selectedChoice = choice; // Save selected choice
+          });
+          questionSection.appendChild(choiceButton);
         });
-        // Mark only selected question numbers with red
-        markSelectedQuestionsRed();
-      });
-      questionSection.appendChild(checkAnswerButton);
 
-      questionsContainer.appendChild(questionSection);
-    });
+        // Add "Check Right Answer" button
+        const checkAnswerButton = document.createElement("button");
+        checkAnswerButton.textContent = "Check Right Answer";
+        checkAnswerButton.classList.add("check-answer");
+        checkAnswerButton.addEventListener("click", () => {
+          questionSection.querySelectorAll(".choice").forEach(btn => {
+            btn.disabled = true; // Disable all buttons
+            if (btn.textContent === data.answer) {
+              btn.classList.add("correct");
+            } else if (btn.classList.contains("selected")) {
+              btn.classList.add("incorrect");
+            }
+          });
+
+          // Show question numbers after answer check
+          questionNumbersContainer.style.display = 'block';
+        });
+        questionSection.appendChild(checkAnswerButton);
+
+        questionsContainer.appendChild(questionSection);
+      });
+    }
 
     // Show selected question
     function showQuestion(index) {
@@ -173,35 +221,6 @@
         section.classList.remove("active");
       });
       document.querySelector(`#question-${index}`).classList.add("active");
-    }
-
-    // Function to mark selected question number with red color
-    function selectQuestionNumber(button, index) {
-      const questionButtons = document.querySelectorAll(".question-numbers button");
-      if (button.classList.contains("selected")) {
-        // If already selected, do nothing
-        return;
-      }
-      button.classList.add("selected"); // Add red color to selected question number
-    }
-
-    // Function to mark selected questions with red after checking answers
-    function markSelectedQuestionsRed() {
-      document.querySelectorAll(".question-numbers button").forEach((btn, index) => {
-        const questionSection = document.querySelector(`#question-${index}`);
-        const choices = questionSection.querySelectorAll(".choice");
-        let isSelected = false;
-        
-        choices.forEach(choice => {
-          if (choice.classList.contains("selected")) {
-            isSelected = true;
-          }
-        });
-
-        if (isSelected) {
-          btn.classList.add("selected"); // Mark only selected question numbers with red
-        }
-      });
     }
   </script>
 </body>
