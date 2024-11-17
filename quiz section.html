@@ -138,6 +138,9 @@
       }
     }
 
+
+
+    
     // Generate 100 quiz questions (Example Data)
     const quizData = [];
     for (let i = 1; i <= 100; i++) {
@@ -145,9 +148,18 @@
         question: `Question ${i}: What is the capital of Nepal?`,
         choices: ["Pokhara", "Kathmandu", "Biratnagar", "Janakpur"],
         answer: "Kathmandu"
+        question: `Question ${i}: Who is the first king of nepal?`,
+        choices: ["Bhuktaman", "Tribhuwan", "Janak", "Birendra"],
+        answer: "Bhuktaman"
       });
     }
 
+
+
+
+
+
+    
     // Function to render quiz
     function renderQuiz() {
       const questionNumbersContainer = document.querySelector("#question-numbers-container");
