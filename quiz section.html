@@ -1,143 +1,207 @@
 <!-- quiz section.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select Number of Questions</title>
+  <title>Quiz Section</title>
   <style>
     body {
-  font-family: Arial, sans-serif;
-  background: #000;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  flex-direction: column; /* Vertically stack the content */
-}
-
-.container {
-  text-align: center;
-  background: #000;
-  padding: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 50px; /* Add space below container for "Show Available" link */
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.button-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-}
-
-button {
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-  width: 100%;
-}
-
-button:hover {
-  background: #0056b3;
-}
-
-.disabled {
-  background: #dc3545;
-  cursor: not-allowed;
-}
-
-#availableQuestions {
-  position: fixed; /* Fixed position to keep it always visible */
-  bottom: 20px;
-  right: 20px;
-  background: #222;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-#availableQuestions a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: pink;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-#availableQuestions a:hover {
-  background-color: #d74d77;
-}
-
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .question-numbers {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+    .question-numbers button {
+      padding: 10px 15px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border: 2px solid #007bff;
+      background-color: #f0f8ff;
+      color: #007bff;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    .question-numbers button:hover {
+      background-color: #007bff;
+      color: white;
+    }
+    .question-numbers button.selected {
+      background-color: #dc3545; /* Red color for selected question */
+      color: white;
+    }
+    .question-section {
+      display: none;
+      margin-top: 20px;
+    }
+    .question-section.active {
+      display: block;
+    }
+    .choice {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    .choice.selected {
+      background-color: orange;
+      color: white;
+    }
+    .choice.correct {
+      background-color: #28a745; /* Deep Green */
+      color: white;
+      border-color: #1e7e34;
+    }
+    .choice.incorrect {
+      background-color: #dc3545; /* Deep Red */
+      color: white;
+      border-color: #721c24;
+    }
+    .check-answer {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    .check-answer:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Choose Number of Questions</h1>
-    <div class="button-container">
-      <button id="btn1" onclick="startQuiz(1)">1 Question</button>
-      <button id="btn2" onclick="startQuiz(2)">2 Questions</button>
-      <button id="btn3" onclick="startQuiz(3)">3 Questions</button>
-      <button id="btn4" onclick="startQuiz(4)">4 Questions</button>
-      <button id="btn5" onclick="startQuiz(5)">5 Questions</button>
-      <button id="btn6" onclick="startQuiz(6)">6 Questions</button>
-      <button id="btn7" onclick="startQuiz(7)">7 Questions</button>
-    </div>
+  <h1>Quiz Section</h1>
+  
+  <!-- Question Numbers -->
+  <div class="question-numbers" id="question-numbers-container">
+    <!-- Question numbers will be inserted here -->
   </div>
-
-  <div id="availableQuestions">
-    <a href="javascript:void(0);" onclick="showAvailableQuestions()">Show Available Questions</a>
+  
+  <!-- Questions -->
+  <div id="questions-container">
+    <!-- Questions and choices will be inserted here -->
   </div>
 
   <script>
-    // JavaScript code for handling question selection goes here
-    function startQuiz(number) {
-      let selectedQuestions = JSON.parse(localStorage.getItem("selectedQuestions")) || [];
-      
-      // Add the selected question number to the array
-      selectedQuestions.push(number); 
+    // Questions and answers
+    const quizData = [
+      { question: "नेपालको राजधानी कहाँ हो?", choices: ["काठमाडौं", "पोखरा", "बिराटनगर", "जनकपुर"], answer: "काठमाडौं" },
+      { question: "सगरमाथाको उचाई कति हो?", choices: ["8848m", "8849m", "8850m", "8847m"], answer: "8848m" },
+      { question: "गौतम बुद्ध कहाँ जन्मेका थिए?", choices: ["लुम्बिनी", "कपिलवस्तु", "जनकपुर", "पोखरा"], answer: "लुम्बिनी" }
+    ];
 
-      // Store the updated list in localStorage
-      localStorage.setItem("selectedQuestions", JSON.stringify(selectedQuestions));
+    // Selectors
+    const questionNumbersContainer = document.querySelector("#question-numbers-container");
+    const questionsContainer = document.querySelector("#questions-container");
 
-      // Redirect to the quiz page
-      window.location.href = "quiz.html"; 
-    }
-
-    // On page load, reset the selection and make all buttons available
-    window.onload = function() {
-      const selectedQuestions = JSON.parse(localStorage.getItem("selectedQuestions")) || [];
-      
-      // Disable buttons for selected questions (if any)
-      selectedQuestions.forEach(number => {
-        disableButton(number);
+    // Render question numbers
+    quizData.forEach((data, index) => {
+      const button = document.createElement("button");
+      button.textContent = `Q${index + 1}`;
+      button.addEventListener("click", () => {
+        showQuestion(index);
+        selectQuestionNumber(button, index);
       });
-    };
+      questionNumbersContainer.appendChild(button);
+    });
 
-    // Function to disable a button and mark it as unavailable
-    function disableButton(number) {
-      const button = document.getElementById(`btn${number}`);
-      button.classList.add("disabled");
-      button.disabled = true;
+    // Render questions
+    quizData.forEach((data, index) => {
+      const questionSection = document.createElement("div");
+      questionSection.classList.add("question-section");
+      questionSection.id = `question-${index}`;
+
+      const questionText = document.createElement("h2");
+      questionText.textContent = data.question;
+      questionSection.appendChild(questionText);
+
+      let selectedChoice = null;
+
+      data.choices.forEach(choice => {
+        const choiceButton = document.createElement("button");
+        choiceButton.textContent = choice;
+        choiceButton.classList.add("choice");
+        choiceButton.addEventListener("click", () => {
+          // Remove previous selection
+          questionSection.querySelectorAll(".choice").forEach(btn => btn.classList.remove("selected"));
+          // Highlight selected choice
+          choiceButton.classList.add("selected");
+          selectedChoice = choice; // Save selected choice
+        });
+        questionSection.appendChild(choiceButton);
+      });
+
+      // Add "Check Right Answer" button
+      const checkAnswerButton = document.createElement("button");
+      checkAnswerButton.textContent = "Check Right Answer";
+      checkAnswerButton.classList.add("check-answer");
+      checkAnswerButton.addEventListener("click", () => {
+        questionSection.querySelectorAll(".choice").forEach(btn => {
+          btn.disabled = true; // Disable all buttons
+          if (btn.textContent === data.answer) {
+            btn.classList.add("correct");
+          } else if (btn.classList.contains("selected")) {
+            btn.classList.add("incorrect");
+          }
+        });
+        // Mark only selected question numbers with red
+        markSelectedQuestionsRed();
+      });
+      questionSection.appendChild(checkAnswerButton);
+
+      questionsContainer.appendChild(questionSection);
+    });
+
+    // Show selected question
+    function showQuestion(index) {
+      document.querySelectorAll(".question-section").forEach(section => {
+        section.classList.remove("active");
+      });
+      document.querySelector(`#question-${index}`).classList.add("active");
     }
 
-    function showAvailableQuestions() {
-      const selectedQuestions = JSON.parse(localStorage.getItem("selectedQuestions")) || [];
-      alert("Available Questions: " + selectedQuestions.join(", "));
+    // Function to mark selected question number with red color
+    function selectQuestionNumber(button, index) {
+      const questionButtons = document.querySelectorAll(".question-numbers button");
+      if (button.classList.contains("selected")) {
+        // If already selected, do nothing
+        return;
+      }
+      button.classList.add("selected"); // Add red color to selected question number
+    }
+
+    // Function to mark selected questions with red after checking answers
+    function markSelectedQuestionsRed() {
+      document.querySelectorAll(".question-numbers button").forEach((btn, index) => {
+        const questionSection = document.querySelector(`#question-${index}`);
+        const choices = questionSection.querySelectorAll(".choice");
+        let isSelected = false;
+        
+        choices.forEach(choice => {
+          if (choice.classList.contains("selected")) {
+            isSelected = true;
+          }
+        });
+
+        if (isSelected) {
+          btn.classList.add("selected"); // Mark only selected question numbers with red
+        }
+      });
     }
   </script>
 </body>
