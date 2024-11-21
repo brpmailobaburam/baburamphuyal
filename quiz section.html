@@ -367,6 +367,14 @@
       });
       document.querySelector(`#question-${index}`).classList.add("active");
     }
+
+  document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+        event.preventDefault();
+    }
+});
+
   </script>
 </body>
 </html>
