@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brp Mailo - साहित्यिक वेबसाइट</title>
+ <link rel="icon" type="image/png" href="brp.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: "Monotype Corsiva", sans-serif;
@@ -27,15 +29,9 @@
             width: 50px;
             height: 40px;
             animation: wave 2s infinite ease-in-out;
-            transform-origin: 0% 50%;
+            transform-origin: 0% 50%;    
         }
-        @keyframes wave {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(5deg); }
-            50% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
-            100% { transform: rotate(0deg); }
-        }
+
         .language-switch {
             position: absolute;
             right: 20px;
@@ -56,7 +52,7 @@
         nav {
             display: flex;
             justify-content: center;
-            background-color: yellow;
+            background-color: orange;
         }
         nav a {
             color: black;
@@ -123,8 +119,8 @@
             height: auto;
         }
         .marquee-container {
-            background-color: skyblue;
-            color: white;
+            background-color: white;
+            color: black;
             padding: 5px;
             text-align: center;
         }
@@ -136,19 +132,112 @@
             width: 10px;
             height: auto;
         }
+/* Global Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
-@media screen and (min-width: 480px) {
-  #leftsidebar {width: 200px; float: left;}
-  #main {margin-left: 216px;}
+
+
+
+
+
+
+
+
+#leftsidebar {
+    width: 100%;  /* सानो स्क्रिनमा साइडबार पुरा चौडाइ */
+    float: none;   /* फ्लोटिङ्ग हटाउँछ */
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+#main {
+    margin-left: 0;  /* मोबाइल र साना स्क्रिनका लागि */
+    padding: 10px;   /* मुख्य सामग्रीको प्याडिङ्ग */
+}
+
+/* Laptop/Desktop (larger screens) */
+@media screen and (min-width: 768px) {
+    #leftsidebar {
+        width: 25%;  /* साइडबारको चौडाइ २५% राख्नुहोस् */
+        float: left;  /* बायाँ फ्लोट */
+    }
+
+    #main {
+        margin-left: 25%;  /* मुख्य सामग्रीलाई साइडबारको चौडाइ अनुसार दायाँ सार्नुहोस् */
+    }
+}
+
+/* Large screens (Desktops and Tablets) */
+@media screen and (min-width: 1024px) {
+    #leftsidebar {
+        width: 20%;  /* साइडबारको चौडाइ घटाएर २०% राख्नुहोस् */
+    }
+
+    #main {
+        margin-left: 20%;  /* मुख्य सामग्रीलाई दायाँ २०% सार्नुहोस् */
+    }
+}
+
+/* Mobile (small devices) */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;  /* मोबाइलमा font size सानो राख्नुहोस् */
+    }
+
+    #leftsidebar {
+        width: 100%;  /* साइडबारलाई पुरा चौडाइ दिने */
+        float: none;   /* फ्लोटिङ्ग हटाउँछ */
+        padding: 0;
+    }
+
+    #main {
+        margin-left: 0;  /* मोबाइलका लागि कुनै बायाँ मार्जिन छैन */
+        padding: 5px;    /* मुख्य सामग्रीमा प्याडिङ्ग घटाउनुहोस् */
+    }
 }
 
 
 
 
 
+
+
+
+
+
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5; /* Optional: background color */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    width: 300px; /* Set your desired width */
+}
+
+.logo {
+    height: 20px; /* Adjust logo size */
+    margin-right: 10px; /* Spacing between logo and input */
+}
+
+input[type="text"] {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+}
 
     </style>
 </head>
+
+
+
+
 
 
 
@@ -205,7 +294,7 @@
             </div>
             <div id <p align="center"><h2 class="ne"<b>स्वागतम् !   स्वागतम् !!  स्वागतम् !!!</b></p></h2>
             <h2 class="en"<p align="center"><b>Welcome! Welcome!! Welcome!!!</b></p></h2></div>          
-            <p class="ne">यो साइट बी.आर.पी. माइलोको साहित्यिक रचना प्रस्तुत गर्ने उद्देश्यले बनाइएको हो। यहाँ विभिन्न गजल, कविता, मुक्तक र अन्य साहित्यिक रचनाहरू हेर्न सकिन्छ। सबैजना साहित्यप्रेमी मनहरुले यो साइटमा भिजिट गरेर हेर्नुहोला ।</p>
+            <p class="ne">यो साइट बिआरपी माइलोको साहित्यिक रचना प्रस्तुत गर्ने उद्देश्यले बनाइएको हो। यहाँ विभिन्न गजल, कविता, मुक्तक र अन्य साहित्यिक रचनाहरू हेर्न सकिन्छ। सबैजना साहित्यप्रेमी मनहरुले यो साइटमा भिजिट गरेर हेर्नुहोला ।</p>
             <p class="en"><font size="5">This site is intended to present B.R.P. Mailo's literary works. Various ghazals, poems, muktakas and other literary works can be seen here. All literature lovers should visit this site.</font size>
             <p><br><br><u><b>आफ्नो डायरी</b></u><br>---प्रेम आखिर प्रेम नै रहेछ , माया त बद्लिएर दया बन्नसक्छ  ।<br>हिजो गिरे पनि नजरबाट, भोलि त्यहि  प्रिया बन्न सक्छ  ।<b>✏️बिआरपी माइलो</b></p><br><u><b><i>यहाँ महान सहित्यकारहरुका चर्तित भनाईहरु समावेस गरिएका छन्  ।</u></b></i>
             <br><br><u><b>मुनामदन</b></u><br>--हातका मैला सुनका थैला, के गर्नु धनले?<br>साग र सिस्नु खाएको बेस आनन्दी मनले (मुनामदन) <br><u><b>यात्री</b></u><br>--कुन मन्दिरमा जान्छौ यात्री,कुन मन्दिर जाने हो?<br>कुन सामग्री पूजा गर्ने,साथ कसोरी जाने हो?<b>✏️महाकवि लक्ष्मी प्रसाद देवकोटा </b><br>
