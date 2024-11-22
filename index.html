@@ -145,30 +145,66 @@
             color: #aaa;
         }
 
-        /* Responsive Styling */
-        @media (max-width: 768px) {
-            body {
-                font-size: 4vw; 
-            }
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .circle-img, .profile-pic {
-                width: 30vw;
-                height: auto;
-            }
-            nav a {
-                font-size: 4vw;
-                padding: 2vw 3vw;
-            }
-            #clock, #time, #date, #english-date, #day-name {
-                font-size: 4vw;
-            }
-            .footer-section {
-                font-size: 3vw;
-            }
-        }
+     
+
+
+
+
+#leftsidebar {
+    width: 100%;  
+    float: none;   
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+#main {
+    margin-left: 0;  
+    padding: 10px;  
+}
+
+/* Laptop/Desktop (larger screens) */
+@media screen and (min-width: 768px) {
+    #leftsidebar {
+        width: 25%;  
+        float: left;  
+    }
+
+    #main {
+        margin-left: 25%;  
+    }
+}
+
+/* Large screens (Desktops and Tablets) */
+@media screen and (min-width: 1024px) {
+    #leftsidebar {
+        width: 20%;  
+    }
+
+    #main {
+        margin-left: 20%;  
+    }
+}
+
+/* Mobile (small devices) */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;  
+    }
+
+    #leftsidebar {
+        width: 100%;  
+        float: none;   
+        padding: 0;
+    }
+
+    #main {
+        margin-left: 0;  
+        padding: 5px;   
+    }
+}
+
+
+
 
         @media (max-width: 480px) {
             body {
