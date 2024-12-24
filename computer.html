@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Knowledge Hub</title>
     <style>
-        /* CSS for responsive and engaging layout */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -37,7 +36,7 @@
 
         .topics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
         }
 
@@ -50,6 +49,16 @@
             text-align: center;
         }
 
+        .topic a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .topic a:hover {
+            text-decoration: underline;
+        }
+
         footer {
             background-color: #333;
             color: #fff;
@@ -58,6 +67,20 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -71,30 +94,45 @@
 
     <!-- Main Content Section -->
     <div class="content">
-        <h2>Topics to Explore</h2>
         <div class="topics">
+
+            <!-- Topic 1 -->
             <div class="topic">
                 <h3>Computer Basics</h3>
                 <p>Learn the fundamentals of computers, including hardware and software basics.</p>
+                <a href="basics.html">Explore Computer Basics</a>
             </div>
+
+            <!-- Topic 2 -->
+            <div class="topic">
+                <h3>Hardware & Printer</h3>
+                <p>Discover the essentials of computer hardware and printers.</p>
+                <a href="hardware.html">Explore Hardware & Printer</a>
+            </div>
+
+            <!-- Topic 3 -->
             <div class="topic">
                 <h3>Operating Systems</h3>
                 <p>Understand different types of operating systems like Windows, macOS, and Linux.</p>
+                <a href="os.html">Explore Operating Systems</a>
             </div>
+
+            <!-- Topic 4 -->
             <div class="topic">
                 <h3>Internet & Networking</h3>
                 <p>Discover how the internet works and explore networking basics.</p>
+                <a href="networking.html">Explore Internet & Networking</a>
             </div>
-            <div class="topic">
-                <h3>Security & Privacy</h3>
-                <p>Learn how to keep your data safe and secure in the digital world.</p>
-            </div>
+
         </div>
     </div>
 
     <!-- Footer Section with JavaScript for Date -->
     <footer>
         <p id="footerText"></p>
+        <div class="social-links">
+            <a href="http://www.youtube.com/@ComputerMsaterBrp" target="_blank">YouTube</a>
+        </div>
         <script>
             // JavaScript for displaying current date and message in the footer
             document.getElementById('footerText').textContent = "All rights reserved Brpmailo date: " + new Date().toLocaleDateString();
