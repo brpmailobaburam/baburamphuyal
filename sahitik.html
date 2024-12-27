@@ -58,7 +58,7 @@
         }
         nav a {
             color: black;
-            padding: 14px 20px;
+            padding: 14px;
             text-decoration: none;
             text-align: center;
         }
@@ -72,8 +72,8 @@
         .section {
             display: none;
             background-color: pink;
-            margin: 0px;
-            padding: 0px;
+            margin: 20px;
+            padding: 20px;
             border-radius: 50px;
         }
         .section.active {
@@ -149,55 +149,56 @@ body {
 
 
 #leftsidebar {
-    width: 100%;  /* सानो स्क्रिनमा साइडबार पुरा चौडाइ */
-    float: none;   /* फ्लोटिङ्ग हटाउँछ */
+    max-width: 100%;  
+    float: none;   
     background-color: #f0f0f0;
     padding: 10px;
 }
 
 #main {
-    margin-left: 0;  /* मोबाइल र साना स्क्रिनका लागि */
-    padding: 10px;   /* मुख्य सामग्रीको प्याडिङ्ग */
+    margin-left: 0;
+    margin-righ: 0;
+    padding: 10px;   
 }
 
 /* Laptop/Desktop (larger screens) */
 @media screen and (min-width: 768px) {
     #leftsidebar {
-        max-width: 100%;  /* साइडबारको चौडाइ २५% राख्नुहोस् */
-        float: left;  /* बायाँ फ्लोट */
+        max-width: 100%;  
+        float: left;  
     }
 
     #main {
-        margin-left: 25%;  /* मुख्य सामग्रीलाई साइडबारको चौडाइ अनुसार दायाँ सार्नुहोस् */
+        margin-left: 25%; 
     }
 }
 
 /* Large screens (Desktops and Tablets) */
 @media screen and (min-width: 100%) {
     #leftsidebar {
-        width: 20%;  /* साइडबारको चौडाइ घटाएर २०% राख्नुहोस् */
+        width: 20%;  
     }
 
     #main {
-        margin-left: 20%;  /* मुख्य सामग्रीलाई दायाँ २०% सार्नुहोस् */
+        margin-left: 20%;  
     }
 }
 
 /* Mobile (small devices) */
 @media screen and (max-width: 100%) {
     body {
-        font-size: 14px;  /* मोबाइलमा font size सानो राख्नुहोस् */
+        font-size: 14px;  
     }
 
     #leftsidebar {
-        width: 100%;  /* साइडबारलाई पुरा चौडाइ दिने */
-        float: none;   /* फ्लोटिङ्ग हटाउँछ */
+        width: 100%;  
+        float: none;   
         padding: 0;
     }
 
     #main {
-        margin-left: 0;  /* मोबाइलका लागि कुनै बायाँ मार्जिन छैन */
-        padding: 5px;    /* मुख्य सामग्रीमा प्याडिङ्ग घटाउनुहोस् */
+        margin-left: 0;  
+        padding: 5px;    
     }
 }
 
@@ -215,16 +216,16 @@ body {
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: #f5f5f5; /* Optional: background color */
+    background-color: #f5f5f5; 
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
-    width: 300px; /* Set your desired width */
+    width: 500px; 
 }
 
 .logo {
-    height: 20px; /* Adjust logo size */
-    margin-right: 10px; /* Spacing between logo and input */
+    height: 20px; 
+    margin-right: 10px; 
 }
 
 input[type="text"] {
