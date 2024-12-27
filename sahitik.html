@@ -15,6 +15,7 @@
             padding: 0;
             transition: background-color 0s ease;
              overflow-x: hidden;
+            overflow-y: scrool;
         }
         header {
             background-color: skyblue;
@@ -162,7 +163,7 @@ body {
 /* Laptop/Desktop (larger screens) */
 @media screen and (min-width: 768px) {
     #leftsidebar {
-        width: 25%;  /* साइडबारको चौडाइ २५% राख्नुहोस् */
+        max-width: 100%;  /* साइडबारको चौडाइ २५% राख्नुहोस् */
         float: left;  /* बायाँ फ्लोट */
     }
 
@@ -172,7 +173,7 @@ body {
 }
 
 /* Large screens (Desktops and Tablets) */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 100%) {
     #leftsidebar {
         width: 20%;  /* साइडबारको चौडाइ घटाएर २०% राख्नुहोस् */
     }
@@ -183,7 +184,7 @@ body {
 }
 
 /* Mobile (small devices) */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 100%) {
     body {
         font-size: 14px;  /* मोबाइलमा font size सानो राख्नुहोस् */
     }
@@ -480,7 +481,7 @@ Our other contacts for further advice and suggestions:<br>
         <a href="http://www.youtube.com/@baburamphuyal" target="_blank">
         <img src="youtube.png" alt="YouTube">
         </a>
-        <img src="phone.jpg" alt="Contact Us"><p>9844078996</p>
+        <img src="phone.jpg" alt="Contact Us"><p>+977-9844078996</p>
         </a>     
 <p>नेपाली साहित्य तपाईको साहित्यिक यात्रा</p>
     <p>&copy; 2024 <a href="#" onclick="showSection('home', '#f0f0f0')">बिआरपी माइलो </a></p>
