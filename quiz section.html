@@ -12,13 +12,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-     min-height: 100vh;
-      margin: 0;
+     max-height: 100vh;
+      margin: 10;
       font-size: 18px;
       background-color: #111;
       color: white;
       overflow-x: hidden;
-      overflow-y: scroll;
+
     }
     #password-section {
       display: block;
@@ -33,7 +33,7 @@
       text-align: center;
     }
     #quiz-section h1 {
-      font-size: 30px;
+      font-size: 20px;
     }
     .question-numbers {
       margin-top: 20px;
@@ -63,7 +63,7 @@
     }
     .choice {
       margin: 5px;
-      font-size: 22px;
+      font-size: 30px;
       padding: 10px;
       background-color: #333;
       color: white;
@@ -92,6 +92,20 @@
       font-size: 50px; 
       font-weight: bold;
     }
+     
+
+
+      .timer 5 second
+       font-size: 14
+       font-weight: bold
+       font-color: red
+
+
+
+
+
+
+
 
 
 
@@ -488,83 +502,87 @@
     
 
     function renderQuiz() {
-      const questionNumbersContainer = document.querySelector("#question-numbers-container");
-      const questionsContainer = document.querySelector("#questions-container");
+  const questionNumbersContainer = document.querySelector("#question-numbers-container");
+  const questionsContainer = document.querySelector("#questions-container");
 
-      quizData.forEach((data, index) => {
-        const button = document.createElement("button");
-        button.textContent = `${index + 1}`;
-        button.addEventListener("click", () => {
-          showQuestion(index);
-          button.classList.add("selected");
-          questionNumbersContainer.style.display = 'none'; 
-        });
-        questionNumbersContainer.appendChild(button);
+  quizData.forEach((data, index) => {
+    const button = document.createElement("button");
+    button.textContent = `${index + 1}`;
+    button.addEventListener("click", () => {
+      showQuestion(index);
+      button.classList.add("selected");
+      questionNumbersContainer.style.display = 'none'; 
+    });
+    questionNumbersContainer.appendChild(button);
+  });
+
+  quizData.forEach((data, index) => {
+    const questionSection = document.createElement("div");
+    questionSection.classList.add("question-section");
+    questionSection.id = `question-${index}`;
+
+    const questionText = document.createElement("h2");
+    questionText.textContent = data.question;
+    questionSection.appendChild(questionText);
+
+    let selectedChoice = null;
+
+    data.choices.forEach(choice => {
+      const choiceButton = document.createElement("button");
+      choiceButton.textContent = choice;
+      choiceButton.classList.add("choice");
+      choiceButton.addEventListener("click", () => {
+        questionSection.querySelectorAll(".choice").forEach(btn => btn.classList.remove("selected"));
+        choiceButton.classList.add("selected");
+        selectedChoice = choice;
       });
+      questionSection.appendChild(choiceButton);
+    });
 
-      quizData.forEach((data, index) => {
-        const questionSection = document.createElement("div");
-        questionSection.classList.add("question-section");
-        questionSection.id = `question-${index}`;
-
-        const questionText = document.createElement("h2");
-        questionText.textContent = data.question;
-        questionSection.appendChild(questionText);
-
-        let selectedChoice = null;
-
-        data.choices.forEach(choice => {
-          const choiceButton = document.createElement("button");
-          choiceButton.textContent = choice;
-          choiceButton.classList.add("choice");
-          choiceButton.addEventListener("click", () => {
-            questionSection.querySelectorAll(".choice").forEach(btn => btn.classList.remove("selected"));
-            choiceButton.classList.add("selected");
-            selectedChoice = choice;
-          });
-          questionSection.appendChild(choiceButton);
-        });
-
-        const checkAnswerButton = document.createElement("button");
-        checkAnswerButton.textContent = "Check Right Answer";
-        checkAnswerButton.classList.add("check-answer");
-        checkAnswerButton.addEventListener("click", () => {
-          let isCorrect = false;
-          questionSection.querySelectorAll(".choice").forEach(btn => {
-            btn.disabled = true;
-            if (btn.textContent === data.answer) {
-              btn.classList.add("correct");
-              if (btn.classList.contains("selected")) {
-                isCorrect = true; // Correct answer check
-              }
-            } else if (btn.classList.contains("selected")) {
-              btn.classList.add("incorrect");
-            }
-          });
-
-          // Congratulations message display
-          if (isCorrect) {
-            const congratsMessage = document.createElement("p");
-            congratsMessage.textContent = "🎉 Congratulations! 🎉";
-            congratsMessage.style.color = "pink";
-            congratsMessage.style.fontSize = "25px";
-            congratsMessage.style.marginTop = "2px";
-            questionSection.appendChild(congratsMessage);
+    const checkAnswerButton = document.createElement("button");
+    checkAnswerButton.textContent = "Check Right Answer";
+    checkAnswerButton.classList.add("check-answer");
+    checkAnswerButton.addEventListener("click", () => {
+      let isCorrect = false;
+      questionSection.querySelectorAll(".choice").forEach(btn => {
+        btn.disabled = true;
+        if (btn.textContent === data.answer) {
+          btn.classList.add("correct");
+          if (btn.classList.contains("selected")) {
+            isCorrect = true; // Correct answer check
           }
-
-          questionNumbersContainer.style.display = 'block';
-        });
-        questionSection.appendChild(checkAnswerButton);
-
-        questionsContainer.appendChild(questionSection);
+        } else if (btn.classList.contains("selected")) {
+          btn.classList.add("incorrect");
+        }
       });
-    }
 
-    function showQuestion(index) {
-      document.querySelectorAll(".question-section").forEach(section => {
-        section.classList.remove("active");
-      });
-      document.querySelector(`#question-${index}`).classList.add("active");
+      // Congratulations message display
+      if (isCorrect) {
+        const congratsMessage = document.createElement("p");
+        congratsMessage.textContent = "🎉 Congratulations! 🎉";
+        congratsMessage.style.color = "pink";
+        congratsMessage.style.fontSize = "25px";
+        congratsMessage.style.marginTop = "2px";
+        questionSection.appendChild(congratsMessage);
+      }
+
+      // Hide the question number and wait for 2 seconds to show next question number
+      setTimeout(() => {
+        questionNumbersContainer.style.display = 'block';
+      }, 2000);  // Wait for 2 seconds before showing next question number
+
+    });
+    questionSection.appendChild(checkAnswerButton);
+
+    questionsContainer.appendChild(questionSection);
+  });
+}
+
+function showQuestion(index) {
+  document.querySelectorAll(".question-section").forEach(section => {
+    section.classList.remove("active");
+  });
+  document.querySelector(`#question-${index}`).classList.add("active");
     }
 document.addEventListener('contextmenu', event => event.preventDefault());
 document.addEventListener('keydown', (event) => {
