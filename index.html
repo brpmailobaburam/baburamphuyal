@@ -259,31 +259,63 @@ input[type="text"] {
     <div id="time"></div>
 </div>
 
-<footer>
-    <div class="footer-container">
-        <div class="footer-section">
-            <h3><span class="highlight" style="color: yellow;">About Website</h3></div>span>
-            <p><span class="highlight" style="color: lightblue;">This website is built for education and entertainment, literature, culture, etc. You can study it for free. Click on the page you want to read and enter that page. And you can study the study materials there.</p></span>
+
+
+
+    
+<footer style="background-color: black; color: white; padding: 20px; margin-top: 30px;">
+    <!-- Footer Container -->
+    <div class="footer-container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+
+        <!-- About Section -->
+        <div class="footer-section" style="flex: 1; min-width: 250px;">
+            <h3 style="color: yellow; margin-bottom: 10px;">About Website</h3>
+            <p style="color: lightblue;">
+                This website is built for education and entertainment, literature, culture, etc. 
+                You can study it for free. Click on the page you want to read and enter that page. 
+                And you can study the study materials there.
+            </p>
         </div>
-        <div class="footer-section">
-            <h4><span class="highlight" style="color: yellow;">Contact</h4></span>
+
+        <!-- Contact Section -->
+        <div class="footer-section" style="flex: 1; min-width: 250px;">
+            <h4 style="color: yellow; margin-bottom: 10px;">Contact</h4>
             <p>Email: brpmailobaburam@gmail.com</p>
             <p>Phone: +977-9844078996</p>
         </div>
-        <div class="footer-section">
-            <h4><span class="highlight" style="color: yellow;">Follow</h4></span>
-            <a href="https://www.facebook.com/brp.mailo" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.youtube.com/@ComputerMsaterBrp" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.tiktok.com/@brpmailobaburam1?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
 
+        <!-- Follow Section -->
+        <div class="footer-section" style="flex: 1; min-width: 250px;">
+            <h4 style="color: yellow; margin-bottom: 10px;">Follow</h4>
+            <a href="https://www.facebook.com/brp.mailo" target="_blank" style="color: white; margin-right: 15px;">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="https://www.youtube.com/@ComputerMsaterBrp" target="_blank" style="color: white; margin-right: 15px;">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://www.tiktok.com/@brpmailobaburam1?is_from_webapp=1&sender_device=pc" target="_blank" style="color: white;">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
         </div>
+
     </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 All rights reserved <span class="highlight" style="color: #00FF00;">"Brpmailo</p></span>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom" style="text-align: center; margin-top: 20px; border-top: 1px solid white; padding-top: 10px;">
+        <p>&copy; 2025 All rights reserved <span style="color: #00FF00;">"Brpmailo"</span></p>
     </div>
 </footer>
 
-<script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    <script>
     function updateTime() {
         const now = new Date();
         let hours = now.getHours();
