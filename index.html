@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        body {
+body {
     font-family: Arial, sans-serif;
     background-color: #fff8dc;
     text-align: center;
@@ -18,8 +18,9 @@
     flex-direction: column;
     min-height: 100vh;
     justify-content: space-between;
-    overflow-x: hidden;
+    overflow-x: hidden; 
 }
+
 
 header {
     display: flex;
@@ -33,8 +34,10 @@ header {
     box-sizing: border-box;
     position: relative;
     z-index: 10;
-    overflow: hidden;  
+    gap: 0; /* Flex gap हटाइएको */
+    margin: 0;
 }
+
 
 .circle-img {
     width: 10vw;
@@ -43,16 +46,17 @@ header {
     border-radius: 50%;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
     margin: 0;
-    flex-shrink: 0;  
+    flex-shrink: 0;
 }
+
 
 h1 {
     margin: 0;
-    font-size: 2.5vw;
+    font-size: 2rem; 
     flex-grow: 1;
     text-align: center;
-    z-index: 5;  
 }
+
 
 nav a {
     display: inline-block;
@@ -70,14 +74,16 @@ nav a:hover {
     background-color: #45a049;
 }
 
+
 footer {
     background-color: #333;
     color: white;
     padding: 2vw;
     text-align: center;
     width: 100%;
-    margin-top: 0;
+    box-sizing: border-box;
 }
+
 
 .footer-container {
     display: flex;
@@ -106,12 +112,14 @@ footer {
     color: #4CAF50;
 }
 
+
 .footer-bottom {
     border-top: 1px solid #444;
     padding-top: 1vw;
     font-size: 1.2vw;
     color: #aaa;
 }
+
 
 .slider-container {
     position: relative;
@@ -135,6 +143,7 @@ footer {
     flex-shrink: 0;
 }
 
+
 #clock {
     font-family: 'Courier New', Courier, monospace;
     background-color: #f3f3f3;
@@ -145,36 +154,31 @@ footer {
     margin: 2vw auto;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    padding: 2vw;
-    text-align: center;
-    width: 100%;
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem; 
+    }
+
+    nav a {
+        font-size: 1rem; 
+    }
+
+    .footer-section {
+        font-size: 1rem; 
+    }
+
+    .footer-section a {
+        font-size: 1.5rem;
+    }
+
+    #clock {
+        font-size: 1rem; 
+    }
 }
+</style>
 
 
-
-
-
-
-     
-        #clock {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f3f3f3;
-            padding: 1vw;
-            border-radius: 0.8vw;
-            display: inline-block;
-            text-align: center;
-            margin: 2vw auto;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 2vw;
-            text-align: center;
-            width: 100%;
-        }
     </style>
 </head>
 <body>
@@ -196,14 +200,9 @@ footer {
     <div class="slider">
         <img src="brp_3.jpg" alt="Image 3">
         <img src="brp_2.jpg" alt="Image 2">
-       <img src="brp_1.jpg" alt="Image 1">
+        <img src="brp_1.jpg" alt="Image 1">
     </div>
 </div>
-
-
-<p><u><b><i>(Author/ Web Developer)</i></b></u></p>
-
-
 
 
 <!-- Clock -->
@@ -213,6 +212,7 @@ footer {
     <div id="date"></div>
     <div id="time"></div>
 </div>
+
 
 <script>
     const slider = document.querySelector('.slider');
@@ -257,13 +257,13 @@ footer {
         <div class="footer-section" style="flex: 1; min-width: 250px;">
             <h4 style="color: yellow; margin-bottom: 10px;">Follow</h4>
             <a href="https://www.facebook.com/brp.mailo" target="_blank" style="color: white; margin-right: 15px;">
-             <i class="fab fa-facebook"></i>    
+                <i class="fab fa-facebook"></i>    
             </a>
             <a href="https://www.youtube.com/@ComputerMsaterBrp" target="_blank" style="color: white; margin-right: 15px;">
-            <i class="fab fa-youtube"></i>  
+                <i class="fab fa-youtube"></i>  
             </a>
             <a href="https://www.tiktok.com/@brpmailobaburam1?is_from_webapp=1&sender_device=pc" target="_blank" style="color: white;">
-           <i class="fab fa-tiktok"></i>  
+                <i class="fab fa-tiktok"></i>  
             </a>
         </div>
 
