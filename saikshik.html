@@ -152,35 +152,33 @@
     <h1><span class="highlight" style="color: red;">Lovely Angels English Boarding School</span></h1>
     <h2><span class="highlight" style="color: blue;">For My Student</span></h2>
     <a href="#" onclick="toggleVisibility('pdf-list', event)" class="download-link">सामाजिक ५ (Class 5 Social)</a>
-    <div id="pdf-list" class="pdf-list">
+    <div id="pdf-list" class="pdf-list" style="display: none;">
         <div class="pdf-title">PDF फाइलहरू:</div>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our%20traditional%20social%20practice.pdf" target="_blank" download>परम्परागत सामाजिक प्रचलनहरू</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Conservation%20%26%20Promotion%20of%20Local%20Heritage.pdf" class="download-link" download>स्थानीय सम्पदाको संरक्षण र सम्बर्धन</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Local%20Product.pdf" class="download-link" download>स्थानीय उत्पादन</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Local%20Language,%20Customs%20%26%20Lifestyle.pdf" class="download-link" download>स्थानीय भाषा, वेषभुषा र रहनसहन</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/janakpur%20dham.pdf" class="download-link" download>जनकपुर धाम</a>
-      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Solar system, Planetun6 & Satellite.pdf" class="download-link" download>सौर्यमण्डल, ग्रह तथा उपग्रहहरु </a>
-      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Report_Writing.pdf" class="download-link" download>प्रतिवेदन लेखन </a>
-      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Road Safety and Traffic rules.pdf" class="download-link" download>सडक सुरक्षा तथा ट्राफिक नियम</a>
-      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/physical structure of nepal.pdf" class="download-link" download>नेपालको प्राकृतिक तथा धरातलिय स्वरूप</a>
-     <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Participating in community work.pdf" class="download-link" download>सामुदायिक कार्यमा सहभागीता</a>
-     <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our occupation and business.pdf" class="download-link" download>हाम्रो पेसा तथा व्यवसायहरु </a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Discipline.pdf" class="download-link" download>अनुशासन</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/safety services.pdf" class="download-link" download>सुरक्षा सहयोगी सेवाहरु</a>
-          <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/news writing.pdf" class="download-link" download>समाचार लेखन</a>
-          <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/social problem.pdf" class="download-link" download>सामाजिक समस्या:चोरी डकैती</a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/1.pdf" class="download-link" download>class test answer 2081-08-23</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/2.pdf" class="download-link" download>class test answer 2081-08-25</a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/3 Ans.pdf" class="download-link" download>class test answer 2081-08-27</a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/map of nepal.pdf" class="download-link" download>नेपालको नक्सा बनाउने तरिका</a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Set 7.pdf" class="download-link" download>सेट ७ प्रश्नोत्तर </a>
-   
-   <!-- View Link -->
-<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/1.pdf" class="view-link" target="_blank">
-  Class Test Answer 2081-08-23 (View)
-</a>
+        <ul>
+            <li>
+                <span>परम्परागत सामाजिक प्रचलनहरू</span>
+                <a href="https://raw.githubusercontent.com/brpmailobaburam/baburamphuyal/main/Our%20traditional%20social%20practice.pdf" target="_blank">View</a>
+                <a href="https://raw.githubusercontent.com/brpmailobaburam/baburamphuyal/main/Our%20traditional%20social%20practice.pdf" download>Download</a>
+            </li>
+            <li>
+                <span>स्थानीय सम्पदाको संरक्षण र सम्बर्धन</span>
+                <a href="https://raw.githubusercontent.com/brpmailobaburam/baburamphuyal/main/Conservation%20%26%20Promotion%20of%20Local%20Heritage.pdf" target="_blank">View</a>
+                <a href="https://raw.githubusercontent.com/brpmailobaburam/baburamphuyal/main/Conservation%20%26%20Promotion%20of%20Local%20Heritage.pdf" download>Download</a>
+            </li>
+            <!-- अन्य PDF लिंकहरू पनि यसैगरी थप्न सक्नुहुन्छ -->
+        </ul>
+    </div>
+</section>
 
 
+    
+<script>
+    function toggleVisibility(id, event) {
+        event.preventDefault();
+        const element = document.getElementById(id);
+        element.style.display = element.style.display === "none" ? "block" : "none";
+    }
+</script>
 
 
 
