@@ -1,4 +1,3 @@
-<!-- saikshik.html -->
 <!DOCTYPE html>
 <html lang="ne">
 <head>
@@ -95,33 +94,94 @@
         }
     </style>
 
-
     <style>
-    .social-icons a {
-        margin: 0 5px;
-    }
-
-    .social-icons img {
-        width: 50px;  
-        height: 50px; 
-    }
-</style>
-    <script>
-         function toggleVisibility(idToShow, event) {
-    event.preventDefault(); 
-    const elements = ['pdf-list', 'teacherguided', 'courseList', 'booklist'];
-    elements.forEach(id => {
-        const element = document.getElementById(id);
-        if (id === idToShow) {
-            element.style.display = element.style.display === 'block' ? 'none' : 'block';
-            if (element.style.display === 'block') {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        } else {
-            element.style.display = 'none';
+        .social-icons a {
+            margin: 0 5px;
         }
-    });
-}
+
+        .social-icons img {
+            width: 50px;  
+            height: 50px; 
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .pdf-item {
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* Left र Right को स्पेसिङ मिलाउँछ */
+      background-color: orange;
+      border-radius: 5px;
+  }
+
+  .pdf-text {
+      color: black;
+      padding: 5px 10px;
+      flex-grow: 1; /* Text लाई लम्बाइ दिन्छ */
+  }
+
+  .download-link {
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-left: 10px;
+  }
+
+  .view-link {
+      background-color: #4285F4;
+      color: white;
+  }
+
+  .download-btn {
+      background-color: #34a853;
+      color: white;
+  }
+</style>
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function toggleVisibility(idToShow, event) {
+            event.preventDefault(); 
+            const elements = ['pdf-list', 'teacherguided', 'courseList', 'booklist'];
+            elements.forEach(id => {
+                const element = document.getElementById(id);
+                if (id === idToShow) {
+                    element.style.display = element.style.display === 'block' ? 'none' : 'block';
+                    if (element.style.display === 'block') {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
     </script>
 </head>
 <body>
@@ -132,18 +192,13 @@
         <a href="index.html">गृह पेज</a>
         <a href="sahitik.html">साहित्यिक पेज</a>
         <a href="saikshik.html">शैक्षिक पेज</a>
-        <a href="computer.html">Computer</a>
+        <a href="computer.html">कम्प्युटर</a>
     </nav>
 </header>
-
-
-
-
 
 <div class="marquee-container">
     <marquee>तपाईलाई यस शैक्षिक वेबमा स्वागत छ। तलको लिंकहरूमा क्लिक गरि आफूलाई चाहिएको pdf डाउनलोड गरि आफ्नो मोबाइल तथा कम्प्युटरमै पढ्न सक्नुहुन्छ। youtube को icon मा क्लिक गरेर सम्बन्धित शीर्षकको भिडियो पनि हेर्न सक्नुहुन्छ तपाईलाई लागेको केहि कुरा भए मलाई सम्पर्क समेत गर्न सक्नुहुन्छ धन्यवाद!</marquee>
 </div>
-
 
 
 
@@ -154,46 +209,127 @@
     <a href="#" onclick="toggleVisibility('pdf-list', event)" class="download-link">सामाजिक ५ (Class 5 Social)</a>
     <div id="pdf-list" class="pdf-list">
         <div class="pdf-title">PDF फाइलहरू:</div>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our%20traditional%20social%20practice.pdf" target="_blank" download>परम्परागत सामाजिक प्रचलनहरू</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Conservation%20%26%20Promotion%20of%20Local%20Heritage.pdf" class="download-link" download>स्थानीय सम्पदाको संरक्षण र सम्बर्धन</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Local%20Product.pdf" class="download-link" download>स्थानीय उत्पादन</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Local%20Language,%20Customs%20%26%20Lifestyle.pdf" class="download-link" download>स्थानीय भाषा, वेषभुषा र रहनसहन</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/janakpur%20dham.pdf" class="download-link" download>जनकपुर धाम</a>
-      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Solar system, Planetun6 & Satellite.pdf" class="download-link" download>सौर्यमण्डल, ग्रह तथा उपग्रहहरु </a>
-      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Report_Writing.pdf" class="download-link" download>प्रतिवेदन लेखन </a>
-      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Road Safety and Traffic rules.pdf" class="download-link" download>सडक सुरक्षा तथा ट्राफिक नियम</a>
-      <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/physical structure of nepal.pdf" class="download-link" download>नेपालको प्राकृतिक तथा धरातलिय स्वरूप</a>
-     <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Participating in community work.pdf" class="download-link" download>सामुदायिक कार्यमा सहभागीता</a>
-     <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our occupation and business.pdf" class="download-link" download>हाम्रो पेसा तथा व्यवसायहरु </a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Discipline.pdf" class="download-link" download>अनुशासन</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/safety services.pdf" class="download-link" download>सुरक्षा सहयोगी सेवाहरु</a>
-          <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/news writing.pdf" class="download-link" download>समाचार लेखन</a>
-          <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/social problem.pdf" class="download-link" download>सामाजिक समस्या:चोरी डकैती</a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/1.pdf" class="download-link" download>class test answer 2081-08-23</a>
-        <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/2.pdf" class="download-link" download>class test answer 2081-08-25</a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/3 Ans.pdf" class="download-link" download>class test answer 2081-08-27</a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/map of nepal.pdf" class="download-link" download>नेपालको नक्सा बनाउने तरिका</a>
-         <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Set 7.pdf" class="download-link" download>सेट ७ प्रश्नोत्तर </a>
-   
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center;">
+    <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px; width: 20%; text-align: center;">परम्परागत सामाजिक प्रचलनहरू</span>
+    <a href="https://drive.google.com/file/d/13SkdnKTXmPb1co696R5PQZedgwWp-wNn/view?usp=sharing" target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 8px; text-decoration: none; border-radius: 5px; margin-left: 5px;">View</a>
+    <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our%20traditional%20social%20practice.pdf" target="_blank" class="download-link" style="background-color: #34a853; color: white; padding: 5px 8px; text-decoration: none; border-radius: 5px; margin-left: 5px;" download>Download</a>
+</div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center;">
+    <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px; width: 20%; text-align: center;">स्थानीय सम्पदाको संरक्षण र सम्बर्धन</span>
+    <a href="https://drive.google.com/file/d/1mMjqJsHfhv2JTkq3bkSP8NN8x9pYdXuc/view?usp=sharing" target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+    <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Conservation%20%26%20Promotion%20of%20Local%20Heritage.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+</div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center;">
+    <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px; width: 20%; text-align: center;">स्थानीय उत्पादन</span>
+    <a href="https://drive.google.com/file/d/1htxVTpqfidT9ELioDi6uRxIJbOpo-R9j/view?usp=sharing" target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+    <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Local%20Product.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+</div>
 
 
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">     
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">स्थानीय भाषा, वेषभुषा र रहनसहन</span>      
+<a href="    "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Local%20Language,%20Customs%20%26%20Lifestyle.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
 
-<!-- View Link -->
-<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/1.pdf" class="view-link" target="_blank">
-  Class Test Answer 2081-08-23 (View)
-</a>
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">    
+          <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">जनकपुर धाम</span>       
+      <a href="https://drive.google.com/file/d/1PVTvaR-hoaW3IbiK9ETJbtqrIU_vZTSS/view?usp=sharing"target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+ <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/janakpur%20dham.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;"> 
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">सौर्यमण्डल, ग्रह तथा उपग्रहहरु</span>         
+<a href=" https://drive.google.com/file/d/1WplaVdafziMvmvABOeT3ZFmeAoG-NSIE/view?usp=sharing "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Solar system, Planetun6 & Satellite.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">प्रतिवेदन लेखन</span>        
+<a href="  https://drive.google.com/file/d/1sTuwLVCltyA4KdzXBcJAHC5vBp3tDJbO/view?usp=sharing "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+ <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Report_Writing.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
 
 
-
-
-
-
-
-
-
-   
-   
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">समाचार लेखन</span>          
+<a href="  https://drive.google.com/file/d/1cdaNQCeG0g20t9Jlql1T5H-1gKbPlJZW/view?usp=sharing "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+<a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/news writing.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
  
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">      
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">सडक सुरक्षा तथा ट्राफिक नियम</span>  
+<a href=" https://drive.google.com/file/d/1HHCxQUj0rdseTkKDTIU6ZdlDjFfSTPLx/view?usp=sharing "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+ <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Road Safety and Traffic rules.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">नेपालको प्राकृतिक तथा धरातलिय स्वरूप</span>       
+<a href=" https://drive.google.com/file/d/1XIeus41hMkyyfCEOQt7IHhMUcXOVHg5I/view?usp=sharing"target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+ <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/physical structure of nepal.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">     
+          <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">सामुदायिक कार्यमा सहभागीता</span>        
+<a href=" https://drive.google.com/file/d/1evKjoX1KRxpvwqoY80jv0kuH6ibMNZFg/view?usp=sharing  "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+  <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Participating in community work.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+   </div>
+   
+ <div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">  
+          <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">हाम्रो पेसा तथा व्यवसायहरु </span>  
+<a href="  https://drive.google.com/file/d/1XC9inECNq9ioH0CCcpQSfwgF-5Pru4uL/view?usp=sharing   "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+   <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Our occupation and business.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">अनुशासन</span>      
+ <a href="https://drive.google.com/file/d/1-8Fp8IB1mAfpKOBzrdQboKuQ_R5GtOIm/view?usp=sharing"target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+    <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/Discipline.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+  </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">  
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">सुरक्षा सहयोगी सेवाहरु</span>    
+<a href=" https://drive.google.com/file/d/11XjOXGg-sesd8A2wiWdRklrutlhbULe9/view?usp=sharing"target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>
+ <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/safety services.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+ </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">       
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">सामाजिक समस्या:चोरी डकैती</span>      
+<a href=" https://drive.google.com/file/d/1ziwTtusleyXMdnVlvXl8kB0N0X013ym4/view?usp=sharing  "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>  
+  <a href="https://github.com/brpmailobaburam/baburamphuyal/raw/main/social problem.pdf" class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+  </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">       
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">Set-7</span>      
+<a href=" https://drive.google.com/file/d/1l1PsGZbZ0TdfYq4GqhUvUnTD0QpnHiJd/view?usp=sharing      "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>  
+  <a href="  https://github.com/brpmailobaburam/baburamphuyal/raw/main/Set%207.pdf    "class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+  </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">       
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">Test-1</span>      
+<a href=" https://drive.google.com/file/d/1JsAD-qY9zZNICg5t0T0gCHpLUQjxM6mF/view?usp=sharing     "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>  
+  <a href="   https://github.com/brpmailobaburam/baburamphuyal/raw/main/1.pdf     "class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+  </div>
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">       
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">Test-2</span>      
+<a href=" https://drive.google.com/file/d/13CCfmvdSz2Z3rzPF9tHaWNXxU6gQdd9H/view?usp=sharing    "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>  
+  <a href="   https://github.com/brpmailobaburam/baburamphuyal/raw/main/2.pdf     "class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+  </div>
+
+
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">       
+           <span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;5px; width: 20%; text-align: center;">Test-3</span>      
+<a href=" https://drive.google.com/file/d/1rPO2mnCcaO-6wHt-ZKI7GKLvpojmdrB5/view?usp=sharing     "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>  
+  <a href="   https://github.com/brpmailobaburam/baburamphuyal/raw/main/3%20Ans.pdf     "class="download-link" style="background-color: #34a853; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;" download>Download</a>
+  </div>
+
+
+</section>
+   
    <!-- Additional PDFs -->
     </div>
 </section>
@@ -317,3 +453,4 @@
     
 </body>
 </html>
+    
