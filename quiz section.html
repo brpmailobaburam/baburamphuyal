@@ -1,10 +1,10 @@
 <!-- quiz section.html -->
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lovely Angels Quiz </title>
+  <title>Lovely Angels Quiz</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -100,6 +100,19 @@
        font-size: 14
        font-weight: bold
        font-color: red
+.question-numbers {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0; /* यो line प्रश्न नम्बरहरूलाई scrollable बनाउँछ */
+  background-color: #111; /* पृष्ठभूमि नदेखिने समस्या समाधान गर्न */
+  padding: 10px; /* केही padding थपिएको */
+  z-index: 10; /* अन्य तत्वहरू माथि देखाउन */
+  overflow-x: auto; /* Horizontal scroll को लागि */
+  max-width: 100%; /* Responsive को लागि */
+}
 
 
 
@@ -112,7 +125,7 @@
 
 
  /* Responsive Styles for Smart TVs (Extra Large Screens) */
-    @media (man-width: 100%px) {
+    @media (max-width: 600px) {
       body {
         font-size: 18px;
       }
@@ -190,8 +203,7 @@
       } else {
         errorMessage.style.display = 'block';
       }
-    }
-
+}
     
      const quizData = [
       {
