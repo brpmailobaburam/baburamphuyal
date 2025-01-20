@@ -57,6 +57,66 @@ h1 {
     text-align: center;
 }
 
+ /* Chatbot Circle Style */
+        #chatbot-circle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: width 0.3s, height 0.3s, font-size 0.3s;
+        }
+
+        #chatbot-circle.open {
+            width: 200px;
+            height: 80px;
+            font-size: 18px;
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 10px;
+        }
+
+        #chatbot-circle.open i {
+            margin-right: 10px;
+        }
+
+        /* Dialogflow Chatbot Window */
+        #chatbot {
+            display: none;
+            position: fixed;
+            bottom: 110px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        #chatbot.open {
+            display: block;
+        }
+
+        /* Dialogflow Embed */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+
 
 nav a {
     display: inline-block;
@@ -253,6 +313,29 @@ footer {
             <p>Email: brpmailobaburam@gmail.com</p>
             <p>Phone: +977-9844078996</p>
         </div>
+
+
+<!-- Chatbot Circle -->
+<div id="chatbot-circle" onclick="toggleChatbot()">
+    <i class="fas fa-comment-alt"></i> BrpChatAI
+</div>
+
+<!-- Chatbot Window (Dialogflow) -->
+<div id="chatbot">
+    <iframe src="https://console.dialogflow.com/api-client/demo/embedded/c4121d06-ab4c-46f7-8bf3-fbd8c79e9a9e"></iframe>
+</div>
+
+<script>
+    // Toggle the chatbot window and circle
+    function toggleChatbot() {
+        const chatbot = document.getElementById("chatbot");
+        const chatbotCircle = document.getElementById("chatbot-circle");
+
+        // Toggle chatbot visibility and circle size
+        chatbot.classList.toggle("open");
+        chatbotCircle.classList.toggle("open");
+    }
+</script>
 
         <div class="footer-section" style="flex: 1; min-width: 250px;">
             <h4 style="color: yellow; margin-bottom: 10px;">Follow</h4>
