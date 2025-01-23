@@ -1,0 +1,335 @@
+<!-- student portal.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuition Student Management</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2px; padding: 0; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 2px; }
+    th, td { padding: 2px; border: 1px solid #ddd; text-align: center; }
+
+    .teacher-menu { margin-bottom: 20px; }
+    .teacher-container { display: none; margin-top: 20px; }
+    .teacher-container input { margin-bottom: 10px; }
+    .student-photo { width: 80px; height: 80px; object-fit: cover; }
+    .signature-photo { width: 100px; height: 50px; object-fit: contain; }
+    .action-btn { color: white; border: none; padding: 5px 10px; cursor: pointer; margin: 2px; }
+    .delete-btn { background-color: #f44336; }
+ .edit-btn { background-color: #2196F3; }
+    .print-btn { background-color: #4CAF50; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+
+    /* A4 page print settings */
+    @media print {
+      body * { visibility: hidden; }
+      .print-area, .print-area * { visibility: visible; }
+
+      @page {
+        size: A4 portrait;
+        margin: 2mm;
+      }
+
+
+      .print-area {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, auto);
+        gap: 2mm;
+        page-break-before: always;
+      }
+
+      .bill {
+        border: 1px solid #ddd;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+      }
+
+      .bill img {
+        margin-bottom: 10px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .bill strong {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .bill .details {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      .bill .fee {
+        margin: 10px 0;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+.bill .signature {
+  margin-top: 10px;
+  text-align: right; /* सबै सामग्रीलाई केन्द्रित गर्न */
+  width: 100%;
+  font-size: 12px;
+}
+
+.bill .signature .signature-photo {
+  width: 50px; /* हस्ताक्षर फोटोको साइज */
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 5px; /* फोटो र लाइन बीचको ठाउँ */
+}
+
+.bill .signature .line {
+  margin-top: 5px;
+  border-top: 1px solid black;
+  width: 100px; /* लाइनको लम्बाइ */
+  margin-left: auto;
+}
+
+.bill .signature span {
+  display: block; /* टेक्स्टलाई फोटो र लाइनको तल राख्न */
+  font-weight: bold;
+  margin-top: 5px; /* टेक्स्ट र लाइन बीचको ठाउँ */
+}
+}
+  </style>
+</head>
+
+
+<body>
+  <h1>Tuition Student Management Portal</h1>
+
+  <!-- Teacher Menu -->
+  <button onclick="toggleTeacherMenu()">Teachers</button>
+
+  <!-- Teacher Container -->
+  <div class="teacher-container" id="teacherContainer">
+    <button onclick="addTeacher()">Add Signature</button>
+    <button onclick="changeTeacher()">Change Signature</button>
+    <input type="file" id="teacherSignature" accept="image/*" required style="display: none;">
+    <button id="saveSignatureBtn" style="display: none;" onclick="saveSignature()">Save Signature</button>
+  </div>
+
+  <!-- Add Student Form -->
+  <button onclick="toggleForm()">Add Student</button>
+  <div id="formContainer" style="display: none; margin-top: 20px;">
+    <label for="studentId">Student ID:</label>
+    <input type="text" id="studentId" placeholder="Enter Student ID" required>
+    
+    <label for="studentName">Name:</label>
+    <input type="text" id="studentName" placeholder="Enter Student Name" required>
+
+    <label for="studentClass">Class:</label>
+    <input type="text" id="studentClass" placeholder="Enter Class" required>
+
+    <label for="studentFee">Fee:</label>
+    <input type="number" id="studentFee" placeholder="Enter Fee" required>
+
+    <label for="studentPhoto">Upload Photo:</label>
+    <input type="file" id="studentPhoto" accept="image/*" required>
+
+    <button onclick="addStudent()">Add Student</button>
+  </div>
+
+  <button onclick="printAllBills()">Print All Bills</button> <!-- Print All Bills button -->
+  
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Fee</th>
+        <th>Photo</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="studentTable"></tbody>
+  </table>
+
+  <!-- Print Area -->
+  <div class="print-area" id="printArea"></div>
+
+  <script>
+    let teacherSignature = localStorage.getItem('teacherSignature'); // Retrieve teacher's signature from localStorage
+
+    function toggleTeacherMenu() {
+      const teacherMenu = document.getElementById("teacherContainer");
+      teacherMenu.style.display = teacherMenu.style.display === "block" ? "none" : "block";
+    }
+
+    function addTeacher() {
+      const signatureInput = document.getElementById("teacherSignature").files[0];
+      if (!signatureInput) {
+        alert("Please upload a signature!");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        teacherSignature = reader.result;
+        localStorage.setItem('teacherSignature', teacherSignature); // Save signature to localStorage
+        alert("Teacher's signature saved successfully!");
+        toggleTeacherMenu();
+      };
+      reader.readAsDataURL(signatureInput);
+    }
+
+    function changeTeacher() {
+      document.getElementById("teacherSignature").style.display = "block";
+      document.getElementById("saveSignatureBtn").style.display = "inline-block"; // Show save button
+    }
+
+    function saveSignature() {
+      const signatureInput = document.getElementById("teacherSignature").files[0];
+      if (!signatureInput) {
+        alert("Please upload a signature to save!");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        teacherSignature = reader.result;
+        localStorage.setItem('teacherSignature', teacherSignature); // Save signature to localStorage
+        alert("Teacher's signature saved successfully!");
+        document.getElementById("teacherSignature").style.display = "none"; // Hide file input after saving
+        document.getElementById("saveSignatureBtn").style.display = "none"; // Hide save button
+      };
+      reader.readAsDataURL(signatureInput);
+    }
+
+    function toggleForm() {
+      const form = document.getElementById("formContainer");
+      form.style.display = form.style.display === "block" ? "none" : "block";
+    }
+
+    function addStudent() {
+      const id = document.getElementById("studentId").value.trim();
+      const name = document.getElementById("studentName").value.trim();
+      const studentClass = document.getElementById("studentClass").value.trim();
+      const fee = document.getElementById("studentFee").value.trim();
+      const photo = document.getElementById("studentPhoto").files[0];
+
+      if (!id || !name || !studentClass || !fee || !photo) {
+        alert("All fields are required!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        const students = JSON.parse(localStorage.getItem("students")) || [];
+        students.push({ id, name, studentClass, fee, photo: reader.result });
+        localStorage.setItem("students", JSON.stringify(students));
+        displayStudents();
+        toggleForm();
+      };
+      reader.readAsDataURL(photo);
+    }
+
+    function displayStudents() {
+      const students = JSON.parse(localStorage.getItem("students")) || [];
+      const studentTable = document.getElementById("studentTable");
+      studentTable.innerHTML = students.map((student, index) => `
+        <tr>
+          <td>${student.id}</td>
+          <td>${student.name}</td>
+          <td>${student.studentClass}</td>
+          <td>${student.fee}</td>
+          <td><img src="${student.photo}" alt="Photo" class="student-photo"></td>
+          <td>
+            <button class="action-btn delete-btn" onclick="deleteStudent(${index})">Delete</button>
+            <button class="action-btn edit-btn" onclick="editStudent(${index})">Edit</button>
+            <button class="action-btn print-btn" onclick="printStudentBill(${index})">Print</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function deleteStudent(index) {
+      const students = JSON.parse(localStorage.getItem("students")) || [];
+      students.splice(index, 1);
+      localStorage.setItem("students", JSON.stringify(students));
+      displayStudents();
+    }
+// Edit Student
+    function editStudent(index) {
+      const students = JSON.parse(localStorage.getItem("students")) || [];
+      const student = students[index];
+
+      const newName = prompt("Edit Name:", student.name) || student.name;
+      const newClass = prompt("Edit Class:", student.studentClass) || student.studentClass;
+      const newFee = prompt("Edit Fee:", student.fee) || student.fee;
+
+      students[index] = { ...student, name: newName, studentClass: newClass, fee: newFee };
+      localStorage.setItem("students", JSON.stringify(students));
+      displayStudents();
+    }
+
+    function printStudentBill(index) {
+      const students = JSON.parse(localStorage.getItem("students"));
+      const student = students[index];
+      const printArea = document.getElementById("printArea");
+
+     printArea.innerHTML = `
+        <div class="bill">
+          <img src="${student.photo}" alt="Photo">
+          <strong>${student.name}</strong>
+          <div class="details">
+            <span><strong>Class:</strong> ${student.studentClass}</span>
+            <span><strong>ID:</strong> ${student.id}</span>
+          </div>
+          <div class="fee">
+            <p><strong>Fee: NPR ${student.fee}</strong></p>
+          </div>
+         <div class="signature">
+  ${teacherSignature ? `<img src="${teacherSignature}" class="signature-photo" alt="Teacher's Signature">` : ''}
+  <div class="line"></div>
+  <span style="font-size: 10px; font-weight: bold; margin-top: 5px; display: inline-block;">Teacher's Signature</span>
+</div>
+        </div>
+      `;
+      window.print();
+    }
+
+    function printAllBills() {
+      const students = JSON.parse(localStorage.getItem("students"));
+      const printArea = document.getElementById("printArea");
+
+      printArea.innerHTML = students.map(student => `
+        <div class="bill">
+          <img src="${student.photo}" alt="Photo">
+          <strong>${student.name}</strong>
+          <div class="details">
+            <span><strong>ID:</strong> ${student.id}</span>
+            <span><strong>Class:</strong> ${student.studentClass}</span>
+          </div>
+          <div class="fee">
+            <p><strong>Tuition Fee: Rs. ${student.fee}</strong></p>
+          </div>
+          <div class="signature">
+  ${teacherSignature ? `<img src="${teacherSignature}" class="signature-photo" alt="Teacher's Signature">` : ''}
+  <div class="line"></div>
+  <span style="font-size: 10px; font-weight: bold; margin-top: 5px; display: inline-block;">Teacher's Signature</span>
+</div>
+
+        </div>
+      `).join('');
+      window.print();
+    }
+
+    window.onload = displayStudents;
+  </script>
+</body>
+</html>
