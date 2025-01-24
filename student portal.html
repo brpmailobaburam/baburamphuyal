@@ -38,7 +38,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, auto);
-        gap: 2mm;
+        gap: 4mm;
         page-break-before: always;
       }
 
@@ -81,29 +81,29 @@
 
 .bill .signature {
   margin-top: 10px;
-  text-align: right; /* सबै सामग्रीलाई केन्द्रित गर्न */
+  text-align: right; 
   width: 100%;
   font-size: 12px;
 }
 
 .bill .signature .signature-photo {
-  width: 50px; /* हस्ताक्षर फोटोको साइज */
-  height: 40px;
+  width: 80px; 
+  height: 70px;
   object-fit: contain;
-  margin-bottom: 5px; /* फोटो र लाइन बीचको ठाउँ */
+  margin-bottom: 5px; 
 }
 
 .bill .signature .line {
   margin-top: 5px;
   border-top: 1px solid black;
-  width: 100px; /* लाइनको लम्बाइ */
+  width: 100px; 
   margin-left: auto;
 }
 
 .bill .signature span {
-  display: block; /* टेक्स्टलाई फोटो र लाइनको तल राख्न */
+  display: block; 
   font-weight: bold;
-  margin-top: 5px; /* टेक्स्ट र लाइन बीचको ठाउँ */
+  margin-top: 5px; 
 }
 }
   </style>
