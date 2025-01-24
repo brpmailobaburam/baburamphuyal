@@ -37,8 +37,8 @@
       .print-area {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, auto);
-        gap: 4mm;
+        grid-template-rows: repeat(3, auto);
+        gap: 3mm;
         page-break-before: always;
       }
 
@@ -73,14 +73,14 @@
       }
 
       .bill .fee {
-        margin: 5px 0;
+        margin: 10px 0;
         font-size: 20px;
         font-weight: bold;
         text-align: center;
       }
 
 .bill .signature {
-  margin-top: 5px;
+  margin-top: 10px;
   text-align: right; 
   width: 100%;
   font-size: 12px;
@@ -102,7 +102,7 @@
 
 .bill .signature span {
   display: block; 
-  font-weight: bold;
+ 
   margin-top: 5px; 
 }
 }
@@ -249,9 +249,9 @@
           <td>${student.fee}</td>
           <td><img src="${student.photo}" alt="Photo" class="student-photo"></td>
           <td>
-            <button class="action-btn delete-btn" onclick="deleteStudent(${index})">Delete</button>
-            <button class="action-btn edit-btn" onclick="editStudent(${index})">Edit</button>
-            <button class="action-btn print-btn" onclick="printStudentBill(${index})">Print</button>
+           <button class="action-btn print-btn" onclick="printStudentBill(${index})">Print</button>
+     	 <button class="action-btn edit-btn" onclick="editStudent(${index})">Edit</button>
+            <button class="action-btn delete-btn" onclick="deleteStudent(${index})">Delete</button>            
           </td>
         </tr>
       `).join('');
@@ -277,58 +277,66 @@
       displayStudents();
     }
 
-    function printStudentBill(index) {
-      const students = JSON.parse(localStorage.getItem("students"));
-      const student = students[index];
-      const printArea = document.getElementById("printArea");
+    function getCurrentDate() {
+  const today = new Date();
+  const nepaliDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  return nepaliDate;
+}
 
-     printArea.innerHTML = `
-        <div class="bill">
-          <img src="${student.photo}" alt="Photo">
-          <strong>${student.name}</strong>
-          <div class="details">
-            <span><strong>Class:</strong> ${student.studentClass}</span>
-            <span><strong>ID:</strong> ${student.id}</span>
-          </div>
-          <div class="fee">
-            <p><strong>Fee: NPR ${student.fee}</strong></p>
-          </div>
-         <div class="signature">
-  ${teacherSignature ? `<img src="${teacherSignature}" class="signature-photo" alt="Teacher's Signature">` : ''}
-  <div class="line"></div>
-  <span style="font-size: 10px; font-weight: bold; margin-top: 5px; display: inline-block;">Teacher's Signature</span>
-</div>
-        </div>
-      `;
-      window.print();
-    }
+// Replace placeholder dates on bill generation
+function printStudentBill(index) {
+  const students = JSON.parse(localStorage.getItem("students"));
+  const student = students[index];
+  const printArea = document.getElementById("printArea");
 
-    function printAllBills() {
-      const students = JSON.parse(localStorage.getItem("students"));
-      const printArea = document.getElementById("printArea");
+  printArea.innerHTML = `
+    <div class="bill">
+      <img src="${student.photo}" alt="Photo">
+      <strong>${student.name}</strong>
+      <div class="details">
+        <span><strong>Class:</strong> ${student.studentClass}</span>
+        <span><strong>ID:</strong> ${student.id}</span>
+      </div>
 
-      printArea.innerHTML = students.map(student => `
-        <div class="bill">
-          <img src="${student.photo}" alt="Photo">
-          <strong>${student.name}</strong>
-          <div class="details">
-            <span><strong>ID:</strong> ${student.id}</span>
-            <span><strong>Class:</strong> ${student.studentClass}</span>
-          </div>
-          <div class="fee">
-            <p><strong>Tuition Fee: Rs. ${student.fee}</strong></p>
-          </div>
-          <div class="signature">
-  ${teacherSignature ? `<img src="${teacherSignature}" class="signature-photo" alt="Teacher's Signature">` : ''}
-  <div class="line"></div>
-  <span style="font-size: 10px; font-weight: bold; margin-top: 5px; display: inline-block;">Teacher's Signature</span>
-</div>
+      <div class="fee">
+        <span style="font-size: 10px; margin-top: 5px; display: inline-block;"><p>Date: ${getCurrentDate()}</p>
+        <p><strong>Tuition Fee: Rs ${student.fee}</strong></p>
+      </div>
+     <div class="signature">
+        ${teacherSignature ? `<img src="${teacherSignature}" class="signature-photo" alt="Teacher's Signature">` : ''}
+        <div class="line"></div>
+        <span style="font-size: 10px; font-weight: bold; margin-top: 5px; display: inline-block;">Teacher's Signature</span>
+      </div>
+    </div>
+  `;
+  window.print();
+}
 
-        </div>
-      `).join('');
-      window.print();
-    }
+function printAllBills() {
+  const students = JSON.parse(localStorage.getItem("students"));
+  const printArea = document.getElementById("printArea");
 
+  printArea.innerHTML = students.map(student => `
+    <div class="bill">
+      <img src="${student.photo}" alt="Photo">
+      <strong>${student.name}</strong>
+      <div class="details">
+        <span><strong>ID:</strong> ${student.id}</span>
+        <span><strong>Class:</strong> ${student.studentClass}</span>
+      </div>
+      <div class="fee">
+        <span style="font-size: 10px; margin-top: 5px; display: inline-block;"><p>Date: ${getCurrentDate()}</p>
+        <p><strong>Tuition Fee: Rs. ${student.fee}</strong></p>
+      </div>
+      <div class="signature">
+        ${teacherSignature ? `<img src="${teacherSignature}" class="signature-photo" alt="Teacher's Signature">` : ''}
+        <div class="line"></div>
+        <span style="font-size: 10px; font-weight: bold; margin-top: 5px; display: inline-block;">Teacher's Signature</span>
+      </div>
+    </div>
+  `).join('');
+  window.print();
+}
     window.onload = displayStudents;
   </script>
 </body>
