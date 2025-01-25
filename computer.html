@@ -1,4 +1,4 @@
-<!-- computer.html -->
+<!--computer html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +59,12 @@
             text-decoration: underline;
         }
 
+        .video-section {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            text-align: center;
+        }
+
         footer {
             background-color: #333;
             color: #fff;
@@ -100,7 +106,7 @@
             <div class="topic">
                 <h3>Computer Basics</h3>
                 <p>Learn the fundamentals of computers, including hardware and software basics.</p>
-                <a href="basics.html">Explore Computer Basics</a>
+                <a href="#" onclick="showVideo()">Explore Computer Basics</a>
             </div>
 
             <!-- Topic 2 -->
@@ -125,19 +131,37 @@
             </div>
 
         </div>
+
+        <!-- Video Section -->
+        <div class="video-section" id="videoSection">
+            <h3>Learn through Video</h3>
+            <p>Watch our YouTube video to enhance your computer knowledge.</p>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/vAmUDb-TaFA" 
+                title="YouTube video" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
-    <!-- Footer Section with JavaScript for Date -->
+    <!-- Footer Section -->
     <footer>
         <p id="footerText"></p>
+        <span class="highlight" style="color: red;"><p>Have any Questions: +977-9844078996</span></p>
         <div class="social-links">
+            <a href="http://www.facebook.com/brpmailo" target="_blank">Facebook</a>
             <a href="http://www.youtube.com/@ComputerMsaterBrp" target="_blank">YouTube</a>
+            <a href="http://www.tiktok.com/brpmailobaburam1" target="_blank">TikTok</a>
         </div>
         <script>
-            // JavaScript for displaying current date and message in the footer
-            document.getElementById('footerText').textContent = "All rights reserved Brpmailo date: " + new Date().toLocaleDateString();
+            // JavaScript for displaying current date in the footer
+            document.getElementById('footerText').textContent = "All rights reserved Our Computer Hub date: " + new Date().toLocaleDateString();
+
+            // JavaScript to show video when link is clicked
+            function showVideo() {
+                document.getElementById('videoSection').style.display = 'block';
+            }
         </script>
     </footer>
-
 </body>
 </html>
