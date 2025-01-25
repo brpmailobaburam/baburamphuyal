@@ -95,12 +95,16 @@
     <!-- Header Section -->
     <header>
         <h1>Welcome to Computer Knowledge Hub</h1>
-        <p>Learn and Explore Basics of Computers</p>
-    </header>
+        <h2><span class="highlight" style="color: blue;">Learn and Explore Basics of Computers</span></h2>
+<!-- Add Home link to the top -->
+<a href="computer.html" style="color: #fff; text-decoration: none; padding: 10px; display: block; text-align: left; background-color: #4CAF50; border-radius: 5px; font-weight: bold;">Go to Home</a>
+</header>
 
+  
     <!-- Main Content Section -->
     <div class="content">
-        <div class="topics">
+        <div class="topics" id="topics">
+
 
             <!-- Topic 1 -->
             <div class="topic">
@@ -109,12 +113,14 @@
                 <a href="#" onclick="showVideo()">Explore Computer Basics</a>
             </div>
 
+
             <!-- Topic 2 -->
             <div class="topic">
                 <h3>Hardware & Printer</h3>
                 <p>Discover the essentials of computer hardware and printers.</p>
                 <a href="hardware.html">Explore Hardware & Printer</a>
             </div>
+
 
             <!-- Topic 3 -->
             <div class="topic">
@@ -123,26 +129,48 @@
                 <a href="os.html">Explore Operating Systems</a>
             </div>
 
+
             <!-- Topic 4 -->
             <div class="topic">
                 <h3>Internet & Networking</h3>
                 <p>Discover how the internet works and explore networking basics.</p>
                 <a href="networking.html">Explore Internet & Networking</a>
             </div>
-
         </div>
+
+
+
+
 
         <!-- Video Section -->
-        <div class="video-section" id="videoSection">
-            <h3>Learn through Video</h3>
-            <p>Watch our YouTube video to enhance your computer knowledge.</p>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/vAmUDb-TaFA" 
-                title="YouTube video" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
+<div class="video-section" id="videoSection">
+    <h3>Learn through Video</h3>
+    <p>Watch our YouTube video to enhance your computer knowledge.</p>
+    <p>तलका भिडियोहरु हेरेर तपाइँ कम्प्युटर सिक्न सक्नुहुन्छ: </p>
+
+    <!-- First Video -->
+    <iframe width="100%" height="500" src="https://www.youtube.com/embed/vAmUDb-TaFA" 
+        title="YouTube video 1" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+    
+    <!-- Second Video -->
+    <iframe width="100%" height="500" src="https://www.youtube.com/embed/teHmlDKvUys?si=gVc3k9-cafgnT9Pg" 
+        title="YouTube video 2" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+
+<!-- Third Video -->
+
+</div>
     </div>
+
+
+
+
+
 
     <!-- Footer Section -->
     <footer>
@@ -157,8 +185,12 @@
             // JavaScript for displaying current date in the footer
             document.getElementById('footerText').textContent = "All rights reserved Our Computer Hub date: " + new Date().toLocaleDateString();
 
-            // JavaScript to show video when link is clicked
+            // JavaScript to show video when link is clicked and hide other content
             function showVideo() {
+                // Hide the topics section
+                document.getElementById('topics').style.display = 'none';
+
+                // Show video section
                 document.getElementById('videoSection').style.display = 'block';
             }
         </script>
