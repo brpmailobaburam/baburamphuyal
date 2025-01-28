@@ -60,9 +60,24 @@
         }
 
         .video-section {
-            display: none; /* Initially hidden */
+            display: none;
             margin-top: 20px;
             text-align: center;
+        }
+
+        .video-list {
+            margin-top: 15px;
+        }
+
+        .video-list a {
+            display: block;
+            color: #4CAF50;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .video-list a:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -94,33 +109,30 @@
 
     <!-- Header Section -->
     <header>
-        <h1>Welcome to Computer Knowledge Hub</h1>
-        <h2><span class="highlight" style="color: blue;">Learn and Explore Basics of Computers</span></h2>
-<!-- Add Home link to the top -->
-<a href="computer.html" style="color: #fff; text-decoration: none; padding: 10px; display: block; text-align: left; background-color: #4CAF50; border-radius: 5px; font-weight: bold;">Go to Home</a>
-</header>
+        <h1><span class="highlight" style="color: white;">Welcome to Computer Knowledge Hub</span></h1>
+        <h2><span class="highlight" style="color: yellow;">Learn and Explore Basics of Computers</span></h2>
+     <a href="computer.html" style="color: orange; text-decoration: none; padding: 10px; display: block; background-color: blue; border-radius: 5px; font-weight: bold; font-size: 20px; width: fit-content;">Go to Home</a>
+    </header>
 
-  
+
+
     <!-- Main Content Section -->
     <div class="content">
         <div class="topics" id="topics">
-
 
             <!-- Topic 1 -->
             <div class="topic">
                 <h3>Computer Basics</h3>
                 <p>Learn the fundamentals of computers, including hardware and software basics.</p>
-                <a href="#" onclick="showVideo()">Explore Computer Basics</a>
+                <a href="#" onclick="showBasicsVideo()">Explore Computer Basics</a>
             </div>
-
 
             <!-- Topic 2 -->
             <div class="topic">
                 <h3>Hardware & Printer</h3>
                 <p>Discover the essentials of computer hardware and printers.</p>
-                <a href="hardware.html">Explore Hardware & Printer</a>
+                <a href="#" onclick="showPrinterVideo()">Explore Hardware & Printer</a>
             </div>
-
 
             <!-- Topic 3 -->
             <div class="topic">
@@ -128,7 +140,6 @@
                 <p>Understand different types of operating systems like Windows, macOS, and Linux.</p>
                 <a href="os.html">Explore Operating Systems</a>
             </div>
-
 
             <!-- Topic 4 -->
             <div class="topic">
@@ -142,33 +153,65 @@
 
 
 
-        <!-- Video Section -->
-<div class="video-section" id="videoSection">
-    <h3>Learn through Video</h3>
-    <p>Watch our YouTube video to enhance your computer knowledge.</p>
-    <p>तलका भिडियोहरु हेरेर तपाइँ कम्प्युटर सिक्न सक्नुहुन्छ: </p>
+        <!-- Video Section for Computer Basics -->
+        <div class="video-section" id="videoSectionBasics">
+<span class="highlight" style="color:;"><h3>Learn Through Video</h3></span>
+<span class="highlight" style="color: red;"><h4>यहाँ राखिएका भिडियोहरु हेरेर तपाईं कम्प्युटर बेसिक जान्नुहुने छ </h4></span>
+<p>Voice Typing गर्न जान्नको लागि </p>
+            <iframe width="100%" height="500" src="https://www.youtube.com/embed/vAmUDb-TaFA" 
+                title="Computer Basics Video" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
 
-    <!-- First Video -->
-    <iframe width="100%" height="500" src="https://www.youtube.com/embed/vAmUDb-TaFA" 
-        title="YouTube video 1" frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
-    
-    <!-- Second Video -->
-    <iframe width="100%" height="500" src="https://www.youtube.com/embed/teHmlDKvUys?si=gVc3k9-cafgnT9Pg" 
-        title="YouTube video 2" frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
+<p>MS Word जान्नको लागि </p>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/teHmlDKvUys"
+                title="Computer Basics Video" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
 
-<!-- Third Video -->
+<p>Copy Design गर्न जान्नको लागि </p>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/aeYVni3l80Y?si=f-Pd-PRAwnUl4OVT"
+                title="Computer Basics Video" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
 
-</div>
+<p>Letter Pad Design गर्न जान्नको लागि </p>
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/OUFXsr9ZloA?si=0d93SHznNxiSsnFl"
+                title="Computer Basics Video" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+
+            <div class="video-list">
+                <h4>More Videos:</h4>
+                <a href="#" onclick="loadVideo('https://www.youtube.com/embed/teHmlDKvUys')">Computer Basics - Part 2</a>
+                <a href="#" onclick="loadVideo('https://www.youtube.com/embed/4R8nKXmQt04')">Computer Basics - Advanced Tips</a>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- Video Section for Hardware & Printer -->
+        <div class="video-section" id="videoSectionPrinter">
+            <h3>Hardware & Printer Video Tutorial</h3>
+            <iframe width="100%" height="500" src="https://www.youtube.com/embed/4R8nKXmQt04?si=i6ujhnLg9pt0ASok" 
+                title="Hardware & Printer Video" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+            <div class="video-list">
+                <h4>More Videos:</h4>
+                <a href="#" onclick="loadVideo('https://www.youtube.com/embed/vAmUDb-TaFA')">Printer Setup Guide</a>
+                <a href="#" onclick="loadVideo('https://www.youtube.com/embed/4R8nKXmQt04')">Hardware Maintenance Tips</a>
+            </div>
+        </div>
     </div>
-
-
-
 
 
 
@@ -181,19 +224,31 @@
             <a href="http://www.youtube.com/@ComputerMsaterBrp" target="_blank">YouTube</a>
             <a href="http://www.tiktok.com/brpmailobaburam1" target="_blank">TikTok</a>
         </div>
-        <script>
-            // JavaScript for displaying current date in the footer
-            document.getElementById('footerText').textContent = "All rights reserved Our Computer Hub date: " + new Date().toLocaleDateString();
-
-            // JavaScript to show video when link is clicked and hide other content
-            function showVideo() {
-                // Hide the topics section
-                document.getElementById('topics').style.display = 'none';
-
-                // Show video section
-                document.getElementById('videoSection').style.display = 'block';
-            }
-        </script>
     </footer>
+
+    <script>
+        // Display current date in footer
+        document.getElementById('footerText').textContent = "All rights reserved Our Computer Hub date: " + new Date().toLocaleDateString();
+
+        // Show Computer Basics Video
+        function showBasicsVideo() {
+            document.getElementById('topics').style.display = 'none';
+            document.getElementById('videoSectionPrinter').style.display = 'none';
+            document.getElementById('videoSectionBasics').style.display = 'block';
+        }
+
+        // Show Hardware & Printer Video
+        function showPrinterVideo() {
+            document.getElementById('topics').style.display = 'none';
+            document.getElementById('videoSectionBasics').style.display = 'none';
+            document.getElementById('videoSectionPrinter').style.display = 'block';
+        }
+
+        // Load specific video into iframe
+        function loadVideo(videoUrl) {
+            const iframes = document.querySelectorAll('.video-section iframe');
+            iframes.forEach(iframe => iframe.src = videoUrl);
+        }
+    </script>
 </body>
 </html>
