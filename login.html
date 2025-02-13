@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+    </style>
+
+    <script>
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        // Disable F12 (Inspect Element)
+        document.onkeydown = function (e) {
+            if (e.keyCode == 123) {  // F12 key
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl + Shift + I
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 85) {  // Ctrl + U (View Source)
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Student Portal Login</h2>
+        <form id="loginForm">
+            <input type="text" id="studentId" placeholder="Enter your ID" required>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div id="error-message" class="error-message"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('error-message');
+
+        // Array of valid ID and Password pairs
+        const validCredentials = [
+            { id: 'student1', password: 'password123' },
+            { id: 'student2', password: 'password234' },
+            { id: 'student3', password: 'password345' },
+            { id: 'student4', password: 'password456' },
+            { id: 'student5', password: 'password567' },
+            { id: 'student6', password: 'password678' },
+            { id: 'student7', password: 'password789' },
+            { id: 'student8', password: 'password890' },
+            { id: 'student9', password: 'password901' },
+            { id: 'student10', password: 'password112' },
+            { id: 'student11', password: 'password223' },
+            { id: 'student12', password: 'password334' },
+            { id: 'student13', password: 'password445' },
+            { id: 'student14', password: 'password556' },
+            { id: 'student15', password: 'password667' }
+        ];
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form from submitting normally
+
+            const studentId = document.getElementById('studentId').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the entered ID and Password match any of the valid credentials
+            const user = validCredentials.find(cred => cred.id === studentId && cred.password === password);
+
+            if (user) {
+                window.location.href = 'student portal.html'; // Redirect to student portal
+            } else {
+                errorMessage.textContent = 'Incorrect ID or Password. Please try again.';
+            }
+        });
+    </script>
+
+</body>
+</html>
