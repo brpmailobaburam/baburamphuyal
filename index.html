@@ -219,11 +219,12 @@ footer {
 
 <h2>तपाईं कुन पेजमा जान चाहनुहुन्छ?</h2>
 <nav>
-    <a href="sahitik.html="_blank>साहित्यिक पेज (Literary Page)</a>
-    <a href="saikshik.html="_blank>शैक्षिक पेज (Educational Page)</a>
-    <a href="quiz section.html="_blank>कुइज़ पेज (Quiz Page)</a>
-    <a href="student portal.html="_blank>विद्यार्थी दर्ता पेज (Student Portal)</a>
-    <a href="computer.html="_blank>कम्प्यूटर सिक्ने पेज (Computer Page)</a>
+    <a href="sahitik.html" target="_blank">साहित्यिक पेज (Literary Page)</a>
+<a href="saikshik.html" target="_blank">शैक्षिक पेज (Educational Page)</a>
+<a href="quiz section.html" target="_blank">कुइज़ पेज (Quiz Page)</a>
+<a href="student portal.html" target="_blank">विद्यार्थी दर्ता पेज (Student Portal)</a>
+<a href="computer.html" target="_blank">कम्प्यूटर सिक्ने पेज (Computer Page)</a>
+
 </nav>
 
 <script>
@@ -288,6 +289,17 @@ footer {
         chatbotCircle.classList.toggle("open");
     }
 </script>
+
+
+<script>
+  document.querySelectorAll('a').forEach(function(link) {
+    if (link.hostname !== window.location.hostname) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+</script>
+
 
         <div class="footer-section" style="flex: 1; min-width: 250px;">
             <h4 style="color: yellow; margin-bottom: 10px;">Follow</h4>
