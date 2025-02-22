@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <style>
+        @font-face {
+            font-family: 'Ants Valley';
+            src: url('fonts/Ants Valley.ttf') format('truetype');
+        }
+
+        body { font-family: Arial, sans-serif; text-align: center; }
+        input, select, button { padding: 10px; margin: 10px; font-size: 16px; }
+        canvas { border: 1px solid black; max-width: 100%; }
+    </style>
+</head>
+<body>
+    <h2>Certificate Generator</h2>
+
+    <input type="text" id="nameInput" placeholder="Write Your Full Name">
+    
+    <!-- Gender Selection Box -->
+    <select id="genderSelect">
+        <option value="" disabled selected>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+
+    <button onclick="generateCertificate()">Generate</button>
+    <br><br>
+    
+    <canvas id="certificateCanvas" width="1000" height="600"></canvas>
+    <br>
+    <button onclick="downloadCertificate()">Download Certificate</button>
+
+    <script>
+        function generateCertificate() {
+            let name = document.getElementById("nameInput").value.trim();
+            let gender = document.getElementById("genderSelect").value;
+
+            if (!name) {
+                alert("कृपया आफ्नो नाम लेख्नुहोस्!");
+                return;
+            }
+            if (!gender) {
+                alert("कृपया Gender छान्नुहोस्!");
+                return;
+            }
+
+            // Gender अनुसार Mr./Ms. राख्ने
+            let title = gender === "Male" ? "Mr." : "Ms.";
+
+            let canvas = document.getElementById("certificateCanvas");
+            let ctx = canvas.getContext("2d");
+
+            let img = new Image();
+            img.src = "cer.jpg";  // 🔹 (Your certificate background image)
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                // Name लेख्ने Style (ठीक ठाउँमा मिलाइएको)
+                ctx.font = "50px 'Ants Valley', cursive";
+                ctx.fillStyle = "blue";
+
+                let fullName = title + " " + name; // 🔹 Generate गर्दा मात्र Mr./Ms. आउँछ
+                let nameWidth = ctx.measureText(fullName).width;
+                let nameX = (canvas.width - nameWidth) / 2; // 🔹 केन्द्रमा ल्याउने
+                let nameY = 170; // 🔹 "Certificate of Achievement" को ठीक मुनि 
+
+                ctx.fillText(fullName, nameX, nameY);
+
+                // Auto Date (मिति सही ठाउँमा राख्ने)
+                let today = new Date();
+                let date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+                ctx.font = "25px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText(" " + date, 75, 420);
+            };
+        }
+
+        function downloadCertificate() {
+            let canvas = document.getElementById("certificateCanvas");
+            let link = document.createElement("a");
+            link.download = "certificate.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        }
+    </script>
+</body>
+</html>
