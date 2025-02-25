@@ -4,34 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Basics Video</title>
+    <title>Excel Video</title>
      <link rel="icon" type="image/png" href="b.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            overflow-x: hidden; /
+            overflow-x: hidden;
         }
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             text-align: center;
             width: 100%;
         }
-
-        h3 {
-            color: red;
-        }
-
-        h4 {
-            color: blue;
-        }
-
-        .video-section {
+        h3 { color: red; }
+        h4 { color: blue; }
+        .video-section, .quiz-section {
             max-width: 900px;
             margin: 20px auto;
             background: white;
@@ -39,84 +31,135 @@
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         iframe {
             width: 100%;
             height: 500px;
             border-radius: 10px;
         }
-
-        .video-list {
-            margin-top: 10px;
+        .quiz-section {
+            display: none;
         }
-
-        .video-list a {
+        .question {
+            margin: 10px 0;
+            font-size: 18px;
+            display: none;
+        }
+        .question label {
             display: block;
-            text-decoration: none;
-            color: #4CAF50;
-            font-weight: bold;
             margin: 5px 0;
         }
-
-        .video-list a:hover {
-            text-decoration: underline;
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
         }
-
-        /* Mobile Responsive */
-        @media (max-width: 600px) {
-            iframe {
-                height: 250px;
-            }
+        .cer-link {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
         }
     </style>
 </head>
 <body>
-
-    <!-- Video Section for Computer Basics -->
     <div class="video-section" id="videoSectionBasics">
         <h3>यहाँ राखिएका भिडियोहरु हेरेर तपाईं MS Excel जान्नुहुने छ</h3>
         <h4>MS Excel Video Tutorial</h4>
-
-<iframe id="mainVideo" src="https://www.youtube.com/embed/AtZ3xzi1wq0?si=wVLuTcd91B-xHXdp" title="Computer Basics Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
-
-
-          <div class="video-list">
-            <h4>More Videos:</h4>
-<a href="#" onclick="loadVideo('https://www.youtube.com/embed/vAmUDb-TaFA')">Word Voice Typing Tips</a>           
- <a href="#" onclick="loadVideo('https://youtube.com/embed/eLZXs9JjxK8?si=dEh7ilf7iySbQVgH')">Change PDF-Word File Tips</a>
- <a href="#" onclick="loadVideo('https://youtube.com/embed/teHmlDKvUys?si=wlm7N_NSH4k2PKaO')">MS word</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/Ahiqjwgqxpw?si=OKNn8kYBReY_BwgX')">WaterMark in MS word</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/rVjpi4ifJzU?si=ot5ua-qfamWW3OCv')">Insert Bullet MS word</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/T8iQaFfODBY?si=WtZrEtymqPAnpOsG')">Auto Numbering</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/GyjnYg-1Thw?si=oSxlqIyFifcu2gVm')">CV Making</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/aeYVni3l80Y?si=xRo7fLkhmLdxEjdc')">Copy Design</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/M2ECoD0q-Sc?si=j0LTsyB2-6bWef2h')">IEMIS 2081 Problem</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/MjXtK14MLoU?si=mNJVOluWK10_4llc')">TSC License Form Tips</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/OY8higUY04Q?si=vJDcnuNTb7W323O6')"Youtube Thumbnail Making</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/V-ztyIU8ikU?si=K5WLbF0Q11EH7aWd')">Powerpoint Link</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/JTgSjTrL2gM?si=EQEJopFeKtHDnaIE')">Powerpoint Font Design with Animation</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/AtZ3xzi1wq0?si=wVLuTcd91B-xHXdp')">Excel Basic</a>
- <a href="#" onclick="loadVideo('https://www.youtube.com/embed/4R8nKXmQt04')">Brother Ink Refill Tips</a>
- <a href="#" onclick="loadVideo('https://youtube.com/embed/MosRXva6wxQ?si=DLWLqr8qAO8-57C6')">Setting</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/jYijBglHPgc?si=gaz1WlsMgxD9MjI-')">Photoshop Course</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/tPZVjk3MUtk?si=LzXpMfXLPqSpzbIw')">Free AI Powerpoint Presentation</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/ldVA_SfDc5s?si=tr-5C9szT0SQBzHr')">Army Form</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/PFLenXKuD20?si=tXiCrY8CxAQBmDFr')">Certificate Design</a>
-<a href="#" onclick="loadVideo('https://youtube.com/embed/OUFXsr9ZloA?si=SnaKazWt8Bn6sVCJ')">LetterPad Design</a>
-
-
-
-<a href="cer.html" style="color: orange; text-decoration: none; padding: 10px; background-color: blue; border-radius: 5px; font-weight: bold; font-size: 20px;">Get Your Achieve</a>
-
-        </div>
+        <iframe id="mainVideo" src="https://www.youtube.com/embed/AtZ3xzi1wq0" frameborder="0" allowfullscreen></iframe>
+        <button onclick="startQuiz()">Take Exam</button>
+    </div>
+    
+    <div class="quiz-section" id="quizSection">
+        <h3>Answer these questions to get your certificate</h3>
+        <form id="quizForm">
+            <div id="questionsContainer"></div>
+            <div id="result"></div>
+            <button type="button" onclick="checkQuiz()">Submit</button>
+            <a href="cer.html" id="certificateLink" class="cer-link">Get Your Certificate</a>
+        </form>
     </div>
 
 
+
     <script>
-        function loadVideo(url) {
-            document.getElementById("mainVideo").src = url;
+        const questions = [
+            { q: "MS Excel मा कुन प्रकारको डेटा प्रयोग गर्न सकिन्छ?", options: ["चित्र मात्र", "संख्या, अक्षर, सूत्र आदि", "भिडियो मात्र"], answer: 1 },
+            { q: "Excel मा FORMULA सुरु गर्न कुन चिन्ह प्रयोग गरिन्छ?", options: ["= (बराबर चिन्ह)", "#", "+"], answer: 0 },
+            { q: "IF() फङ्क्शनले के गर्छ?", options: ["शर्त अनुसार मान फर्काउने", "संख्या जोड्ने", "भाग गर्ने"], answer: 0 },
+           { q: "IF()+ चिह्नले के काम गर्छ?", options:  ["शर्त अनुसार मान", " जोड्ने", "भाग गर्ने"], answer: 1 },
+           { q: "IF()What is the function of SUM in Excel?  Excel मा SUM को कार्य के हो?", options:  ["A.Adds numbers in a range", "B. Finds the maximum value ", "C. Subtracts numbers"], answer: 1 }, 
+    { q: "MS Excel मा कुन प्रकारको डेटा प्रयोग गर्न सकिन्छ?", options: ["चित्र मात्र", "संख्या, अक्षर, सूत्र आदि", "भिडियो मात्र"], answer: 1 },
+    { q: "Excel मा FORMULA सुरु गर्न कुन चिन्ह प्रयोग गरिन्छ?", options: ["= (बराबर चिन्ह)", "#", "+"], answer: 0 },
+    { q: "IF() फङ्क्शनले के गर्छ?", options: ["शर्त अनुसार मान फर्काउने", "संख्या जोड्ने", "भाग गर्ने"], answer: 0 },
+    { q: "SUM() फङ्क्शनले के गर्छ?", options: ["संख्या जोड्ने", "संख्या घटाउने", "संख्या गुणा गर्ने"], answer: 0 },
+    { q: "Excel मा नयाँ शीट थप्न कुन सर्टकट कुञ्जी प्रयोग गरिन्छ?", options: ["Ctrl + N", "Shift + F11", "Alt + S"], answer: 1 },
+    { q: "Excel मा सेल मर्ज गर्न कुन फङ्क्शन प्रयोग गरिन्छ?", options: ["Merge & Center", "Wrap Text", "Format Painter"], answer: 0 },
+    { q: "Excel मा फाइल बचत गर्न कुन सर्टकट कुञ्जी प्रयोग गरिन्छ?", options: ["Ctrl + S", "Ctrl + P", "Ctrl + X"], answer: 0 },
+    { q: "Excel मा रिलेटेड डेटा फिल्टर गर्न कुन सुविधा प्रयोग गरिन्छ?", options: ["Sort", "Filter", "Data Validation"], answer: 1 },
+    { q: "Excel मा ग्राफ वा चार्ट बनाउन कुन अप्सन प्रयोग गरिन्छ?", options: ["Pivot Table", "Insert Chart", "Data Sort"], answer: 1 },
+    { q: "Excel मा कुनै सेलको पछिल्लो मान फर्काउन कुन सर्टकट प्रयोग गरिन्छ?", options: ["Ctrl + Z", "Ctrl + Y", "Ctrl + C"], answer: 0 },
+    { q: "Excel मा COUNT() फङ्क्शनको प्रयोग केका लागि गरिन्छ?", options: ["संख्या गणना गर्न", "संख्या घटाउन", "डेटा मर्ज गर्न"], answer: 0 },
+    { q: "Excel मा % निकाल्न कुन सूत्र प्रयोग गरिन्छ?", options: ["=A1*B1", "=A1/B1*100", "=A1+B1"], answer: 1 },
+    { q: "Excel मा कुनै पङ्क्ति/स्तम्भ लुकाउन कुन सर्टकट प्रयोग गरिन्छ?", options: ["Ctrl + H", "Ctrl + 9 (Row) / Ctrl + 0 (Column)", "Ctrl + L"], answer: 1 },
+    { q: "Excel मा समान डेटा छान्न कुन सुविधा प्रयोग गरिन्छ?", options: ["Remove Duplicates", "Find & Replace", "Sort"], answer: 0 },
+    { q: "Excel मा Print Preview हेर्न कुन सर्टकट कुञ्जी प्रयोग गरिन्छ?", options: ["Ctrl + P", "Ctrl + F", "Ctrl + V"], answer: 0 },
+    { q: "Excel मा AutoSum गर्न कुन सर्टकट प्रयोग गरिन्छ?", options: ["Alt + =", "Ctrl + A", "Shift + S"], answer: 0 }
+
+// Add up to 20 questions here
+        ];
+
+        function startQuiz() {
+            document.getElementById("videoSectionBasics").style.display = "none";
+            document.getElementById("quizSection").style.display = "block";
+            loadQuestions();
+        }
+
+        function loadQuestions() {
+            const container = document.getElementById("questionsContainer");
+            container.innerHTML = "";
+            questions.forEach((q, index) => {
+                const div = document.createElement("div");
+                div.className = "question";
+                div.style.display = index === 0 ? "block" : "none";
+                div.id = "question" + (index + 1);
+                div.innerHTML = `<p>${index + 1}. ${q.q}</p>` +
+                    q.options.map((opt, i) => `<label><input type="radio" name="q${index}" value="${i}" onclick="showNextQuestion(${index + 2})"> ${opt}</label>`).join("");
+                container.appendChild(div);
+            });
+        }
+
+        function showNextQuestion(nextIndex) {
+            const currentIndex = nextIndex - 1;
+            if (currentIndex < questions.length) {
+                document.getElementById("question" + currentIndex).style.display = "none";
+                if (document.getElementById("question" + nextIndex)) {
+                    document.getElementById("question" + nextIndex).style.display = "block";
+                }
+            }
+        }
+
+        function checkQuiz() {
+            let correctAnswers = 0;
+            const totalQuestions = questions.length;
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name='q${index}']:checked`);
+                if (selected && parseInt(selected.value) === q.answer) {
+                    correctAnswers++;
+                }
+            });
+
+           if (correctAnswers >= 15) {
+    document.getElementById("result").innerText = "बधाई छ! तपाईंले प्रमाणपत्र पाउन सक्नुहुन्छ।";
+    document.getElementById("result").style.color = "green";
+    document.getElementById("certificateLink").style.display = "block";
+} else {
+    document.getElementById("result").innerText = "Please try again!";
+    document.getElementById("result").style.color = "red";
+    document.getElementById("certificateLink").style.display = "none";
+}
+
         }
     </script>
-
 </body>
 </html>
