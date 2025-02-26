@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Video</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden; /* Left-Right Scroll हटाउने */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            width: 100%;
+        }
+
+        h3 {
+            color: red;
+        }
+
+        h4 {
+            color: blue;
+        }
+
+        .video-section {
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+        }
+
+        .video-list {
+            margin-top: 10px;
+        }
+
+        .video-list a {
+            display: block;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .video-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video Section for Computer Basics -->
+    <div class="video-section" id="videoSectionBasics">
+        <h3>यहाँ राखिएका भिडियोहरु हेरेर तपाईं  हार्डवेर र प्रिन्टरको बारेमा जान्नुहुने छ</h3>
+        <h4>Hardware & Printer Video Tutorial</h4>
+
+      
+        <iframe id="mainVideo" src="https://www.youtube.com/embed/4R8nKXmQt04" title="Hardware Maintenance Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        
+            
+        </div>
+    </div>
+
+    
+    
+        <div class="video-list">
+            <h4>More Videos:</h4>
+            <a href="#" onclick="loadVideo('https://www.youtube.com/embed/vAmUDb-TaFA')">Voice Typing Tips</a>
+            <a href="#" onclick="loadVideo('https://www.youtube.com/embed/4R8nKXmQt04')">Brother Ink Refill Tips</a>
+ 	  <a href="#" onclick="loadVideo('https://youtube.com/embed/eLZXs9JjxK8?si=dEh7ilf7iySbQVgH')">Change PDF-Word File Tips</a>
+ <a href="#" onclick="loadVideo('https://youtube.com/embed/MosRXva6wxQ?si=DLWLqr8qAO8-57C6')">Setting</a>
+ <a href="#" onclick="loadVideo('https://youtube.com/embed/teHmlDKvUys?si=wlm7N_NSH4k2PKaO')">MS word</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/Ahiqjwgqxpw?si=OKNn8kYBReY_BwgX')">WaterMark in MS word</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/rVjpi4ifJzU?si=ot5ua-qfamWW3OCv')">Insert Bullet MS word</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/GyjnYg-1Thw?si=oSxlqIyFifcu2gVm')">CV Making</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/M2ECoD0q-Sc?si=j0LTsyB2-6bWef2h')">IEMIS 2081 Problem</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/MjXtK14MLoU?si=mNJVOluWK10_4llc')">TSC License Form Tips</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/OY8higUY04Q?si=vJDcnuNTb7W323O6')"Youtube Thumbnail Making</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/V-ztyIU8ikU?si=K5WLbF0Q11EH7aWd')">Powerpoint Link</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/JTgSjTrL2gM?si=EQEJopFeKtHDnaIE')">Powerpoint Font Design with Animation</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/AtZ3xzi1wq0?si=wVLuTcd91B-xHXdp')">Excel Basic</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/jYijBglHPgc?si=gaz1WlsMgxD9MjI-')">Photoshop Course</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/tPZVjk3MUtk?si=LzXpMfXLPqSpzbIw')">Free AI Powerpoint Presentation</a>
+<a href="#" onclick="loadVideo('https://youtube.com/embed/ldVA_SfDc5s?si=tr-5C9szT0SQBzHr')">Army Form</a>
+
+        </div>
+    </div>
+
+    <script>
+        function loadVideo(url) {
+            document.getElementById("mainVideo").src = url;
+        }
+    </script>
+
+</body>
+</html>
