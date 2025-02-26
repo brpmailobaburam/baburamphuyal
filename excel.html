@@ -67,17 +67,18 @@
         <h3>यहाँ राखिएका भिडियोहरु हेरेर तपाईं MS Excel जान्नुहुने छ</h3>
         <h4>MS Excel Video Tutorial</h4>
         <iframe id="mainVideo" src="https://www.youtube.com/embed/AtZ3xzi1wq0" frameborder="0" allowfullscreen></iframe>
-        <button onclick="startQuiz()">Take Exam</button>
+ <iframe id="mainVideo" src="https://www.youtube.com/embed/g12v0O2JxjE?si=zWWMIqOJrwQIkEvr " frameborder="0" allowfullscreen></iframe>
+        <button onclick="startQuiz()">Take Exam & Get Your Achievement</button>
     </div>
-    
+ 
     <div class="quiz-section" id="quizSection">
         <h3>Answer these questions to get your certificate</h3>
         <form id="quizForm">
             <div id="questionsContainer"></div>
             <div id="result"></div>
-            <button type="button" onclick="checkQuiz()">Submit</button>
-            <a href="cer.html" id="certificateLink" class="cer-link">Get Your Certificate</a>
-        </form>
+            <button type="button" onclick="checkQuiz()">Submit</button>            
+<a href="cer.html"  id="certificateLink" class="cer-link" style="color: orange; text-decoration: none; padding: 10px; background-color: blue; border-radius: 5px; font-weight: bold; font-size: 20px;">Get Your Achievement</a>       
+ </form>
     </div>
 
 
@@ -85,25 +86,24 @@
     <script>
         const questions = [
             { q: "MS Excel मा कुन प्रकारको डेटा प्रयोग गर्न सकिन्छ?", options: ["चित्र मात्र", "संख्या, अक्षर, सूत्र आदि", "भिडियो मात्र"], answer: 1 },
-            { q: "Excel मा FORMULA सुरु गर्न कुन चिन्ह प्रयोग गरिन्छ?", options: ["= (बराबर चिन्ह)", "#", "+"], answer: 0 },
-            { q: "IF() फङ्क्शनले के गर्छ?", options: ["शर्त अनुसार मान फर्काउने", "संख्या जोड्ने", "भाग गर्ने"], answer: 0 },
-           { q: "IF()+ चिह्नले के काम गर्छ?", options:  ["शर्त अनुसार मान", " जोड्ने", "भाग गर्ने"], answer: 1 },
-           { q: "IF()What is the function of SUM in Excel?  Excel मा SUM को कार्य के हो?", options:  ["A.Adds numbers in a range", "B. Finds the maximum value ", "C. Subtracts numbers"], answer: 1 }, 
-    { q: "MS Excel मा कुन प्रकारको डेटा प्रयोग गर्न सकिन्छ?", options: ["चित्र मात्र", "संख्या, अक्षर, सूत्र आदि", "भिडियो मात्र"], answer: 1 },
-    { q: "Excel मा FORMULA सुरु गर्न कुन चिन्ह प्रयोग गरिन्छ?", options: ["= (बराबर चिन्ह)", "#", "+"], answer: 0 },
-    { q: "IF() फङ्क्शनले के गर्छ?", options: ["शर्त अनुसार मान फर्काउने", "संख्या जोड्ने", "भाग गर्ने"], answer: 0 },
+            { q: "Excel मा FORMULA सुरु गर्न कुन चिन्ह प्रयोग गरिन्छ?", options: ["= (बराबर चिन्ह)", "#Hash", "+ Pluss"], answer: 0 },
+            { q: "IF() फङ्क्शनले के गर्छ?", options: [ "संख्या जोड्ने", "भाग गर्ने", "शर्त अनुसार मान फर्काउने"], answer: 2 },
+           { q: "+ चिह्नले के काम गर्छ?", options:  ["शर्त अनुसार मान घटाउने", "शर्त अनुसार मान जोड्ने", "भाग गर्ने"], answer: 1 },
+           { q: "What is the function of SUM in Excel?", options:  ["Adds numbers in a range", " Finds the maximum value ", " Subtracts numbers"], answer: 1 }, 
+    { q: "MS Excel मा गुणन (Multiply) गर्न कुन चिह्न प्रयोग गरिन्छ?", options: ["*", "#", "+"], answer: 0 },
+    { q: "Excel मा एक पटक FORMULA प्रयोग गरेपछि फेरी पनि प्रयोग गर्ने गरिन्छ?", options: ["ठिक", "सन्दर्भ अनुसार", "बेठिक"], answer: 1 },
     { q: "SUM() फङ्क्शनले के गर्छ?", options: ["संख्या जोड्ने", "संख्या घटाउने", "संख्या गुणा गर्ने"], answer: 0 },
-    { q: "Excel मा नयाँ शीट थप्न कुन सर्टकट कुञ्जी प्रयोग गरिन्छ?", options: ["Ctrl + N", "Shift + F11", "Alt + S"], answer: 1 },
+    { q: "Excel मा नयाँ शीट थप्न कुन सर्टकट कि प्रयोग गरिन्छ?", options: ["Ctrl + N", "Shift + F11", "Alt + S"], answer: 1 },
     { q: "Excel मा सेल मर्ज गर्न कुन फङ्क्शन प्रयोग गरिन्छ?", options: ["Merge & Center", "Wrap Text", "Format Painter"], answer: 0 },
-    { q: "Excel मा फाइल बचत गर्न कुन सर्टकट कुञ्जी प्रयोग गरिन्छ?", options: ["Ctrl + S", "Ctrl + P", "Ctrl + X"], answer: 0 },
+    { q: "Excel मा फाइल सेभ गर्न कुन सर्टकट कि प्रयोग गरिन्छ?", options: ["Ctrl + V", "Ctrl + P", "Ctrl + S"], answer: 2 },
     { q: "Excel मा रिलेटेड डेटा फिल्टर गर्न कुन सुविधा प्रयोग गरिन्छ?", options: ["Sort", "Filter", "Data Validation"], answer: 1 },
-    { q: "Excel मा ग्राफ वा चार्ट बनाउन कुन अप्सन प्रयोग गरिन्छ?", options: ["Pivot Table", "Insert Chart", "Data Sort"], answer: 1 },
+    { q: "Excel मा ग्राफ वा चार्ट बनाउन कुन अप्सन प्रयोग गरिन्छ?", options: ["Pivot Table", "Data Sort", "Insert Chart"], answer: 2 },
     { q: "Excel मा कुनै सेलको पछिल्लो मान फर्काउन कुन सर्टकट प्रयोग गरिन्छ?", options: ["Ctrl + Z", "Ctrl + Y", "Ctrl + C"], answer: 0 },
     { q: "Excel मा COUNT() फङ्क्शनको प्रयोग केका लागि गरिन्छ?", options: ["संख्या गणना गर्न", "संख्या घटाउन", "डेटा मर्ज गर्न"], answer: 0 },
-    { q: "Excel मा % निकाल्न कुन सूत्र प्रयोग गरिन्छ?", options: ["=A1*B1", "=A1/B1*100", "=A1+B1"], answer: 1 },
-    { q: "Excel मा कुनै पङ्क्ति/स्तम्भ लुकाउन कुन सर्टकट प्रयोग गरिन्छ?", options: ["Ctrl + H", "Ctrl + 9 (Row) / Ctrl + 0 (Column)", "Ctrl + L"], answer: 1 },
+    { q: "Excel मा % निकाल्न कुन सूत्र प्रयोग गरिन्छ?", options: ["=A1*B1", "=A1+B1", "=A1/B1*100"], answer: 2 },
+    { q: "Excel मा कुनै पङ्क्ति/स्तम्भ लुकाउन कुन सर्टकट कि प्रयोग गरिन्छ?", options: ["Ctrl + H", "Ctrl + 9 / Ctrl + 0 ", "Ctrl + L"], answer: 1 },
     { q: "Excel मा समान डेटा छान्न कुन सुविधा प्रयोग गरिन्छ?", options: ["Remove Duplicates", "Find & Replace", "Sort"], answer: 0 },
-    { q: "Excel मा Print Preview हेर्न कुन सर्टकट कुञ्जी प्रयोग गरिन्छ?", options: ["Ctrl + P", "Ctrl + F", "Ctrl + V"], answer: 0 },
+    { q: "Excel मा Print Preview हेर्न कुन सर्टकट Key प्रयोग गरिन्छ?", options: ["Ctrl + V", "Ctrl + F", "Ctrl + P"], answer: 2 },
     { q: "Excel मा AutoSum गर्न कुन सर्टकट प्रयोग गरिन्छ?", options: ["Alt + =", "Ctrl + A", "Shift + S"], answer: 0 }
 
 // Add up to 20 questions here
@@ -150,7 +150,7 @@
             });
 
            if (correctAnswers >= 15) {
-    document.getElementById("result").innerText = "बधाई छ! तपाईंले प्रमाणपत्र पाउन सक्नुहुन्छ।";
+    document.getElementById("result").innerText = "Congratulations!";
     document.getElementById("result").style.color = "green";
     document.getElementById("certificateLink").style.display = "block";
 } else {
