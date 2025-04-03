@@ -21,23 +21,34 @@
     position: relative;
 }
 body {
+    position: relative;
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+body {
     background: url('student.jpg') no-repeat center center/cover;
     min-height: 100vh;
     background-attachment: fixed;
-    background-position: center; /* Image को सही position */
+    background-position: center;
 }
 
 
-/* Sky blue overlay */
+
+
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(135, 206, 250, 0.5);
-    z-index: 1;
+    background: rgba(135, 206, 250, 0.9); 
+    z-index: -1;
 }
+
+
+
 
 /* Navbar */
 .navbar {
@@ -46,7 +57,7 @@ body {
     justify-content: flex-start;
     gap: 20px;
     padding: 10px 30px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(30, 20, 0, 0.7);
     position: fixed;
     width: 100%;
     top: 0;
@@ -77,6 +88,9 @@ body {
     background: yellow;
     color: black;
 }
+
+
+
 
 /* Mobile Menu */
 .hamburger {
@@ -113,6 +127,9 @@ body {
     }
 }
 
+
+
+
 /* Main Section */
 .main-container {
     display: flex;
@@ -129,27 +146,28 @@ body {
 .main-container {
     width: 100%;
     max-width: 100%;
-    overflow: hidden; /* कुनै element बाहिर नजान दिने */
+    overflow: hidden; 
 }
+
 
 
 /* Slide Animation */
 .slide-image, .slide-text, .slide-button {
     position: absolute;
     transform: translateY(-50%);
-    transition: all 1.5s ease-in-out;
+    transition: all 3s ease-in-out;
     z-index: 2;
 }
 
 .slide-image {
-    top: 75%;
+    top: 65%;
     right: -100%;
-    width: 60%;
+    width: 100%;
     max-width: 800px;
 }
 
 .slide-text {
-    top: 40%;
+    top: 30%;
     left: -100%;
     font-size: 2rem;
     font-weight: bold;
@@ -172,12 +190,15 @@ body {
    color: black;
 }
 
+
+
 /* Responsive Images */
 @media (max-width: 768px) {
     .slide-image {
         width: 100%;
         max-width: 100%;
         right: 5%;
+overflow: hidden;
     }
 }
 
@@ -188,19 +209,19 @@ body {
 }
 @media (max-width: 768px) {
     .slide-image {
-        width: 80%; /* ठुलो देखिने */
+        width: 80%; 
         max-width: 100%;
+overflow: hidden;
     }
 }
 
 @media (max-width: 768px) {
     .slide-image {
-        width: 90%; /* Screen अनुसार adjust हुने */
-        right: 0; /* Right-side overflow रोक्ने */
+        width: 100%; 
+        right: 0; 
+overflow: hidden;
     }
 }
-
-
 
 @media (max-width: 768px) {
     .hamburger {
@@ -213,17 +234,18 @@ body {
         left: 15px;
         z-index: 1001;
         color: white;
+overflow: hidden;
     }
 
     .nav-container {
         position: fixed;
         top: 0;
-        left: -100%; /* सुरुमा पूरै लुकाउने */
-        width: 250px;  /* Left side मा मात्र खुल्ने */
+        left: -100%; 
+        width: 250px;  
         height: 100vh;
         background: rgba(0, 0, 0, 0.9);
         padding: 20px;
-        transition: left 0.5s ease-in-out; /* Smooth animation */
+        transition: left 0.5s ease-in-out; 
         z-index: 1000;
     }
 
@@ -239,18 +261,18 @@ body {
         color: black;
     }
 
-    /* Menu खुल्दा left मा आउने */
     .nav-container.show {
         left: 0;
     }
 }
 @media (max-width: 768px) {
     .slide-image {
-        width: 150vw; /* Viewport अनुसार Fit हुने */
+        width: 150vw; 
         height: auto;
-        right: -100%; /* सुरुवातमा बाहिर */
+        right: -100%; 
         max-width: none;
         transition: all 1s ease-in-out;
+overflow: hidden;
     }
 }
 
@@ -276,25 +298,29 @@ body {
 }
 
 .binfo-section {
-    background: green;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-
-.binfo-section {
     background: #28a745;
     color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%; /* 📌 Full width बनाउन */
-    max-width: 1400px; /* 📌 ठूला स्क्रिनमा राम्रो देखाउन */
-    margin: auto;
+    padding: 30px;
+    border-radius: 0px;
+    width: 100%;  
+    max-width: 1400px; 
+    margin: 0 auto; 
     font-family: Arial, sans-serif;
+    box-sizing: border-box; 
+    overflow: hidden; 
 }
+
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+    .binfo-section {
+        width: 100%;  
+        padding: 15px; 
+        margin: 10 20px;  
+    }
+}
+
+
 
 .faq-item {
     margin-top: 10px;
@@ -325,10 +351,10 @@ body {
     border-radius: 5px;
 }
 
-/* 📌 Mobile Friendly बनाउने */
+
 @media (max-width: 768px) {
     .binfo-section {
-        width: 95%; /* मोबाइलमा राम्रो देखाउन */
+        width: 95%; 
     }
 }
 
@@ -352,13 +378,13 @@ body {
 
 }    
 .bordered-text {
-    border: 2px solid black;  /* Border color */
-    padding: 10px;            /* Spacing inside border */
-    display: inline-block;     /* Fit the content */
+    border: 2px solid black;  
+    padding: 10px;            
+    display: inline-block;    
 }
 
 .designer {
-    color: red; /* Designer text ko color */
+    color: red; 
     font-weight: bold;
 }
 
@@ -374,13 +400,55 @@ body {
     text-decoration: none;
 }
 
-.social-links a:hover {
-    color: #007bff;
+.social-links a {
+    margin: 0 10px;
+    color: black;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
+
+
+
+
+.social-links a:hover {
+    color: #007bff;  
+}
+
+/* Facebook Hover */
+.social-links a.facebook:hover {
+    color: #3b5998; 
+}
+
+/* YouTube Hover */
+.social-links a.youtube:hover {
+    color: #ff0000; 
+}
+
+/* Twitter Hover */
+.social-links a.twitter:hover {
+    color: #1da1f2; 
+}
+
+/* LinkedIn Hover */
+.social-links a.linkedin:hover {
+    color: #0077b5; 
+}
+
+/* Tiktok Hover */
+.social-links a.tiktok:hover {
+    color: purple; 
+}
+
+
+
+
+
+
 
 @media (max-width: 768px) {
     .binfo-section {
-        width: 95%; /* मोबाइलमा राम्रो देखाउन */
+        width: 95%; 
     }
 }
 
@@ -457,14 +525,15 @@ body {
     <div class="faq-item">
         <button class="faq-question"> हामी किन यो वेबसाइटमा आउनु❓</button>
         <div class="faq-answer">
-            <p>✅ यो वेबसाइट शैक्षिक सामग्री, साहित्यिक लेख, र डिजाइन सम्बन्धी जानकारीहरूको लागि उपयुक्त छ।</p>
+            <p>✅ यो वेबसाइट तपाइँलाई आवश्यक पर्ने शैक्षिक सामग्री, साहित्यिक लेख र कम्प्युटर सम्बन्धी जानकारीहरूको लागि उपयुक्त छ।</p>
         </div>
     </div>
 
     <div class="faq-item">
         <button class="faq-question">यस वेबसाइटमा के के उपलब्ध छन्❓</button>
         <div class="faq-answer">
-            <p>✅ शिक्षासँग सम्बन्धित लेख, साहित्यिक कृतिहरू, कम्प्युटर ज्ञान, र अन्य महत्वपूर्ण सामग्रीहरू उपलब्ध छन्।</p>
+            <p> यस वेबमा उपलब्ध सामाग्रीहरु:<br>✅विद्यार्थीलाई उपयोगी नोट<br>✅सामान्य ज्ञान <br>✅कम्प्युटर ज्ञान<br>✅साहित्यिक लेख <br>✅पाठ्यक्रम <br>✅शिक्षक निर्देशिका <br>
+   र अन्य महत्वपूर्ण सामग्रीहरू उपलब्ध छन्।</p>
         </div>
     </div>
 
@@ -492,13 +561,13 @@ body {
       <span class="highlight">Brpmailo</span>
    </p>
 
-        <div class="social-links">
-            <a href="https://www.facebook.com/brp.mailo" target="_blank" "><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-	  <a href="https://www.linkedin.com/in/brp-mailo-0937b5329/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B3KG5FdAfQkyPlhaYhql4Ig%3D%3D" target="_blank" "<i class="fab fa-linkedin"></i></a>
-            <a href="https://www.tiktok.com/@brpmailobaburam1?is_from_webapp=1&sender_device=pc" target="_blank""><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/@ComputerMsaterBrp" target="_blank" "><i class="fab fa-youtube"></i></a>
-        </div>
+       <div class="social-links">
+    <a href="https://www.facebook.com/brp.mailo" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/brp-mailo-0937b5329/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B3KG5FdAfQkyPlhaYhql4Ig%3D%3D" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.tiktok.com/@brpmailobaburam1?is_from_webapp=1&sender_device=pc" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    <a href="http://www.youtube.com/@brpmailo" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+</div>
     </div>    
  </div>    
  </div>       
@@ -514,15 +583,15 @@ body {
     const slideButton = document.querySelector(".slide-button");
 
     if (window.innerWidth > 768) {
-        // डेस्कटपको लागि
+        
         slideImage.style.right = "5%";
         slideText.style.left = "5%";
         slideButton.style.left = "5%";
     } else {
-        // मोबाइलको लागि
+        
         slideImage.style.right = "-40%";
         slideText.style.left = "5%";
-        slideButton.style.left = "7%"; // मोबाइलमा बटनलाई केन्द्रमा राख्न
+        slideButton.style.left = "7%"; 
     }
 };
 
@@ -533,14 +602,14 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
             let answer = this.nextElementSibling;
 
-            // सबै उत्तर लुकाउने (क्लिक गर्दा अन्य खुलेका उत्तरहरू बन्द गर्न)
+            
             document.querySelectorAll(".faq-answer").forEach(ans => {
                 if (ans !== answer) {
                     ans.style.display = "none";
                 }
             });
 
-            // हाल क्लिक गरेको प्रश्नको उत्तर देखाउने वा लुकाउने
+           
             if (answer.style.display === "block") {
                 answer.style.display = "none"; 
             } else {
