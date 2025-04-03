@@ -407,7 +407,13 @@ overflow: hidden;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
+a {
+    text-decoration: none; /* Remove underline */
+}
 
+a:hover {
+    text-decoration: none; /* Remove underline on hover as well */
+}
 
 
 
@@ -440,7 +446,25 @@ overflow: hidden;
     color: purple; 
 }
 
+/* Arrow button for scrolling to top */
+.scroll-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: orange; 
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; 
+    z-index: 9999;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
 
+.scroll-to-top:hover {
+    background-color: red; 
+}
 
 
 
@@ -508,8 +532,18 @@ overflow: hidden;
 
 <!-- Blue Info Section -->
 <div class="info-section">
-    <h2>महत्त्वपूर्ण सूचना</h2>
-    <p>ताजा अपडेटहरू, नयाँ लेखहरू, र शिक्षासँग सम्बन्धित महत्वपूर्ण जानकारीहरू यहाँ हेर्नुहोस्।</p>
+    <h2 style="color: white;">'Welcome to baburamphuyal.com.np'</h2>
+    <p style="font-size: 1.1rem;">
+        ​<b style="color: orange;">baburamphuyal.com.np</b> is a website dedicated to educational and literary content, aiming to provide free study materials and resources. The site offers various pages catering to different interests:<br><br>
+       <ul style="color: yellow; padding-left: 20px; text-align: left;">
+    <li>📚Educational</li>
+    <li> <b>💻Computer & Technology Knowledge</li>
+    <li> <b>📝Literary Content</li>
+    <li> <b>🎓Courses</b></li>
+</ul>
+
+        <br><b style="color: #ff5733;">The website is completely free and accessible to all users.</b>
+    </p>
 </div>
 
 
@@ -547,19 +581,26 @@ overflow: hidden;
 
 
 
+<!-- Scroll to Top Arrow -->
+<div class="scroll-to-top" id="scrollToTopBtn">
+    ↑
+</div> 
 
 
 
 
 
-
-    <!-- Footer -->
+  <!-- Footer -->
 <div class="footer">
    <p class="bordered-text">
       © 2025 । All Rights Reserved ।  
       <span class="designer">Designer:</span>  
-      <span class="highlight">Brpmailo</span>
-   </p>
+    <a href="https://brp.baburamphuyal.com.np/" target="_blank">
+    <span class="highlight">Brpmailo</span>
+</a>
+
+
+
 
        <div class="social-links">
     <a href="https://www.facebook.com/brp.mailo" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
@@ -622,6 +663,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+// Get the button
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+// When the user scrolls down 100px from the top, show the button
+window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+// When the user clicks on the button, scroll to the top of the document
+scrollToTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+
+
+
 
 
 
@@ -652,4 +713,3 @@ function toggleMenu() {
     </script>
 </body>
 </html>
-
