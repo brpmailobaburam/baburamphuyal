@@ -33,7 +33,11 @@ body {
     background-attachment: fixed;
     background-position: center;
 }
-
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 
 
@@ -165,6 +169,10 @@ body {
     width: 100%;
     max-width: 800px;
 }
+img, .slide-image {
+    max-width: 100%;
+    height: auto;
+}
 
 .slide-text {
     top: 30%;
@@ -275,9 +283,15 @@ overflow: hidden;
 overflow: hidden;
     }
 }
+@media (max-width: 768px) {
+    .nav-container {
+        width: 80%; /* Prevents horizontal overflow */
+    }
+}
 
-
-
+* {
+    box-sizing: border-box;
+}
 
 
 
