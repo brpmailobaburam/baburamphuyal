@@ -53,7 +53,6 @@
             color: red;
             margin-top: 10px;
         }
-
     </style>
 
     <script>
@@ -62,15 +61,11 @@
             e.preventDefault();
         });
 
-        // Disable F12 (Inspect Element)
+        // Disable F12, Ctrl+Shift+I, Ctrl+U
         document.onkeydown = function (e) {
-            if (e.keyCode == 123) {  // F12 key
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl + Shift + I
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 85) {  // Ctrl + U (View Source)
+            if (e.keyCode === 123 || 
+                (e.ctrlKey && e.shiftKey && e.keyCode === 73) || 
+                (e.ctrlKey && e.keyCode === 85)) {
                 return false;
             }
         }
@@ -92,36 +87,37 @@
         const form = document.getElementById('loginForm');
         const errorMessage = document.getElementById('error-message');
 
-        // Array of valid ID and Password pairs
+        // Array of valid ID, password, and redirect path
         const validCredentials = [
-            { id: 'student1', password: 'password123' },
-            { id: 'student2', password: 'password234' },
-            { id: 'student3', password: 'password345' },
-            { id: 'student4', password: 'password456' },
-            { id: 'student5', password: 'password567' },
-            { id: 'student6', password: 'password678' },
-            { id: 'student7', password: 'password789' },
-            { id: 'student8', password: 'password890' },
-            { id: 'student9', password: 'password901' },
-            { id: 'student10', password: 'password112' },
-            { id: 'student11', password: 'password223' },
-            { id: 'student12', password: 'password334' },
-            { id: 'student13', password: 'password445' },
-            { id: 'student14', password: 'password556' },
-            { id: 'student15', password: 'password667' }
+            { id: 'student1', password: 'password123', redirect: 'student portal.html' },
+            { id: 'student2', password: 'password234', redirect: 'grade-sheet.html' },
+            { id: 'student3', password: 'password345', redirect: 'student portal.html' },
+            { id: 'student4', password: 'password456', redirect: 'grade-sheet.html' },
+            { id: 'student5', password: 'password567', redirect: 'student portal.html' },
+            { id: 'student6', password: 'password678', redirect: 'grade-sheet.html' },
+            { id: 'student7', password: 'password789', redirect: 'student portal.html' },
+            { id: 'student8', password: 'password890', redirect: 'grade-sheet.html' },
+            { id: 'student9', password: 'password901', redirect: 'student portal.html' },
+            { id: 'student10', password: 'password112', redirect: 'grade-sheet.html' },
+            { id: 'student11', password: 'password223', redirect: 'student portal.html' },
+            { id: 'student12', password: 'password334', redirect: 'grade-sheet.html' },
+            { id: 'student13', password: 'password445', redirect: 'student portal.html' },
+            { id: 'student14', password: 'password556', redirect: 'grade-sheet.html' },
+            { id: 'student15', password: 'password667', redirect: 'student portal.html' }
         ];
 
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent form from submitting normally
+            e.preventDefault();
 
-            const studentId = document.getElementById('studentId').value;
+            const studentId = document.getElementById('studentId').value.trim();
             const password = document.getElementById('password').value;
 
-            // Check if the entered ID and Password match any of the valid credentials
-            const user = validCredentials.find(cred => cred.id === studentId && cred.password === password);
+            const user = validCredentials.find(cred =>
+                cred.id === studentId && cred.password === password
+            );
 
             if (user) {
-                window.location.href = 'student portal.html'; // Redirect to student portal
+                window.location.href = user.redirect;
             } else {
                 errorMessage.textContent = 'Incorrect ID or Password. Please try again.';
             }
