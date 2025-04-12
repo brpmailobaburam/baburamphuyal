@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gradesheet Generator</title>
+  <style>
+    @media print {
+      body {
+        background: none;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .header-buttons, .modal, button {
+        display: none !important;
+      }
+@media print {
+  body {
+    background: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .header-buttons, .modal, button {
+    display: none !important;
+  }
+  .wrapper {
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+  }
+}
+
+
+
+      .wrapper {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        page-break-after: avoid;
+      }
+    }
+.wrapper {
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px; 
+  box-sizing: border-box;
+}
+@media print {
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 15mm;
+    box-sizing: border-box;
+    border: 5px double blue; 
+    position: relative;
+  }
+
+
+  .no-print, button, input, textarea, select, label {
+    display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+
+    body {
+      font-family: sans-serif;
+      background: #eee;
+      margin: 0;
+      padding: 0;
+      color: blue;
+    }
+
+    .header-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      max-height: 80%;
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .modal input, .modal textarea {
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .modal button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 1120px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      color: blue;
+    }
+
+    .student-info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      color: blue;
+    }
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+
+    th, td {
+      border: 1px solid lightblue;
+      padding: 8px;
+      text-align: center;
+    }
+
+
+
+#gpaSection {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+#gpaValue {
+  border: 2px solid blue;
+  padding: 6px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: blue;
+  background-color: white;
+  width: fit-content;
+}
+
+
+
+
+    .school-info {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .school-info img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .school-info div {
+      text-align: center;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+
+
+
+<body>
+<div class="header-buttons">
+ <button class="btn" onclick="showSchoolSetupForm()">School Setup</button>
+<button class="btn" onclick="showStudentForm()">Add Student</button>
+  <button class="btn" onclick="showAddSubjectForm()">Add Subject</button>
+  <button class="btn" onclick="showMarksEntryForm()">Marks Entry</button>
+  <button class="btn" onclick="window.print()">🖨️ Print</button>
+</div>
+
+
+
+
+<!-- School Setup Modal -->
+<div class="modal" id="schoolSetupForm">
+  <h3>School Setup</h3>
+
+  <label for="schoolLogo">School Logo:</label>
+  <input type="file" id="schoolLogo" accept="image/*">
+
+  <label for="schoolName">School Name:</label>
+  <input type="text" id="schoolName">
+
+  <label for="schoolAddress">School Address:</label>
+  <textarea id="schoolAddress"></textarea>
+
+  <label for="schoolContact">School Contact:</label>
+  <input type="text" id="schoolContact">
+
+  <label for="schoolExam">Examination:</label>
+  <input type="text" id="schoolExam"> <!-- fixed ID here -->
+
+  <button onclick="saveSchoolInfo()">Save</button>
+  <button onclick="closeSchoolSetupForm()">Close</button>
+</div>
+
+
+
+
+
+<!-- Add Subject Modal -->
+<div class="modal" id="addSubjectForm">
+  <h3>Add Subjects</h3>
+  <div id="subjectFields"></div>
+  <button onclick="saveSubjects()">Save Subjects</button>
+  <button onclick="closeAddSubjectForm()">Close</button>
+</div>
+
+
+
+
+
+<!-- Marks Entry Modal -->
+<div class="modal" id="marksEntryForm">
+  <h3>Enter Marks</h3>
+  <div id="marksFields"></div>
+  <button onclick="saveMarks()">Save Marks</button>
+  <button onclick="closeMarksEntryForm()">Close</button>
+</div>
+
+
+
+
+<!-- Student Info Modal -->
+<div class="modal" id="studentForm">
+  <h3>Add Student Information</h3>
+  <label>Name:</label>
+  <input type="text" id="studentName">
+  <label>Class:</label>
+  <input type="text" id="studentClass">
+  <label>Symbol No:</label>
+  <input type="text" id="studentRoll">
+  <button onclick="saveStudentInfo()">Save</button>
+  <button onclick="closeStudentForm()">Close</button>
+</div>
+
+
+
+
+<div class="wrapper">
+  <!-- School Information Display -->
+  <div id="schoolInfoDisplay" class="school-info">
+    <img id="schoolLogoDisplay" src="" alt="Logo" style="display: none;">
+    <div>
+      <div id="schoolNameDisplay">School Name</div>
+      <div id="schoolAddressDisplay">Address</div>
+      <div id="schoolContactDisplay">Contact</div>
+      <div id="schoolExamDisplay">Exam</div>
+     <br><br><h3>GRADE SHEET</h3>
+    </div>
+  </div>
+
+
+
+  <div class="student-info">
+    <div><strong>Name:</strong> <span id="dispName"></span></div>
+    <div><strong>Class:</strong> <span id="dispClass"></span></div>
+    <div><strong>Symbol No:</strong> <span id="dispRoll"></span></div>
+  </div>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>S.N.</th>
+        <th>Subject (s)</th>
+        <th>Credit Hour (s)</th>
+        <th>Grade (TH)</th>
+        <th>Grade (PR)</th>
+        <th>Final Grade</th>
+        <th>GP</th>
+      </tr>
+    </thead>
+    <tbody id="gradesheetTable"></tbody>
+  </table>
+
+
+
+
+  <div id="gpaSection">
+ GPA<div id="gpaValue">
+</div></div>
+
+
+
+
+
+<table border="1" cellpadding="5" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Grade</th>
+      <th>A+</th>
+      <th>A</th>
+      <th>B+</th>
+      <th>B</th>
+      <th>C+</th>
+      <th>C</th>
+      <th>D</th>
+      <th>NG</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>GP</th>
+      <td>4.0</td>
+      <td>3.6</td>
+      <td>3.2</td>
+      <td>2.8</td>
+      <td>2.4</td>
+      <td>2.0</td>
+      <td>1.6</td>
+      <td>0.0</td>
+    </tr>
+ <tr style="font-size: 12px;">
+  <th>Remarks</th>
+  <td>Outstanding</td>
+  <td>Excellent</td>
+  <td>Very Good</td>
+  <td>Good</td>
+  <td>Satisfactory</td>
+  <td>Acceptable</td>
+  <td>Basic</td>
+  <td>Not Graded</td>
+</tr>
+
+  </tbody>
+</table>
+
+
+
+<!-- Date of Issue -->
+<div style="text-align: left; margin: 40px 20px 10px;">
+  Date of Issue: <span id="dateOfIssue"></span>
+</div>
+<br><br><br><br><br>
+
+
+
+<div id="signatureSection" style="display: flex; justify-content: space-between; margin-top: 60px; padding: 0 20px;">
+  
+  <div style="text-align: center; flex: 1;">
+    <div style="border-top: 1px solid blue; width: 90%; margin: 0 auto;"></div>
+    <div>Prepared By</div>
+  </div>
+  <div style="text-align: center; flex: 1;">
+    <div style="border-top: 1px solid blue; width: 90%; margin: 0 auto;"></div>
+    <div>Class Teacher</div>
+  </div>
+<div style="text-align: center; flex: 1;">
+    <div style="border-top: 1px solid blue; width: 90%; margin: 0 auto;"></div>
+    <div>Exam Co-ordinator</div>
+  </div>
+  <div style="text-align: center; flex: 1;">
+    <div style="border-top: 1px solid blue; width: 90%; margin: 0 auto;"></div>
+    <div>Principal</div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+let subjects = JSON.parse(localStorage.getItem("subjects")) || [];
+let marks = JSON.parse(localStorage.getItem("marks")) || [];
+let schoolInfo = JSON.parse(localStorage.getItem("schoolInfo")) || {};
+
+
+
+
+
+
+// Display saved school info
+function renderSchoolInfo() {
+  if (schoolInfo.logo) {
+    document.getElementById("schoolLogoDisplay").src = schoolInfo.logo;
+    document.getElementById("schoolLogoDisplay").style.display = 'block';
+  }
+  document.getElementById("schoolNameDisplay").innerText = schoolInfo.name || 'School Name';
+  document.getElementById("schoolAddressDisplay").innerText = schoolInfo.address || 'School Address';
+  document.getElementById("schoolContactDisplay").innerText = schoolInfo.contact || 'School Contact';
+ document.getElementById("schoolExamDisplay").innerText = schoolInfo.exam || 'School Exam';
+}
+
+// Open the School Setup form
+function showSchoolSetupForm() {
+  document.getElementById('schoolSetupForm').style.display = 'block';
+  document.getElementById('schoolLogo').value = '';
+  document.getElementById('schoolName').value = schoolInfo.name || '';
+  document.getElementById('schoolAddress').value = schoolInfo.address || '';
+  document.getElementById('schoolContact').value = schoolInfo.contact || '';
+  document.getElementById('schoolExam').value = schoolInfo.exam || '';
+}
+
+// Close the School Setup form
+function closeSchoolSetupForm() {
+  document.getElementById('schoolSetupForm').style.display = 'none';
+}
+
+// Save School info
+function saveSchoolInfo() {
+  const logo = document.getElementById("schoolLogo").files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const logoData = e.target.result;
+    schoolInfo = {
+      logo: logoData,
+      name: document.getElementById('schoolName').value,
+      address: document.getElementById('schoolAddress').value,
+      contact: document.getElementById('schoolContact').value,
+      exam: document.getElementById('schoolExam').value
+    };
+    localStorage.setItem("schoolInfo", JSON.stringify(schoolInfo));
+    renderSchoolInfo();
+    closeSchoolSetupForm();
+  };
+function saveSchoolInfo() {
+  const logoInput = document.getElementById("schoolLogo");
+  const schoolName = document.getElementById("schoolName").value;
+  const schoolAddress = document.getElementById("schoolAddress").value;
+  const schoolContact = document.getElementById("schoolContact").value;
+  const schoolExam = document.getElementById("schoolExam").value;
+
+  // For logo (if you want to preview or store)
+  let logoURL = "";
+  if (logoInput.files && logoInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      logoURL = e.target.result;
+      // Example: store in localStorage or assign to img src
+      localStorage.setItem("schoolLogo", logoURL);
+    };
+    reader.readAsDataURL(logoInput.files[0]);
+  }
+
+  // Save other data (You can use localStorage or any JS object)
+  localStorage.setItem("schoolName", schoolName);
+  localStorage.setItem("schoolAddress", schoolAddress);
+  localStorage.setItem("schoolContact", schoolContact);
+  localStorage.setItem("schoolExam", schoolExam);
+
+  alert("School information saved!");
+  closeSchoolSetupForm();
+}
+
+  if (logo) reader.readAsDataURL(logo);
+  else {
+    schoolInfo = {
+      name: document.getElementById('schoolName').value,
+      address: document.getElementById('schoolAddress').value,
+      contact: document.getElementById('schoolContact').value,
+       exam: document.getElementById('schoolExam').value
+    };
+    localStorage.setItem("schoolInfo", JSON.stringify(schoolInfo));
+    renderSchoolInfo();
+    closeSchoolSetupForm();
+  }
+}
+
+function showExamField() {
+  const schoolName = document.getElementById("schoolName").value;
+  const schoolAddress = document.getElementById("schoolAddress").value;
+  const schoolContact = document.getElementById("schoolContact").value;
+ const schoolExam = document.getElementById("schoolExam").value;
+
+  // You can do validations here if needed
+
+  // Save the main data
+  localStorage.setItem("schoolName", schoolName);
+  localStorage.setItem("schoolAddress", schoolAddress);
+  localStorage.setItem("schoolContact", schoolContact);
+localStorage.setItem("schoolExam", schoolExam); 
+}
+
+
+
+
+
+
+function calculateGPA() {
+  const marks = document.querySelectorAll(".marksInput");
+  let total = 0;
+  let count = 0;
+
+  marks.forEach(input => {
+    const value = parseFloat(input.value);
+    if (!isNaN(value)) {
+      total += value;
+      count++;
+    }
+  });
+
+  if (count === 0) return 0;
+  
+  const average = total / count;
+
+  // Example logic to convert marks to GPA
+  if (average >= 90) return 4.0;
+  if (average >= 80) return 3.6;
+  if (average >= 70) return 3.2;
+  if (average >= 60) return 2.8;
+  if (average >= 50) return 2.4;
+  return 2.0;
+}
+
+function updateGPAAndRemarks(gpa) {
+  document.getElementById("gpaValue").innerHTML = `GPA: ${gpa.toFixed(2)}`;
+
+  let remarks = "";
+  if (gpa >= 3.6) remarks = "Excellent";
+  else if (gpa >= 3.2) remarks = "Very Good";
+  else if (gpa >= 2.8) remarks = "Good";
+  else if (gpa >= 2.4) remarks = "Satisfactory";
+  else remarks = "Poor";
+
+  document.getElementById("gpaRemarks").innerHTML = `Remarks: ${remarks}`;
+}
+
+function handleMarksChange() {
+  const gpa = calculateGPA();
+  updateGPAAndRemarks(gpa);
+}
+
+// Attach event listeners to marks inputs
+document.querySelectorAll(".marksInput").forEach(input => {
+  input.addEventListener("input", handleMarksChange);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Show today's date in "Date of Issue"
+const today = new Date();
+const formattedDate = today.toLocaleDateString('en-GB'); // Format: DD/MM/YYYY
+document.getElementById("dateOfIssue").textContent = formattedDate;
+
+
+
+
+
+function showAddSubjectForm() {
+  document.getElementById('addSubjectForm').style.display = 'block';
+  const container = document.getElementById('subjectFields');
+  container.innerHTML = '';
+  for (let i = 1; i <= 7; i++) {
+    container.innerHTML += `
+      <div>
+        <h4>Subject ${i}</h4>
+        <input placeholder="Subject Name" id="subjectName${i}" value="${subjects[i - 1]?.name || ''}">
+        <input placeholder="Credit Hour" type="number" id="creditHour${i}" value="${subjects[i - 1]?.credit || ''}">
+        <input placeholder="TH Full" type="number" id="thFull${i}" value="${subjects[i - 1]?.thFull || ''}">
+        <input placeholder="TH Pass" type="number" id="thPass${i}" value="${subjects[i - 1]?.thPass || ''}">
+        <input placeholder="PR Full" type="number" id="prFull${i}" value="${subjects[i - 1]?.prFull || ''}">
+        <input placeholder="PR Pass" type="number" id="prPass${i}" value="${subjects[i - 1]?.prPass || ''}">
+      </div>
+    `;
+  }
+}
+
+function closeAddSubjectForm() {
+  document.getElementById('addSubjectForm').style.display = 'none';
+}
+
+function saveSubjects() {
+  subjects = [];
+  for (let i = 1; i <= 7; i++) {
+    const name = document.getElementById(`subjectName${i}`).value;
+    if (!name) continue;
+    subjects.push({
+      name,
+      credit: document.getElementById(`creditHour${i}`).value,
+      thFull: document.getElementById(`thFull${i}`).value,
+      thPass: document.getElementById(`thPass${i}`).value,
+      prFull: document.getElementById(`prFull${i}`).value,
+      prPass: document.getElementById(`prPass${i}`).value,
+    });
+  }
+  localStorage.setItem("subjects", JSON.stringify(subjects));
+  closeAddSubjectForm();
+}
+
+function showMarksEntryForm() {
+  document.getElementById('marksEntryForm').style.display = 'block';
+  const container = document.getElementById('marksFields');
+  container.innerHTML = '';
+  subjects.forEach((subj, i) => {
+    container.innerHTML += `
+      <div>
+        <h4>${subj.name}</h4>
+        <input placeholder="Obtained TH" type="number" id="obtTh${i}" value="${marks[i]?.obtTh || ''}">
+        <input placeholder="Obtained PR" type="number" id="obtPr${i}" value="${marks[i]?.obtPr || ''}">
+      </div>
+    `;
+  });
+}
+
+function closeMarksEntryForm() {
+  document.getElementById('marksEntryForm').style.display = 'none';
+}
+
+function saveMarks() {
+  marks = [];
+  subjects.forEach((subj, i) => {
+    marks.push({
+      obtTh: parseInt(document.getElementById(`obtTh${i}`).value || 0),
+      obtPr: parseInt(document.getElementById(`obtPr${i}`).value || 0)
+    });
+  });
+  localStorage.setItem("marks", JSON.stringify(marks));
+  renderGradesheet();
+  closeMarksEntryForm();
+}
+
+function showStudentForm() {
+  document.getElementById('studentForm').style.display = 'block';
+}
+
+function closeStudentForm() {
+  document.getElementById('studentForm').style.display = 'none';
+}
+
+function saveStudentInfo() {
+  document.getElementById("dispName").innerText = document.getElementById("studentName").value;
+  document.getElementById("dispClass").innerText = document.getElementById("studentClass").value;
+  document.getElementById("dispRoll").innerText = document.getElementById("studentRoll").value;
+  closeStudentForm();
+}
+
+function gradeFromMark(mark) {
+  if (mark >= 90) return { grade: 'A+', gp: 4.0 };
+  if (mark >= 80) return { grade: 'A', gp: 3.6 };
+  if (mark >= 70) return { grade: 'B+', gp: 3.2 };
+  if (mark >= 60) return { grade: 'B', gp: 2.8 };
+  if (mark >= 50) return { grade: 'C+', gp: 2.4 };
+  if (mark >= 40) return { grade: 'C', gp: 2.0 };
+  if (mark >= 35) return { grade: 'D', gp: 1.6 };
+  return { grade: 'NG', gp: 'NG' };
+}
+
+function calculateGPA(anyNG) {
+  let totalGP = 0;
+  let totalCredits = 0;
+
+  if (anyNG) {
+    document.getElementById("gpaValue").innerText = 'NG';
+    return;
+  }
+
+  subjects.forEach((subj, i) => {
+    const totalTh = parseInt(subj.thFull || 0);
+    const totalPr = parseInt(subj.prFull || 0);
+    const totalFull = totalTh + totalPr;
+    const obtained = marks[i] || { obtTh: 0, obtPr: 0 };
+    const totalObt = obtained.obtTh + obtained.obtPr;
+    const gradeData = gradeFromMark((totalObt / totalFull) * 100);
+
+    totalGP += gradeData.gp * parseInt(subj.credit);
+    totalCredits += parseInt(subj.credit);
+  });
+
+  document.getElementById("gpaValue").innerText = (totalGP / totalCredits).toFixed(2);
+}
+
+function renderGradesheet() {
+  const tbody = document.getElementById("gradesheetTable");
+  tbody.innerHTML = '';
+  let anyNG = false;
+
+  subjects.forEach((subj, i) => {
+    const totalTh = subj.thFull ? parseInt(subj.thFull) : 0;
+    const totalPr = subj.prFull ? parseInt(subj.prFull) : 0;
+    const totalFull = totalTh + totalPr;
+    const obtained = marks[i] || { obtTh: 0, obtPr: 0 };
+    const totalObt = obtained.obtTh + obtained.obtPr;
+
+    const gradeTH = gradeFromMark((obtained.obtTh / totalTh) * 100);
+    const gradePR = gradeFromMark((obtained.obtPr / totalPr) * 100);
+    
+    const gradeData = (gradeTH.gp === 'NG' || gradePR.gp === 'NG') 
+                      ? { grade: 'NG', gp: 'NG' } 
+                      : gradeFromMark((totalObt / totalFull) * 100);
+
+    if (gradeData.gp === 'NG') {
+      anyNG = true;
+    }
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${i + 1}</td>
+      <td>${subj.name}</td>
+      <td>${subj.credit}</td>
+      <td>${gradeTH.grade}</td>
+      <td>${gradePR.grade}</td>
+      <td>${gradeData.grade}</td>
+      <td>${gradeData.gp}</td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  calculateGPA(anyNG);
+}
+
+// Initial Render
+renderSchoolInfo();
+renderGradesheet();
+</script>
+
+</body>
+</html>
