@@ -155,48 +155,89 @@ html, body {
 
 
 
+
+
 /* Slide Animation */
-.slide-image, .slide-text, .slide-button {
+.slide-image, .slide-text, .slide-ttext, .slide-button, .slide-cbutton {
     position: absolute;
     transform: translateY(-50%);
     transition: all 2s ease-in-out;
     z-index: 2;
 }
 
+
 .slide-image {
-    top: 65%;
+    top: 85%;
     right: -100%;
     width: 100%;
     max-width: 800px;
 }
-img, .slide-image {
-    max-width: 100%;
-    height: auto;
-}
 
-.slide-text {
-    top: 30%;
+.slide-ttext {
+    top: 55%;
     left: -130%;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
-.slide-button {
-    top: 55%;
+.slide-text {
+    top: 35%;
+    left: -130%;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.slide-cbutton {
+    top: 65%;
     left: -100%;
     padding: 10px 20px;
-    background: green;
+    background: yellow;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.slide-button   {
+    top: 75%;
+    left: -100%;
+    padding: 10px 20px;
+    background: blue;
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
+border: 2px solid black;
 }
 
-.slide-button:hover {
-    background: yellow;
-   color: black;
+.slide-button:hover  {
+    background: green;
+    color: black;
 }
+.slide-cbutton:hover {
+background: red;
+    color: white;
+}
+.slide-image.slide-in {
+    right: 5%;
+}
+
+.slide-ttext.slide-in {
+    left: 5%;
+}
+
+.slide-text.slide-in {
+    left: 5%;
+}
+
+.slide-button.slide-in, .slide-cbutton.slide-in {
+    left: 5%;
+}
+
+
 
 
 
@@ -501,13 +542,17 @@ a:hover {
 
 
 
-  <!-- Main Content -->
+<!-- Main Content -->
 <div class="main-container">
-    <h1 class="slide-text">शिक्षाले कहिले पनि <br>हामीलाई पुरा गर्दैन ।<br> बरु संधै खोजाइ रहन्छ ।</h1> 
-<a href="saikshik.html" target="_blank" class="slide-button">For My Students</a>
-         
+    <h1 class="slide-text">कहिल्यै हार नमान,<br>सफलता कहिलेकाहीँ अन्तिम<br> प्रयासमै लुकेको हुन्छ।</h1>
+ <p class="slide-ttext">Education is the most powerful weapon to change the world.</p> 
+    <div class="button-container">
+        <a href="saikshik.html" target="_blank" class="slide-button">For My Students</a>
+        <a href="calendar.html" target="_blank" class="slide-cbutton">School Calendar-2082</a>
+    </div>
     <img src="1.png" alt="Slide 1" class="slide-image">
 </div>
+
 
 
 
@@ -604,23 +649,33 @@ a:hover {
 
 
     <script>
-   window.onload = function() {
+
+
+ window.onload = function() {
     const slideImage = document.querySelector(".slide-image");
     const slideText = document.querySelector(".slide-text");
+    const slideTText = document.querySelector(".slide-ttext");
     const slideButton = document.querySelector(".slide-button");
+    const slideCButton = document.querySelector(".slide-cbutton");  
 
     if (window.innerWidth > 768) {
-        
         slideImage.style.right = "5%";
         slideText.style.left = "5%";
+         slideTText.style.left = "5%";
         slideButton.style.left = "5%";
+        slideCButton.style.left = "7%";  
     } else {
-        
         slideImage.style.right = "-20%";
         slideText.style.left = "5%";
-        slideButton.style.left = "7%"; 
+        slideTText.style.left = "5%";
+        slideButton.style.left = "7%";  
+        slideCButton.style.left = "7%"; 
     }
 };
+
+
+
+
 
 
 
