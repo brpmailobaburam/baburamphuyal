@@ -84,7 +84,7 @@
             background-color: green; 
         }
 
-        #pdf-list, #teacherguided, #courseList, #booklist {
+        #pdf-list, #teacherguided, #courseList, #booklist, #c7 {
             display: none;
             margin-top: 30px;
         }
@@ -198,7 +198,7 @@
     <script>
         function toggleVisibility(idToShow, event) {
             event.preventDefault(); 
-            const elements = ['pdf-list', 'teacherguided', 'courseList', 'booklist'];
+            const elements = ['pdf-list', 'teacherguided', 'courseList', 'booklist', 'c7'];
             elements.forEach(id => {
                 const element = document.getElementById(id);
                 if (id === idToShow) {
@@ -372,10 +372,37 @@
   </div>
         
 </section>
-   
-   <!-- Additional PDFs -->
+ 
+
+
+
+
+
+
+
+
+
+
+<section class="section">
+ <a href="#" onclick="toggleVisibility('c7', event)" class="download-link">कक्षा ७ ब्याकरण</a>
+    <div id="c7" class="pdf-list">
+        <div class="pdf-title">PDF फाइलहरू:</div>
+<div class="pdf-item" style="padding: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: flex-start;">       
+<span style="color: black; background-color: orange; padding: 5px 10px; border-radius: 5px; margin-right: 5px;">व्याकरणको परिचय र नामका प्रकार </span>  
+<a href=" https://drive.google.com/file/d/1fr4DherHA1LMjkbcp9lgJ4mBqWYF8XXJ/view?usp=sharing "target="_blank" class="download-link" style="background-color: #4285F4; color: white; padding: 5px 10px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View</a>  
+ </div>   
+
+
+
+
+<!-- Additional PDFs -->
     </div>
 </section>
+
+
+
+
+
 
 
 
