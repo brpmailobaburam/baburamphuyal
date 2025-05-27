@@ -533,7 +533,7 @@ a:hover {
         <a href="sahitik.html" target="_blank"  padding: 5px;">साहित्य</a>
         <a href="https://design.baburamphuyal.com.np/" target="_blank"  padding: 5px;">Design Download</a>
         <a href="https://brp.baburamphuyal.com.np/" target="_blank"padding: 5px;">About Designer</a>
-        <a href="login.html" target="_blank"style="background: orange; padding: 5px;">Student Portal</a>   
+        <a href="login.html" target="_blank"style="background: #e67e22; padding: 5px;">Student Portal</a>   
     </div>
 </div>
 
@@ -582,6 +582,186 @@ a:hover {
 
 
 
+<section class="section">
+  <h1>Offered</h1>
+
+  <div class="programs-wrapper" id="scrollWrapper">
+    <div class="programs" id="programs">
+      <a class="program-card pink" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">👥</div>
+        <div>Students</div>
+      </a>
+      <a class="program-card blue" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">✔️</div>
+        <div>Teachers</div>
+      </a>
+      <a class="program-card green" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">👨‍🏫</div>
+        <div>Assessment</div>
+      </a>
+      <a class="program-card cyan" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">🌿</div>
+        <div>ECD</div>
+      </a>
+      <a class="program-card coral" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">📊</div>
+        <div>Class wise</div>
+      </a>
+      <a class="program-card navy" href="https://brp.baburamphuyal.com.np/" target="_blank" rel="noopener noreferrer">
+        <div class="icon">💻</div>
+        <div>Technical Support</div>
+      </a>
+
+      <!-- repetated link -->
+      <a class="program-card pink" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">👥</div>
+        <div>Students</div>
+      </a>
+      <a class="program-card blue" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">✔️</div>
+        <div>Teachers</div>
+      </a>
+      <a class="program-card green" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">👨‍🏫</div>
+        <div>Assessment</div>
+      </a>
+      <a class="program-card cyan" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">🌿</div>
+        <div>ECD</div>
+      </a>
+      <a class="program-card coral" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
+        <div class="icon">📊</div>
+        <div>Class wise</div>
+      </a>
+      <a class="program-card navy" https://brp.baburamphuyal.com.np/" target="_blank" rel="noopener noreferrer">
+        <div class="icon">💻</div>
+        <div>Support</div>
+      </a>
+    </div>
+  </div>
+
+  <style>
+    .programs-wrapper {
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+      padding: 20px 0;
+      border-radius: 8px;
+      position: relative;
+    }
+ .section {
+    background-color: #1abc9c;
+    padding: 40px 20px;
+  }
+    .programs-wrapper.active {
+      cursor: grabbing;
+    }
+
+    .programs {
+      display: flex;
+      gap: 1rem;
+      will-change: transform;
+    }
+
+    .program-card {
+      flex: 0 0 auto;
+      min-width: 250px;
+      max-width: 250px;
+      background: #1abc9c;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: black;
+      outline: 3px solid transparent;
+      transition: outline 0.2s ease, background-color 0.3s;
+    }
+
+    .program-card:focus,
+    .program-card:hover {
+      outline: 3px solid red;
+      outline-offset: 2px;
+      background-color: #ecf0f1;
+    }
+
+    .pink { background-color: #ffb6c1; }
+    .blue { background-color: #add8e6; }
+    .green { background-color: #90ee90; }
+    .cyan { background-color: #e0ffff; }
+    .coral { background-color: #f08080; }
+    .navy { background-color: #f1c40f; color: black; }
+  </style>
+
+  <script>
+    const wrapper = document.getElementById('scrollWrapper');
+    const programs = document.getElementById('programs');
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    wrapper.addEventListener('mousedown', (e) => {
+      isDown = true;
+      wrapper.classList.add('active');
+      startX = e.pageX - wrapper.offsetLeft;
+      scrollLeft = wrapper.scrollLeft;
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      isDown = false;
+      wrapper.classList.remove('active');
+    });
+
+    wrapper.addEventListener('mouseup', () => {
+      isDown = false;
+      wrapper.classList.remove('active');
+    });
+
+    wrapper.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - wrapper.offsetLeft;
+      const walk = (x - startX) * 2;
+      wrapper.scrollLeft = scrollLeft - walk;
+
+      const maxScroll = programs.scrollWidth / 2;
+      if (wrapper.scrollLeft >= maxScroll) {
+        wrapper.scrollLeft = 0;
+      } else if (wrapper.scrollLeft <= 0) {
+        wrapper.scrollLeft = maxScroll;
+      }
+    });
+
+    let autoScroll = true;
+    const scrollSpeed = 1; // pixel
+
+    function autoScrollFn() {
+      if (autoScroll) {
+        wrapper.scrollLeft += scrollSpeed;
+        const maxScroll = programs.scrollWidth / 2;
+        if (wrapper.scrollLeft >= maxScroll) {
+          wrapper.scrollLeft = 0;
+        }
+      }
+      requestAnimationFrame(autoScrollFn);
+    }
+
+    wrapper.addEventListener('mouseenter', () => autoScroll = false);
+    wrapper.addEventListener('mouseleave', () => autoScroll = true);
+
+    requestAnimationFrame(autoScrollFn);
+  </script>
+</section>
+
+
+
+
+
+
+
+
 
 <!-- Green Info Section (FAQ Section) -->
 <div class="binfo-section">
@@ -621,6 +801,14 @@ a:hover {
 
 
 
+
+
+
+
+
+
+
+
   <!-- Footer -->
 <div class="footer">
    <p class="bordered-text">
@@ -649,8 +837,6 @@ a:hover {
 
 
     <script>
-
-
  window.onload = function() {
     const slideImage = document.querySelector(".slide-image");
     const slideText = document.querySelector(".slide-text");
