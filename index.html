@@ -391,94 +391,6 @@ background: purple;
     }
 }
 
-
-
-
-
-
-
-
-
-/* Footer */
-.footer {
-    background: white;
-    color: black;
-    text-align: center;
-    padding: 40px;
-    margin-top: auto;
-    position: relative;
-    z-index: 3;
-
-}    
-.bordered-text {
-    border: 2px solid black;  
-    padding: 10px;            
-    display: inline-block;    
-}
-
-.designer {
-    color: red; 
-    font-weight: bold;
-}
-
-.highlight {
-    color: blue; 
-    font-weight: bold;
-}
-
-.social-links a {
-    margin: 0 10px;
-    color: black;
-    font-size: 1.5rem;
-    text-decoration: none;
-}
-
-.social-links a {
-    margin: 0 10px;
-    color: black;
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-}
-a {
-    text-decoration: none; 
-}
-
-a:hover {
-    text-decoration: none; 
-}
-
-
-
-.social-links a:hover {
-    color: #007bff;  
-}
-
-/* Facebook Hover */
-.social-links a.facebook:hover {
-    color: #3b5998; 
-}
-
-/* YouTube Hover */
-.social-links a.youtube:hover {
-    color: #ff0000; 
-}
-
-/* Twitter Hover */
-.social-links a.twitter:hover {
-    color: #1da1f2; 
-}
-
-/* LinkedIn Hover */
-.social-links a.linkedin:hover {
-    color: #0077b5; 
-}
-
-/* Tiktok Hover */
-.social-links a.tiktok:hover {
-    color: purple; 
-}
-
 /* Arrow button for scrolling to top */
 .scroll-to-top {
     position: fixed;
@@ -498,6 +410,94 @@ a:hover {
 .scroll-to-top:hover {
     background-color: red; 
 }
+
+
+.footer {
+  background-color: #222;
+  color: white;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Top row: flex with space-between */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+/* More Info left */
+.more-info {
+  flex: 1 1 250px;
+  min-width: 250px;
+}
+
+.more-info h3 {
+  color: #00ffcc;
+  margin-bottom: 10px;
+}
+
+.more-info p {
+  color: white;
+}
+
+/* Help Links right */
+.help-links {
+  flex: 1 1 250px;
+  min-width: 250px;
+  text-align: right;
+}
+
+.help-links h3 {
+  color: #00ffcc;
+  margin-bottom: 10px;
+}
+
+.help-links ul {
+  list-style-type: disc;
+  padding-right: 20px;
+  color: #ccc;
+  margin: 0;
+}
+
+.help-links ul li {
+  margin-bottom: 6px;
+}
+
+.help-links ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* Designer Center */
+.footer-designer {
+  text-align: center;
+  border-top: 1px solid #444;
+  padding-top: 15px;
+  font-size: 14px;
+  color: lightgreen;
+  margin-bottom: 20px;
+}
+
+.footer-designer a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+/* Social Links Center */
+.footer-social {
+  text-align: center;
+}
+
+.footer-social a {
+  margin: 0 10px;
+  font-size: 20px;
+  color: inherit;
+  text-decoration: none;
+}
+
+
 
     </style>
 </head>
@@ -590,8 +590,7 @@ a:hover {
 
 
 <section class="section">
-  <h2>Here’s something for you✅</h2>
-
+<h2>Here’s something for you✅</h2>
   <div class="programs-wrapper" id="scrollWrapper">
     <div class="programs" id="programs">
       <a class="program-card pink" href="https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID" target="_blank" rel="noopener noreferrer">
@@ -772,13 +771,14 @@ a:hover {
 
 
 
+
 <!-- Green Info Section (FAQ Section) -->
 <div class="binfo-section">
-    <h2>📌 All necessary information for visitors can be found below✅</h2>
+    <h2 style="text-align: center;color: white;">📌All necessary information for visitors can be found below✅</h2>
 <div class="faq-item">
     <button class="faq-question">
         Why should we visit this website❓
-<span style="float: right; font-size: 22px; color: #2c3e50;">🖱️ Click here</span>
+<span style="float: right; font-size: 16px; color: #2c3e50;">🖱️</span>
 
     </button>
     <div class="faq-answer">
@@ -789,7 +789,7 @@ a:hover {
 <div class="faq-item">
     <button class="faq-question">
         What content is available on this website❓
-   <span style="float: right; font-size: 22px; color: #2c3e50;">🖱️ Click here</span>
+   <span style="float: right; font-size: 16px; color: #2c3e50;">🖱️</span>
     </button>
     <div class="faq-answer">
         <p>This website provides:<br>
@@ -806,18 +806,54 @@ a:hover {
 <div class="faq-item">
     <button class="faq-question">
         Is the website free to use❓
-  <span style="float: right; font-size: 22px; color: #2c3e50;">🖱️ Click here</span>
+  <span style="float: right; font-size: 16px; color: #2c3e50;">🖱️</span>
     </button>
     <div class="faq-answer">
         <p>✅ Yes, this website is completely free and accessible to everyone.</p>
     </div>
 </div>
-
+<div class="faq-item">
+  <button class="faq-question">
+    Privacy Policy 🔐
+    <span style="float: right; font-size: 16px; color: #2c3e50;">🖱️</span>
+  </button>
+  <div class="faq-answer">
+    <ul style="padding-left: 20px;">
+      <li>✅ This website is completely free and open to all users.</li>
+      <li>✅ No personal information is required to browse the site.</li>
+      <li>✅ We do not collect, store, or share your personal data without consent.</li>
+      <li>✅ All educational and literary content is protected under copyright law.</li>
+      <li>✅ Any content provided is the responsibility of the site owner and contributors.</li>
+      <li>✅ If you submit any personal details (e.g., via forms), they are kept private and secure.</li>
+      <li>🚫 No one is allowed to copy educational or literary content from this website for commercial use without permission.</li>
+      <li>🚫 Reselling, reproducing, or redistributing any content from this website is strictly prohibited.</li>
+    </ul>
+  </div>
+</div>
 </div>
 
 
 
 
+
+
+
+
+<section style="padding: 40px; background-color: #f8f9fa; border-top: 2px solid #ccc;">
+  <h2 style="text-align: center; color: #2c3e50;">📜 Terms & Conditions</h2>
+
+  <div style="max-width: 800px; margin: auto; font-size: 16px; line-height: 1.6; color: #333;">
+    <ul style="list-style: '✅ '; padding-left: 20px;">
+      <li>By using this website, you agree to follow the terms outlined here?</li>
+      <li>The educational and literary content provided here is for personal learning and reference only.</li>
+      <li>Copying or reproducing any material for commercial use is strictly prohibited.</li>
+      <li>Users may not redistribute or modify any content without written permission from the site owner.</li>
+      <li>This site is not liable for any content shared through external links or third-party resources.</li>
+      <li>Violation of these terms may result in legal action or a ban from using the site.</li>
+      <li>We reserve the right to change these terms at any time without prior notice.</li>
+    </ul>
+  </div>
+</section>
 
 
 
@@ -887,26 +923,54 @@ a:hover {
 
 
 
-  <!-- Footer -->
+<!-- Footer -->
 <div class="footer">
-   <p class="bordered-text">
-      © 2025 । All Rights Reserved ।  
-      <span class="designer">Designer:</span>  
-    <a href="https://brp.baburamphuyal.com.np/" target="_blank">
-    <span class="highlight">Brpmailo</span>
-</a>
 
+  <!-- Top Row -->
+  <div class="footer-top">
+    <!-- More Info Left -->
+    <div class="more-info">
+      <h3>📌About Web</h3>
+      <p>baburamphuyal.com.np is a free and educational website created to support Nepali students, teachers, and literature lovers. The main purpose of this site is to provide accessible and useful learning materials in a simple and easy-to-understand format. It offers class-wise study notes, practice questions, and quizzes to help students prepare for their exams more effectively.
+In addition to academic content, the website also provides basic computer education, including lessons on Microsoft Word, Excel, PowerPoint, and computer hardware and networking. For those interested in creativity and expression, it features a collection of Nepali literary works such as poems, ghazals, muktaks, and essays. The site also includes downloadable design files (like MS Word and Photoshop templates), and tools like a gradesheet generator to help manage student results easily.
+The entire platform is designed with simplicity in mind, making it easy to use on both computers and mobile devices. Whether you're a student preparing for exams, a teacher looking for resources, or someone interested in Nepali literature and IT, baburamphuyal.com.np is made for you.</p>
+    </div>
 
-       <div class="social-links">
-    <a href="https://www.facebook.com/brp.mailo" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
-    <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-    <a href="https://www.linkedin.com/in/brp-mailo-0937b5329/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B3KG5FdAfQkyPlhaYhql4Ig%3D%3D" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.tiktok.com/@brpmailobaburam1?is_from_webapp=1&sender_device=pc" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
-    <a href="http://www.youtube.com/@brpmailo" target="_blank" class="youtube"><i class="fab fa-youtube"></i></a>
+    <!-- Help Links Right -->
+    <div class="help-links">
+      <h3>🔗 Help Links</h3>
+      <ul>
+        <li><a href="https://kuberjungthapa.com.np/" target="_blank">KJT Sir</a></li>
+        <li><a href="https://moecdc.gov.np/" target="_blank">CDC Nepal</a></li>
+        <li><a href="https://see.gov.np/" target="_blank">SEE Official</a></li>
+        <li><a href="https://emis.cehrd.gov.np/" target="_blank">IEMIS</a></li>
+        <li><a href="https://neb.gov.np/" target="_blank">NEB</a></li>
+        <li><a href="https://edigitalnepal.com/" target="_blank">E-Digital</a></li>
+       <li><a href="https://tu.edu.np/" target="_blank">TU</a></li>
+       <li><a href="https://www.hamropatro.com/" target="_blank">Hamro Patro</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+  <!-- Designer Center -->
+  <div class="footer-designer">
+    <p>© 2025 । All Rights Reserved</p>
+    <p>Designer: <a href="https://brp.baburamphuyal.com.np/" target="_blank">Brpmailo</a></p>
+  </div>
+
+  <!-- Social Links -->
+  <div class="footer-social">
+    <a href="https://www.facebook.com/brp.mailo" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+    <a href="https://www.linkedin.com/in/brp-mailo-0937b5329" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+    <a href="https://www.tiktok.com/@brpmailobaburam1" target="_blank"><i class="fab fa-tiktok fa-lg"></i></a>
+    <a href="http://www.youtube.com/@brpmailo" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
+  </div>
 </div>
-    </div>    
- </div>    
- </div>       
+
+
+
 
 
 
