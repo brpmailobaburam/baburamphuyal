@@ -17,22 +17,25 @@
   <div class="box">
     <div id="verifyDiv">
       <h3>Verify Your Gmail</h3>
-      <input type="email" id="verifyGmail" placeholder="Enter Gmail" required>
+      <label for="verifyGmail" class="visually-hidden">Gmail</label>
+      <input type="email" id="verifyGmail" placeholder="Enter Gmail" required title="Enter your Gmail">
       <button onclick="verifyGmail()">Verify</button>
       <p id="verifyMsg"></p>
     </div>
 
     <div id="registerDiv">
       <h3>Register Password</h3>
-      <input type="email" id="regGmail" readonly>
-      <input type="password" id="regPassword" placeholder="Enter Password" required>
+      <label for="regGmail" class="visually-hidden">Gmail</label>
+      <input type="email" id="regGmail" readonly placeholder="Gmail" title="Your Gmail">
+      <label for="regPassword" class="visually-hidden">Password</label>
+      <input type="password" id="regPassword" placeholder="Enter Password" required title="Enter your password">
       <button onclick="register()">Register</button>
       <p id="registerMsg"></p>
     </div>
   </div>
 
   <script>
-    const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzhNBoGM79rG_mWz-eIFabAlySU-Q39046ltmgOGQ1cqVO2kvl-LfWV2cG7BW12jw13ew/exec";
+   const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyz7-N0JbiQ78MN5ptXAB4im8QfivsZiFdRuYkvpQMpR9hUIvvftV0RH_zXeZ8magVgfQ/exec";
 
     function verifyGmail(){
       var gmail = document.getElementById("verifyGmail").value;
