@@ -1,82 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Teacher Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; background: #0e6b8c; display: flex; justify-content: center; align-items: center; height: 100vh; margin:0; }
-    .box { background: white; padding: 30px; border-radius: 10px; width: 300px; }
-    input, button { width: 100%; padding: 10px; margin: 5px 0; }
-    #registerDiv { display: none; }
-    p { color: red; }
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2c3e50;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 15px;
+      color: #34495e;
+    }
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+    }
+    input:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .success {
+      text-align: center;
+      margin-top: 15px;
+      color: green;
+    }
+    .error {
+      text-align: center;
+      margin-top: 15px;
+      color: red;
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Teacher Registration</h2>
+    <form id="teacherForm">
+      <label for="gmail">Gmail</label>
+      <input type="email" id="gmail" required placeholder="e.g. teacher@gmail.com">
 
-  <div class="box">
-    <div id="verifyDiv">
-      <h3>Verify Your Gmail</h3>
-      <label for="verifyGmail" class="visually-hidden">Gmail</label>
-      <input type="email" id="verifyGmail" placeholder="Enter Gmail" required title="Enter your Gmail">
-      <button onclick="verifyGmail()">Verify</button>
-      <p id="verifyMsg"></p>
-    </div>
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="Choose a password">
 
-    <div id="registerDiv">
-      <h3>Register Password</h3>
-      <label for="regGmail" class="visually-hidden">Gmail</label>
-      <input type="email" id="regGmail" readonly placeholder="Gmail" title="Your Gmail">
-      <label for="regPassword" class="visually-hidden">Password</label>
-      <input type="password" id="regPassword" placeholder="Enter Password" required title="Enter your password">
-      <button onclick="register()">Register</button>
-      <p id="registerMsg"></p>
-    </div>
+      <button type="submit">Register</button>
+      <div class="success" id="successMsg"></div>
+      <div class="error" id="errorMsg"></div>
+    </form>
   </div>
 
   <script>
-   const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyz7-N0JbiQ78MN5ptXAB4im8QfivsZiFdRuYkvpQMpR9hUIvvftV0RH_zXeZ8magVgfQ/exec";
+    document.getElementById("teacherForm").addEventListener("submit", function(e){
+      e.preventDefault();
 
-    function verifyGmail(){
-      var gmail = document.getElementById("verifyGmail").value;
-      fetch(WEBAPP_URL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ action: "verifyGmail", gmail: gmail })
-      })
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("verifyMsg").innerText = data.message;
-        if(data.status == "new" || data.status == "exists"){
-          document.getElementById("verifyDiv").style.display = "none";
-          document.getElementById("registerDiv").style.display = "block";
-          document.getElementById("regGmail").value = gmail;
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        document.getElementById("verifyMsg").innerText = "Error verifying Gmail.";
-      });
-    }
+      const gmail = document.getElementById("gmail").value;
+      const password = document.getElementById("password").value;
 
-    function register(){
-      var gmail = document.getElementById("regGmail").value;
-      var password = document.getElementById("regPassword").value;
-      fetch(WEBAPP_URL, {
+      // Clear previous messages
+      document.getElementById("successMsg").textContent = "";
+      document.getElementById("errorMsg").textContent = "";
+
+      fetch("YOUR_WEB_APP_URL_HERE", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ action: "register", gmail: gmail, password: password })
+        body: JSON.stringify({ gmail: gmail, password: password }),
+        headers: { "Content-Type": "application/json" }
       })
-      .then(res => res.json())
+      .then(response => response.text())
       .then(data => {
-        document.getElementById("registerMsg").innerText = data.message;
+        document.getElementById("successMsg").textContent = "✅ Registered successfully!";
+        document.getElementById("teacherForm").reset();
       })
-      .catch(err => {
-        console.log(err);
-        document.getElementById("registerMsg").innerText = "Error registering password.";
+      .catch(error => {
+        document.getElementById("errorMsg").textContent = "❌ Something went wrong. Please try again.";
       });
-    }
+    });
   </script>
-
 </body>
 </html>
