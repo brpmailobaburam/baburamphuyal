@@ -29,10 +29,13 @@
       background: #ecf0f1; color: #2c3e50; font-weight: 600; font-size: 14px;
     }
     th { background: #2980b9; color: white; font-size: 15px; }
+
 @media print {
-  input, label, .btn-group, #logoInput, #rowInputsContainer, h2, h3 { display: none !important; }
+  input, label, .btn-group, #logoInput, #rowInputsContainer, h2, .instruction { display: none !important; }
   body, .container { margin: 0; padding: 0; box-shadow: none; background: white; width: 297mm; height: 210mm; }
 }
+
+
 
     .bench-students {
       display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
@@ -45,6 +48,19 @@
     .student-class { font-weight: 700; font-size: 16px; color: #1b4f72; }
     .student-symbol { font-size: 14px; color: #154360; margin-top: 6px; }
     .logo-img { max-height: 80px; }
+
+
+
+.download-mode input,
+.download-mode label,
+.download-mode .btn-group,
+.download-mode #logoInput,
+.download-mode #rowInputsContainer,
+.download-mode h2,
+.download-mode .instruction {
+  display: none !important;
+}
+
   </style>
 </head>
 <body>
@@ -72,7 +88,7 @@
   <label>Students Per Bench:</label>
   <input type="number" id="studentsPerBench" placeholder="e.g. 3">
 
-  <h3>Enter Class wise Student Range (e.g. Class10:5-57,Class9:20-45)</h3>
+ <h3 class="instruction">Enter Class wise Student Range (e.g. Class10:5-57,Class9:20-45)</h3>
   <input type="text" id="classList" placeholder="Class10:5-57, Class9:20-45">
 
   <div class="btn-group">
@@ -95,6 +111,12 @@
     document.getElementById("examName").value = localStorage.getItem("examName") || "";
     document.getElementById("roomNo").value = localStorage.getItem("roomNo") || "";
   }
+window.onload = function(){
+  document.getElementById("schoolName").value = localStorage.getItem("schoolName") || "";
+  document.getElementById("examName").value = localStorage.getItem("examName") || "";
+  document.getElementById("roomNo").value = localStorage.getItem("roomNo") || "";
+  generateSeatPlan(); // auto generate on load
+}
 
   document.getElementById("logoInput").addEventListener("change", function(e){
     const reader = new FileReader();
@@ -215,6 +237,26 @@ html += `<h3>${schoolName}</h3>
     };
     html2pdf().set(opt).from(element).save();
   }
+function downloadPDF(){
+  const element = document.getElementById('printableArea');
+  
+  // Add download-mode class to body
+  document.body.classList.add("download-mode");
+  
+  const opt = {
+    margin: 10,
+    filename: 'seat-plan.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+  };
+  
+  html2pdf().set(opt).from(element).save().then(() => {
+    // Remove download-mode class after saving
+    document.body.classList.remove("download-mode");
+  });
+}
+
 </script>
 
 </body>
