@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6dd5ed, #2193b0);
+      margin: 0; padding: 0;
+    }
+    .container {
+      max-width: 1000px; margin: 40px auto; background: white;
+      padding: 40px; border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    h2 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+    label { display: block; margin: 15px 0 5px; font-weight: bold; color: #34495e; }
+    input[type="text"], input[type="email"], input[type="number"] {
+      width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;
+    }
+    button {
+      padding: 12px 25px; background: #27ae60; color: white;
+      border: none; border-radius: 6px; font-size: 1.1rem; cursor: pointer;
+      display: block; margin: 30px auto 0 auto;
+    }
+    .logout-btn {
+      background: #c0392b; float: right; margin-bottom: 20px;
+    }
+    .success-message { color: green; text-align: center; margin-top: 20px; font-weight: bold; }
+
+    .tags {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+    }
+    .tag {
+      background: #2980b9; color: white; padding: 20px;
+      text-align: center; border-radius: 8px;
+      text-decoration: none; font-weight: bold; font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .tag:hover {
+      background: #3498db;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <button class="logout-btn" id="logoutBtn">Logout</button>
+  <h2>School Dashboard</h2>
+  
+  <form id="schoolForm">
+    <label>School Name</label>
+    <input type="text" id="schoolName" required />
+
+    <label>Principal Name</label>
+    <input type="text" id="principalName" required />
+
+    <label>Contact Number</label>
+    <input type="text" id="contact" required />
+
+    <label>Email</label>
+    <input type="email" id="email" required />
+
+    <label>Address</label>
+    <input type="text" id="address" required />
+
+    <label>Total Students</label>
+    <input type="number" id="totalStudents" required />
+
+    <label>Total Teachers</label>
+    <input type="number" id="totalTeachers" required />
+
+    <button type="submit">Save Details</button>
+  </form>
+
+  <div id="successMsg" class="success-message"></div>
+
+  <div class="tags">
+  <div class="tags">
+  <a href="billing.html" class="tag" target="_self">Student Billing</a>
+  <a href="seatplan.html" class="tag" target="_self">Seat Plan</a>
+  <a href="results.html" class="tag" target="_self">Results</a>
+ 
+</div>
+
+  </div>
+</div>
+
+<script>
+  // Check login status
+  if (!localStorage.getItem('loggedInSchool')) {
+    window.location.href = 'login.html';
+  }
+
+  // Load saved data on page load
+  window.onload = function() {
+    const fields = ['schoolName','principalName','contact','email','address','totalStudents','totalTeachers'];
+    fields.forEach(id => {
+      if(localStorage.getItem(id)) document.getElementById(id).value = localStorage.getItem(id);
+    });
+  }
+
+  // Save data on form submit
+  document.getElementById('schoolForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fields = ['schoolName','principalName','contact','email','address','totalStudents','totalTeachers'];
+    fields.forEach(id => {
+      localStorage.setItem(id, document.getElementById(id).value.trim());
+    });
+    document.getElementById('successMsg').innerText = "Details saved successfully!";
+  });
+
+  // Logout button
+  document.getElementById('logoutBtn').addEventListener('click', function() {
+    localStorage.removeItem('loggedInSchool');
+    window.location.href = 'login.html';
+  });
+</script>
+
+</body>
+</html>
