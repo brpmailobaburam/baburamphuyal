@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seat Plan with Class Range Input</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans Devanagari', sans-serif; background: #f4f7fa; padding: 20px; }
+    .container { max-width: 1400px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+    input[type="text"], input[type="number"], input[type="file"] {
+      width: 100%; padding: 12px; margin: 8px 0; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;
+      box-sizing: border-box;
+    }
+    label { font-weight: 600; color: #2c3e50; display: block; margin-top: 15px; }
+    .btn-group { display: flex; justify-content: space-between; margin: 10px 0; flex-wrap: wrap; }
+    .btn-group button {
+      padding: 10px 20px; border-radius: 6px; border: none; color: white; font-weight: 600;
+      cursor: pointer; font-size: 1rem; margin: 5px;
+    }
+    .generate-btn { background-color: #4CAF50; }
+    .download-btn { background-color: #e67e22; }
+    .print-btn { background-color: #2980b9; }
+    h2, h3 { text-align: center; color: #34495e; }
+    table { width: 100%; border-collapse: collapse; margin-top: 25px; page-break-inside: avoid; }
+    th, td {
+      border: 2px solid #2980b9; padding: 12px; text-align: center; vertical-align: middle;
+      background: #ecf0f1; color: #2c3e50; font-weight: 600; font-size: 14px;
+    }
+    th { background: #2980b9; color: white; font-size: 15px; }
+@media print {
+  input, label, .btn-group, #logoInput, #rowInputsContainer, h2, h3 { display: none !important; }
+  body, .container { margin: 0; padding: 0; box-shadow: none; background: white; width: 297mm; height: 210mm; }
+}
+
+    .bench-students {
+      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+    }
+    .student-box {
+      border: 2px solid #3498db; background: #d6eaf8; padding: 8px 12px; width: 90px; height: 70px; border-radius: 8px;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      box-shadow: 0 2px 5px rgba(52,152,219,0.3);
+    }
+    .student-class { font-weight: 700; font-size: 16px; color: #1b4f72; }
+    .student-symbol { font-size: 14px; color: #154360; margin-top: 6px; }
+    .logo-img { max-height: 80px; }
+  </style>
+</head>
+<body>
+
+<div class="container" id="printableArea">
+  <h2>Exam Seat Plan</h2>
+
+  <label>School Name:</label>
+  <input type="text" id="schoolName" placeholder="e.g. Shree ABC Secondary School">
+
+  <label>Examination Name:</label>
+  <input type="text" id="examName" placeholder="e.g. First Terminal Examination">
+
+  <label>Upload School Logo:</label>
+  <input type="file" id="logoInput" accept="image/*">
+
+  <label>Room No.:</label>
+  <input type="text" id="roomNo" placeholder="e.g. Room 101">
+
+  <label>Number of Bench Rows:</label>
+  <input type="number" id="numRows" min="1" placeholder="Enter number of rows" oninput="createRowInputs()">
+
+  <div id="rowInputsContainer"></div>
+
+  <label>Students Per Bench:</label>
+  <input type="number" id="studentsPerBench" placeholder="e.g. 3">
+
+  <h3>Enter Class wise Student Range (e.g. Class10:5-57,Class9:20-45)</h3>
+  <input type="text" id="classList" placeholder="Class10:5-57, Class9:20-45">
+
+  <div class="btn-group">
+    <button class="generate-btn" onclick="generateSeatPlan()">Generate</button>
+    <button class="print-btn" onclick="window.print()">Print</button>
+    <button class="download-btn" onclick="downloadPDF()">Download</button>
+  </div>
+
+  <div id="seatPlan"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+  const ordinals = ["First","Second","Third","Fourth","Fifth","Sixth","Seventh","Eighth","Ninth","Tenth",
+                    "Eleventh","Twelfth","Thirteenth","Fourteenth","Fifteenth","Sixteenth","Seventeenth","Eighteenth", "Nineteenth", "Twentyth"];
+
+  window.onload = function(){
+    document.getElementById("schoolName").value = localStorage.getItem("schoolName") || "";
+    document.getElementById("examName").value = localStorage.getItem("examName") || "";
+    document.getElementById("roomNo").value = localStorage.getItem("roomNo") || "";
+  }
+
+  document.getElementById("logoInput").addEventListener("change", function(e){
+    const reader = new FileReader();
+    reader.onload = function(){
+      localStorage.setItem("schoolLogo", reader.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+
+  function createRowInputs(){
+    const numRows = parseInt(document.getElementById("numRows").value);
+    const container = document.getElementById("rowInputsContainer");
+    container.innerHTML = "";
+    if(!numRows || numRows < 1) return;
+
+    for(let i=1; i<=numRows; i++){
+      const div = document.createElement("div");
+      div.classList.add("row-input-field");
+      div.innerHTML = `
+        <label>Row ${i} Name and Bench Count (format: Name,Count)</label>
+        <input type="text" id="rowInput${i}" placeholder="e.g. Left,7" />
+      `;
+      container.appendChild(div);
+    }
+  }
+
+  function generateSeatPlan(){
+    const schoolName = document.getElementById("schoolName").value.trim();
+    const examName = document.getElementById("examName").value.trim();
+    const roomNo = document.getElementById("roomNo").value.trim();
+    const studentsPerBench = parseInt(document.getElementById("studentsPerBench").value);
+    const classInput = document.getElementById("classList").value;
+
+    if(!schoolName || !examName || !roomNo || !studentsPerBench || !classInput){
+      alert("Please fill all fields");
+      return;
+    }
+
+    localStorage.setItem("schoolName", schoolName);
+    localStorage.setItem("examName", examName);
+    localStorage.setItem("roomNo", roomNo);
+
+    const numRows = parseInt(document.getElementById("numRows").value);
+    let rows = [];
+    for(let i=1; i<=numRows; i++){
+      const val = document.getElementById(`rowInput${i}`).value.trim();
+      const parts = val.split(",");
+      rows.push({name: parts[0].trim(), count: parseInt(parts[1].trim())});
+    }
+
+    const classData = {};
+    classInput.split(",").forEach(c=>{
+      const [cls, range] = c.split(":");
+      const [start, end] = range.split("-").map(n=>parseInt(n.trim()));
+      classData[cls.trim()] = [];
+      for(let i=start; i<=end; i++){
+        classData[cls.trim()].push({ className: cls.trim(), symbol: i });
+      }
+    });
+
+    const classes = Object.keys(classData);
+    const studentQueues = JSON.parse(JSON.stringify(classData));
+    let classIndex = 0;
+
+    let maxBench = Math.max(...rows.map(r=>r.count));
+
+  let html = `<div style="text-align:center;">`;
+if(localStorage.getItem("schoolLogo")){
+  html += `<img src="${localStorage.getItem("schoolLogo")}" class="logo-img"><br>`;
+}
+html += `<h3>${schoolName}</h3>
+         <h4 style="margin:0;">${examName}</h4>
+         <h4 style="margin:5px 0 20px 0;">Room No.: ${roomNo}</h4></div>`;
+
+
+    html += `<table><thead><tr><th>Bench</th>`;
+    rows.forEach(r=>{ html += `<th>${r.name}</th>`; });
+    html += `</tr></thead><tbody>`;
+
+    for(let b=1; b<=maxBench; b++){
+      html += `<tr><td>${ordinals[b-1]||b}</td>`;
+      rows.forEach(r=>{
+        if(b <= r.count){
+          html += `<td><div class="bench-students">`;
+          for(let s=0; s<studentsPerBench; s++){
+            let currentClass = classes[classIndex % classes.length];
+            if(studentQueues[currentClass].length > 0){
+              let student = studentQueues[currentClass].shift();
+              html += `<div class="student-box">
+                         <div class="student-class">${student.className}</div>
+                         <div class="student-symbol">${student.symbol}</div>
+                       </div>`;
+            } else {
+              html += `<div class="student-box"></div>`;
+            }
+            classIndex++;
+          }
+          html += `</div></td>`;
+        } else {
+          html += `<td></td>`;
+        }
+      });
+      html += `</tr>`;
+    }
+    html += `</tbody></table>`;
+
+    document.getElementById("seatPlan").innerHTML = html;
+  }
+
+  function downloadPDF(){
+    const element = document.getElementById('printableArea');
+    const opt = {
+      margin: 10,
+      filename: 'seat-plan.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+    };
+    html2pdf().set(opt).from(element).save();
+  }
+</script>
+
+</body>
+</html>
