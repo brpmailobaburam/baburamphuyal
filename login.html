@@ -1,128 +1,74 @@
-<!-- login.html -->
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+    .login-container {
+      background: #f9f9f9; border-radius: 8px; padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; margin: auto;
+    }
+    .login-container h2 { margin-bottom: 20px; }
+    input { width: 100%; padding: 10px; margin-bottom: 15px;
+      border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+    button { width: 100%; padding: 10px; background: #4CAF50;
+      color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+    .error { color: red; margin-top: 10px; }
+  </style>
 
-        .login-container {
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            margin: 0 auto;
-        }
+  <script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
 
-        .login-container h2 {
-            margin-bottom: 20px;
-        }
+    // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+J
+    document.onkeydown = function (e) {
+      if (e.keyCode === 123) { // F12
+        return false;
+      }
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) {
+        return false;
+      }
+      if (e.ctrlKey && e.keyCode === 85) { // Ctrl+U
+        return false;
+      }
+    };
+  </script>
 
-        .login-container input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .login-container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .login-container button:hover {
-            background-color: #45a049;
-        }
-
-        .error-message {
-            color: red;
-            margin-top: 10px;
-        }
-    </style>
-
-    <script>
-        // Disable right-click context menu
-        document.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-        });
-
-        // Disable F12, Ctrl+Shift+I, Ctrl+U
-        document.onkeydown = function (e) {
-            if (e.keyCode === 123 || 
-                (e.ctrlKey && e.shiftKey && e.keyCode === 73) || 
-                (e.ctrlKey && e.keyCode === 85)) {
-                return false;
-            }
-        }
-    </script>
 </head>
 <body>
 
-    <div class="login-container">
-        <h2>Student Portal Login</h2>
-        <form id="loginForm">
-            <input type="text" id="studentId" placeholder="Enter your ID" required>
-            <input type="password" id="password" placeholder="Enter your password" required>
-            <button type="submit">Login</button>
-        </form>
-        <div id="error-message" class="error-message"></div>
-    </div>
+<div class="login-container">
+  <h2>Login Your School</h2>
+  <form id="loginForm">
+    <input type="text" id="schoolId" placeholder="Enter your ID" required />
+    <input type="password" id="password" placeholder="Enter your password" required />
+    <button type="submit">Login</button>
+  </form>
+  <div id="error" class="error"></div>
+</div>
 
-    <script>
-        const form = document.getElementById('loginForm');
-        const errorMessage = document.getElementById('error-message');
-
-        // Array of valid ID, password, and redirect path
-        const validCredentials = [
-            { id: 'student1', password: 'password123', redirect: 'student portal.html' },
-            { id: 'student2', password: 'password234', redirect: 'grade-sheet.html' },
-            { id: 'student3', password: 'password345', redirect: 'student portal.html' },
-            { id: 'student4', password: 'password456', redirect: 'grade-sheet.html' },
-            { id: 'student5', password: 'password567', redirect: 'student portal.html' },
-            { id: 'student6', password: 'password678', redirect: 'grade-sheet.html' },
-            { id: 'student7', password: 'password789', redirect: 'student portal.html' },
-            { id: 'student8', password: 'password890', redirect: 'grade-sheet.html' },
-            { id: 'student9', password: 'password901', redirect: 'student portal.html' },
-            { id: 'student10', password: 'password112', redirect: 'grade-sheet.html' },
-            { id: 'student11', password: 'password223', redirect: 'student portal.html' },
-            { id: 'student12', password: 'password334', redirect: 'grade-sheet.html' },
-            { id: 'student13', password: 'password445', redirect: 'student portal.html' },
-            { id: 'student14', password: 'password556', redirect: 'grade-sheet.html' },
-            { id: 'student15', password: 'password667', redirect: 'student portal.html' }
-        ];
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const studentId = document.getElementById('studentId').value.trim();
-            const password = document.getElementById('password').value;
-
-            const user = validCredentials.find(cred =>
-                cred.id === studentId && cred.password === password
-            );
-
-            if (user) {
-                window.location.href = user.redirect;
-            } else {
-                errorMessage.textContent = 'Incorrect ID or Password. Please try again.';
-            }
-        });
-    </script>
+<script>
+  const form = document.getElementById('loginForm');
+  const error = document.getElementById('error');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const id = document.getElementById('schoolId').value.trim();
+    const pw = document.getElementById('password').value;
+    // Hardcoded valid ID and password
+    const validId = "MySchool";
+    const validPw = "password";
+    if (id === validId && pw === validPw) {
+      localStorage.setItem('loggedInSchool', id);
+      window.location.href = "dashboard.html";
+    } else {
+      error.textContent = "Invalid ID or Password.";
+    }
+  });
+</script>
 
 </body>
 </html>
