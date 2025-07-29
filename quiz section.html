@@ -141,7 +141,6 @@
 
 
 
-
   <div id="quiz-section">
     <h1 id="quiz-title">Quiz</h1>
     <div class="question-numbers" id="question-numbers-container"></div>
@@ -154,26 +153,111 @@
   <script>
     const classPasswords = { 5: "class5pass", 6: "class6pass", 7: "class7pass" };
     const class5QuizData = [
-  { question: "Q1: नेपाल स्काउटको स्थापना कहिले भएको हो?", choices: ["२००६", "२००७", "२००९", "२०१०"], answer: "२००९" },
-  { question: "Q2: सुन्तला उत्पादनको लागि प्रसिद्ध जिल्ला कुन हो?", choices: ["भोजपुर", "पाल्पा", "धनकुटा", "कास्की"], answer: "धनकुटा" },
-  { question: "Q3: नेपालको राष्ट्रिय जनावर के हो?", choices: ["गैंडा", "हात्ती", "गोरु", "सिंह"], answer: "गैंडा" },
-  { question: "Q4: नेपालको राजधानी शहर कुन हो?", choices: ["पोखरा", "काठमाडौं", "ललितपुर", "भरतपुर"], answer: "काठमाडौं" },
-  { question: "Q5: नेपालको राष्ट्रिय फूल के हो?", choices: ["गुलाब", "सुनफूल", "रातो सुनापात", "कमल"], answer: "रातो सुनापात" },
-  { question: "Q6: नेपालमा सबैभन्दा अग्लो हिमाल कुन हो?", choices: ["कालापाथर", "सगरमाथा", "धौलागिरी", "अन्नपूर्ण"], answer: "सगरमाथा" },
-  { question: "Q7: नेपालको राष्ट्रिय खेल कुन हो?", choices: ["फुटबल", "वर्षा", "दौड", "बक्सिङ"], answer: "वर्षा" },
-  { question: "Q8: नेपालमा सबैभन्दा ठूलो ताल कुन हो?", choices: ["फेवा ताल", "रारा ताल", "गोक्यो ताल", "बागमती ताल"], answer: "रारा ताल" },
-  { question: "Q9: नेपालमा सबैभन्दा ठूलो नदी कुन हो?", choices: ["कोसी", "गण्डकी", "कर्णाली", "बागमती"], answer: "कर्णाली" },
-  { question: "Q10: नेपालको राष्ट्रिय पक्षी कुन हो?", choices: ["धनकुटे", "रातो चर", "हिमाल", "काक्रेल"], answer: "धनकुटे" },
-  { question: "Q11: नेपाल कस्तो देश हो?", choices: ["सागरीय", "पर्वतीय", "मधेशीय", "जंगल"], answer: "पर्वतीय" },
-  { question: "Q12: नेपालको राष्ट्रिय झण्डामा कति रंगहरू छन्?", choices: ["२", "३", "४", "५"], answer: "२" },
-  { question: "Q13: नेपालको राष्ट्रिय जनावरको सन्दर्भमा कुन जनावरलाई जनाउँछ?", choices: ["गैंडा", "हात्ती", "गोरु", "सिंह"], answer: "गैंडा" },
-  { question: "Q14: काठमाडौं उपत्यकामा कति जिल्ला छन्?", choices: ["२", "३", "४", "५"], answer: "३" },
-  { question: "Q15: नेपालको राष्ट्रिय फल कुन हो?", choices: ["स्याउ", "केरा", "अम्बा", "स्याउ"], answer: "स्याउ" },
-  { question: "Q16: नेपालको सबैभन्दा ठूलो चरा कुन हो?", choices: ["गरुड", "काक्रेल", "मोर", "गिद्ध"], answer: "गरुड" },
-  { question: "Q17: नेपालको राष्ट्रिय खेल कहाँ खेलिन्छ?", choices: ["स्कूल", "स्टेडियम", "घर", "चोक"], answer: "स्टेडियम" },
-  { question: "Q18: नेपालमा सबैभन्दा बढी बोलिने भाषा कुन हो?", choices: ["नेपाली", "मैथिली", "तामाङ", "नेपाल भाषा"], answer: "नेपाली" },
-  { question: "Q19: नेपालमा सबैभन्दा ठूलो जिल्ला कुन हो?", choices: ["दोलखा", "डडेलधुरा", "मोरङ", "कैलाली"], answer: "मोरङ" },
-  { question: "Q20: नेपालको राष्ट्रिय जनावर गैंडाको संरक्षण कसरी गरिन्छ?", choices: ["जङ्गल संरक्षण", "शिकार", "अफवाह", "पक्राउ"], answer: "जङ्गल संरक्षण" },
+  { question: "Q1: What does CPU stand for?", choices: ["Central Processing Unit", "Computer Personal Unit", "Central Performance Unit", "Control Panel Unit"], answer: "Central Processing Unit" },
+  { question: "Q2: नेपालको राष्ट्रिय पक्षी कुन हो?", choices: ["धनचरी", "डाँफे", "मुनाल", "काग"], answer: "डाँफे" },
+  { question: "Q3: Which is the smallest prime number?", choices: ["0", "1", "2", "3"], answer: "2" },
+  { question: "Q4: HTML stands for?", choices: ["HighText Machine Language", "HyperText Markup Language", "Hyperloop Machine Language", "None of these"], answer: "HyperText Markup Language" },
+  { question: "Q5: नेपालको संविधान कहिले जारी भयो?", choices: ["२०६३", "२०७२", "२०७०", "२०६५"], answer: "२०७२" },
+  { question: "Q6: What is the capital of Australia?", choices: ["Sydney", "Melbourne", "Canberra", "Perth"], answer: "Canberra" },
+  { question: "Q7: When was Facebook launched?", choices: ["2003", "2004", "2005", "2006"], answer: "2004" },
+  { question: "Q8: नेपालको सबैभन्दा अग्लो हिमाल कुन हो?", choices: ["कञ्चनजङ्घा", "गौरीशंकर", "सगरमाथा", "धवलागिरी"], answer: "सगरमाथा" },
+  { question: "Q9: What is the square root of 144?", choices: ["10", "12", "14", "16"], answer: "12" },
+  { question: "Q10: Who invented the telephone?", choices: ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "James Watt"], answer: "Alexander Graham Bell" },
+  { question: "Q11: नेपालको राष्ट्रिय गान कोले लेखेका हुन्?", choices: ["Byakul Maila", "Laxmi Prasad Devkota", "Madan Bhandari", "Mahakavi"], answer: "Byakul Maila" },
+  { question: "Q12: Which gas do plants absorb from the atmosphere?", choices: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], answer: "Carbon Dioxide" },
+  { question: "Q13: In which year did World War II end?", choices: ["1945", "1939", "1942", "1950"], answer: "1945" },
+  { question: "Q14: पिएचडी भनेको के हो?", choices: ["Post High Diploma", "Doctorate Degree", "Professional High Degree", "Permanent Head Doctor"], answer: "Doctorate Degree" },
+  { question: "Q15: Which is the longest river in the world?", choices: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Nile" },
+  { question: "Q16: Who is the founder of Microsoft?", choices: ["Steve Jobs", "Mark Zuckerberg", "Bill Gates", "Larry Page"], answer: "Bill Gates" },
+  { question: "Q17: नेपालको पुरानो नाम के हो?", choices: ["गोरखा", "किरात देश", "नेपाल देश", "अभिनव नेपाल"], answer: "किरात देश" },
+  { question: "Q18: What is the chemical formula of water?", choices: ["H2O", "CO2", "O2", "NaCl"], answer: "H2O" },
+  { question: "Q19: What does RAM stand for?", choices: ["Read Access Memory", "Random Access Memory", "Rapid Access Machine", "Run All Memory"], answer: "Random Access Memory" },
+  { question: "Q20: नेपालको राष्ट्रिय फूल कुन हो?", choices: ["कमल", "गुलाफ", "लाली गुराँस", "सुनगाभा"], answer: "लाली गुराँस" },
+  { question: "Q21: What is 15% of 200?", choices: ["20", "25", "30", "35"], answer: "30" },
+  { question: "Q22: Who discovered gravity?", choices: ["Newton", "Einstein", "Galileo", "Hawking"], answer: "Newton" },
+  { question: "Q23: अक्सिजन गैसको रासायनिक संकेत के हो?", choices: ["O2", "H2O", "CO2", "O"], answer: "O2" },
+  { question: "Q24: What is the national game of Nepal?", choices: ["Volleyball", "Football", "Cricket", "Kabaddi"], answer: "Volleyball" },
+  { question: "Q25: What is the boiling point of water in Celsius?", choices: ["90°C", "95°C", "100°C", "110°C"], answer: "100°C" },
+  { question: "Q26: Who was the first man to walk on the moon?", choices: ["Buzz Aldrin", "Neil Armstrong", "Yuri Gagarin", "John Glenn"], answer: "Neil Armstrong" },
+  { question: "Q27: नेपालको पहिलो महिला डाक्टर को हुन्?", choices: ["सावित्री देवी", "गंगा देवी", "भाग्यलक्ष्मी मल्ल", "टोना वर्मा"], answer: "टोना वर्मा" },
+  { question: "Q28: What does URL stand for?", choices: ["Uniform Resource Locator", "Universal Reference Link", "Unique Resource Line", "Unified Routing Logic"], answer: "Uniform Resource Locator" },
+  { question: "Q29: How many planets are there in the solar system?", choices: ["7", "8", "9", "10"], answer: "8" },
+  { question: "Q30: Which is the fastest land animal?", choices: ["Lion", "Horse", "Cheetah", "Tiger"], answer: "Cheetah" },
+  { question: "Q31: When did World War I begin?", choices: ["1912", "1914", "1916", "1918"], answer: "1914" },
+  { question: "Q32: What does HTTP stand for?", choices: ["HyperText Transfer Protocol", "Hyper Transfer Text Protocol", "HighText Transmission Protocol", "None"], answer: "HyperText Transfer Protocol" },
+  { question: "Q33: Who invented the light bulb?", choices: ["Thomas Edison", "Nikola Tesla", "Alexander Bell", "James Watt"], answer: "Thomas Edison" },
+  { question: "Q34: What is the full form of Wi-Fi?", choices: ["Wireless Fidelity", "Wide Fidelity", "Wireless Fiber", "None"], answer: "Wireless Fidelity" },
+  { question: "Q35: What is the chemical symbol for gold?", choices: ["Au", "Ag", "Gd", "Go"], answer: "Au" },
+  { question: "Q36: Who painted the Mona Lisa?", choices: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Michelangelo"], answer: "Leonardo da Vinci" },
+  { question: "Q37: Which country hosted the 2016 Summer Olympics?", choices: ["China", "Brazil", "UK", "Japan"], answer: "Brazil" },
+  { question: "Q38: What is the capital city of Canada?", choices: ["Toronto", "Ottawa", "Vancouver", "Montreal"], answer: "Ottawa" },
+  { question: "Q39: What is 9 x 12?", choices: ["108", "96", "102", "112"], answer: "108" },
+  { question: "Q40: Which gas is essential for human respiration?", choices: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], answer: "Oxygen" },
+  { question: "Q41: What is the main function of the CPU?", choices: ["Processing data", "Storing data", "Displaying output", "Printing"], answer: "Processing data" },
+  { question: "Q42: What is the freezing point of water in Celsius?", choices: ["0", "32", "10", "-10"], answer: "0" },
+  { question: "Q43: Who is known as the father of modern physics?", choices: ["Albert Einstein", "Isaac Newton", "Stephen Hawking", "Galileo"], answer: "Albert Einstein" },
+  { question: "Q44: Which planet is known as the Red Planet?", choices: ["Mars", "Jupiter", "Venus", "Saturn"], answer: "Mars" },
+  { question: "Q45: What is the capital of Italy?", choices: ["Rome", "Venice", "Milan", "Florence"], answer: "Rome" },
+  { question: "Q46: What is 1000 divided by 25?", choices: ["40", "50", "25", "30"], answer: "40" },
+  { question: "Q47: Who invented the computer mouse?", choices: ["Douglas Engelbart", "Charles Babbage", "Alan Turing", "Bill Gates"], answer: "Douglas Engelbart" },
+  { question: "Q48: What does PDF stand for?", choices: ["Portable Document Format", "Public Data File", "Print Document Format", "Page Description Format"], answer: "Portable Document Format" },
+  { question: "Q49: How many continents are there in the world?", choices: ["5", "6", "7", "8"], answer: "7" },
+  { question: "Q50: What is the square root of 169?", choices: ["12", "13", "14", "15"], answer: "13" },
+  { question: "Q51: Which sport is known as the 'king of sports'?", choices: ["Football", "Cricket", "Basketball", "Tennis"], answer: "Football" },
+  { question: "Q52: Who discovered penicillin?", choices: ["Alexander Fleming", "Louis Pasteur", "Isaac Newton", "Marie Curie"], answer: "Alexander Fleming" },
+  { question: "Q53: What is the formula for calculating area of a triangle?", choices: ["1/2 × base × height", "base × height", "length × breadth", "πr²"], answer: "1/2 × base × height" },
+  { question: "Q54: Which organ in the human body pumps blood?", choices: ["Heart", "Lungs", "Liver", "Kidney"], answer: "Heart" },
+  { question: "Q55: What is the national sport of Japan?", choices: ["Sumo wrestling", "Judo", "Karate", "Baseball"], answer: "Sumo wrestling" },
+  { question: "Q56: Which planet has the most moons?", choices: ["Jupiter", "Saturn", "Neptune", "Uranus"], answer: "Saturn" },
+  { question: "Q57: Who invented the World Wide Web?", choices: ["Tim Berners-Lee", "Steve Jobs", "Bill Gates", "Mark Zuckerberg"], answer: "Tim Berners-Lee" },
+  { question: "Q58: How many bits are there in a byte?", choices: ["8", "4", "16", "32"], answer: "8" },
+  { question: "Q59: What is the name of the longest river in the world?", choices: ["Nile", "Amazon", "Yangtze", "Mississippi"], answer: "Nile" },
+  { question: "Q60: Which part of the plant conducts photosynthesis?", choices: ["Leaves", "Stem", "Roots", "Flowers"], answer: "Leaves" },
+  { question: "Q61: What is the boiling point of water in Fahrenheit?", choices: ["100°F", "180°F", "212°F", "250°F"], answer: "212°F" },
+  { question: "Q62: What is the full form of ATM?", choices: ["Automated Teller Machine", "Any Time Money", "Automatic Transfer Machine", "Advanced Transaction Machine"], answer: "Automated Teller Machine" },
+  { question: "Q63: Which country has the largest population?", choices: ["India", "USA", "China", "Russia"], answer: "China" },
+  { question: "Q64: What is the hardest natural substance on Earth?", choices: ["Iron", "Gold", "Diamond", "Quartz"], answer: "Diamond" },
+  { question: "Q65: How many players are there in a football team?", choices: ["9", "10", "11", "12"], answer: "11" },
+  { question: "Q66: Which programming language is mainly used for web development?", choices: ["Python", "C++", "HTML", "Java"], answer: "HTML" },
+  { question: "Q67: What does GPS stand for?", choices: ["Global Positioning System", "Geo Path Service", "Global Process System", "Geographical Pointer System"], answer: "Global Positioning System" },
+  { question: "Q68: Which vitamin is produced when our skin is exposed to sunlight?", choices: ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"], answer: "Vitamin D" },
+  { question: "Q69: Who is the author of 'Hamlet'?", choices: ["William Wordsworth", "William Shakespeare", "John Keats", "Jane Austen"], answer: "William Shakespeare" },
+  { question: "Q70: What does USB stand for?", choices: ["Universal Serial Bus", "Unified System Board", "Universal System Bus", "Ultra Speed Bus"], answer: "Universal Serial Bus" },
+  { question: "Q71: What is the value of Pi?", choices: ["3.14", "2.71", "1.61", "3.15"], answer: "3.14" },
+  { question: "Q72: What is the capital of Germany?", choices: ["Berlin", "Munich", "Frankfurt", "Hamburg"], answer: "Berlin" },
+  { question: "Q73: Which metal is liquid at room temperature?", choices: ["Mercury", "Lead", "Zinc", "Iron"], answer: "Mercury" },
+  { question: "Q74: How many days are there in a leap year?", choices: ["365", "366", "364", "367"], answer: "366" },
+  { question: "Q75: Which planet is closest to the Sun?", choices: ["Mercury", "Venus", "Earth", "Mars"], answer: "Mercury" },
+  { question: "Q76: What is the SI unit of force?", choices: ["Newton", "Joule", "Pascal", "Watt"], answer: "Newton" },
+  { question: "Q77: What is the speed of light?", choices: ["300,000 km/s", "150,000 km/s", "1,000 km/s", "3,000 km/s"], answer: "300,000 km/s" },
+  { question: "Q78: Who is known as the father of the computer?", choices: ["Charles Babbage", "Alan Turing", "Bill Gates", "Steve Jobs"], answer: "Charles Babbage" },
+  { question: "Q79: What is the main source of energy for the Earth?", choices: ["Moon", "Sun", "Wind", "Fossil Fuel"], answer: "Sun" },
+  { question: "Q80: Which element has the atomic number 1?", choices: ["Oxygen", "Hydrogen", "Helium", "Nitrogen"], answer: "Hydrogen" },
+  { question: "Q81: What is 25% of 240?", choices: ["50", "60", "70", "80"], answer: "60" },
+  { question: "Q82: Which continent is known as the ‘Dark Continent’?", choices: ["Asia", "Africa", "Europe", "Australia"], answer: "Africa" },
+  { question: "Q83: Which sport uses a bat, ball, and stumps?", choices: ["Cricket", "Baseball", "Hockey", "Tennis"], answer: "Cricket" },
+  { question: "Q84: Who wrote the national anthem of India?", choices: ["Rabindranath Tagore", "Sarojini Naidu", "Bankim Chandra", "Subhash Chandra Bose"], answer: "Rabindranath Tagore" },
+  { question: "Q85: What is the value of 2³?", choices: ["4", "6", "8", "9"], answer: "8" },
+  { question: "Q86: What is the capital of South Korea?", choices: ["Seoul", "Tokyo", "Beijing", "Pyongyang"], answer: "Seoul" },
+  { question: "Q87: Which ocean is the largest?", choices: ["Atlantic", "Indian", "Pacific", "Arctic"], answer: "Pacific" },
+  { question: "Q88: What does AI stand for?", choices: ["Artificial Intelligence", "Automated Interface", "Advanced Internet", "Analog Integration"], answer: "Artificial Intelligence" },
+  { question: "Q89: Who discovered America?", choices: ["Christopher Columbus", "Vasco da Gama", "James Cook", "Marco Polo"], answer: "Christopher Columbus" },
+  { question: "Q90: What is the sum of angles in a triangle?", choices: ["180°", "360°", "90°", "270°"], answer: "180°" },
+  { question: "Q91: What is the fastest bird in the world?", choices: ["Peregrine Falcon", "Eagle", "Sparrow", "Hawk"], answer: "Peregrine Falcon" },
+  { question: "Q92: What is the chemical symbol for Sodium?", choices: ["Na", "S", "Sn", "So"], answer: "Na" },
+  { question: "Q93: Which organ purifies blood in the human body?", choices: ["Liver", "Heart", "Kidney", "Lungs"], answer: "Kidney" },
+  { question: "Q94: What is the capital of France?", choices: ["Paris", "London", "Rome", "Berlin"], answer: "Paris" },
+  { question: "Q95: Which is the highest mountain in the world?", choices: ["Mount Everest", "K2", "Lhotse", "Makalu"], answer: "Mount Everest" },
+  { question: "Q96: What is the name of the computer’s main circuit board?", choices: ["Motherboard", "Processor", "RAM", "Hard Drive"], answer: "Motherboard" },
+  { question: "Q97: Which country is called the Land of the Rising Sun?", choices: ["China", "Japan", "Thailand", "Nepal"], answer: "Japan" },
+  { question: "Q98: What is the term for animals that eat only plants?", choices: ["Herbivores", "Carnivores", "Omnivores", "Insectivores"], answer: "Herbivores" },
+  { question: "Q99: How many chromosomes do humans have?", choices: ["46", "44", "48", "42"], answer: "46" },
+  { question: "Q100: Who is the current CEO of Tesla (as of 2024)?", choices: ["Elon Musk", "Jeff Bezos", "Tim Cook", "Sundar Pichai"], answer: "Elon Musk" },
+  { question: "Q101: सुन्तला उत्पादनको लागि प्रसिद्ध जिल्ला कुन हो?", choices: ["भोजपुर", "पाल्पा", "धनकुटा", "कास्की"], answer: "धनकुटा" },
+  { question: "Q102: नेपालको राष्ट्रिय फूल के हो?", choices: ["गुलाब", "सुनफूल", "गुरास", "लालिगुरास"], answer: "लालिगुरास" },
+  { question: "Q103: नेपालको राष्ट्रिय झण्डामा कति रंगहरू छन्?", choices: ["२", "३", "४", "५"], answer: "२" },
+  { question: "Q104: काठमाडौं उपत्यकामा कति जिल्ला छन्?", choices: ["१", "२", "३", "४"], answer: "३" },
+  { question: "Q105: नेपालमा दोश्रो सबैभन्दा बढी बोलिने भाषा कुन हो?", choices: ["नेपाली", "मैथिली", "तामाङ", "नेपाल भाषा"], answer: "मैथिली" },
 ];
 
 
@@ -185,6 +269,9 @@
       { question: "Q2: What is the national animal of Nepal?", choices: ["Rhino", "Elephant", "Ox", "Lion"], answer: "Rhino" },
       { question: "Q3: How many districts are in Kathmandu valley?", choices: ["2", "3", "4", "5"], answer: "3" },
     ];
+
+
+
 
 
 
@@ -686,81 +773,88 @@ const class7QuizData = [
       }
     }
 
-    function renderQuiz() {
-      const questionNumbersContainer = document.getElementById("question-numbers-container");
-      const questionsContainer = document.getElementById("questions-container");
-      questionNumbersContainer.innerHTML = "";
-      questionsContainer.innerHTML = "";
+  function renderQuiz() {
+  const questionNumbersContainer = document.getElementById("question-numbers-container");
+  const questionsContainer = document.getElementById("questions-container");
+  questionNumbersContainer.innerHTML = "";
+  questionsContainer.innerHTML = "";
 
-      currentQuizData.forEach((data, index) => {
-        const btn = document.createElement("button");
-        btn.textContent = index + 1;
-        btn.id = `qbtn-${index}`;
-        btn.onclick = () => {
-          clickedQuestions.add(index);
-          document.querySelectorAll(".question-numbers button").forEach((b, i) => {
-            if (clickedQuestions.has(i)) {
-              b.classList.add("selected");
-            }
-          });
-          questionsContainer.querySelectorAll(".question-section").forEach((q) => q.classList.remove("active"));
-          document.getElementById(`question-${index}`).classList.add("active");
-        };
-        questionNumbersContainer.appendChild(btn);
+  currentQuizData.forEach((data, index) => {
+    const btn = document.createElement("button");
+    btn.textContent = index + 1;
+    btn.id = `qbtn-${index}`;
+    btn.onclick = () => {
+      clickedQuestions.add(index);
+      document.querySelectorAll(".question-numbers button").forEach((b, i) => {
+        if (clickedQuestions.has(i)) {
+          b.classList.add("selected");
+        }
+      });
+      questionsContainer.querySelectorAll(".question-section").forEach((q) => q.classList.remove("active"));
+      document.getElementById(`question-${index}`).classList.add("active");
+
+      // ✅ Hide question number section when a question is selected
+      questionNumbersContainer.style.display = 'none';
+    };
+    questionNumbersContainer.appendChild(btn);
+  });
+
+  currentQuizData.forEach((data, index) => {
+    const questionSection = document.createElement("div");
+    questionSection.classList.add("question-section");
+    questionSection.id = `question-${index}`;
+
+    const questionText = document.createElement("h2");
+    questionText.textContent = data.question;
+    questionSection.appendChild(questionText);
+
+    data.choices.forEach((choice) => {
+      const choiceBtn = document.createElement("button");
+      choiceBtn.textContent = choice;
+      choiceBtn.classList.add("choice");
+      choiceBtn.onclick = () => {
+        questionSection.querySelectorAll(".choice").forEach((btn) => btn.classList.remove("selected"));
+        choiceBtn.classList.add("selected");
+      };
+      questionSection.appendChild(choiceBtn);
+    });
+
+    const checkAnswerBtn = document.createElement("button");
+    checkAnswerBtn.textContent = "Check Right Answer";
+    checkAnswerBtn.classList.add("check-answer");
+
+    checkAnswerBtn.onclick = () => {
+      questionSection.querySelectorAll(".choice").forEach((btn) => {
+        btn.disabled = true;
+        if (btn.textContent === data.answer) {
+          btn.classList.add("correct");
+        } else if (btn.classList.contains("selected")) {
+          btn.classList.add("incorrect");
+        }
       });
 
-      currentQuizData.forEach((data, index) => {
-        const questionSection = document.createElement("div");
-        questionSection.classList.add("question-section");
-        questionSection.id = `question-${index}`;
+      // Show "Congratulations!" if correct
+      const selected = questionSection.querySelector(".selected");
+      const isCorrect = selected && selected.textContent === data.answer;
+      if (isCorrect) {
+        const congrats = document.createElement("p");
+        congrats.textContent = "🎉 Congratulations! 🎉";
+        congrats.style.color = "pink";
+        congrats.style.fontSize = "25px";
+        congrats.style.marginTop = "10px";
+        questionSection.appendChild(congrats);
+      }
 
-        const questionText = document.createElement("h2");
-        questionText.textContent = data.question;
-        questionSection.appendChild(questionText);
+      // ✅ Show question number buttons after 2 seconds
+      setTimeout(() => {
+        questionNumbersContainer.style.display = 'flex';
+      }, 2000); // 2 seconds
+    };
 
-        data.choices.forEach((choice) => {
-          const choiceBtn = document.createElement("button");
-          choiceBtn.textContent = choice;
-          choiceBtn.classList.add("choice");
-          choiceBtn.onclick = () => {
-            questionSection.querySelectorAll(".choice").forEach((btn) => btn.classList.remove("selected"));
-            choiceBtn.classList.add("selected");
-          };
-          questionSection.appendChild(choiceBtn);
-        });
-
-
-
-        const checkAnswerBtn = document.createElement("button");
-        checkAnswerBtn.textContent = "Check Right Answer";
-        checkAnswerBtn.classList.add("check-answer");
-        checkAnswerBtn.onclick = () => {
-          questionSection.querySelectorAll(".choice").forEach((btn) => {
-            btn.disabled = true;
-            if (btn.textContent === data.answer) {
-              btn.classList.add("correct");
-            } else if (btn.classList.contains("selected")) {
-              btn.classList.add("incorrect");
-            }
-          });
-
-          // Add congratulations message (ONLY IF CORRECT)
-          const selected = questionSection.querySelector(".selected");
-          const isCorrect = selected && selected.textContent === data.answer;
-
-          if (isCorrect) {
-            const congrats = document.createElement("p");
-            congrats.textContent = "🎉 Congratulations! 🎉";
-            congrats.style.color = "pink";
-            congrats.style.fontSize = "25px";
-            congrats.style.marginTop = "10px";
-            questionSection.appendChild(congrats);
-          }
-        };
-        questionSection.appendChild(checkAnswerBtn);
-        questionsContainer.appendChild(questionSection);
-      });
-    }
+    questionSection.appendChild(checkAnswerBtn);
+    questionsContainer.appendChild(questionSection);
+  });
+}
   </script>
 </body>
 </html>
