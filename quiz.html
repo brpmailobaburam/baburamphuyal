@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/png" href="b.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<title>Free Quiz</title>
+<style>
+  .option-btn {
+    margin: 5px; padding: 8px 12px; border-radius: 5px; border: 1px solid #ccc; cursor: pointer;
+  }
+  .option-btn.selected { background-color: #87ceeb; }
+  .option-btn.correct { background-color: #4caf50; color: white; }
+  .option-btn.wrong { background-color: #f44336; color: white; }
+  
+#startContainer button {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+#startContainer button:hover {
+  background: linear-gradient(45deg, #2575fc, #6a11cb);
+  transform: scale(1.05);
+}
+
+
+</style>
+</head>
+<body>
+
+
+
+
+
+<div id="startContainer">
+  <button onclick="startQuiz()">Start Quiz with Time</button>
+</div>
+
+<div id="quizContainer" style="display:none;">
+  <div id="timer">Time Left: 20:00</div>
+  <div id="questionsContainer"></div>
+</div>
+
+
+<div id="resultContainer" style="display:none;"></div>
+
+<script>
+const questions = [
+  { question: "What is the capital of France?", options: ["Paris","London","Berlin","Madrid"], answer: "Paris" },
+  { question: "Which is the largest planet?", options: ["Mars","Earth","Jupiter","Venus"], answer: "Jupiter" },
+  { question: "What is the national animal of Nepal?", options: ["Cow","Tiger","Leopard","Goat"], answer: "Cow" },
+  { question: "Which country is famous for pizza?", options: ["India", "Italy", "France", "China"], answer: "Italy" },
+  { question: "Who painted the Mona Lisa?", options: ["Van Gogh", "LiyoDa Vinci", "Picasso", "Rembrandt"], answer: "LiyoDa Vinci" },
+  { question: "What is H2O?", options: ["Hydrogen", "Helium", "Water", "Oxygen"], answer: "Water" },
+  { question: "Which language is primarily spoken in Brazil?", options: ["Spanish", "French", "Portuguese", "German"], answer: "Portuguese" },
+  { question: "Which gas do humans need to breathe?", options: ["Nitrogen", "Hydrogen", "Oxygen", "Carbon"], answer: "Oxygen" },
+  { question: "What is the boiling point of water in Celsius?", options: ["90°C", "100°C", "110°C", "120°C"], answer: "100°C" },
+  { question: "What is the capital of France? ", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
+  { question: "What is the national animal of Nepal? ", options: ["Cow", "Tiger", "Leopard", "Goat"], answer: "Cow" },
+  { question: "Which is the largest planet? ", options: ["Mars", "Earth", "Jupiter", "Venus"], answer: "Jupiter" },
+  { question: "Which planet is known as the Red Planet?", options: ["Venus", "Mars", "Saturn", "Mercury"], answer: "Mars" },
+  { question: "How many continents are there?", options: ["5", "6", "7", "8"], answer: "7" },
+  { question: "Which element has the chemical symbol 'O'?", options: ["Gold", "Oxygen", "Iron", "Silver"], answer: "Oxygen" },
+  { question: "How many hours in a day?", options: ["12", "24", "36", "48"], answer: "24" },
+  { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
+  { question: "Which planet is known as the Red Planet?", options: ["Venus", "Mars", "Saturn", "Mercury"], answer: "Mars" },
+  { question: "How many legs does a spider have?", options: ["6", "8", "10", "12"], answer: "8" },
+  { question: "Which is the longest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Nile" },
+  { question: "Who wrote 'Hamlet'?", options: ["Shakespeare", "Hemingway", "Tolstoy", "Dickens"], answer: "Shakespeare" },
+  { question: "Which ocean is the largest?", options: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: "Pacific" },
+  { question: "How many continents are there? (General Knowledge)", options: ["5", "6", "7", "8"], answer: "7" },
+  { question: "What is H2O? ", options: ["Hydrogen", "Helium", "Water", "Oxygen"], answer: "Water" },
+  { question: "Which country is famous for pizza? ", options: ["India", "Italy", "France", "China"], answer: "Italy" },
+  { question: "Which element has the chemical symbol 'O'? (General Knowledge)", options: ["Gold", "Oxygen", "Iron", "Silver"], answer: "Oxygen" },
+  { question: "Who painted the Mona Lisa? (General Knowledge)", options: ["Van Gogh", "Da Vinci", "Picasso", "Rembrandt"], answer: "Da Vinci" },
+  { question: "Which gas do humans need to breathe? (General Knowledge)", options: ["Nitrogen", "Hydrogen", "Oxygen", "Carbon"], answer: "Oxygen" },
+  { question: "Which ocean is the largest? ", options: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: "Pacific" },
+  { question: "Which is the longest river in the world? (General Knowledge)", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Nile" },
+  { question: "What is the boiling point of water in Celsius? (General Knowledge)", options: ["90°C", "100°C", "110°C", "120°C"], answer: "100°C" },
+  { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
+  { question: "How many hours in a day? (General Knowledge)", options: ["12", "24", "36", "48"], answer: "24" },
+  { question: "How many legs does a spider have? (General Knowledge)", options: ["6", "8", "10", "12"], answer: "8" },
+  { question: "Which is the largest planet?", options: ["Mars", "Earth", "Jupiter", "Venus"], answer: "Jupiter" },
+  { question: "What is H2O?", options: ["Hydrogen", "Helium", "Water", "Oxygen"], answer: "Water" },
+  { question: "Which language is primarily spoken in Brazil?", options: ["Spanish", "French", "Portuguese", "German"], answer: "Portuguese" },
+  { question: "Which gas do humans need to breathe?", options: ["Nitrogen", "Hydrogen", "Oxygen", "Carbon"], answer: "Oxygen" },
+  { question: "Who wrote 'Hamlet'? ", options: ["Shakespeare", "Hemingway", "Tolstoy", "Dickens"], answer: "Shakespeare" },
+  { question: "How many continents are there?", options: ["5", "6", "7", "8"], answer: "7" },
+  { question: "Which element has the chemical symbol 'O'?", options: ["Gold", "Oxygen", "Iron", "Silver"], answer: "Oxygen" },
+  { question: "Which ocean is the largest?", options: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: "Pacific" },
+  { question: "How many hours in a day?", options: ["12", "24", "36", "48"], answer: "24" },
+  { question: "Which is the longest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Nile" },
+  { question: "Who painted the Mona Lisa?", options: ["Van Gogh", "Da Vinci", "Picasso", "Rembrandt"], answer: "Da Vinci" },
+  { question: "What is the boiling point of water in Celsius?", options: ["90°C", "100°C", "110°C", "120°C"], answer: "100°C" },
+  { question: "Which planet is known as the Red Planet?", options: ["Venus", "Mars", "Saturn", "Mercury"], answer: "Mars" },
+  { question: "Which organ pumps blood?", options: ["Lungs", "Heart", "Liver", "Kidney"], answer: "Heart" },
+  { question: "Which planet has rings?", options: ["Earth", "Venus", "Saturn", "Mars"], answer: "Saturn" },
+  { question: "How many legs does a spider have?", options: ["6", "8", "10", "12"], answer: "8" }
+
+];
+
+let selectedAnswers = new Array(questions.length).fill(null);
+let timerInterval;
+
+function startQuiz() {
+  document.getElementById("startContainer").style.display = "none";
+  document.getElementById("quizContainer").style.display = "block";
+  loadQuestions();
+  startTimer(1200); 
+}
+
+function loadQuestions() {
+  const container = document.getElementById("questionsContainer");
+  container.innerHTML = "";
+
+  questions.forEach((q, i) => {
+    const section = document.createElement("div");
+    const qText = document.createElement("p");
+    qText.innerHTML = `<strong>Q${i+1}:</strong> ${q.question}`;
+    section.appendChild(qText);
+
+    q.options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.textContent = opt;
+      btn.className = "option-btn";
+      btn.addEventListener("click", () => {
+        if(selectedAnswers[i] === null) {
+          selectedAnswers[i] = opt;
+          section.querySelectorAll("button.option-btn").forEach(b => {
+            b.classList.remove("selected", "correct", "wrong");
+          });
+          btn.classList.add("selected");
+          if(opt === q.answer) btn.classList.add("correct");
+          else btn.classList.add("wrong");
+        }
+      });
+      section.appendChild(btn);
+    });
+    container.appendChild(section);
+  });
+
+ 
+  const finishBtn = document.createElement("button");
+  finishBtn.textContent = "Finish Quiz";
+  finishBtn.onclick = finishQuiz;
+
+  // Styling
+  finishBtn.style.marginTop = "20px";
+  finishBtn.style.background = "linear-gradient(45deg, #ff416c, #ff4b2b)";
+  finishBtn.style.color = "white";
+  finishBtn.style.padding = "12px 25px";
+  finishBtn.style.fontWeight = "bold";
+  finishBtn.style.border = "none";
+  finishBtn.style.borderRadius = "10px";
+  finishBtn.style.cursor = "pointer";
+  finishBtn.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
+  finishBtn.onmouseover = () => finishBtn.style.transform = "scale(1.05)";
+  finishBtn.onmouseout = () => finishBtn.style.transform = "scale(1)";
+
+  container.appendChild(finishBtn);
+}
+
+function startTimer(seconds) {
+  const timeDisplay = document.getElementById("timer");
+  let timeLeft = seconds;
+  timerInterval = setInterval(() => {
+    let mins = Math.floor(timeLeft / 60);
+    let secs = timeLeft % 60;
+    timeDisplay.textContent = `Time Left: ${mins}:${secs < 10 ? "0" : ""}${secs}`;
+    timeLeft--;
+    if (timeLeft < 0) {
+      clearInterval(timerInterval);
+      finishQuiz();
+    }
+  }, 1200);
+}
+
+function finishQuiz() {
+  clearInterval(timerInterval);
+  document.getElementById("quizContainer").style.display = "none";
+  document.getElementById("resultContainer").style.display = "block";
+
+  let correct = 0, attempted = 0;
+  for(let i = 0; i < questions.length; i++) {
+    if(selectedAnswers[i] !== null) {
+      attempted++;
+      if(selectedAnswers[i] === questions[i].answer) correct++;
+    }
+  }
+  const wrong = attempted - correct;
+  const score = (correct * 2) - wrong;
+
+  document.getElementById("resultContainer").innerHTML = `
+    <h2>Quiz Result</h2>
+    <p>Total Questions: ${questions.length}</p>
+    <p>Attempted: ${attempted}</p>
+    <p>Correct Answers: ${correct}</p>
+    <p>Wrong Answers: ${wrong}</p>
+    <p><strong>Total Score: ${score}</strong></p>
+    <button onclick="location.reload()">Try Again</button>
+  `;
+}
+</script>
+
+</body>
+</html>
