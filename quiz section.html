@@ -111,9 +111,31 @@
     }
 
 
+.open-quiz-button {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      color: white;
+      text-decoration: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .open-quiz-button:hover {
+      background: linear-gradient(45deg, #2575fc, #6a11cb);
+      transform: scale(1.05);
+    }
+
+
+
+
   </style>
 </head>
 <body>
+
+
 
 
   <div id="class-select-section">
@@ -125,10 +147,21 @@
       <option value="6">Class 6</option>
       <option value="7">Class 7</option>
     </select>
+
+
+
+
+
+
     <button onclick="showPasswordSection()" style="color: white; background-color: #ff0066; border: 2px solid white; border-radius: 5px; padding: 10px 20px;">Next</button>
     <h3><span class="highlight" style="color: yellow;">Designed By <span class="highlight" style="color:skyblue;"> Brpmailo </span></h3>  
   </div>
 
+
+
+ <a href="quiz.html" class="open-quiz-button" target="_blank">Start Quiz with Timing</a>
+</div>
+</div>
 
 
   <div id="password-section" style="display:none;">
@@ -146,6 +179,9 @@
     <div class="question-numbers" id="question-numbers-container"></div>
     <div id="questions-container"></div>
   </div>
+ </select>
+
+
 
 
 
@@ -850,6 +886,8 @@ const class7QuizData = [
         questionNumbersContainer.style.display = 'flex';
       }, 2000); // 2 seconds
     };
+
+
 
     questionSection.appendChild(checkAnswerBtn);
     questionsContainer.appendChild(questionSection);
