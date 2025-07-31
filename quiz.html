@@ -33,6 +33,7 @@
 }
 
 
+
 </style>
 </head>
 <body>
@@ -55,60 +56,66 @@
 
 <div id="resultContainer" style="display:none;"></div>
 
+
+
+
+
 <script>
 const questions = [
-  { question: "What is the capital of France?", options: ["Paris","London","Berlin","Madrid"], answer: "Paris" },
-  { question: "Which is the largest planet?", options: ["Mars","Earth","Jupiter","Venus"], answer: "Jupiter" },
-  { question: "What is the national animal of Nepal?", options: ["Cow","Tiger","Leopard","Goat"], answer: "Cow" },
+  { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
+  { question: "Which is the largest planet?", options: ["Mars", "Earth", "Jupiter", "Venus"], answer: "Jupiter" },
+  { question: "What is the national animal of Nepal?", options: ["Cow", "Tiger", "Leopard", "Goat"], answer: "Cow" },
   { question: "Which country is famous for pizza?", options: ["India", "Italy", "France", "China"], answer: "Italy" },
-  { question: "Who painted the Mona Lisa?", options: ["Van Gogh", "LiyoDa Vinci", "Picasso", "Rembrandt"], answer: "LiyoDa Vinci" },
+  { question: "Who painted the Mona Lisa?", options: ["Van Gogh", "Da Vinci", "Picasso", "Rembrandt"], answer: "Da Vinci" },
   { question: "What is H2O?", options: ["Hydrogen", "Helium", "Water", "Oxygen"], answer: "Water" },
   { question: "Which language is primarily spoken in Brazil?", options: ["Spanish", "French", "Portuguese", "German"], answer: "Portuguese" },
   { question: "Which gas do humans need to breathe?", options: ["Nitrogen", "Hydrogen", "Oxygen", "Carbon"], answer: "Oxygen" },
   { question: "What is the boiling point of water in Celsius?", options: ["90°C", "100°C", "110°C", "120°C"], answer: "100°C" },
-  { question: "What is the capital of France? ", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
-  { question: "What is the national animal of Nepal? ", options: ["Cow", "Tiger", "Leopard", "Goat"], answer: "Cow" },
-  { question: "Which is the largest planet? ", options: ["Mars", "Earth", "Jupiter", "Venus"], answer: "Jupiter" },
   { question: "Which planet is known as the Red Planet?", options: ["Venus", "Mars", "Saturn", "Mercury"], answer: "Mars" },
   { question: "How many continents are there?", options: ["5", "6", "7", "8"], answer: "7" },
   { question: "Which element has the chemical symbol 'O'?", options: ["Gold", "Oxygen", "Iron", "Silver"], answer: "Oxygen" },
-  { question: "How many hours in a day?", options: ["12", "24", "36", "48"], answer: "24" },
-  { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
-  { question: "Which planet is known as the Red Planet?", options: ["Venus", "Mars", "Saturn", "Mercury"], answer: "Mars" },
+  { question: "How many hours in two days?", options: ["12", "24", "36", "48"], answer: "48" },
   { question: "How many legs does a spider have?", options: ["6", "8", "10", "12"], answer: "8" },
   { question: "Which is the longest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Nile" },
   { question: "Who wrote 'Hamlet'?", options: ["Shakespeare", "Hemingway", "Tolstoy", "Dickens"], answer: "Shakespeare" },
   { question: "Which ocean is the largest?", options: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: "Pacific" },
-  { question: "How many continents are there? (General Knowledge)", options: ["5", "6", "7", "8"], answer: "7" },
-  { question: "What is H2O? ", options: ["Hydrogen", "Helium", "Water", "Oxygen"], answer: "Water" },
-  { question: "Which country is famous for pizza? ", options: ["India", "Italy", "France", "China"], answer: "Italy" },
-  { question: "Which element has the chemical symbol 'O'? (General Knowledge)", options: ["Gold", "Oxygen", "Iron", "Silver"], answer: "Oxygen" },
-  { question: "Who painted the Mona Lisa? (General Knowledge)", options: ["Van Gogh", "Da Vinci", "Picasso", "Rembrandt"], answer: "Da Vinci" },
-  { question: "Which gas do humans need to breathe? (General Knowledge)", options: ["Nitrogen", "Hydrogen", "Oxygen", "Carbon"], answer: "Oxygen" },
-  { question: "Which ocean is the largest? ", options: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: "Pacific" },
-  { question: "Which is the longest river in the world? (General Knowledge)", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Nile" },
-  { question: "What is the boiling point of water in Celsius? (General Knowledge)", options: ["90°C", "100°C", "110°C", "120°C"], answer: "100°C" },
-  { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
-  { question: "How many hours in a day? (General Knowledge)", options: ["12", "24", "36", "48"], answer: "24" },
-  { question: "How many legs does a spider have? (General Knowledge)", options: ["6", "8", "10", "12"], answer: "8" },
-  { question: "Which is the largest planet?", options: ["Mars", "Earth", "Jupiter", "Venus"], answer: "Jupiter" },
-  { question: "What is H2O?", options: ["Hydrogen", "Helium", "Water", "Oxygen"], answer: "Water" },
-  { question: "Which language is primarily spoken in Brazil?", options: ["Spanish", "French", "Portuguese", "German"], answer: "Portuguese" },
-  { question: "Which gas do humans need to breathe?", options: ["Nitrogen", "Hydrogen", "Oxygen", "Carbon"], answer: "Oxygen" },
-  { question: "Who wrote 'Hamlet'? ", options: ["Shakespeare", "Hemingway", "Tolstoy", "Dickens"], answer: "Shakespeare" },
-  { question: "How many continents are there?", options: ["5", "6", "7", "8"], answer: "7" },
-  { question: "Which element has the chemical symbol 'O'?", options: ["Gold", "Oxygen", "Iron", "Silver"], answer: "Oxygen" },
-  { question: "Which ocean is the largest?", options: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: "Pacific" },
+  { question: "Which ocean is the second largest?", options: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: "Atlantic" },
+  { question: "Which is the biggest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Amazon" },
   { question: "How many hours in a day?", options: ["12", "24", "36", "48"], answer: "24" },
-  { question: "Which is the longest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Nile" },
-  { question: "Who painted the Mona Lisa?", options: ["Van Gogh", "Da Vinci", "Picasso", "Rembrandt"], answer: "Da Vinci" },
-  { question: "What is the boiling point of water in Celsius?", options: ["90°C", "100°C", "110°C", "120°C"], answer: "100°C" },
-  { question: "Which planet is known as the Red Planet?", options: ["Venus", "Mars", "Saturn", "Mercury"], answer: "Mars" },
   { question: "Which organ pumps blood?", options: ["Lungs", "Heart", "Liver", "Kidney"], answer: "Heart" },
   { question: "Which planet has rings?", options: ["Earth", "Venus", "Saturn", "Mars"], answer: "Saturn" },
-  { question: "How many legs does a spider have?", options: ["6", "8", "10", "12"], answer: "8" }
-
+  { question: "What is the currency of Japan?", options: ["Yuan", "Dollar", "Yen", "Won"], answer: "Yen" },
+  { question: "Which country has the Great Wall?", options: ["India", "China", "Japan", "Korea"], answer: "China" },
+  { question: "How many bones are in the human body?", options: ["206", "201", "210", "198"], answer: "206" },
+  { question: "Who discovered gravity?", options: ["Newton", "Einstein", "Galileo", "Tesla"], answer: "Newton" },
+  { question: "Which gas is used in balloons?", options: ["Oxygen", "Hydrogen", "Helium", "Nitrogen"], answer: "Helium" },
+  { question: "Which planet is closest to the sun?", options: ["Venus", "Earth", "Mercury", "Mars"], answer: "Mercury" },
+  { question: "What is the largest mammal?", options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"], answer: "Blue Whale" },
+  { question: "Which is the smallest continent?", options: ["Australia", "Europe", "Antarctica", "South America"], answer: "Australia" },
+  { question: "Who invented the telephone?", options: ["Bell", "Edison", "Tesla", "Newton"], answer: "Bell" },
+  { question: "What is the main ingredient of bread?", options: ["Rice", "Wheat", "Corn", "Barley"], answer: "Wheat" },
+  { question: "Which is the fastest land animal?", options: ["Lion", "Cheetah", "Tiger", "Leopard"], answer: "Cheetah" },
+  { question: "What is the chemical formula for salt?", options: ["NaCl", "H2O", "CO2", "O2"], answer: "NaCl" },
+  { question: "Which city is known as the Big Apple?", options: ["Los Angeles", "Chicago", "New York", "Miami"], answer: "New York" },
+  { question: "What is the hardest natural substance?", options: ["Gold", "Iron", "Diamond", "Silver"], answer: "Diamond" },
+  { question: "Which planet has the most moons?", options: ["Jupiter", "Saturn", "Mars", "Earth"], answer: "Saturn" },
+  { question: "What is photosynthesis?", options: ["Animal process", "Plant process", "Fungal process", "Bacterial process"], answer: "Plant process" },
+  { question: "Who was the first man on the moon?", options: ["Armstrong", "Aldrin", "Collins", "Gagarin"], answer: "Armstrong" },
+  { question: "What is the square root of 144?", options: ["10", "12", "14", "16"], answer: "12" },
+  { question: "Which vitamin is produced when exposed to sunlight?", options: ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"], answer: "Vitamin D" },
+  { question: "What is the tallest mountain in the world?", options: ["K2", "Kangchenjunga", "Everest", "Lhotse"], answer: "Everest" },
+  { question: "What is the chemical symbol for gold?", options: ["Au", "Ag", "Gd", "Pb"], answer: "Au" },
+  { question: "Which organ is responsible for pumping blood?", options: ["Lungs", "Heart", "Kidney", "Liver"], answer: "Heart" },
+  { question: "What is the fastest bird?", options: ["Eagle", "Falcon", "Sparrow", "Pigeon"], answer: "Falcon" },
+  { question: "Who invented the light bulb?", options: ["Edison", "Tesla", "Newton", "Bell"], answer: "Edison" },
+  { question: "Which country is known as the Land of the Rising Sun?", options: ["China", "Japan", "Korea", "Thailand"], answer: "Japan" },
+  { question: "Which is the largest desert in the world?", options: ["Sahara", "Gobi", "Kalahari", "Arabian"], answer: "Sahara" },
+  { question: "Which element is needed for combustion?", options: ["Oxygen", "Nitrogen", "Hydrogen", "Carbon"], answer: "Oxygen" },
+  { question: "What is the currency of the USA?", options: ["Dollar", "Euro", "Yen", "Pound"], answer: "Dollar" }
 ];
+
+
+
 
 let selectedAnswers = new Array(questions.length).fill(null);
 let timerInterval;
@@ -186,32 +193,83 @@ function startTimer(seconds) {
   }, 1200);
 }
 
+
+
+
 function finishQuiz() {
   clearInterval(timerInterval);
   document.getElementById("quizContainer").style.display = "none";
-  document.getElementById("resultContainer").style.display = "block";
+  const resultDiv = document.getElementById("resultContainer");
+  resultDiv.style.display = "block";
 
   let correct = 0, attempted = 0;
-  for(let i = 0; i < questions.length; i++) {
-    if(selectedAnswers[i] !== null) {
+
+  for (let i = 0; i < questions.length; i++) {
+    const userAns = selectedAnswers[i];
+    if (userAns !== null) {
       attempted++;
-      if(selectedAnswers[i] === questions[i].answer) correct++;
+      if (userAns === questions[i].answer) correct++;
     }
   }
+
   const wrong = attempted - correct;
   const score = (correct * 2) - wrong;
+  const percent = ((correct / questions.length) * 100).toFixed(1);
 
-  document.getElementById("resultContainer").innerHTML = `
-    <h2>Quiz Result</h2>
-    <p>Total Questions: ${questions.length}</p>
-    <p>Attempted: ${attempted}</p>
-    <p>Correct Answers: ${correct}</p>
-    <p>Wrong Answers: ${wrong}</p>
-    <p><strong>Total Score: ${score}</strong></p>
-    <button onclick="location.reload()">Try Again</button>
+
+
+ 
+let feedback = "";
+
+if (percent >= 90) {
+  feedback = " Phenomenal Performance! You're a true quiz master! 🌟🧠";
+} else if (percent >= 75) {
+  feedback = " Great Job! You're almost at the top — just a little more push! ✨🚀";
+} else if (percent >= 50) {
+  feedback = "Good Attempt! You're halfway there — keep pushing forward! 📘✨";
+} else if (percent >= 30) {
+  feedback = "You're learning — revise a bit more and try again! 📚";
+} else {
+  feedback = "🌱 Every expert was once a beginner. Don't quit — try again! 💫";
+}
+
+
+ 
+
+
+  resultDiv.innerHTML = `
+    <h2 style="text-align:center; color: #4caf50;">🎉 Quiz Completed 🎉</h2>
+
+    <div style="background: #e3f2fd; border-left: 8px solid #2196f3; padding: 15px; margin-bottom: 10px;">
+      <strong>Total Questions:</strong> ${questions.length}
+    </div>
+    <div style="background: #fff3e0; border-left: 8px solid #ff9800; padding: 15px; margin-bottom: 10px;">
+      <strong>Attempted Questions:</strong> ${attempted}
+    </div>
+    <div style="background: #e8f5e9; border-left: 8px solid #4caf50; padding: 15px; margin-bottom: 10px;">
+      <strong>Correct Answers:</strong> ${correct}
+    </div>
+    <div style="background: #ffebee; border-left: 8px solid #f44336; padding: 15px; margin-bottom: 10px;">
+      <strong>Wrong Answers:</strong> ${wrong}
+    </div>
+    <div style="background: #ede7f6; border-left: 8px solid #673ab7; padding: 15px; margin-bottom: 10px;">
+      <strong>Your Total Score:</strong> ${score}
+    </div>
+    <div style="background: #f0f4c3; border-left: 8px solid #cddc39; padding: 15px; margin-bottom: 20px;">
+      <strong>Percentage:</strong> ${percent}%
+    </div>
+
+    <p style="font-size: 20px; text-align: center; color: #0d47a1;">
+      <strong>Feedback:</strong> ${feedback}
+    </p>
+
+    <div style="text-align:center; margin-top: 20px;">
+      <button onclick="location.reload()" style="padding: 12px 25px; font-size: 16px; background: #ff0066; color: white; border: none; border-radius: 5px; cursor: pointer;">🔁 Want to Again</button>
+    </div>
   `;
 }
-</script>
 
+
+</script>
 </body>
 </html>
