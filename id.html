@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Credit Card Size ID Card Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<style>
+  :root{
+    --brand:#0a66c2;
+    --brand-dark:#084f97;
+    --text:#0f172a;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --bar:#0b5bb5;
+    --bar-dark:#093f7f;
+    --bg:#f5f7fb;
+  }
+  *{box-sizing:border-box}
+  body{font-family:system-ui, Arial, sans-serif; margin:0; background:var(--bg); color:var(--text);}
+  h1{margin:16px 16px 4px 16px; font-size:18px}
+  .sub{margin:0 16px 12px 16px; color:var(--muted); font-size:13px}
+
+  .toolbar {
+    margin: 0 16px 16px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); 
+  }
+  .toolbar label, .toolbar button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    border: 1px solid var(--border);
+    background: #f9f9f9;
+    transition: all 0.2s ease;
+  }
+  .toolbar label:hover, .toolbar button:hover {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  }
+  .toolbar button.primary {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+    font-weight: 600;
+  }
+  .toolbar input[type=file] { display: none; }
+  .toolbar input[type=text] {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    min-width: 180px;
+  }
+
+  .hint {
+    margin: 0 16px 12px 16px;
+    color: var(--muted);
+    font-size: 11px;
+    font-style: italic;
+  }
+
+  #cards{padding:16px; display:grid; gap:16px}
+
+  .idpage {
+    width: 2.125in;  
+    height: 3.375in;   
+    background:white;
+    border:1px solid var(--border);
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+    page-break-after:always;
+    font-size: 6pt;
+  }
+
+  .bar-top{position:absolute; left:0; top:0; width:100%; height:11mm; background:linear-gradient(90deg,var(--bar),var(--bar-dark));}
+  .bar-bottom{position:absolute; left:0; bottom:0; width:100%; height:5mm;
+    background:linear-gradient(90deg,var(--bar),var(--bar-dark));
+    color:#fff; display:flex; align-items:center; justify-content:center; font-size:4pt; letter-spacing:.2px;}
+
+  .hdr{
+    position:absolute;
+    top:1mm;
+    left:0;
+    right:0;
+    color:#fff;
+    line-height:1.3;
+    text-align:center; 
+  }
+  .slogan{
+    font-size:4.5pt;
+    font-weight:600;
+    margin-bottom:0.5mm;
+  }
+  .school{
+    font-weight:700;
+    font-size:5pt;
+  }
+  .addr, .tel{
+    font-size:4pt;
+    font-weight:700;
+  }
+
+  .ribbon{
+    position:absolute; left:2mm; top:12mm; bottom:53mm; width:4mm;
+    background:white; border:1px solid var(--bar); border-radius:2mm;
+    display:flex; align-items:center; justify-content:center;
+    writing-mode:vertical-rl; transform:rotate(180deg);
+    color:var(--bar-dark); font-weight:700; letter-spacing:.3px; font-size:6pt;
+  }
+
+  .content{
+    position:absolute; left:2mm; right:6mm; top:2.3mm; bottom:2mm;
+    display:grid; grid-template-rows:auto auto auto 1fr auto;
+    row-gap:0mm; text-align:center;
+  }
+
+  .logo{
+    width:9mm;
+    height:9mm;
+    object-fit:contain;
+    margin-left:-2mm; 
+    justify-self:start;
+  }
+
+  .photo{
+    width:13mm;
+    height:16mm;
+    object-fit:cover;
+    border:1px solid var(--bar);
+    border-radius:2mm;
+    margin: 0mm auto;
+  }
+  .pholder{
+    width:14mm;
+    height:18mm;
+    border:1px dashed var(--border);
+    border-radius:2mm;
+    display:grid;
+    place-items:center;
+    color:var(--muted);
+    font-size:4pt;
+    margin: 2mm auto;
+  }
+  .sigcap{
+    font-size:5pt;
+    color:var(--muted);
+    text-align:center;
+    margin-top:1mm;
+  }
+
+  .title{font-size:5pt; font-weight:700; color:var(--bar-dark);}
+
+  .fields{
+    border:1px solid var(--border);
+    border-radius:2mm; background:#fafafa; padding:2mm; display:grid;
+    grid-template-columns: 12mm 1fr; column-gap:2mm; row-gap:1mm; font-size:6pt;
+    text-align:left;
+  }
+  .lbl{font-weight:700; font-size:6pt;}
+  .val{font-size:6pt;}
+  .line{grid-column:1/-1; height:1px; background:#e5e7eb; margin:1mm 0}
+
+  .footer{
+    align-self:end; font-size:5pt; color:#334155;
+    display:flex; gap:2mm; flex-wrap:wrap; margin-bottom:1mm; justify-content:center;
+  }
+  .chip{border:1px solid var(--border); background:#fff; padding:1mm 2mm; border-radius:4mm; font-size:5pt;}
+
+  .controls{position:absolute; right:2mm; bottom:6mm; display:flex; gap:3px;}
+  .controls label{border:1px solid var(--border); padding:2px 4px; border-radius:4px; background:#fff; cursor:pointer; font-size:5pt;}
+  .controls input{display:none}
+
+  @media print{
+    @page { size: 2.125in  3.375in; margin:0; }
+    body{ background:#fff; }
+    h1, .sub, .toolbar, .hint, .controls{ display:none !important; }
+    #cards{ padding:0 }
+    .idpage{ border:none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>📇ID Card Generator</h1>
+<p class="sub">Excel import + Photos + Logo + School name/slogan editable • One ID = one credit card size.</p>
+
+<div class="toolbar">
+  <input type="text" id="schoolName" placeholder="School Name">
+  <input type="text" id="slogan" placeholder="Slogan">
+  <input type="text" id="address" placeholder="Address">
+  <input type="text" id="phone" placeholder="Telephone">
+  <label><input type="file" id="logoInput" accept="image/*">📁 Logo</label>
+  <label><input type="file" id="photosInput" webkitdirectory directory multiple accept="image/*">📂 Photos (folder)</label>
+  <label><input type="file" id="excelFile" accept=".xlsx">📄 Excel</label>
+  <button class="primary" id="importBtn">Import Excel</button>
+  <button id="templateBtn">Download Template</button>
+  <button id="clearBtn">🧹 Clear All</button>
+  <button class="primary" id="printBtn">Print</button>
+</div>
+<p class="hint">Excel headers: <b>Name, StudentID, Grade, Gender, DOB, Guardian, Phone, Address, ValidUntil, Email</b>. Photos auto-map by <b>StudentID</b> or <b>Name</b> (filename).</p>
+
+<div id="cards"></div>
+
+<script>
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+  const norm = s => (s||"").toString().trim().toLowerCase().replace(/\s+/g,'').replace(/[^\p{L}\p{N}]/gu,'');
+  const LS = "credit_id_v1";
+
+  let STATE = { school:"", slogan:"", address:"", phone:"", logo:null, people:[], photoMap:{} };
+
+  function save(){ localStorage.setItem(LS, JSON.stringify(STATE)); }
+  function load(){ 
+    try{ 
+      let o=JSON.parse(localStorage.getItem(LS)||"{}"); 
+      STATE={...STATE,...o}; 
+      $("#schoolName").value=STATE.school||""; 
+      $("#slogan").value=STATE.slogan||""; 
+      $("#address").value=STATE.address||""; 
+      $("#phone").value=STATE.phone||""; 
+    }catch(e){} 
+  }
+  function clearAll(){
+    localStorage.removeItem(LS);
+    STATE = { school:"", slogan:"", address:"", phone:"", logo:null, people:[], photoMap:{} };
+    $("#schoolName").value="";
+    $("#slogan").value="";
+    $("#address").value="";
+    $("#phone").value="";
+    $("#logoInput").value="";
+    $("#photosInput").value="";
+    $("#excelFile").value="";
+    render();
+  }
+  function toDataURL(file){ return new Promise((res,rej)=>{const r=new FileReader(); r.onload=e=>res(e.target.result); r.onerror=rej; r.readAsDataURL(file);}); }
+  function chip(txt){ const d=document.createElement("div"); d.className="chip"; d.textContent=txt; return d; }
+
+  function render(){
+    const wrap=$("#cards"); wrap.innerHTML="";
+    STATE.people.forEach((p,idx)=>{
+      const page=document.createElement("div"); page.className="idpage";
+      const top=document.createElement("div"); top.className="bar-top";
+      const bottom=document.createElement("div"); bottom.className="bar-bottom"; bottom.textContent=p.Email||STATE.school||""; page.appendChild(top); page.appendChild(bottom);
+
+      const hdr=document.createElement("div"); hdr.className="hdr"; 
+      hdr.innerHTML=`
+        <div class="slogan">${STATE.slogan||""}</div>
+        <div class="school">${STATE.school||""}</div>
+        <div class="addr">${STATE.address||""}</div>
+        <div class="tel">${STATE.phone||""}</div>
+      `; page.appendChild(hdr);
+
+      const rib=document.createElement("div"); rib.className="ribbon"; rib.textContent="STUDENT"; page.appendChild(rib);
+
+      const content=document.createElement("div"); content.className="content"; page.appendChild(content);
+
+      const logo=document.createElement("img"); logo.className="logo"; if(STATE.logo) logo.src=STATE.logo; content.appendChild(logo);
+
+      const photo=p.photo?`<img class="photo" src="${p.photo}">`:`<div class="pholder">Photo</div>`;
+      content.insertAdjacentHTML("beforeend",photo);
+
+      const sigcap=document.createElement("div"); sigcap.className="sigcap"; sigcap.textContent="Principal Signature"; content.appendChild(sigcap);
+
+      const title=document.createElement("div"); title.className="title"; title.textContent="IDENTITY CARD"; content.appendChild(title);
+
+      const fields=document.createElement("div"); fields.className="fields"; fields.innerHTML=`
+        <div class="lbl">ID :</div><div class="val">${p.StudentID||""}</div>
+        <div class="lbl">Name :</div><div class="val">${p.Name||""}</div>
+        <div class="lbl">Grade :</div><div class="val">${p.Grade||""}</div>
+        <div class="lbl">Gender :</div><div class="val">${p.Gender||""}</div>
+        <div class="lbl">DOB :</div><div class="val">${p.DOB||""}</div>
+        <div class="lbl">Guardian :</div><div class="val">${p.Guardian||""}</div>
+        <div class="lbl">Phone :</div><div class="val">${p.Phone||""}</div>
+        <div class="line"></div>
+        <div class="lbl">Address :</div><div class="val">${p.Address||""}</div>
+        <div class="lbl">Valid Upto :</div><div class="val">${p.ValidUntil||""}</div>
+      `; content.appendChild(fields);
+
+      const footer=document.createElement("div"); footer.className="footer"; 
+      if(p.Email) footer.appendChild(chip(`Email: ${p.Email}`)); 
+      footer.appendChild(chip(`Slogan: ${STATE.slogan||""}`)); 
+      content.appendChild(footer);
+
+      const ctr=document.createElement("div"); ctr.className="controls"; 
+      ctr.innerHTML=`<label>🖼️ Photo<input type="file" accept="image/*" data-idx="${idx}" class="photo-input"></label>`; 
+      page.appendChild(ctr);
+
+      wrap.appendChild(page);
+    });
+    $$(".photo-input").forEach(inp=>inp.addEventListener("change",onSinglePhotoChange));
+  }
+
+  async function onSinglePhotoChange(e){ 
+    const f=e.target.files?.[0]; 
+    if(!f) return; 
+    const idx=+e.target.getAttribute("data-idx"); 
+    STATE.people[idx].photo=await toDataURL(f); save(); render(); 
+  }
+
+  $("#logoInput").addEventListener("change",async e=>{
+    const f=e.target.files?.[0]; 
+    if(!f)return; 
+    STATE.logo=await toDataURL(f); 
+    save(); 
+    render();
+  });
+
+  $("#photosInput").addEventListener("change",async e=>{
+    STATE.photoMap={}; 
+    for(const f of Array.from(e.target.files||[])){ 
+      if(!f.type.startsWith("image/")) continue; 
+      const key=norm(f.name.replace(/\.[^.]+$/,'')); 
+      STATE.photoMap[key]=await toDataURL(f);
+    } 
+    STATE.people=STATE.people.map(p=>({...p,photo:STATE.photoMap[norm(p.StudentID)]||STATE.photoMap[norm(p.Name)]||p.photo||null})); 
+    save(); 
+    render();
+  });
+
+  $("#importBtn").addEventListener("click",async ()=>{
+    const file=$("#excelFile").files?.[0]; 
+    if(!file){alert("Choose an Excel file (.xlsx).");return;} 
+    const data=await file.arrayBuffer(); 
+    const wb=XLSX.read(data,{type:'array'}); 
+    const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:""}); 
+    STATE.people=rows.map(r=>({
+      Name:r.Name||"",
+      StudentID:r.StudentID||r.ID||"",
+      Grade:r.Grade||"",
+      Gender:r.Gender||"",
+      DOB:r.DOB||"",
+      Guardian:r.Guardian||"",
+      Phone:r.Phone||"",
+      Address:r.Address||"",
+      ValidUntil:r.ValidUntil||"",
+      Email:r.Email||"",
+      photo:STATE.photoMap[norm(r.StudentID)]||STATE.photoMap[norm(r.Name)]||null
+    })); 
+    STATE.school=$("#schoolName").value; 
+    STATE.slogan=$("#slogan").value; 
+    STATE.address=$("#address").value; 
+    STATE.phone=$("#phone").value; 
+    save(); 
+    render();
+  });
+
+  $("#templateBtn").addEventListener("click",()=>{
+    const wb=XLSX.utils.book_new(); 
+    const data=[["Name","StudentID","Grade","Gender","DOB","Guardian","Phone","Address","ValidUntil","Email"],["Aarohi Sharma","LAEAS99778","Seven","Female","2070-02-10","Anit Sharma","9828750755","Sundarharaincha-2, Morang","2082-04-31","lovelyanglesschool458@gmail.com"]]; 
+    const ws=XLSX.utils.aoa_to_sheet(data); 
+    XLSX.utils.book_append_sheet(wb, ws, "Students"); 
+    XLSX.writeFile(wb, "id_template_credit.xlsx");
+  });
+
+  $("#printBtn").addEventListener("click",()=>window.print());
+  $("#clearBtn").addEventListener("click",clearAll);
+  $("#schoolName").addEventListener("input",e=>{STATE.school=e.target.value; save(); render();});
+  $("#slogan").addEventListener("input",e=>{STATE.slogan=e.target.value; save(); render();});
+  $("#address").addEventListener("input",e=>{STATE.address=e.target.value; save(); render();});
+  $("#phone").addEventListener("input",e=>{STATE.phone=e.target.value; save(); render();});
+
+  load(); render();
+</script>
+</body>
+</html>
