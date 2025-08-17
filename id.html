@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <title>Student(s) ID Card Generator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/png" href="b.png">
+<link rel="icon" type="image/png" href="b.png">
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 <style>
   :root{
@@ -66,6 +66,78 @@
     border-radius: 10px;
     min-width: 180px;
   }
+
+  .notice-box {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  .notice-box h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+  }
+
+  .notice-box ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .notice-box li {
+    margin-bottom: 5px;
+  }
+
+  #clearBtn {
+    background-color: red;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #clearBtn:hover {
+    background-color: darkred;
+  }
+
+  .right-align {
+    text-align: right;
+  }
+
+
+
+  #templateBtn {
+    background-color: green;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #templateBtn:hover {
+    background-color: darkgreen; 
+  }
+
+
+  #importBtn {
+    background-color: orange;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #importBtn:hover {
+    background-color: darkorange;
+  }
+
+
+
 
   .hint {
     margin: 0 16px 12px 16px;
@@ -197,23 +269,50 @@
 </head>
 <body>
 
-<h1>📇ID Card Generator</h1>
-<p class="sub">Excel import + Photos + Logo + School name/slogan editable • One ID = one credit card size.</p>
+<h1 style="text-align:center; font-size:35px;">📇 ID Card Generator 📇</h1>
+
+
+
+
+<div class="notice-box">
+  <h3>📢 Important Instructions for System Users:</h3>
+  <ul>
+    <li>First, upload all <b>School Details</b> including Name, Slogan, Address, and Logo.</li>
+    <li>Then, upload student <b>Photos</b> in the designated folder. Make sure each photo filename matches the corresponding <b>Student Name</b> or <b>StudentID</b>.</li>
+    <li>Next, <b>Download the Excel Format Template</b> provided by the system.</li>
+    <li>Fill in all required data in the Excel file according to the given headers.</li>
+    <li>Finally, <b>Upload the completed Excel file</b> back into the system.</li>
+  </ul>
+</div>
+
+
+
+
+
+
 
 <div class="toolbar">
   <input type="text" id="schoolName" placeholder="School Name">
   <input type="text" id="slogan" placeholder="Slogan">
   <input type="text" id="address" placeholder="Address">
   <input type="text" id="phone" placeholder="Telephone">
-  <label><input type="file" id="logoInput" accept="image/*">📁 Logo</label>
+  <label><input type="file" id="logoInput" accept="image/*">Logo</label>
   <label><input type="file" id="photosInput" webkitdirectory directory multiple accept="image/*">📂 Photos (folder)</label>
-  <label><input type="file" id="excelFile" accept=".xlsx">📄 Excel</label>
+  <label><input type="file" id="excelFile" accept=".xlsx">📄 Upload Excel</label>
   <button class="primary" id="importBtn">Import Excel</button>
-  <button id="templateBtn">Download Template</button>
+  <button id="templateBtn">Download Format Template</button>
+ <button class="primary" id="printBtn">🖨️ Print All ID</button>
+<div class="right-align">
   <button id="clearBtn">🧹 Clear All</button>
-  <button class="primary" id="printBtn">Print</button>
 </div>
-<p class="hint">Excel headers: <b>Name, StudentID, Grade, Gender, DOB, Guardian, Phone, Address, ValidUntil, Email</b>. Photos auto-map by <b>StudentID</b> or <b>Name</b> (filename).</p>
+</div>
+
+
+
+
+
+
+
 
 <div id="cards"></div>
 
@@ -379,11 +478,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
