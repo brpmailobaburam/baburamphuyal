@@ -123,13 +123,22 @@
 
 
 
-  @media print {
-    body { background: #fff; }
-    .container, .top-form, .card, header, .bottom-preview > button { display: none !important; }
-    #certificatesContainer { display: block; }
-    .certificate { box-shadow: none; border: 1px solid #000; margin: 0 auto; }
-    @page { size: A4 landscape; margin: 10mm; }
+ @media print {
+  body { background: #fff; }
+  header, .top-form, .card, .bottom-preview > button,
+  #downloadTemplate { display: none !important; }   
+  
+  #certificatesContainer { display: block !important; }
+  .certificate { 
+    display: block !important;
+    page-break-after: always; 
+    box-shadow: none; 
+    border: 1px solid #000; 
+    margin: 0 auto; 
   }
+  @page { size: A4 landscape; margin: 10mm; }
+}
+
 
 
 </style>
@@ -159,16 +168,23 @@
 
       
 
-      <div class="card">
-        <label>Upload Excel</label><input type="file" id="fileInput" accept=".xlsx,.xls,.csv">
-        <p style="font-size:12px;color:#666">
-          Excel मा <b>Photo</b> column मा Exact filename लेख्नुहोस् I</b>
-        </p>
-        <label>Upload Student Photo Folder</label><input type="file" id="photoFolder" webkitdirectory directory multiple>
-      </div>
-    </div>
+   <div class="card">
+  <label>Upload Student Photo Folder</label>
+  <input type="file" id="photoFolder" webkitdirectory directory multiple>
+  
+  <label>Upload Excel</label>
+  <input type="file" id="fileInput" accept=".xlsx,.xls,.csv">
+  <p style="font-size:12px;color:#666">
+    Excel मा <b>Photo</b> column मा Exact filename लेख्नुहोस्।
+  </p>
+</div>
+
+
+
+
 
 <button id="downloadTemplate" class="print-btn">⬇ Download Excel Template</button>
+<button id="clearData" class="print-btn" style="background:#a00;">🗑 Clear Uploaded Data</button>
 </div>
     <div class="bottom-preview">
       <button class="print-btn" onclick="window.print()">🖨 Print Certificates</button>
@@ -176,6 +192,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
@@ -282,6 +300,21 @@ document.getElementById('downloadTemplate').addEventListener('click',()=>{
     localStorage.setItem('photosMap', JSON.stringify(photosMap));
     renderAll();
   });
+
+document.getElementById('clearData').addEventListener('click', () => {
+  if(confirm('Are you sure you want to clear all uploaded data?')) {
+    students = [];
+    photosMap = {};
+    localStorage.removeItem('students');
+    localStorage.removeItem('photosMap');
+    certContainer.innerHTML = '';
+    alert('All data cleared! You can now upload new Excel and photos.');
+  }
+});
+
+
+
+
 
   // Find photo by Excel "Photo" cell (with/without extension)
   function resolvePhoto(photoCellValue){
