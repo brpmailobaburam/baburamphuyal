@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Certificate Generator — Excel to Printable Certificates</title>
+<title>Academic Certificate Generator</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   body{font-family:Roboto,Arial,sans-serif;background:#eef2f7;padding:20px;color:#222}
@@ -187,8 +187,10 @@ function renderAll(){
       <div class="school-sub">${document.getElementById('schoolAddr').value||'-'} | ESTD: ${document.getElementById('schoolEstd').value||'-'} | Regd No. ${document.getElementById('schoolReg').value||'-'}</div>
       <div class="cert-heading">Transfer/Character Certificate</div>
       <div class="cert-body">
-        Certified that <strong style="color:#b02a2a">${s['Name']||'-'}</strong> son/daughter of <strong style="color:#b02a2a">${s['Father Name']||'-'} & ${s['Mother Name']||'-'}</strong>, inhabitant of <strong style="color:#b02a2a">${s['Address']||'-'}</strong>, completed <strong style="color:#b02a2a">${s['Program']||'-'}</strong> with GPA <strong style="color:#b02a2a">${s['GPA']||'-'}</strong> in the year <strong style="color:#b02a2a">${s['Completion Year']||'-'}</strong>. DOB: <strong style="color:#b02a2a">${s['DOB']||'-'}</strong>.
-      </div>
+
+        Certified that <strong style="color:#b02a2a">${s['Name']||'-'}</strong> son/daughter of <strong style="color:#b02a2a">${s['Father Name']||'-'} & ${s['Mother Name']||'-'}</strong>, inhabitant of <strong style="color:#b02a2a">${s['Address']||'-'}</strong>, was a bona fide student of this school. He/She has duly completed <strong style="color:#b02a2a">${s['Program']||'-'}</strong> Conducted by the Nationa Examination Board Nepal. with GPA <strong style="color:#b02a2a">${s['GPA']||'-'}</strong> in the year <strong style="color:#b02a2a">${s['Completion Year']||'-'} BS</strong>. He/Her bore a good moral character while this school. His/Her Date of Birth acording to the school record is  <strong style="color:#b02a2a">${s['DOB']||'-'}</strong>.
+    
+</div>
       <div class="signature-row">
         <div class="signature">${approveSign?`<img src="${approveSign}">`:''} Approved by</div>
         <div class="signature">School Seal</div>
