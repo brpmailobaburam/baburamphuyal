@@ -1,52 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School Dashboard</title>
-   <link rel="icon" type="image/png" href="b.png">
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #6dd5ed, #2193b0);
-      margin: 0; padding: 0;
-    }
-    .container {
-      max-width: 1000px; margin: 40px auto; background: white;
-      padding: 40px; border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    }
-    h2 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
-    label { display: block; margin: 15px 0 5px; font-weight: bold; color: #34495e; }
-    input[type="text"], input[type="email"], input[type="number"] {
-      width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;
-    }
-    button {
-      padding: 12px 25px; background: #27ae60; color: white;
-      border: none; border-radius: 6px; font-size: 1.1rem; cursor: pointer;
-      display: block; margin: 30px auto 0 auto;
-    }
-    .logout-btn {
-      background: #c0392b; float: right; margin-bottom: 20px;
-    }
-    .success-message { color: green; text-align: center; margin-top: 20px; font-weight: bold; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>School Dashboard</title>
+<link rel="icon" type="image/png" href="b.png">
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    margin: 0; padding: 0;
+    position: relative;
+  }
+  body::before {
+    content: "Brp Mailo Digital Institute";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+    color: rgba(0,0,0,0.05);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .container {
+    max-width: 1000px; margin: 40px auto;
+    background: white; padding: 40px;
+    border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    position: relative; z-index: 1;
+  }
+  h2 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+  label { display: block; margin: 15px 0 5px; font-weight: bold; color: #34495e; }
+  input[type="text"], input[type="email"], input[type="number"] {
+    width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;
+  }
+  button {
+    padding: 12px 25px; background: #27ae60; color: white;
+    border: none; border-radius: 6px; font-size: 1.1rem; cursor: pointer;
+    display: block; margin: 30px auto 0 auto;
+  }
+  .logout-btn {
+    background: #c0392b; float: right; margin-bottom: 20px;
+  }
+  .success-message { color: green; text-align: center; margin-top: 20px; font-weight: bold; }
 
-    .tags {
-      margin-top: 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-    }
-    .tag {
-      background: #2980b9; color: white; padding: 20px;
-      text-align: center; border-radius: 8px;
-      text-decoration: none; font-weight: bold; font-size: 1rem;
-      transition: background 0.3s;
-    }
-    .tag:hover {
-      background: #3498db;
-    }
-  </style>
+  .tags {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+  }
+  .tag {
+    background: #2980b9; color: white; padding: 20px;
+    text-align: center; border-radius: 8px;
+    text-decoration: none; font-weight: bold; font-size: 1rem;
+    transition: background 0.3s;
+  }
+  .tag:hover { background: #3498db; }
+</style>
 </head>
 <body>
 
@@ -82,26 +92,27 @@
   <div id="successMsg" class="success-message"></div>
 
   <div class="tags">
-  <div class="tags">
-  <a href="student portal.html" class="tag" target="_self">Student Tuition Billing</a>
-  <a href="seatplan.html" class="tag" target="_self">Seat Plan</a>
-  <a href="grade-sheet.html" class="tag" target="_self">Gread Sheet</a>
-     <a href="id.html" class="tag" target="_self">Student ID Card</a>
-    <a href="win_cer.html" class="tag" target="_self">Winner Certificate</a>
-     <a href="aca_cer.html" class="tag" target="_self">Academic Certificate</a>
- 
-</div>
-
+    <a href="student portal.html" class="tag">Student Tuition Billing</a>
+    <a href="seatplan.html" class="tag">Seat Plan</a>
+    <a href="grade-sheet.html" class="tag">Grade Sheet</a>
+    <a href="id.html" class="tag">Student ID Card</a>
+    <a href="win_cer.html" class="tag">Winner Certificate</a>
   </div>
 </div>
 
 <script>
-  // Check login status
-  if (!localStorage.getItem('loggedInSchool')) {
+  // =======================
+  // LOGIN CHECK
+  // =======================
+  const user = JSON.parse(localStorage.getItem('loggedInSchool'));
+  if(!user){
+    // Not logged in → redirect to login
     window.location.href = 'login.html';
   }
 
-  // Load saved data on page load
+  // =======================
+  // LOAD FORM DATA
+  // =======================
   window.onload = function() {
     const fields = ['schoolName','principalName','contact','email','address','totalStudents','totalTeachers'];
     fields.forEach(id => {
@@ -109,7 +120,9 @@
     });
   }
 
-  // Save data on form submit
+  // =======================
+  // SAVE FORM DATA
+  // =======================
   document.getElementById('schoolForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const fields = ['schoolName','principalName','contact','email','address','totalStudents','totalTeachers'];
@@ -119,7 +132,9 @@
     document.getElementById('successMsg').innerText = "Details saved successfully!";
   });
 
-  // Logout button
+  // =======================
+  // LOGOUT
+  // =======================
   document.getElementById('logoutBtn').addEventListener('click', function() {
     localStorage.removeItem('loggedInSchool');
     window.location.href = 'login.html';
@@ -128,7 +143,3 @@
 
 </body>
 </html>
-
-
-
-
