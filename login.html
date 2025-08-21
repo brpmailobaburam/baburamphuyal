@@ -1,146 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brp Mailo Digital Institute - Login</title>
-  <link rel="icon" type="image/png" href="b.png" />
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f2f4ff;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    body::before {
-      content: "Brp Mailo Digital Institute";
-      position: absolute;
-      top: 13%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 110px;
-      color: rgba(0, 0, 0, 0.05);
-      white-space: nowrap;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .login-box {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-      width: 400px;
-      padding: 40px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .login-box h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #3f51b5;
-    }
-
-    .login-box input, .login-box select {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    .login-box button {
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(45deg, #3f51b5, #5b76ff);
-      border: none;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .error {
-      color: red;
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .powered {
-      text-align: center;
-      font-size: 12px;
-      margin-top: 20px;
-      color: #999;
-    }
-  </style>
-
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.onkeydown = function (e) {
-      if (e.keyCode === 123) return false;
-      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) return false;
-      if (e.ctrlKey && e.keyCode === 85) return false;
-    };
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brp Mailo Digital Institute - Login</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f2f4ff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  body::before {
+    content: "Brp Mailo Digital Institute";
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 110px;
+    color: rgba(0,0,0,0.05);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .login-box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    width: 400px;
+    padding: 40px;
+    text-align: center;
+    z-index: 1;
+  }
+  .login-box input, .login-box select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  .login-box button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg,#3f51b5,#5b76ff);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .error { color: red; margin-top:10px; }
+</style>
 </head>
 <body>
 
-  <div class="login-box">
-    <h2>LOGIN YOUR SCHOOL</h2>
-    <form id="loginForm">
-      <input type="text" id="schoolId" placeholder="Username" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <select id="role" required>
-        <option value="" disabled selected>Select Role</option>
-        <option value="Admin">Admin</option>
-        <option value="Teacher">Teacher</option>
-        <option value="Student & Parents">Student & Parents</option>
-      </select>
-      <button type="submit">LOG IN</button>
-      <div id="error" class="error"></div>
-    </form>
-    <div class="powered">Powered by Brp Mailo Digital Institute | v1.0.0</div>
-  </div>
+<div class="login-box">
+  <h2>LOGIN YOUR SCHOOL</h2>
+  <form id="loginForm">
+    <input type="text" id="schoolId" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <select id="role" required>
+      <option value="" disabled selected>Select Role</option>
+      <option value="Admin">Admin</option>
+      <option value="Teacher">Teacher</option>
+      <option value="Student & Parents">Student & Parents</option>
+    </select>
+    <button type="submit">LOG IN</button>
+    <div id="error" class="error"></div>
+  </form>
+</div>
 
-  <script>
-    const form = document.getElementById('loginForm');
-    const error = document.getElementById('error');
+<script>
+  // Disable inspect / F12 / right-click
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.onkeydown = function(e){
+    if(e.keyCode===123) return false;
+    if(e.ctrlKey && e.shiftKey && (e.keyCode===73 || e.keyCode===74)) return false;
+    if(e.ctrlKey && e.keyCode===85) return false;
+  };
 
-    // Login credentials object
-    const credentials = [
-      { username: "MySchool", password: "adminrole", role: "Admin", redirect: "dashboard.html" },
-      { username: "teacher01", password: "teach123", role: "Teacher", redirect: "teacher_dashboard.html" },
-      { username: "student01", password: "stud2025", role: "Student & Parents", redirect: "student_dashboard.html" }
-    ];
+  const form = document.getElementById('loginForm');
+  const error = document.getElementById('error');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+  // Hardcoded credentials
+  const credentials = [
+    { username: "MySchool", password: "adminrole", role: "Admin" },
+    { username: "teacher01", password: "teach123", role: "Teacher" },
+    { username: "student01", password: "stud2025", role: "Student & Parents" }
+  ];
 
-      const id = document.getElementById('schoolId').value.trim();
-      const pw = document.getElementById('password').value;
-      const role = document.getElementById('role').value;
+  // Auto redirect if already logged in
+  window.addEventListener('DOMContentLoaded', () => {
+    const user = localStorage.getItem('user');
+    if(user) {
+      window.location.href = "dashboard.html";
+    }
+  });
 
-      const user = credentials.find(c =>
-        c.username === id && c.password === pw && c.role === role
-      );
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const id = document.getElementById('schoolId').value.trim();
+    const pw = document.getElementById('password').value;
+    const role = document.getElementById('role').value;
 
-      if (user) {
-        localStorage.setItem('user', JSON.stringify({ id, role }));
-        window.location.href = user.redirect;
-      } else {
-        error.textContent = "Invalid Username, Password or Role.";
-      }
-    });
-  </script>
+    const user = credentials.find(c => c.username===id && c.password===pw && c.role===role);
+    if(user){
+      localStorage.setItem('user', JSON.stringify({id, role}));
+      window.location.href = "dashboard.html"; 
+    } else {
+      error.textContent = "Invalid Username, Password or Role.";
+    }
+  });
+</script>
+
 </body>
 </html>
-
