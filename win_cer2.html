@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Winner Certificate Generator</title>
+  <link rel="icon" type="image/png" href="b.png">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f7f7f7; text-align: center; }
+    h1 { margin-bottom: 10px; }
+    #controls { margin-bottom: 20px; }
+    select, input[type="file"], button, input[type="text"], input[type="number"], input[type="color"] {
+      margin: 5px; padding: 6px 10px; font-size: 14px;
+    }
+    #certificates { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .certificate {
+      width: 297mm; height: 210mm;
+      background: white url('certi.jpg') no-repeat center center;
+      background-size: cover; border: 2px solid #333; border-radius: 10px;
+      box-sizing: border-box; padding: 180px 20px 20px 60px; box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      position: relative; page-break-after: always; text-align: center; color: #003366;
+    }
+    .certificate .name { font-size: 36px; font-family: "Ants Valley", cursive; font-weight: normal; text-transform: capitalize; margin: 30px 0; color: #001a33; text-shadow: 1px 1px 2px #fff; }
+    .certificate .position { font-weight: 600; font-size: 26px; color: green; margin-bottom: 40px; text-shadow: 1px 1px 2px #fff; }
+
+    .organizer-name { position: absolute; top: 60px; left: 50%; transform: translateX(-50%); font-size: 40px; font-weight: 700; color: #004085; text-shadow: 1px 1px 2px #fff; }
+    .organizer-logo { position: absolute; top: 580px; left: 470px; max-width: 180px; max-height: 180px; object-fit: contain; }
+
+    .organizer-address { position: absolute; top: 110px; left: 50%; transform: translateX(-50%); font-size: 25px; color: #333; font-weight: 600; }
+    .signature-left,.signature-right { position: absolute; bottom: 40px; width: 160px; height: auto; }
+ 
+   .signature-left { left: 100px; }
+    .signature-right { right: 140px; }
+
+    @media print { @page { size: A4 landscape; margin: 10mm; } body * { visibility: hidden; } #certificates, #certificates * { visibility: visible; } #certificates { position: absolute; top: 0; left: 0; width: 100%; } }
+  </style>
+</head>
+<body>
+
+
+
+<h1>🏆 Winner Certificate Generator 🏆</h1>
+
+<div id="controls">
+  <label for="language">Language:</label>
+  <select id="language">
+    <option value="en" selected>English</option>
+    <option value="np">नेपाली</option>
+  </select>
+
+  <label>Organizer Name:</label>
+  <input type="text" id="organizerName" placeholder="Enter organizer name" />
+  <label>Address:</label>
+  <input type="text" id="organizerAddress" placeholder="Enter organizer address" />
+  <label>Logo:</label>
+  <input type="file" id="organizerLogo" accept="image/*" /><br>
+
+  <label>Left Signature:</label>
+  <input type="file" id="leftSignatureInput" accept="image/*">
+  <label>Right Signature:</label>
+  <input type="file" id="rightSignatureInput" accept="image/*"><br><br>
+
+  <input type="file" id="excelFile" accept=".xlsx" />
+  <button onclick="importExcel()">Import Excel</button>
+  <button onclick="downloadFormat()">⬇️ Download Excel Format</button>
+  <button onclick="clearAll()" style="background: crimson; color: white;">Clear All</button>
+  <button onclick="printAll()" style="background: #004085; color: white;">Print All Certificates</button>
+
+  <div style="margin-top:10px;">
+    <label>Title Color:</label><input type="color" id="titleColor" value="#003366">
+    <label>AwardedTo Color:</label><input type="color" id="awardedColor" value="#ff0000">
+    <label>Position Color:</label><input type="color" id="positionColor" value="#006600">
+    <label>Footer Color:</label><input type="color" id="footerColor" value="#007bff">
+  </div>
+</div>
+
+<div id="certificates"></div>
+
+<script>
+let certificatesData=[], organizerLogoDataUrl="", leftSignatureUrl="", rightSignatureUrl="";
+
+const languageTexts = {
+  en: { title:"CERTIFICATE", awardedTo:"This certificate is proudly awarded to:", forGame:"Achieving the", positionText:"Position", congratulations:"Congratulations and best wishes for your future success!" },
+  np: { title:"विजेता प्रमाणपत्र", awardedTo:"यो प्रमाणपत्र प्रदान गरिन्छ", forGame:"को उत्कृष्ट प्रदर्शनको लागि", positionText:"स्थान", congratulations:"बधाई छ!" }
+};
+
+function ordinal(n){ let s=["th","st","nd","rd"], v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]); }
+
+window.onload=function(){
+  certificatesData = JSON.parse(localStorage.getItem('certificatesData')||"[]");
+  organizerLogoDataUrl = localStorage.getItem('organizerLogo')||"";
+  leftSignatureUrl = localStorage.getItem('leftSignature')||"";
+  rightSignatureUrl = localStorage.getItem('rightSignature')||"";
+  const name = localStorage.getItem('organizerName'); if(name) document.getElementById('organizerName').value=name;
+  const address = localStorage.getItem('organizerAddress'); if(address) document.getElementById('organizerAddress').value=address;
+  renderCertificates();
+};
+
+["organizerName","organizerAddress"].forEach(id=>{
+  document.getElementById(id).addEventListener('input',()=>{ 
+    localStorage.setItem(id, document.getElementById(id).value.trim()); 
+    if(certificatesData.length>0) renderCertificates(); 
+  });
+});
+
+["organizerLogo","leftSignatureInput","rightSignatureInput"].forEach(id=>{
+  document.getElementById(id).addEventListener('change', function(e){
+    const reader = new FileReader();
+    reader.onload=function(ev){
+      if(id==="organizerLogo") organizerLogoDataUrl=ev.target.result, localStorage.setItem('organizerLogo',organizerLogoDataUrl);
+      if(id==="leftSignatureInput") leftSignatureUrl=ev.target.result, localStorage.setItem('leftSignature',leftSignatureUrl);
+      if(id==="rightSignatureInput") rightSignatureUrl=ev.target.result, localStorage.setItem('rightSignature',rightSignatureUrl);
+      renderCertificates();
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+
+function downloadFormat(){
+  const wb = XLSX.utils.book_new();
+  const ws_data=[["Name","Position","GameName","Date"],["Ram",1,"Football","2025-08-22"],["Sita",2,"Volleyball","2025-08-22"]];
+  const ws=XLSX.utils.aoa_to_sheet(ws_data);
+  XLSX.utils.book_append_sheet(wb, ws, "Format");
+  XLSX.writeFile(wb,"certificate_format.xlsx");
+}
+
+function importExcel(){
+  const file=document.getElementById('excelFile').files[0];
+  if(!file){ alert("Please select an Excel file."); return; }
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const data=new Uint8Array(e.target.result);
+    const workbook=XLSX.read(data,{type:'array'});
+    const sheet=workbook.Sheets[workbook.SheetNames[0]];
+    const jsonData=XLSX.utils.sheet_to_json(sheet);
+    certificatesData=jsonData.map((item,i)=>({id:i, name:item.Name||"", position:item.Position||"", game:item.GameName||"", date:item.Date||""}));
+    localStorage.setItem('certificatesData',JSON.stringify(certificatesData));
+    renderCertificates();
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function renderCertificates(){
+  const container=document.getElementById('certificates');
+  const lang=document.getElementById('language').value;
+  const texts=languageTexts[lang];
+  const organizerName=document.getElementById('organizerName').value.trim();
+  const organizerAddress=document.getElementById('organizerAddress').value.trim();
+  const titleColor=document.getElementById('titleColor').value;
+  const awardedColor=document.getElementById('awardedColor').value;
+  const positionColor=document.getElementById('positionColor').value;
+  const footerColor=document.getElementById('footerColor').value;
+
+  container.innerHTML="";
+  certificatesData.forEach(item=>{
+    let posText=item.position? ordinal(parseInt(item.position))+" "+texts.positionText:"";
+    const cert=document.createElement('div'); cert.className="certificate";
+    cert.innerHTML=`
+      ${organizerLogoDataUrl?`<img src="${organizerLogoDataUrl}" class="organizer-logo"/>`:""}
+      ${organizerName?`<div class="organizer-name">${organizerName}</div>`:""}
+      ${organizerAddress?`<div class="organizer-address">${organizerAddress}</div>`:""}
+      <h2 style="color:${titleColor}">${texts.title}</h2>
+      <p style="color:${awardedColor}">${texts.awardedTo}</p>
+      <div class="name">${item.name}</div>
+      <p>${texts.forGame}</p>
+      <div class="position" style="color:${positionColor}">${posText}</div>
+      <div class="game">in<br>${item.game} Competition held on ${item.date||"________"}</div>
+      <p class="footer" style="color:${footerColor}">${texts.congratulations}</p>
+      ${leftSignatureUrl?`<img src="${leftSignatureUrl}" class="signature-left">`:""}
+      ${rightSignatureUrl?`<img src="${rightSignatureUrl}" class="signature-right">`:""}
+    `;
+    container.appendChild(cert);
+  });
+}
+
+function clearAll(){
+  if(confirm("Clear everything?")){
+    certificatesData=[]; organizerLogoDataUrl=""; leftSignatureUrl=""; rightSignatureUrl="";
+    localStorage.clear(); document.getElementById('certificates').innerHTML="";
+  }
+}
+
+function printAll(){ window.print(); }
+
+document.getElementById('language').addEventListener('change',()=>{ if(certificatesData.length>0) renderCertificates(); });
+["titleColor","awardedColor","positionColor","footerColor"].forEach(id=>{
+  document.getElementById(id).addEventListener('input',()=>{ if(certificatesData.length>0) renderCertificates(); });
+});
+</script>
+
+</body>
+</html>
