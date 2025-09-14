@@ -14,10 +14,10 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
-	   overflow-x: hidden;
+	  overflow-x: hidden;
         }
 
-        /* Header Section */
+      
         header {
             background-color: #4CAF50;
             color: white;
@@ -29,6 +29,7 @@
             text-align: center;
         }
 
+     
         header a {
             color: orange;
             text-decoration: none;
@@ -42,12 +43,21 @@
             max-width: 200px;
         }
 
+      
+        header a.home-icon {
+            padding: 0;
+            background: none;
+            border-radius: 0;
+            max-width: none;
+            flex: unset;
+        }
+
         header div {
             flex: 2;
             text-align: center;
         }
 
-        
+     
         h1 {
             font-size: 28px;
         }
@@ -68,7 +78,7 @@
             }
 
             h1 {
-                font-size: 20px;
+                font-size: 20px; 
             }
 
             h2 {
@@ -116,7 +126,7 @@
        
         @media (max-width: 600px) {
             .topics {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; 
             }
         }
 
@@ -145,134 +155,81 @@
 </head>
 <body>
 
-    <header>
-    <a href="computer.html" style="color: orange; text-decoration: none; padding: 10px; background-color: blue; border-radius: 5px; font-weight: bold; font-size: 20px;">Go to Home</a>
-    
-    <div>
-        <h1><span class="highlight" style="color: white;">Hamro Computer Guru</span></h1>
-        <h2><span class="highlight" style="color: yellow;">Learn and Explore Basics of Computers</span></h2>
-    </div>
+<header>
+  <a href="computer.html" class="home-icon">
+    <img src="home.jpg" alt="Home Icon" 
+         style="width:80px; height:80px; border-radius:50%; object-fit:cover;">
+  </a>
+
+  <div>
+    <h1><span class="highlight" style="color: white;">Hamro Computer Guru</span></h1>
+    <h2><span class="highlight" style="color: yellow;">Learn and Explore Basics of Computers</span></h2>
+  </div>
 </header>
-    
 
+<!-- Main Content -->
+<div class="content">
+    <div class="topics" id="topics">
 
-
-
-
-
-
-
-    <!-- Main Content -->
-  <div class="content">
-        <div class="topics" id="topics">
-
-            <!-- Topic 1 -->
-            <div class="topic">
-                <h3>MS Word</h3>
-                <p>Learn everything about Microsoft Word, from basic document creation to advanced formatting and automation.👇</p>
-               <a href="basic.html" target="_blank">MS Word With Certificate</a>
-            </div>
-
-
-
-<!-- Topic 2 -->
-            <div class="topic">
-                <h3>MS Excel</h3>
-                <p>Learn Microsoft Excel from basic functions to advanced data analysis.👇</p>
-                <a href="excel.html" target="_blank">Excel With Certificate</a>
-            </div>
-
-           
-<!-- Topic 3 -->
-            <div class="topic">
-                <h3>MS PowerPoint</h3>
-                <p>Watch the full tutorial to master PowerPoint and create stunning presentations!👇</p>
-                <a href="powerpoint.html" target="_blank">PowerPoint With Certificate</a>
-            </div>
-
-
-
-  <!-- Topic 4 -->
-            <div class="topic">
-                <h3>Operating Systems</h3>
-                <p>Watch the full tutorial to master operating systems and improve your technical skills!👇</p>
-                <a href="operating.html" target="_blank">Explore Operating Systems</a>
-            </div>
-
-
-              
-<!-- Topic 5 -->
-            <div class="topic">
-                <h3>Hardware & Printer</h3>
-                <p>Watch the full tutorial to learn how to handle computer hardware and printers effectively!👇</p>
-                <a href="hardware.html" target="_blank">Hardware & Printer Problem Solving</a>
-            </div>
-
-
-
-
-<!-- Topic 6 -->
-            <div class="topic">
-                <h3>Internet & Networking</h3>
-                <p>Discover how the internet works and explore networking basics.👇</p>
-                <a href="networking.html" target="_blank">Explore Internet & Networking</a>
-            </div>
+        <!-- Topic 1 -->
+        <div class="topic">
+            <h3>MS Word</h3>
+            <p>Learn everything about Microsoft Word, from basic document creation to advanced formatting and automation.👇</p>
+           <a href="basic.html" target="_blank">MS Word With Certificate</a>
         </div>
- </div>
- </div>
- </div>
- </div>
- </div>
- </div>
 
-
-
-
-
-
-    <!-- Footer Section -->
-    <footer>
-        <p>| All rights reserved Hamro Computer Guru Channel| Date: <span id="footerText"></span></p>
-        <span class="highlight" style="color: red;"><p>Have any Questions: +977-9844078996</span></p>
-        <div class="social-links">
-            <a href="http://www.facebook.com/brpmailo" target="_blank">Facebook</a>
-            <a href="http://www.youtube.com/@ComputerMsaterBrp" target="_blank">YouTube</a>
-            <a href="http://www.tiktok.com/brpmailobaburam1" target="_blank">TikTok</a>
+        <!-- Topic 2 -->
+        <div class="topic">
+            <h3>MS Excel</h3>
+            <p>Learn Microsoft Excel from basic functions to advanced data analysis.👇</p>
+            <a href="excel.html" target="_blank">Excel With Certificate</a>
         </div>
-    </footer>
 
-  <script>
-        // Display current date in footer
-        document.getElementById('footerText').textContent = " " + new Date().toLocaleDateString();
+        <!-- Topic 3 -->
+        <div class="topic">
+            <h3>MS PowerPoint</h3>
+            <p>Watch the full tutorial to master PowerPoint and create stunning presentations!👇</p>
+            <a href="powerpoint.html" target="_blank">PowerPoint With Certificate</a>
+        </div>
 
-        // Show Computer Basics Video
-        function showBasicsVideo() {
-            document.getElementById('topics').style.display = 'none';
-            document.getElementById('videoSectionPrinter').style.display = 'none';
-            document.getElementById('videoSectionBasics').style.display = 'block';
-        }
+        <!-- Topic 4 -->
+        <div class="topic">
+            <h3>Operating Systems</h3>
+            <p>Watch the full tutorial to master operating systems and improve your technical skills!👇</p>
+            <a href="operating.html" target="_blank">Explore Operating Systems</a>
+        </div>
 
-        // Show Hardware & Printer Video
-        function showPrinterVideo() {
-            document.getElementById('topics').style.display = 'none';
-            document.getElementById('videoSectionBasics').style.display = 'none';
-            document.getElementById('videoSectionPrinter').style.display = 'block';
-        }
+        <!-- Topic 5 -->
+        <div class="topic">
+            <h3>Hardware & Printer</h3>
+            <p>Watch the full tutorial to learn how to handle computer hardware and printers effectively!👇</p>
+            <a href="hardware.html" target="_blank">Hardware & Printer Problem Solving</a>
+        </div>
 
-        // Operating Systems Video
-        function showOperatingSystemsVideo() {
-            document.getElementById('topics').style.display = 'none';
-            document.getElementById('videoSectionBasics').style.display = 'none'; 
-            document.getElementById('videoSectionPrinter').style.display = 'none'; 
-            document.getElementById('videoSectionOperatingSystems').style.display = 'block'; // Show Operating System video
-        }
+        <!-- Topic 6 -->
+        <div class="topic">
+            <h3>Internet & Networking</h3>
+            <p>Discover how the internet works and explore networking basics.👇</p>
+            <a href="networking.html" target="_blank">Explore Internet & Networking</a>
+        </div>
+    </div>
+</div>
 
-        // Load specific video into iframe
-        function loadVideo(videoUrl) {
-            const iframes = document.querySelectorAll('.video-section iframe');
-            iframes.forEach(iframe => iframe.src = videoUrl);
-        }
-    </script>
+<!-- Footer Section -->
+<footer>
+    <p>| All rights reserved Hamro Computer Guru Channel | Date: <span id="footerText"></span></p>
+    <span class="highlight" style="color: red;"><p>Have any Questions: +977-9844078996</p></span>
+    <div class="social-links">
+        <a href="http://www.facebook.com/brpmailo" target="_blank">Facebook</a>
+        <a href="http://www.youtube.com/@ComputerMsaterBrp" target="_blank">YouTube</a>
+        <a href="http://www.tiktok.com/brpmailobaburam1" target="_blank">TikTok</a>
+    </div>
+</footer>
+
+<script>
+    // Display current date in footer
+    document.getElementById('footerText').textContent = " " + new Date().toLocaleDateString();
+</script>
+
 </body>
 </html>
-
