@@ -1,128 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Teacher Registration</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #2c3e50, #3498db);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .container {
-      background: white;
-      padding: 40px 30px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      width: 100%;
-      max-width: 400px;
-      animation: fadeIn 1s ease-in-out;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #2c3e50;
-    }
-    label {
-      font-weight: 600;
-      display: block;
-      margin-top: 15px;
-      color: #34495e;
-    }
-    input {
-      width: 100%;
-      padding: 10px 12px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      transition: border-color 0.3s ease;
-    }
-    input:focus {
-      border-color: #3498db;
-      outline: none;
-    }
-    button {
-      margin-top: 25px;
-      width: 100%;
-      padding: 12px;
-      background-color: #3498db;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    button:hover {
-      background-color: #2980b9;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .success {
-      text-align: center;
-      margin-top: 15px;
-      color: green;
-    }
-    .error {
-      text-align: center;
-      margin-top: 15px;
-      color: red;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brp Mailo Digital Institute-Question Bank</title>
+ <link rel="icon" type="image/png" href="b.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * {box-sizing:border-box; font-family:'Poppins',sans-serif; margin:0; padding:0;}
+  body {background:#f3f7fb; display:flex; justify-content:center; align-items:flex-start; padding:20px; min-height:100vh;}
+  .container {display:grid; grid-template-columns:1fr 1fr; gap:30px; max-width:1100px; width:100%;}
+  .card {background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.1);}
+  h2 {margin-bottom:15px; color:#2b7de9;}
+  label {display:block; margin-top:10px; font-weight:600;}
+  select, button {width:100%; padding:10px 12px; margin-top:6px; border-radius:8px; border:1px solid #d0d6e0;}
+  button {background:#2b7de9; color:#fff; font-weight:700; cursor:pointer; border:none;}
+  button:disabled {background:#b0c4de; cursor:not-allowed;}
+  iframe {width:100%; height:450px; border:none; border-radius:8px; margin-top:10px;}
+  .file-list {margin-top:15px;}
+  .file-item {display:flex; justify-content:space-between; align-items:center; padding:10px; border:1px solid #eef3fb; border-radius:8px; margin-top:8px;}
+  .muted {color:#667889; font-size:13px;}
+  .success {color:#27ae60; font-weight:600;}
+</style>
 </head>
+
+
+
+
 <body>
   <div class="container">
-    <h2>Teacher Registration</h2>
-    <form id="teacherForm">
-      <label for="gmail">Gmail</label>
-      <input type="email" id="gmail" required placeholder="e.g. teacher@gmail.com">
+    <div class="card">
+      <h2>Fill the Form</h2>
+      <p class="muted">You must submit this form before downloading PDFs.</p>
+      <!-- Embed your Google Form here -->
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfEIIgXVIUHzR4yDEiNWfiJLMhZpsXdEpIg0cTQdkhdkCopXw/viewform?usp=dialog"></iframe>
+      <button id="formSubmitBtn">I have submitted the form</button>
+      <p id="formMsg" class="muted"></p>
+    </div>
 
-      <label for="password">Password</label>
-      <input type="password" id="password" required placeholder="Choose a password">
 
-      <button type="submit">Register</button>
-      <div class="success" id="successMsg"></div>
-      <div class="error" id="errorMsg"></div>
-    </form>
+
+
+   
+
+    <div class="card">
+      <h2>Select Class & Subject</h2>
+      <label>Class</label>
+      <select id="classSelect">
+        <option value="">-- Select Class --</option>
+        <option value="Nursery">Nursery</option>
+        <option value="KG">KG</option>
+        <option value="1">Class 1</option>
+        <option value="2">Class 2</option>
+        <option value="3">Class 3</option>
+        <option value="4">Class 4</option>
+        <option value="5">Class 5</option>
+        <option value="6">Class 6</option>
+        <option value="7">Class 7</option>
+        <option value="8">Class 8</option>
+        <option value="9">Class 9</option>
+        <option value="10">Class 10</option>
+      </select>
+
+
+
+
+
+      <label>Subject</label>
+      <select id="subjectSelect" disabled>
+        <option value="">-- Select Subject --</option>
+      </select>
+
+      <div class="file-list" id="fileList">
+        <p class="muted">Please submit the form first to enable PDF download.</p>
+      </div>
+
+      <button id="downloadBtn" disabled>Download PDF</button>
+      <button id="previewBtn" disabled>Preview PDF</button>
+    </div>
   </div>
 
-  <script>
-    document.getElementById("teacherForm").addEventListener("submit", function(e){
-      e.preventDefault();
 
-      const gmail = document.getElementById("gmail").value;
-      const password = document.getElementById("password").value;
 
-      // Clear previous messages
-      document.getElementById("successMsg").textContent = "";
-      document.getElementById("errorMsg").textContent = "";
 
-      fetch("YOUR_WEB_APP_URL_HERE", {
-        method: "POST",
-        body: JSON.stringify({ gmail: gmail, password: password }),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("successMsg").textContent = "✅ Registered successfully!";
-        document.getElementById("teacherForm").reset();
-      })
-      .catch(error => {
-        document.getElementById("errorMsg").textContent = "❌ Something went wrong. Please try again.";
-      });
+
+
+<script>
+  const files = {
+    "Nursery": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_1" },
+
+    "KG": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_2" },
+
+    "1": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_3", "English": "https://drive.google.com/uc?export=download&id=DRIVE_ID_4" },
+
+    "2": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_5", "English": "https://drive.google.com/uc?export=download&id=DRIVE_ID_6" },
+
+    "3": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_7" },
+
+    "4": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_8" },
+
+    "5": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_9" },
+
+    "6": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_10" },
+
+    "7": { "Nepali": "https://drive.google.com/uc?export=download&id=DRIVE_ID_11" },
+	
+    "8": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_12" },
+
+    "9": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_13" },
+
+    "10": { "Math": "https://drive.google.com/uc?export=download&id=DRIVE_ID_14" }
+  };
+
+
+
+
+  const classSelect = document.getElementById('classSelect');
+  const subjectSelect = document.getElementById('subjectSelect');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const previewBtn = document.getElementById('previewBtn');
+  const fileList = document.getElementById('fileList');
+
+  let formSubmitted = false;
+
+  // Populate subjects based on selected class
+  classSelect.addEventListener('change', () => {
+    const cls = classSelect.value;
+    subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+    subjectSelect.disabled = true;
+    fileList.innerHTML = '';
+    if (!cls || !formSubmitted) return;
+
+    const subjObj = files[cls] || {};
+    Object.keys(subjObj).forEach(subj => {
+      const opt = document.createElement('option');
+      opt.value = subj;
+      opt.textContent = subj;
+      subjectSelect.appendChild(opt);
     });
-  </script>
+    subjectSelect.disabled = false;
+  });
+
+  subjectSelect.addEventListener('change', () => {
+    const cls = classSelect.value;
+    const subj = subjectSelect.value;
+    fileList.innerHTML = '';
+    if (!cls || !subj) return;
+    const url = files[cls][subj];
+    const div = document.createElement('div');
+    div.className = 'file-item';
+    div.innerHTML = `<strong>${cls} — ${subj}</strong>`;
+    fileList.appendChild(div);
+
+    downloadBtn.disabled = !formSubmitted;
+    previewBtn.disabled = !formSubmitted;
+  });
+
+  // Download function
+  function downloadPDF(url){
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  }
+
+  downloadBtn.addEventListener('click', () => {
+    const cls = classSelect.value;
+    const subj = subjectSelect.value;
+    if (!cls || !subj){ alert("Please select Class and Subject."); return; }
+    const url = files[cls][subj];
+    downloadPDF(url);
+  });
+
+  previewBtn.addEventListener('click', () => {
+    const cls = classSelect.value;
+    const subj = subjectSelect.value;
+    if (!cls || !subj){ alert("Please select Class and Subject."); return; }
+    const url = files[cls][subj];
+    window.open(url, '_blank');
+  });
+
+  // Form submission simulation
+  document.getElementById('formSubmitBtn').addEventListener('click', () => {
+    formSubmitted = true;
+    fileList.innerHTML = '<p class="success">Form submitted! You can now select Class/Subject and download PDFs.</p>';
+    downloadBtn.disabled = true;
+    previewBtn.disabled = true;
+    subjectSelect.disabled = !classSelect.value;
+    document.getElementById('formMsg').textContent = 'Form submission complete.';
+  });
+</script>
 </body>
 </html>
