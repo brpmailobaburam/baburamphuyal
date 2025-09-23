@@ -40,15 +40,15 @@
             let gender = document.getElementById("genderSelect").value;
 
             if (!name) {
-                alert("कृपया आफ्नो नाम लेख्नुहोस्!");
+                alert("Please Fill your Name!");
                 return;
             }
             if (!gender) {
-                alert("कृपया Gender छान्नुहोस्!");
+                alert("Please Select your Gender!");
                 return;
             }
 
-            // Gender अनुसार Mr./Ms. राख्ने
+            
             let title = gender === "Male" ? "Mr." : "Ms.";
 
             let canvas = document.getElementById("certificateCanvas");
@@ -59,18 +59,18 @@
             img.onload = function () {
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-                // Name लेख्ने Style (ठीक ठाउँमा मिलाइएको)
+                
                 ctx.font = "50px 'Ants Valley', cursive";
                 ctx.fillStyle = "blue";
 
-                let fullName = title + " " + name; // 🔹 Generate गर्दा मात्र Mr./Ms. आउँछ
+                let fullName = title + " " + name; // 
                 let nameWidth = ctx.measureText(fullName).width;
-                let nameX = (canvas.width - nameWidth) / 2; // 🔹 केन्द्रमा ल्याउने
-                let nameY = 170; // 🔹 "Certificate of Achievement" को ठीक मुनि 
+                let nameX = (canvas.width - nameWidth) / 2; // 
+                let nameY = 170; // 🔹 "Certificate of Achievement"
 
                 ctx.fillText(fullName, nameX, nameY);
 
-                // Auto Date (मिति सही ठाउँमा राख्ने)
+             
                 let today = new Date();
                 let date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
                 ctx.font = "25px Arial";
