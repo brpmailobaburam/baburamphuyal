@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamro Computer Guru</title>
-	<link rel="icon" type="image/png" href="b.png">
+    <link rel="icon" type="image/png" href="b.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
@@ -14,10 +14,9 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
-	  overflow-x: hidden;
+            overflow-x: hidden;
         }
 
-      
         header {
             background-color: #4CAF50;
             color: white;
@@ -29,7 +28,6 @@
             text-align: center;
         }
 
-     
         header a {
             color: orange;
             text-decoration: none;
@@ -43,7 +41,6 @@
             max-width: 200px;
         }
 
-      
         header a.home-icon {
             padding: 0;
             background: none;
@@ -57,7 +54,6 @@
             text-align: center;
         }
 
-     
         h1 {
             font-size: 28px;
         }
@@ -70,17 +66,14 @@
             header {
                 flex-direction: column;
             }
-
             header a {
                 width: 100%;
                 max-width: none;
                 margin: 5px 0;
             }
-
             h1 {
                 font-size: 20px; 
             }
-
             h2 {
                 font-size: 16px;
             }
@@ -97,7 +90,6 @@
             text-align: center;
         }
 
-       
         .topics {
             display: grid;
             grid-template-columns: repeat(2, 1fr); 
@@ -110,12 +102,26 @@
             border-radius: 8px;
             padding: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .topic div {
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .topic img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .topic a {
             text-decoration: none;
-            color: #4CAF50;
             font-weight: bold;
         }
 
@@ -123,10 +129,24 @@
             text-decoration: underline;
         }
 
-       
+        /* Topic Text Colors */
+        .word h3, .word p, .word a { color: #0066ff; }
+        .excel h3, .excel p, .excel a { color: #009933; }
+        .ppt h3, .ppt p, .ppt a { color: #ff0000; }
+        .os h3, .os p, .os a { color: #6600cc; }
+        .hardware h3, .hardware p, .hardware a { color: #800000; }
+        .network h3, .network p, .network a { color:  #00cccc; }
+
         @media (max-width: 600px) {
             .topics {
                 grid-template-columns: 1fr; 
+            }
+            .topic {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .topic img {
+                margin-top: 10px;
             }
         }
 
@@ -160,62 +180,105 @@
     <img src="home.jpg" alt="Home Icon" 
          style="width:80px; height:80px; border-radius:50%; object-fit:cover;">
   </a>
-
   <div>
     <h1><span class="highlight" style="color: white;">Hamro Computer Guru</span></h1>
     <h2><span class="highlight" style="color: yellow;">Learn and Explore Basics of Computers</span></h2>
   </div>
 </header>
 
-<!-- Main Content -->
 <div class="content">
-    <div class="topics" id="topics">
+    <div class="topics">
 
-        <!-- Topic 1 -->
-        <div class="topic">
-            <h3>MS Word</h3>
-            <p>Learn everything about Microsoft Word, from basic document creation to advanced formatting and automation.👇</p>
-           <a href="basic.html" target="_blank">MS Word With Certificate</a>
+
+
+        <!-- MS Word -->
+<div class="topic word">
+    <div>
+        <h3>MS Word</h3>
+        <p>Learn everything about Microsoft Word, from basic document creation to advanced formatting and automation.</p>
+        <a href="basic.html" target="_blank">MS Word With Certificate</a>
+    </div>
+    <a href="basic.html" target="_blank">
+        <img src="ms word.png" alt="MS Word">
+    </a>
+</div>
+
+
+
+        <!-- MS Excel -->
+        <div class="topic excel">
+            <div>
+                <h3>MS Excel</h3>
+                <p>Learn Microsoft Excel from basic functions to advanced data analysis.</p>
+                <a href="excel.html" target="_blank">Excel With Certificate</a>
+            </div>
+	<a href="excel.html" target="_blank">
+            <img src="ms excel.jpg" alt="MS Excel">
+	</a>
         </div>
 
-        <!-- Topic 2 -->
-        <div class="topic">
-            <h3>MS Excel</h3>
-            <p>Learn Microsoft Excel from basic functions to advanced data analysis.👇</p>
-            <a href="excel.html" target="_blank">Excel With Certificate</a>
+
+
+        <!-- PowerPoint -->
+        <div class="topic ppt">
+            <div>
+                <h3>MS PowerPoint</h3>
+                <p>Watch the full tutorial to master PowerPoint and create stunning presentations!</p>
+                <a href="powerpoint.html" target="_blank">PowerPoint With Certificate</a>
+            </div>
+	<a href="powerpoint.html" target="_blank">
+            <img src="ms powerpoint.png" alt="PowerPoint">
+	</a>
         </div>
 
-        <!-- Topic 3 -->
-        <div class="topic">
-            <h3>MS PowerPoint</h3>
-            <p>Watch the full tutorial to master PowerPoint and create stunning presentations!👇</p>
-            <a href="powerpoint.html" target="_blank">PowerPoint With Certificate</a>
+
+
+
+        <!-- Operating Systems -->
+        <div class="topic os">
+            <div>
+                <h3>Operating Systems</h3>
+                <p>Watch the full tutorial to master operating systems and improve your technical skills!</p>
+                <a href="operating.html" target="_blank">Explore Operating Systems</a>
+            </div>
+	<a href="operating.html" target="_blank">
+            <img src="operating system.png" alt="Operating Systems">
+	</a>
         </div>
 
-        <!-- Topic 4 -->
-        <div class="topic">
-            <h3>Operating Systems</h3>
-            <p>Watch the full tutorial to master operating systems and improve your technical skills!👇</p>
-            <a href="operating.html" target="_blank">Explore Operating Systems</a>
+
+
+        <!-- Hardware & Printer -->
+        <div class="topic hardware">
+            <div>
+                <h3>Hardware & Printer</h3>
+                <p>Watch the full tutorial to learn how to handle computer hardware and printers effectively!</p>
+                <a href="hardware.html" target="_blank">Hardware & Printer Problem Solving</a>
+            </div>
+	 <a href="hardware.html" target="_blank">
+            <img src="har_prin.jpg" alt="Hardware & Printer">
+	</a>
         </div>
 
-        <!-- Topic 5 -->
-        <div class="topic">
-            <h3>Hardware & Printer</h3>
-            <p>Watch the full tutorial to learn how to handle computer hardware and printers effectively!👇</p>
-            <a href="hardware.html" target="_blank">Hardware & Printer Problem Solving</a>
-        </div>
 
-        <!-- Topic 6 -->
-        <div class="topic">
-            <h3>Internet & Networking</h3>
-            <p>Discover how the internet works and explore networking basics.👇</p>
-            <a href="networking.html" target="_blank">Explore Internet & Networking</a>
+
+        <!-- Internet & Networking -->
+        <div class="topic network">
+            <div>
+                <h3>Internet & Networking</h3>
+                <p>Discover how the internet works and explore networking basics.</p>
+                <a href="networking.html" target="_blank">Explore Internet & Networking</a>
+            </div>
+	<a href="networking.html" target="_blank">
+            <img src="int_net.jpg" alt="Internet & Networking">
         </div>
+	</a>
     </div>
 </div>
 
-<!-- Footer Section -->
+
+
+
 <footer>
     <p>| All rights reserved Hamro Computer Guru Channel | Date: <span id="footerText"></span></p>
     <span class="highlight" style="color: red;"><p>Have any Questions: +977-9844078996</p></span>
@@ -227,7 +290,6 @@
 </footer>
 
 <script>
-    // Display current date in footer
     document.getElementById('footerText').textContent = " " + new Date().toLocaleDateString();
 </script>
 
