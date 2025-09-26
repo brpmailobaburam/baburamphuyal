@@ -4,16 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/png" href="b.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-<title>Free Quiz</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<title>Advance Quiz-Brp Mailo Digital Institute</title>
 <style>
-  .option-btn {
-    margin: 5px; padding: 8px 12px; border-radius: 5px; border: 1px solid #ccc; cursor: pointer;
-  }
-  .option-btn.selected { background-color: #87ceeb; }
-  .option-btn.correct { background-color: #4caf50; color: white; }
-  .option-btn.wrong { background-color: #f44336; color: white; }
-  
+.option-btn {
+  margin: 5px; padding: 8px 12px; border-radius: 5px; border: 1px solid #ccc; cursor: pointer;
+}
+.option-btn.selected { background-color: #87ceeb; }
+.option-btn.correct { background-color: #4caf50; color: white; }
+.option-btn.wrong { background-color: #f44336; color: white; }
+
 #startContainer button {
   background: linear-gradient(45deg, #6a11cb, #2575fc);
   color: white;
@@ -31,28 +31,24 @@
   background: linear-gradient(45deg, #2575fc, #6a11cb);
   transform: scale(1.05);
 }
-
-
-
 </style>
 </head>
+
+
+
+
+
 <body>
-
-
-
-
-
 <div id="startContainer">
-  <button onclick="startQuiz()">Start</button>
+  <button onclick="startQuiz()">Can You Get All Correct? Let's Start🚀</button>
 </div>
 
 
 
 <div id="quizContainer" style="display:none;">
-  <div id="timer">Time Left: 20:00</div>
+  <div id="timer">Time Left: 15:00</div>
   <div id="questionsContainer"></div>
 </div>
-
 
 <div id="resultContainer" style="display:none;"></div>
 
@@ -60,9 +56,11 @@
 
 
 
+
+
 <script>
-const questions = [
-  { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
+const allQuestions = [
+   { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
   { question: "Which is the largest planet?", options: ["Mars", "Earth", "Jupiter", "Venus"], answer: "Jupiter" },
   { question: "What is the national animal of Nepal?", options: ["Cow", "Tiger", "Leopard", "Goat"], answer: "Cow" },
   { question: "Which country is famous for pizza?", options: ["India", "Italy", "France", "China"], answer: "Italy" },
@@ -111,20 +109,251 @@ const questions = [
   { question: "Which country is known as the Land of the Rising Sun?", options: ["China", "Japan", "Korea", "Thailand"], answer: "Japan" },
   { question: "Which is the largest desert in the world?", options: ["Sahara", "Gobi", "Kalahari", "Arabian"], answer: "Sahara" },
   { question: "Which element is needed for combustion?", options: ["Oxygen", "Nitrogen", "Hydrogen", "Carbon"], answer: "Oxygen" },
-  { question: "What is the currency of the USA?", options: ["Dollar", "Euro", "Yen", "Pound"], answer: "Dollar" }
+  { question: "What is the currency of the USA?", options: ["Dollar", "Euro", "Yen", "Pound"], answer: "Dollar" },
+
+  { question: "Which planet is known as the Morning Star?", options: ["Venus", "Mars", "Mercury", "Jupiter"], answer: "Venus" },
+  { question: "Who is known as the Father of Modern Physics?", options: ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Niels Bohr"], answer: "Albert Einstein" },
+  { question: "Which river flows through Egypt?", options: ["Amazon", "Nile", "Yangtze", "Danube"], answer: "Nile" },
+  { question: "What is the SI unit of Force?", options: ["Pascal", "Newton", "Joule", "Watt"], answer: "Newton" },
+  { question: "Who discovered Penicillin?", options: ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Joseph Lister"], answer: "Alexander Fleming" },
+  { question: "Which is the largest island in the world?", options: ["Greenland", "Madagascar", "Borneo", "New Guinea"], answer: "Greenland" },
+  { question: "What is the square root of 225?", options: ["14", "15", "16", "17"], answer: "15" },
+  { question: "Which vitamin is also known as Ascorbic Acid?", options: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin K"], answer: "Vitamin C" },
+  { question: "Who wrote the epic 'Iliad'?", options: ["Homer", "Virgil", "Sophocles", "Plato"], answer: "Homer" },
+  { question: "Which is the smallest bone in the human body?", options: ["Stapes", "Femur", "Tibia", "Ulna"], answer: "Stapes" },
+  { question: "Who was the first President of the United States?", options: ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"], answer: "George Washington" },
+  { question: "Which is the coldest place on Earth?", options: ["Antarctica", "Arctic", "Siberia", "Alaska"], answer: "Antarctica" },
+  { question: "What does HTTP stand for?", options: ["Hyper Text Transfer Protocol", "High Transfer Text Protocol", "Hyperlink Transfer Process", "Hyper Tool Transfer Program"], answer: "Hyper Text Transfer Protocol" },
+  { question: "Who is known as the Bard of Avon?", options: ["William Shakespeare", "John Milton", "Geoffrey Chaucer", "Charles Dickens"], answer: "William Shakespeare" },
+  { question: "Which blood group is called the Universal Donor?", options: ["O-", "O+", "AB+", "AB-"], answer: "O-" },
+  { question: "Which continent has the most countries?", options: ["Africa", "Asia", "Europe", "South America"], answer: "Africa" },
+  { question: "Who formulated the theory of evolution by natural selection?", options: ["Charles Darwin", "Gregor Mendel", "Jean Lamarck", "Carl Linnaeus"], answer: "Charles Darwin" },
+  { question: "Which is the longest bone in the human body?", options: ["Femur", "Humerus", "Tibia", "Fibula"], answer: "Femur" },
+  { question: "Which is the national flower of Nepal?", options: ["Lotus", "Rhododendron", "Sunflower", "Magnolia"], answer: "Rhododendron" },
+  { question: "What is the chemical formula of Carbon Dioxide?", options: ["CO", "CO2", "C2O", "O2C"], answer: "CO2" },
+  { question: "In which year did World War II end?", options: ["1942", "1945", "1947", "1950"], answer: "1945" },
+  { question: "Which is the largest gland in the human body?", options: ["Liver", "Pancreas", "Thyroid", "Kidney"], answer: "Liver" },
+  { question: "Who invented the computer mouse?", options: ["Douglas Engelbart", "Alan Turing", "Charles Babbage", "Bill Gates"], answer: "Douglas Engelbart" },
+  { question: "Which country hosted the 2021 Summer Olympics?", options: ["China", "Japan", "Brazil", "UK"], answer: "Japan" },
+  { question: "What is the capital city of Canada?", options: ["Toronto", "Ottawa", "Montreal", "Vancouver"], answer: "Ottawa" },
+  { question: "Which is the largest organ in the human body?", options: ["Skin", "Liver", "Brain", "Lungs"], answer: "Skin" },
+  { question: "Which Indian leader is known as the Iron Man of India?", options: ["Sardar Vallabhbhai Patel", "Mahatma Gandhi", "Jawaharlal Nehru", "Subhas Chandra Bose"], answer: "Sardar Vallabhbhai Patel" },
+  { question: "What is the currency of South Korea?", options: ["Won", "Yen", "Dollar", "Baht"], answer: "Won" },
+  { question: "Which organ controls balance in the human body?", options: ["Ear", "Brain", "Spinal Cord", "Heart"], answer: "Ear" },
+  { question: "Which gas is commonly known as Laughing Gas?", options: ["Nitrous Oxide", "Carbon Dioxide", "Oxygen", "Ammonia"], answer: "Nitrous Oxide" },
+  { question: "Who was the first woman to win a Nobel Prize?", options: ["Marie Curie", "Mother Teresa", "Rosalind Franklin", "Ada Lovelace"], answer: "Marie Curie" },
+  { question: "Which mountain range separates Europe and Asia?", options: ["Ural", "Alps", "Himalayas", "Andes"], answer: "Ural" },
+  { question: "What is the binary of decimal number 10?", options: ["1010", "1100", "1001", "1111"], answer: "1010" },
+  { question: "Which is the national game of Nepal?", options: ["Football", "Volleyball", "Cricket", "Hockey"], answer: "Volleyball" },
+  { question: "What is the capital of Australia?", options: ["Sydney", "Melbourne", "Canberra", "Perth"], answer: "Canberra" },
+  { question: "Which planet rotates on its side?", options: ["Uranus", "Neptune", "Saturn", "Pluto"], answer: "Uranus" },
+  { question: "Which human organ produces insulin?", options: ["Pancreas", "Liver", "Kidney", "Stomach"], answer: "Pancreas" },
+  { question: "What is the study of fungi called?", options: ["Mycology", "Virology", "Bacteriology", "Zoology"], answer: "Mycology" },
+  { question: "Who is known as the Light of Asia?", options: ["Gautam Buddha", "Mahatma Gandhi", "Confucius", "Dalai Lama"], answer: "Gautam Buddha" },
+  { question: "Which is the smallest planet in our solar system?", options: ["Mercury", "Mars", "Venus", "Pluto"], answer: "Mercury" },
+  { question: "Who is the author of 'Divine Comedy'?", options: ["Dante Alighieri", "Homer", "Milton", "Virgil"], answer: "Dante Alighieri" },
+  { question: "What is the pH value of pure water?", options: ["6", "7", "8", "9"], answer: "7" },
+  { question: "Which is the fastest aquatic animal?", options: ["Sailfish", "Shark", "Tuna", "Whale"], answer: "Sailfish" },
+  { question: "Which continent is known as the Dark Continent?", options: ["Africa", "Asia", "Australia", "South America"], answer: "Africa" },
+  { question: "What is the national bird of the USA?", options: ["Bald Eagle", "Sparrow", "Crow", "Peacock"], answer: "Bald Eagle" },
+  { question: "Which year did Nepal become a member of the United Nations?", options: ["1950", "1955", "1960", "1975"], answer: "1955" },
+  { question: "Which scientist developed the Periodic Table?", options: ["Dmitri Mendeleev", "Albert Einstein", "Niels Bohr", "Antoine Lavoisier"], answer: "Dmitri Mendeleev" },
+  { question: "Which country is known as the Land of a Thousand Lakes?", options: ["Finland", "Sweden", "Norway", "Iceland"], answer: "Finland" },
+  { question: "What is the freezing point of water in Fahrenheit?", options: ["32°F", "0°F", "100°F", "212°F"], answer: "32°F" },
+  { question: "Who is the author of 'War and Peace'?", options: ["Leo Tolstoy", "Fyodor Dostoevsky", "Anton Chekhov", "Maxim Gorky"], answer: "Leo Tolstoy" },
+
+
+  { question: "Which organ purifies blood in the human body?", options: ["Heart", "Kidney", "Liver", "Lungs"], answer: "Kidney" },
+  { question: "Who invented the World Wide Web?", options: ["Tim Berners-Lee", "Bill Gates", "Steve Jobs", "Charles Babbage"], answer: "Tim Berners-Lee" },
+  { question: "Which is the longest river in Asia?", options: ["Yangtze", "Mekong", "Ganges", "Yellow River"], answer: "Yangtze" },
+  { question: "What is the capital of Bhutan?", options: ["Thimphu", "Paro", "Kathmandu", "Colombo"], answer: "Thimphu" },
+  { question: "Which disease is caused by deficiency of Vitamin D?", options: ["Scurvy", "Rickets", "Night Blindness", "Goiter"], answer: "Rickets" },
+  { question: "Who was the first emperor of the Maurya Dynasty?", options: ["Ashoka", "Chandragupta Maurya", "Bindusara", "Harsha"], answer: "Chandragupta Maurya" },
+  { question: "Which is the second highest mountain in the world?", options: ["K2", "Kangchenjunga", "Lhotse", "Makalu"], answer: "K2" },
+  { question: "In computing, what does 'CPU' stand for?", options: ["Central Processing Unit", "Central Power Unit", "Control Processing Unit", "Central Program Utility"], answer: "Central Processing Unit" },
+  { question: "What is the currency of Bangladesh?", options: ["Rupee", "Taka", "Rial", "Ringgit"], answer: "Taka" },
+  { question: "Who is the author of 'Pride and Prejudice'?", options: ["Jane Austen", "Charlotte Brontë", "Emily Dickinson", "Virginia Woolf"], answer: "Jane Austen" },
+  { question: "Which is the most abundant element in Earth's crust?", options: ["Oxygen", "Silicon", "Aluminum", "Iron"], answer: "Oxygen" },
+  { question: "Which Indian city is known as the Silicon Valley of India?", options: ["Hyderabad", "Mumbai", "Bangalore", "Delhi"], answer: "Bangalore" },
+  { question: "What is the national sport of Japan?", options: ["Karate", "Sumo Wrestling", "Judo", "Baseball"], answer: "Sumo Wrestling" },
+  { question: "Which gas is used in fire extinguishers?", options: ["Carbon Dioxide", "Oxygen", "Nitrogen", "Helium"], answer: "Carbon Dioxide" },
+  { question: "Who built the Taj Mahal?", options: ["Shah Jahan", "Akbar", "Aurangzeb", "Babur"], answer: "Shah Jahan" },
+  { question: "Which is the largest ocean on Earth?", options: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"], answer: "Pacific Ocean" },
+  { question: "Who discovered electricity?", options: ["Benjamin Franklin", "Thomas Edison", "Michael Faraday", "James Watt"], answer: "Benjamin Franklin" },
+  { question: "Which metal is liquid at room temperature?", options: ["Mercury", "Lead", "Aluminum", "Zinc"], answer: "Mercury" },
+  { question: "Which is the deepest ocean trench in the world?", options: ["Mariana Trench", "Tonga Trench", "Java Trench", "Puerto Rico Trench"], answer: "Mariana Trench" },
+  { question: "What is the capital of Maldives?", options: ["Colombo", "Male", "Dhaka", "Jakarta"], answer: "Male" },
+  { question: "Which is the fastest land bird?", options: ["Ostrich", "Falcon", "Peacock", "Eagle"], answer: "Ostrich" },
+  { question: "Who is known as the Father of Geometry?", options: ["Euclid", "Pythagoras", "Archimedes", "Aristotle"], answer: "Euclid" },
+  { question: "Which is the national anthem of Nepal?", options: ["Sayaun Thunga Phool Ka", "Rastriya Gaan", "Gaun Gaun Bata Utha", "Mero Nepal"], answer: "Sayaun Thunga Phool Ka" },
+  { question: "Which planet is called the Blue Planet?", options: ["Earth", "Neptune", "Uranus", "Venus"], answer: "Earth" },
+  { question: "What is the study of earthquakes called?", options: ["Seismology", "Meteorology", "Geology", "Volcanology"], answer: "Seismology" },
+  { question: "Who wrote 'The Odyssey'?", options: ["Homer", "Virgil", "Sophocles", "Herodotus"], answer: "Homer" },
+  { question: "Which is the largest freshwater lake in the world?", options: ["Lake Victoria", "Lake Superior", "Caspian Sea", "Lake Baikal"], answer: "Lake Superior" },
+  { question: "What is the capital of South Africa? (one of three)", options: ["Cape Town", "Pretoria", "Johannesburg", "Durban"], answer: "Pretoria" },
+  { question: "Which vitamin helps in blood clotting?", options: ["Vitamin A", "Vitamin D", "Vitamin K", "Vitamin B12"], answer: "Vitamin K" },
+  { question: "Who was the first woman Prime Minister of the UK?", options: ["Margaret Thatcher", "Theresa May", "Elizabeth II", "Angela Merkel"], answer: "Margaret Thatcher" },
+  { question: "Which country gifted the Statue of Liberty to the USA?", options: ["France", "UK", "Germany", "Italy"], answer: "France" },
+  { question: "What is the unit of electric current?", options: ["Ampere", "Volt", "Ohm", "Watt"], answer: "Ampere" },
+  { question: "Which is the highest civilian award in India?", options: ["Bharat Ratna", "Padma Vibhushan", "Padma Bhushan", "Gallantry Award"], answer: "Bharat Ratna" },
+  { question: "Which is the capital of Sri Lanka?", options: ["Colombo", "Kandy", "Jaffna", "Galle"], answer: "Colombo" },
+  { question: "Which metal is known as Fool’s Gold?", options: ["Pyrite", "Copper", "Bronze", "Nickel"], answer: "Pyrite" },
+  { question: "Which is the largest desert in Asia?", options: ["Gobi Desert", "Thar Desert", "Karakum Desert", "Kyzylkum Desert"], answer: "Gobi Desert" },
+  { question: "Who was the first Nepali to climb Mount Everest?", options: ["Tenzing Norgay", "Pasang Lhamu Sherpa", "Apa Sherpa", "Babu Chiri Sherpa"], answer: "Tenzing Norgay" },
+  { question: "What is the capital of Canada?", options: ["Ottawa", "Toronto", "Vancouver", "Montreal"], answer: "Ottawa" },
+  { question: "Which country is known as the Land of White Elephant?", options: ["Thailand", "India", "Myanmar", "Cambodia"], answer: "Thailand" },
+  { question: "What is the currency of Switzerland?", options: ["Swiss Franc", "Euro", "Dollar", "Pound"], answer: "Swiss Franc" },
+  { question: "Which is the longest national highway in India?", options: ["NH44", "NH27", "NH48", "NH19"], answer: "NH44" },
+  { question: "Who is known as the Missile Man of India?", options: ["APJ Abdul Kalam", "Vikram Sarabhai", "Homi Bhabha", "C.V. Raman"], answer: "APJ Abdul Kalam" },
+  { question: "Which gas is essential for photosynthesis?", options: ["Carbon Dioxide", "Oxygen", "Nitrogen", "Hydrogen"], answer: "Carbon Dioxide" },
+  { question: "What is the capital of Brazil?", options: ["Rio de Janeiro", "Brasília", "São Paulo", "Salvador"], answer: "Brasília" },
+  { question: "Which country is famous for the Great Barrier Reef?", options: ["Australia", "USA", "Canada", "New Zealand"], answer: "Australia" },
+  { question: "Who wrote 'Gitanjali'?", options: ["Rabindranath Tagore", "Bankim Chandra", "Sarojini Naidu", "R.K. Narayan"], answer: "Rabindranath Tagore" },
+  { question: "Which continent is known as the Frozen Continent?", options: ["Antarctica", "Europe", "North America", "Asia"], answer: "Antarctica" },
+  { question: "Which is the capital of Pakistan?", options: ["Karachi", "Lahore", "Islamabad", "Peshawar"], answer: "Islamabad" },
+  { question: "Which is the smallest prime number?", options: ["2", "3", "5", "7"], answer: "2" },
+  { question: "Which Nepali scientist is known for developing the KP model in Physics?", options: ["Keshav Prasad Upadhyaya", "Krishna Prasad Koirala", "Narendra Dev Bhattarai", "None"], answer: "Keshav Prasad Upadhyaya" },
+
+
+
+
+  { question: "Which planet has the shortest day?", options: ["Jupiter", "Mars", "Earth", "Venus"], answer: "Jupiter" },
+  { question: "Who is known as the Father of Modern Chemistry?", options: ["Antoine Lavoisier", "Dmitri Mendeleev", "John Dalton", "Robert Boyle"], answer: "Antoine Lavoisier" },
+  { question: "Which is the largest desert in Africa?", options: ["Sahara", "Kalahari", "Namib", "Libyan"], answer: "Sahara" },
+  { question: "What is the smallest particle of an element?", options: ["Atom", "Molecule", "Electron", "Proton"], answer: "Atom" },
+  { question: "Which is the largest country by area?", options: ["Russia", "Canada", "China", "USA"], answer: "Russia" },
+  { question: "Who discovered the circulation of blood?", options: ["William Harvey", "Hippocrates", "Galen", "Andreas Vesalius"], answer: "William Harvey" },
+  { question: "Which is the largest planet in our solar system?", options: ["Jupiter", "Saturn", "Neptune", "Earth"], answer: "Jupiter" },
+  { question: "What is the main gas found in the air we breathe?", options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], answer: "Nitrogen" },
+  { question: "Who is the author of 'The Hobbit'?", options: ["J.R.R. Tolkien", "C.S. Lewis", "J.K. Rowling", "George R.R. Martin"], answer: "J.R.R. Tolkien" },
+  { question: "Which organ is responsible for producing bile?", options: ["Liver", "Pancreas", "Gallbladder", "Kidney"], answer: "Liver" },
+  { question: "What is the freezing point of water in Celsius?", options: ["0", "-32", "100", "32"], answer: "0" },
+  { question: "Which is the highest mountain in Africa?", options: ["Mount Kilimanjaro", "Mount Kenya", "Atlas", "Ruwenzori"], answer: "Mount Kilimanjaro" },
+  { question: "Which country is known as the Pearl of Africa?", options: ["Uganda", "Kenya", "Tanzania", "Rwanda"], answer: "Uganda" },
+  { question: "Who developed the first vaccine for smallpox?", options: ["Edward Jenner", "Louis Pasteur", "Robert Koch", "Alexander Fleming"], answer: "Edward Jenner" },
+  { question: "Which city is known as the Eternal City?", options: ["Rome", "Athens", "Istanbul", "Jerusalem"], answer: "Rome" },
+  { question: "Which is the fastest mammal on land?", options: ["Cheetah", "Lion", "Tiger", "Leopard"], answer: "Cheetah" },
+  { question: "Who discovered the law of gravitation?", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Niels Bohr"], answer: "Isaac Newton" },
+  { question: "Which is the largest ocean?", options: ["Pacific", "Atlantic", "Indian", "Arctic"], answer: "Pacific" },
+  { question: "Which is the main language of Brazil?", options: ["Portuguese", "Spanish", "French", "English"], answer: "Portuguese" },
+  { question: "Who is the author of '1984'?", options: ["George Orwell", "Aldous Huxley", "Ray Bradbury", "H.G. Wells"], answer: "George Orwell" },
+  { question: "Which planet is known for its rings?", options: ["Saturn", "Jupiter", "Mars", "Uranus"], answer: "Saturn" },
+  { question: "What is the chemical symbol of Sodium?", options: ["Na", "S", "N", "So"], answer: "Na" },
+  { question: "Which element is needed for strong bones?", options: ["Calcium", "Iron", "Zinc", "Potassium"], answer: "Calcium" },
+  { question: "Who was the first man to reach the South Pole?", options: ["Roald Amundsen", "Robert Scott", "Ernest Shackleton", "Ferdinand Magellan"], answer: "Roald Amundsen" },
+  { question: "Which is the largest city in the world by population?", options: ["Tokyo", "Delhi", "Shanghai", "New York"], answer: "Tokyo" },
+  { question: "What is the SI unit of temperature?", options: ["Kelvin", "Celsius", "Fahrenheit", "Rankine"], answer: "Kelvin" },
+  { question: "Who painted the Sistine Chapel ceiling?", options: ["Michelangelo", "Leonardo da Vinci", "Raphael", "Donatello"], answer: "Michelangelo" },
+  { question: "Which is the smallest continent by area?", options: ["Australia", "Europe", "Antarctica", "South America"], answer: "Australia" },
+  { question: "Which gas is essential for human respiration?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], answer: "Oxygen" },
+  { question: "Who invented the first practical telephone?", options: ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi"], answer: "Alexander Graham Bell" },
+  { question: "Which is the largest volcano in the world?", options: ["Mauna Loa", "Mount Etna", "Mount Vesuvius", "Krakatoa"], answer: "Mauna Loa" },
+  { question: "Who wrote 'Les Misérables'?", options: ["Victor Hugo", "Alexandre Dumas", "Emile Zola", "Gustave Flaubert"], answer: "Victor Hugo" },
+  { question: "Which river is the longest in Europe?", options: ["Volga", "Danube", "Rhine", "Elbe"], answer: "Volga" },
+  { question: "Which organ in the human body stores bile?", options: ["Gallbladder", "Liver", "Pancreas", "Kidney"], answer: "Gallbladder" },
+  { question: "Who was the first person in space?", options: ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "Valentina Tereshkova"], answer: "Yuri Gagarin" },
+  { question: "Which is the largest desert in North America?", options: ["Great Basin", "Sonoran", "Mojave", "Chihuahuan"], answer: "Great Basin" },
+  { question: "Which country is the largest producer of coffee?", options: ["Brazil", "Vietnam", "Colombia", "Ethiopia"], answer: "Brazil" },
+  { question: "Which is the highest waterfall in the world?", options: ["Angel Falls", "Niagara Falls", "Victoria Falls", "Yosemite Falls"], answer: "Angel Falls" },
+  { question: "Who developed the theory of relativity?", options: ["Albert Einstein", "Isaac Newton", "Galileo", "Niels Bohr"], answer: "Albert Einstein" },
+  { question: "Which is the capital city of New Zealand?", options: ["Wellington", "Auckland", "Christchurch", "Hamilton"], answer: "Wellington" },
+  { question: "Which is the largest island of Japan?", options: ["Honshu", "Hokkaido", "Kyushu", "Shikoku"], answer: "Honshu" },
+  { question: "Which blood type is called universal recipient?", options: ["AB+", "O+", "A-", "B-"], answer: "AB+" },
+  { question: "Which is the tallest statue in the world?", options: ["Statue of Unity", "Statue of Liberty", "Spring Temple Buddha", "Christ the Redeemer"], answer: "Statue of Unity" },
+  { question: "Who was the first Chancellor of Germany?", options: ["Otto von Bismarck", "Konrad Adenauer", "Angela Merkel", "Helmut Kohl"], answer: "Otto von Bismarck" },
+  { question: "Which planet has the longest year?", options: ["Neptune", "Mercury", "Mars", "Jupiter"], answer: "Neptune" },
+  { question: "What is the process by which plants make their food?", options: ["Photosynthesis", "Respiration", "Transpiration", "Fermentation"], answer: "Photosynthesis" },
+  { question: "Which is the largest continent by area?", options: ["Asia", "Africa", "North America", "Europe"], answer: "Asia" },
+  { question: "Who wrote 'The Brothers Karamazov'?", options: ["Fyodor Dostoevsky", "Leo Tolstoy", "Anton Chekhov", "Maxim Gorky"], answer: "Fyodor Dostoevsky" },
+  { question: "Which is the longest river in Nepal?", options: ["Ghaghara", "Koshi", "Gandaki", "Mahakali"], answer: "Koshi" },
+  { question: "Which metal has the highest melting point?", options: ["Tungsten", "Iron", "Copper", "Gold"], answer: "Tungsten" },
+  { question: "Who is the author of 'The Alchemist'?", options: ["Paulo Coelho", "Gabriel Garcia Marquez", "J.K. Rowling", "Dan Brown"], answer: "Paulo Coelho" },
+  { question: "Which is the largest planet in terms of volume?", options: ["Jupiter", "Saturn", "Neptune", "Earth"], answer: "Jupiter" },
+  { question: "Which country is called the Land of Maple Leaf?", options: ["Canada", "USA", "Norway", "Finland"], answer: "Canada" },
+  { question: "Which disease is caused by deficiency of Iron?", options: ["Anemia", "Scurvy", "Rickets", "Goiter"], answer: "Anemia" },
+  { question: "Which scientist is known as the Father of Genetics?", options: ["Gregor Mendel", "Charles Darwin", "Louis Pasteur", "James Watson"], answer: "Gregor Mendel" },
+  { question: "Which is the largest lake in Africa?", options: ["Lake Victoria", "Lake Tanganyika", "Lake Malawi", "Lake Chad"], answer: "Lake Victoria" },
+
+
+  { question: "Who discovered radioactivity?", options: ["Marie Curie", "Isaac Newton", "Albert Einstein", "Niels Bohr"], answer: "Marie Curie" },
+  { question: "Which is the longest river in South America?", options: ["Amazon", "Paraná", "Orinoco", "São Francisco"], answer: "Amazon" },
+  { question: "What is the chemical symbol of Iron?", options: ["Fe", "Ir", "In", "I"], answer: "Fe" },
+  { question: "Which is the largest city in Africa by population?", options: ["Lagos", "Cairo", "Kinshasa", "Johannesburg"], answer: "Lagos" },
+  { question: "Who invented the first airplane?", options: ["Wright Brothers", "Charles Lindbergh", "Howard Hughes", "Amelia Earhart"], answer: "Wright Brothers" },
+  { question: "Which is the capital of Italy?", options: ["Rome", "Milan", "Naples", "Venice"], answer: "Rome" },
+  { question: "What is the chemical formula of table salt?", options: ["NaCl", "KCl", "Na2SO4", "CaCl2"], answer: "NaCl" },
+  { question: "Who was the first African-American president of the USA?", options: ["Barack Obama", "George Washington", "Abraham Lincoln", "Bill Clinton"], answer: "Barack Obama" },
+  { question: "Which planet has the most moons?", options: ["Saturn", "Jupiter", "Uranus", "Neptune"], answer: "Saturn" },
+  { question: "Which organ produces adrenaline?", options: ["Adrenal Glands", "Pancreas", "Thyroid", "Pituitary"], answer: "Adrenal Glands" },
+  { question: "Who wrote 'To Kill a Mockingbird'?", options: ["Harper Lee", "F. Scott Fitzgerald", "Ernest Hemingway", "Mark Twain"], answer: "Harper Lee" },
+  { question: "Which country is known as the Land of Fire and Ice?", options: ["Iceland", "Greenland", "Norway", "Finland"], answer: "Iceland" },
+  { question: "Which gas is essential for burning fuels?", options: ["Oxygen", "Hydrogen", "Carbon Dioxide", "Nitrogen"], answer: "Oxygen" },
+  { question: "What is the capital of Thailand?", options: ["Bangkok", "Chiang Mai", "Phuket", "Pattaya"], answer: "Bangkok" },
+  { question: "Which scientist proposed the three laws of motion?", options: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Johannes Kepler"], answer: "Isaac Newton" },
+  { question: "Which is the highest mountain in North America?", options: ["Denali", "Mount Logan", "Mount Whitney", "Mount Rainier"], answer: "Denali" },
+  { question: "Which country is the largest producer of chocolate?", options: ["Côte d'Ivoire", "Ghana", "Switzerland", "Belgium"], answer: "Côte d'Ivoire" },
+  { question: "Which blood type is considered universal donor?", options: ["O-", "O+", "AB+", "AB-"], answer: "O-" },
+  { question: "Who was the first woman in space?", options: ["Valentina Tereshkova", "Sally Ride", "Mae Jemison", "Kalpana Chawla"], answer: "Valentina Tereshkova" },
+  { question: "Which is the smallest country in the world?", options: ["Vatican City", "Monaco", "San Marino", "Liechtenstein"], answer: "Vatican City" },
+  { question: "What is the largest organ inside the human body?", options: ["Liver", "Heart", "Lungs", "Kidney"], answer: "Liver" },
+  { question: "Which planet is farthest from the Sun?", options: ["Neptune", "Uranus", "Saturn", "Pluto"], answer: "Neptune" },
+  { question: "Which Indian city is called the Pink City?", options: ["Jaipur", "Mumbai", "Delhi", "Kolkata"], answer: "Jaipur" },
+  { question: "Who invented the printing press?", options: ["Johannes Gutenberg", "Alexander Graham Bell", "Isaac Newton", "Thomas Edison"], answer: "Johannes Gutenberg" },
+  { question: "Which is the largest moon of Saturn?", options: ["Titan", "Rhea", "Iapetus", "Dione"], answer: "Titan" },
+  { question: "Which is the fastest fish in the ocean?", options: ["Sailfish", "Tuna", "Marlin", "Swordfish"], answer: "Sailfish" },
+  { question: "Who discovered the law of planetary motion?", options: ["Johannes Kepler", "Galileo Galilei", "Isaac Newton", "Copernicus"], answer: "Johannes Kepler" },
+  { question: "Which river flows through Baghdad?", options: ["Tigris", "Euphrates", "Nile", "Jordan"], answer: "Tigris" },
+  { question: "Which country is called the Land of Thousand Islands?", options: ["Indonesia", "Philippines", "Norway", "Canada"], answer: "Indonesia" },
+  { question: "What is the freezing point of water in Celsius?", options: ["0", "100", "-32", "32"], answer: "0" },
+  { question: "Which is the largest internal organ in the human body?", options: ["Liver", "Brain", "Lungs", "Heart"], answer: "Liver" },
+  { question: "Which element has the chemical symbol 'K'?", options: ["Potassium", "Krypton", "Calcium", "Sodium"], answer: "Potassium" },
+  { question: "Who is the author of 'The Catcher in the Rye'?", options: ["J.D. Salinger", "George Orwell", "Harper Lee", "Mark Twain"], answer: "J.D. Salinger" },
+  { question: "Which is the smallest planet in the solar system?", options: ["Mercury", "Mars", "Venus", "Pluto"], answer: "Mercury" },
+  { question: "Which country is called the Land of the Rising Sun?", options: ["Japan", "China", "Thailand", "South Korea"], answer: "Japan" },
+  { question: "Which gas is known as laughing gas?", options: ["Nitrous Oxide", "Oxygen", "Carbon Dioxide", "Nitrogen"], answer: "Nitrous Oxide" },
+  { question: "Who painted the 'Starry Night'?", options: ["Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Leonardo da Vinci"], answer: "Vincent van Gogh" },
+  { question: "Which country has the largest population in the world?", options: ["China", "India", "USA", "Indonesia"], answer: "China" },
+  { question: "Which vitamin is produced when sunlight hits the skin?", options: ["Vitamin D", "Vitamin C", "Vitamin A", "Vitamin B12"], answer: "Vitamin D" },
+  { question: "Who was the first European to reach India by sea?", options: ["Vasco da Gama", "Christopher Columbus", "Marco Polo", "Ferdinand Magellan"], answer: "Vasco da Gama" },
+  { question: "Which is the largest peninsula in the world?", options: ["Arabian Peninsula", "Indian Peninsula", "Malay Peninsula", "Scandinavian Peninsula"], answer: "Arabian Peninsula" },
+  { question: "Which metal is liquid at room temperature?", options: ["Mercury", "Gallium", "Lead", "Tin"], answer: "Mercury" },
+  { question: "Who is the author of 'Moby-Dick'?", options: ["Herman Melville", "Mark Twain", "Jules Verne", "Leo Tolstoy"], answer: "Herman Melville" },
+  { question: "Which is the largest lake in the world by area?", options: ["Caspian Sea", "Lake Superior", "Lake Victoria", "Lake Huron"], answer: "Caspian Sea" },
+  { question: "Which is the highest mountain in South America?", options: ["Aconcagua", "Ojos del Salado", "Huascarán", "Chimborazo"], answer: "Aconcagua" },
+  { question: "Which organ stores urine in the human body?", options: ["Bladder", "Kidney", "Liver", "Urethra"], answer: "Bladder" },
+  { question: "Which country is known as the Land of Midnight Sun?", options: ["Norway", "Iceland", "Finland", "Sweden"], answer: "Norway" },
+  { question: "Who discovered penicillin?", options: ["Alexander Fleming", "Louis Pasteur", "Edward Jenner", "Robert Koch"], answer: "Alexander Fleming" },
+  { question: "Which gas is most abundant in the Earth's atmosphere?", options: ["Nitrogen", "Oxygen", "Carbon Dioxide", "Argon"], answer: "Nitrogen" },
+  { question: "Which city is known as the City of Canals?", options: ["Venice", "Amsterdam", "Bangkok", "Bruges"], answer: "Venice" },
+  { question: "Which is the largest island in the Mediterranean Sea?", options: ["Sicily", "Crete", "Cyprus", "Corsica"], answer: "Sicily" },
+  { question: "Which Indian state is called the Land of Five Rivers?", options: ["Punjab", "Haryana", "Rajasthan", "Uttar Pradesh"], answer: "Punjab" },
+  { question: "Which is the largest volcano in Europe?", options: ["Mount Etna", "Mount Vesuvius", "Mount Teide", "Mount Stromboli"], answer: "Mount Etna" },
+  { question: "Who is known as the Father of Computer Science?", options: ["Alan Turing", "Charles Babbage", "John von Neumann", "Bill Gates"], answer: "Alan Turing" },
+  { question: "Which is the fastest animal in water?", options: ["Sailfish", "Marlin", "Shark", "Tuna"], answer: "Sailfish" }
+
 ];
 
 
 
-
-let selectedAnswers = new Array(questions.length).fill(null);
+let questions = [];
+let selectedAnswers = [];
 let timerInterval;
+
+// Random questions select function
+function getRandomQuestions(array, num) {
+  const shuffled = [...array].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, num);
+}
 
 function startQuiz() {
   document.getElementById("startContainer").style.display = "none";
   document.getElementById("quizContainer").style.display = "block";
+
+  questions = getRandomQuestions(allQuestions, 50); 
+  selectedAnswers = new Array(questions.length).fill(null);
+
   loadQuestions();
-  startTimer(1200); 
+  startTimer(900); 
 }
 
 function loadQuestions() {
@@ -157,12 +386,10 @@ function loadQuestions() {
     container.appendChild(section);
   });
 
- 
   const finishBtn = document.createElement("button");
   finishBtn.textContent = "Finish Quiz";
   finishBtn.onclick = finishQuiz;
 
-  // Styling
   finishBtn.style.marginTop = "20px";
   finishBtn.style.background = "linear-gradient(45deg, #ff416c, #ff4b2b)";
   finishBtn.style.color = "white";
@@ -190,11 +417,8 @@ function startTimer(seconds) {
       clearInterval(timerInterval);
       finishQuiz();
     }
-  }, 1200);
+  }, 1000);
 }
-
-
-
 
 function finishQuiz() {
   clearInterval(timerInterval);
@@ -203,7 +427,6 @@ function finishQuiz() {
   resultDiv.style.display = "block";
 
   let correct = 0, attempted = 0;
-
   for (let i = 0; i < questions.length; i++) {
     const userAns = selectedAnswers[i];
     if (userAns !== null) {
@@ -218,8 +441,7 @@ function finishQuiz() {
 
 
 
- 
-let feedback = "";
+ let feedback = "";
 
 if (percent >= 90) {
   feedback = " Phenomenal Performance! You're a true quiz master! 🌟🧠";
@@ -234,12 +456,10 @@ if (percent >= 90) {
 }
 
 
- 
 
 
   resultDiv.innerHTML = `
     <h2 style="text-align:center; color: #4caf50;">🎉 Quiz Completed 🎉</h2>
-
     <div style="background: #e3f2fd; border-left: 8px solid #2196f3; padding: 15px; margin-bottom: 10px;">
       <strong>Total Questions:</strong> ${questions.length}
     </div>
@@ -258,18 +478,15 @@ if (percent >= 90) {
     <div style="background: #f0f4c3; border-left: 8px solid #cddc39; padding: 15px; margin-bottom: 20px;">
       <strong>Percentage:</strong> ${percent}%
     </div>
-
     <p style="font-size: 20px; text-align: center; color: #0d47a1;">
       <strong>Feedback:</strong> ${feedback}
     </p>
-
     <div style="text-align:center; margin-top: 20px;">
-      <button onclick="location.reload()" style="padding: 12px 25px; font-size: 16px; background: #ff0066; color: white; border: none; border-radius: 5px; cursor: pointer;">🔁 Want to Again</button>
+      <button onclick="location.reload()" style="padding: 12px 25px; font-size: 16px; background: #ff0066; color: white; border: none; border-radius: 5px; cursor: pointer;">🔁 Try Again</button>
     </div>
   `;
 }
-
-
 </script>
+
 </body>
 </html>
