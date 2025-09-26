@@ -32,8 +32,15 @@
   transform: scale(1.05);
 }
 #startContainer {
-  text-align: center; /* button horizontally center */
-  margin-top: 50px;   /* optional: vertical spacing from top */
+  text-align: center; 
+  margin-top: 50px;  
+}
+
+
+#timer {
+  font-weight: bold;
+  font-size: 20px;
+  color: #ff0000; 
 }
 
 
@@ -359,7 +366,7 @@ function startQuiz() {
   selectedAnswers = new Array(questions.length).fill(null);
 
   loadQuestions();
-  startTimer(900); 
+  startTimer(60); 
 }
 
 function loadQuestions() {
