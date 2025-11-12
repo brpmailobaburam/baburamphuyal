@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" type="image/png" href="b.png">
   <title>3Comedy-Team | Official Website</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
@@ -233,16 +232,64 @@
       section h2{font-size:1.5rem;}
       nav{gap:15px;}
     }
-  .team-member p {
-    color: #ccc;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  .team-member p strong {
-    color: #ffb347;   /* Bold post title color */
-    font-weight: 700;
-    font-size: 1rem;
-  }
+ .team-grid {
+  display: flex;
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+  gap: 20px; 
+}
+
+.team-member {
+  flex: 1 1 200px; 
+  max-width: 220px; 
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.team-member img {
+  width: 200px; 
+  height: 200px;
+  border-radius: 50%; 
+  object-fit: cover; 
+  cursor: pointer;
+  border: 3px solid #ff8c00;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.team-member img:hover {
+  transform: scale(1.05);
+}
+
+.team-member h3 {
+  margin: 5px 0;
+  color: yellow;
+}
+
+.team-member p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.team-member p strong {
+  color: #ffb347;
+  font-weight: 1000;
+  font-size: 1rem;
+}
+
+.full-info {
+  display: none; 
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif; 
+  color: #eee; 
+  line-height: 1.6; 
+}
+
+
+
   </style>
 </head>
 <body>
@@ -251,7 +298,7 @@
 
 <header>
   <img src="Black and Red Flat Illustrative Comedy Podcast Logo.jpg" alt="3Comedy-Team Logo">
-  <h1>3Comedy-Team</h1>
+  <h1>३Comedy-Team</h1>
   <p>We spread laughter and joy through creative comedy videos!</p>
 </header>
 
@@ -300,32 +347,58 @@
 
 
 
- <section id="team">
+
+
+<section id="team">
   <h2>Meet Our Team</h2>
   <div class="team-grid">
+
     <div class="team-member">
-    <img src="Gau_rab.jpg" alt="Member">
+      <img src="Gau_rab.jpg" alt="Member" onclick="showMore(this)">
       <h3>Gaurab Phuyal</h3>
-      <p><strong>Cameramen & Editor</strong><br>
- Loves creating hilarious sketches and spreading smiles.
-         </p>
+      <p><strong>Cameramen & Editor</strong></p>
+      <div class="full-info">
+       <p>
+Gaurab Phuyal, as Cameramen & Editor, brings every project to life with his sharp eye for detail and passion for storytelling. He loves crafting seamless stories from raw footage, turning simple ideas into captivating and visually engaging videos. Combining creativity with precision, Gaurab skillfully blends animations, edits, and effects to enhance every frame, adding humor, emotion, and energy to each scene. Beyond his technical skills, he fosters a collaborative and positive environment on set, valuing the contributions of every artist and crew member. His dedication, creativity, and innovative approach transform ordinary footage into memorable experiences, leaving audiences entertained, inspired, and eager for more.
+</p>
+      </div>
     </div>
 
+
+
     <div class="team-member">
-       <img src="Nabin_KK.jpg" alt="Member">    
+      <img src="Nabin_KK.jpg" alt="Member" onclick="showMore(this)">
       <h3>Nabin Phuyal</h3>
-      <p><strong>Editor & Animator</strong><br>
-         Adds magic and punch to every video.</p>
+      <p><strong>Chef Ast. Director</strong></p>
+      <div class="full-info">
+      <p>
+Nabin Phuyal, as Chef and Assistant Director, plays a vital role in keeping the team energized and the production running smoothly. With creativity and precision, he ensures meals are delicious and timely, fueling the cast and crew for long shooting days. Beyond his culinary skills, Nabin’s calm, positive, and approachable behavior fosters a respectful and harmonious environment on set. As Assistant Director, he coordinates scenes, manages schedules, and ensures everyone knows their role, guiding the team with patience and professionalism. His dedication to supporting both the creative and practical sides of production makes every project efficient and enjoyable, while his enthusiasm and teamwork inspire everyone to give their best, making each video not only entertaining to watch but a joy to create.
+</p>
+      </div>
     </div>
 
+
+
     <div class="team-member">
-     <img src="Brp_Mailo.jpg" alt="Member">    
+      <img src="Brp_Mailo.jpg" alt="Member" onclick="showMore(this)">
       <h3>Brp Mailo</h3>
-      <p><strong>Director & Scriptwriter</strong><br>
-	Masters the funny storylines and dialogues</p>
+      <p><strong>Writer & Director </strong></p>
+      <div class="full-info">
+      <p>
+Brp Mailo, as Writer & Director, masters the art of funny storylines and witty dialogues, bringing each scene to life with unmatched creativity and precision. He crafts scripts that perfectly balance humor, emotion, and relatability, while directing videos with a unique, magical vision that elevates every project. His storytelling is both hilariously entertaining and deeply meaningful, leaving subtle messages that resonate with viewers long after watching.  
+<br>
+On set, Brp fosters a positive, collaborative, and respectful environment, honoring the talent and contribution of every artist, cameramen, and assistant director. With meticulous attention to detail and innovative direction, he ensures every production runs smoothly, captivates audiences, and becomes a memorable experience. Passionate about his craft and committed to teamwork, Brp inspires admiration from the team and viewers alike, making each video not just a project but a journey full of laughter, emotion, creativity, and lasting impact.  
+<br>
+Bold, visionary, and unstoppable, Brp Mailo’s leadership turns ordinary ideas into cinematic experiences, leaving everyone—from cast to crew to viewers—in awe of his skill, dedication, and magical touch.
+</p>
+      </div>
     </div>
+
   </div>
 </section>
+
+
+
 
 
 
@@ -359,6 +432,26 @@
     </div>
   </footer>
 
+
+
+<script>
+function showMore(element) {
+  const member = element.parentElement;
+  const info = member.querySelector('.full-info');
+  if(info.style.display === 'block') {
+    info.style.display = 'none';
+  } else {
+    // Close any other open full-info first
+    document.querySelectorAll('.full-info').forEach(div => {
+      if(div !== info) div.style.display = 'none';
+    });
+    info.style.display = 'block';
+    info.scrollIntoView({behavior: "smooth", block: "end"});
+  }
+}
+</script>
+
+
   <script>
     // Scroll Animation
     const sections = document.querySelectorAll("section");
@@ -380,5 +473,3 @@
   </script>
 </body>
 </html>
-
-
